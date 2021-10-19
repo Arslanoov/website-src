@@ -1,9 +1,9 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
 
-import Head from 'next/head'
-import Image from 'next/image'
+import Head from 'next/head';
+import Image from 'next/image';
 
-import TextBox from '../components/text-box/TextBox.component'
+import TextBox from '../components/text-box/TextBox.component';
 
 const Home: NextPage = () => {
   return (
@@ -17,11 +17,11 @@ const Home: NextPage = () => {
       <main>
         <TextBox
           content={
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit." +
-            "Accusantium cum delectus est magnam minima modi nam quidem, quos repudiandae." +
-            "Aliquid animi aperiam, autem corporis delectus doloremque eligendi error excepturi" +
-            "impedit ipsam ipsum labore laborum magnam nam natus officia officiis" +
-            "provident quaerat quasi quia quidem recusandae, repellat temporibus ullam, vero voluptatem?"
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' +
+            'Accusantium cum delectus est magnam minima modi nam quidem, quos repudiandae.' +
+            'Aliquid animi aperiam, autem corporis delectus doloremque eligendi error excepturi' +
+            'impedit ipsam ipsum labore laborum magnam nam natus officia officiis' +
+            'provident quaerat quasi quia quidem recusandae, repellat temporibus ullam, vero voluptatem?'
           }
         />
       </main>
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
         </a>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
