@@ -9,8 +9,9 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "lint:style": "npx stylelint \"**/*.{scss,sass,css}\" --ignore-path .gitignore",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test:unit": "jest",
+    "test:unit:watch": "jest --watch",
+    "test:e2e": "cypress open"
   },
   "dependencies": {
     "next": "11.1.2",
@@ -24,6 +25,7 @@
     "@testing-library/react": "^12.1.2",
     "@types/react": "17.0.30",
     "babel-jest": "^27.3.1",
+    "cypress": "^8.6.0",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
     "identity-obj-proxy": "^3.0.0",
