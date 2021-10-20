@@ -1,0 +1,13 @@
+.container {
+  align-items: center;
+
+  margin-top: 2rem;
+}
+
+.box {
+  grid-column: col-start 1 / col-end 8;
+}
+
+.avatar {
+  grid-column: col-start 10 / col-end 12;
+}
