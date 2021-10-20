@@ -1,13 +1,45 @@
 .container {
+  justify-content: center;
   align-items: center;
 
+  row-gap: 2rem;
+
+  padding: 2rem 0;
+
   margin-top: 2rem;
+
+  @include tablet {
+    justify-content: start;
+  }
 }
 
 .box {
-  grid-column: col-start 1 / col-end 8;
+  grid-column: col-start 1 / col-end 12;
+
+  @include tablet {
+    grid-column: col-start 1 / col-end 6;
+  }
+
+  @include desktop-md {
+    grid-column: col-start 1 / col-end 8;
+  }
+
+  margin-right: 3rem;
 }
 
 .avatar {
-  grid-column: col-start 10 / col-end 12;
+  grid-column: col-start 1 / col-end 12;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include tablet {
+    justify-content: start;
+    grid-column: col-start 7 / col-end 12;
+  }
+
+  @include desktop-md {
+    grid-column: col-start 9 / col-end 12;
+  }
 }

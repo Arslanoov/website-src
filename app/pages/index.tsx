@@ -9,6 +9,7 @@ import Footer from '../components/footer/Footer.component';
 import styles from '../styles/pages/home.module.scss';
 
 import { textBoxTitle, textBoxContent } from '../dummy/text';
+import PanelsList from '../components/panels/list/PanelsList';
 
 const Home: NextPage = () => {
   return (
@@ -26,6 +27,7 @@ const Home: NextPage = () => {
           </div>
           <div className={styles.avatar}>
             <Avatar />
+            <PanelsList />
           </div>
         </div>
       </main>
