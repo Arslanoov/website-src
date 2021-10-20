@@ -1,20 +1,20 @@
 import React from 'react';
 
-import Image from 'next/image';
+import styles from './footer.module.scss';
 
 const Footer = () => {
   return (
-    <footer>
-      <a
-        href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Powered by{' '}
-        <span>
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </span>
-      </a>
+    <footer className="container">
+      <div className={styles.footer}>
+        <div>
+          2021
+        </div>
+        <div className={styles.links}>
+          <a className={styles.link} target="_blank" href="mailto:rasul@arslanoov.red" rel="noreferrer">rasul@arslanoov.red</a>
+          <a className={styles.link} target="_blank" href="https://github.com/Arslanoov" rel="noreferrer">GitHub</a>
+          <a className={styles.link} target="_blank" href="https://www.linkedin.com/in/arslanoov/" rel="noreferrer">Linkedin</a>
+        </div>
+      </div>
     </footer>
   );
 };
