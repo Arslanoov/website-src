@@ -1,4 +1,4 @@
-.container {
+.about-container {
   justify-content: center;
   align-items: center;
 
@@ -11,35 +11,71 @@
   @include tablet {
     justify-content: start;
   }
+
+  .box {
+    grid-column: col-start 1 / col-end 12;
+
+    @include tablet {
+      grid-column: col-start 1 / col-end 6;
+    }
+
+    @include desktop-sm {
+      grid-column: col-start 1 / col-end 8;
+    }
+
+    margin-right: 3rem;
+  }
+
+  .avatar {
+    grid-column: col-start 1 / col-end 12;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include tablet {
+      justify-content: start;
+      grid-column: col-start 7 / col-end 12;
+    }
+
+    @include desktop-sm {
+      grid-column: col-start 9 / col-end 12;
+    }
+  }
 }
 
-.box {
-  grid-column: col-start 1 / col-end 12;
+.content-container {
+  row-gap: 2rem;
 
-  @include tablet {
-    grid-column: col-start 1 / col-end 6;
+  margin: 2rem 0;
+
+  @include tablet-hor {
+    row-gap: 0;
+
+    margin: 3rem 0;
   }
 
-  @include desktop-sm {
-    grid-column: col-start 1 / col-end 8;
+  .blog,
+  .works {
+    height: 200px;
+    border: 1px solid red;
   }
 
-  margin-right: 3rem;
-}
+  .blog {
+    grid-column: col-start 1 / col-end 12;
 
-.avatar {
-  grid-column: col-start 1 / col-end 12;
+    @include tablet-hor {
+      grid-column: col-start 1 / col-end 6;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  @include tablet {
-    justify-content: start;
-    grid-column: col-start 7 / col-end 12;
+      margin-right: 3rem;
+    }
   }
 
-  @include desktop-sm {
-    grid-column: col-start 9 / col-end 12;
+  .works {
+    grid-column: col-start 1 / col-end 12;
+
+    @include tablet-hor {
+      grid-column: col-start 7 / col-end 12;
+    }
   }
 }

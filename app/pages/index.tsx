@@ -10,6 +10,7 @@ import styles from '../styles/pages/home.module.scss';
 
 import { textBoxTitle, textBoxContent } from '../dummy/text';
 import PanelsList from '../components/panels/list/PanelsList';
+import ContentList from '../components/content-list/list/ContentList';
 
 const Home: NextPage = () => {
   return (
@@ -21,13 +22,23 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <div className={`container ${styles.container}`}>
+        <div className={`container ${styles['about-container']}`}>
           <div className={styles.box}>
             <TextBox title={textBoxTitle} content={textBoxContent} />
           </div>
           <div className={styles.avatar}>
             <Avatar />
             <PanelsList />
+          </div>
+        </div>
+
+        <div className={`container ${styles['content-container']}`}>
+          <div className={styles.blog}>
+            <ContentList title="Recent posts" />
+          </div>
+
+          <div className={styles.works}>
+            <ContentList title="Portfolio" />
           </div>
         </div>
       </main>
