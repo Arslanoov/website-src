@@ -4,7 +4,7 @@ import ContentListItem from '../item/ContentListItem';
 
 import styles from './content-list.module.scss';
 
-import { posts } from '../../../dummy/posts';
+import { posts } from '../../../../dummy/posts';
 
 type Props = {
   title: string
