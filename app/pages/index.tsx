@@ -2,15 +2,16 @@ import type { NextPage } from 'next';
 
 import Head from 'next/head';
 
-import TextBox from '../components/text-box/TextBox.component';
-import Avatar from '../components/avatar/Avatar.component';
-import Footer from '../components/footer/Footer.component';
-
 import styles from '../styles/pages/home.module.scss';
 
 import { textBoxTitle, textBoxContent } from '../dummy/text';
+
+import TextBox from '../components/text-box/TextBox.component';
+import Avatar from '../components/avatar/Avatar.component';
+import Footer from '../components/footer/Footer.component';
 import PanelsList from '../components/panels/list/PanelsList';
 import ContentList from '../components/content-list/list/ContentList';
+import ContentMoreButton from '../components/content-list/more-button/ContentMoreButton';
 
 const Home: NextPage = () => {
   return (
@@ -35,10 +36,16 @@ const Home: NextPage = () => {
         <div className={`container ${styles['content-container']}`}>
           <div className={styles.blog}>
             <ContentList title="Recent posts" />
+            <div className={styles.button}>
+              <ContentMoreButton link='/posts' />
+            </div>
           </div>
 
           <div className={styles.works}>
             <ContentList title="Portfolio" />
+            <div className={styles.button}>
+              <ContentMoreButton link='/portfolio' />
+            </div>
           </div>
         </div>
       </main>
