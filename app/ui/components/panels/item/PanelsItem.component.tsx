@@ -6,7 +6,7 @@ type Props = {
   options: { [key: string ]: string | number }
 };
 
-const PanelsItemComponent: React.FC<Props> = ({ label, selected, options }) => {
+const PanelsItem: React.FC<Props> = ({ label, selected, options }) => {
   return (
     <div>
       {label} - {options[selected]}
@@ -17,4 +17,4 @@ const PanelsItemComponent: React.FC<Props> = ({ label, selected, options }) => {
   );
 };
 
-export default PanelsItemComponent;
+export default PanelsItem;

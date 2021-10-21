@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 import styles from './content-more-button.module.scss';
 
@@ -11,7 +10,7 @@ type Props = {
   disabled?: boolean
 };
 
-const ContentMoreButtonComponent: React.FC<Props> = ({
+const ContentMoreButton: React.FC<Props> = ({
   text = 'See all',
   link = null,
   disabled = false
@@ -26,4 +25,4 @@ const ContentMoreButtonComponent: React.FC<Props> = ({
   );
 };
 
-export default ContentMoreButtonComponent;
+export default ContentMoreButton;

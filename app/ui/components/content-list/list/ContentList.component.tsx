@@ -8,15 +8,17 @@ import { posts } from '@/dummy/posts';
 
 type Props = {
   title: string
-  vertical?: boolean
+  vertical?: boolean,
+  prependEl?: React.ReactElement
 };
 
 // TODO: Add classnames
 
-const ContentListComponent: React.FC<Props> = ({ title, vertical = false }) => {
+const ContentList: React.FC<Props> = ({ title, vertical = false, prependEl }) => {
   return (
     <div>
       <div className={styles.title}>{title}</div>
+      {prependEl}
       <div className={styles.list} style={{
         gridTemplateColumns: vertical ? '1fr' : ''
       }}>
@@ -32,4 +34,4 @@ const ContentListComponent: React.FC<Props> = ({ title, vertical = false }) => {
   );
 };
 
-export default ContentListComponent;
+export default ContentList;

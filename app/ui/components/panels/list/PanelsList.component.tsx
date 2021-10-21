@@ -14,7 +14,7 @@ const nightMode = {
   night: 'Night mode',
 };
 
-const PanelsListComponent = () => {
+const PanelsList = () => {
   return (
     <div className={styles.list}>
       <PanelsItem label="Language" selected="en" options={languageOptions} />
@@ -23,4 +23,4 @@ const PanelsListComponent = () => {
   );
 };
 
-export default PanelsListComponent;
+export default PanelsList;
