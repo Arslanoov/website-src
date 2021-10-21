@@ -12,7 +12,7 @@ const Posts: NextPage = () => {
         <div className={styles.button}>
           <ContentMoreButton text="Go back" link="/" />
         </div>
-        <ContentListComponent vertical={false} title="Recent posts" />
+        <ContentListComponent vertical={false} withPagination={true} title="Recent posts" />
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import ContentListItem from '@/ui/components/content-list/item/ContentListItem.component';
+import Pagination from '@/ui/components/pagination/Pagination';
 
 import styles from './content-list.module.scss';
 
@@ -8,17 +9,27 @@ import { posts } from '@/dummy/posts';
 
 type Props = {
   title: string
-  vertical?: boolean,
+  vertical?: boolean
   prependEl?: React.ReactElement
+  withPagination?: boolean
 };
 
 // TODO: Add classnames
 
-const ContentList: React.FC<Props> = ({ title, vertical = false, prependEl }) => {
+const ContentList: React.FC<Props> = ({
+  title,
+  vertical = false,
+  prependEl,
+  withPagination = false
+}) => {
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
   return (
-    <div>
-      <div className={styles.title}>{title}</div>
+    <>
+      <h3 className={styles.title}>{title}</h3>
+
       {prependEl}
+
       <div className={styles.list} style={{
         gridTemplateColumns: vertical ? '1fr' : ''
       }}>
@@ -30,7 +41,13 @@ const ContentList: React.FC<Props> = ({ title, vertical = false, prependEl }) =>
           link={`/blog/posts/${post.id}`}
         />)}
       </div>
-    </div>
+
+      {withPagination && <Pagination
+        pagesCount={posts.length}
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+      />}
+    </>
   );
 };
 
