@@ -1,10 +1,10 @@
 import React from 'react';
 
-import ContentListItem from '../item/ContentListItem';
+import ContentListItem from '@/ui/components/content-list/item/ContentListItem.component';
 
 import styles from './content-list.module.scss';
 
-import { posts } from '../../../../dummy/posts';
+import { posts } from '@/dummy/posts';
 
 type Props = {
   title: string
@@ -13,7 +13,7 @@ type Props = {
 
 // TODO: Add classnames
 
-const ContentList: React.FC<Props> = ({ title, vertical = false }) => {
+const ContentListComponent: React.FC<Props> = ({ title, vertical = false }) => {
   return (
     <div>
       <div className={styles.title}>{title}</div>
@@ -32,4 +32,4 @@ const ContentList: React.FC<Props> = ({ title, vertical = false }) => {
   );
 };
 
-export default ContentList;
+export default ContentListComponent;

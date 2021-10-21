@@ -4,8 +4,8 @@ const path = require('path');
 module.exports = {
   reactStrictMode: true,
   sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
-    prependData: '@import "styles/bootstrap";'
+    includePaths: [path.join(__dirname, 'ui/styles')],
+    prependData: '@import "ui/styles/bootstrap";'
   },
   images: {
     domains: ['images.unsplash.com'],

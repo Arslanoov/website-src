@@ -2,14 +2,14 @@ import React from 'react';
 
 import Head from 'next/head';
 
-import styles from '../../../styles/pages/home.module.scss';
+import styles from '@/ui/styles/pages/home.module.scss';
 
-import { textBoxContent, textBoxTitle } from '../../../dummy/text';
+import { textBoxContent, textBoxTitle } from '@/dummy/text';
 
-import TextBox from '../../components/text-box/TextBox.component';
-import Avatar from '../../components/avatar/Avatar.component';
-import PanelsList from '../../components/panels/list/PanelsList';
-import Footer from '../../components/footer/Footer.component';
+import TextBox from '@/ui/components/text-box/TextBox.component';
+import Avatar from '@/ui/components/avatar/Avatar.component';
+import PanelsListComponent from '@/ui/components/panels/list/PanelsList.component';
+import Footer from '@/ui/components/footer/Footer.component';
 
 const MainLayout: React.FC = ({ children }) => {
   return (
@@ -28,7 +28,7 @@ const MainLayout: React.FC = ({ children }) => {
             </div>
             <div className={styles.avatar}>
               <Avatar />
-              <PanelsList />
+              <PanelsListComponent />
             </div>
           </div>
 

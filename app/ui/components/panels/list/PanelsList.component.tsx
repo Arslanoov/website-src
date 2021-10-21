@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PanelsItem from '../item/PanelsItem';
+import PanelsItem from '@/ui/components/panels/item/PanelsItem.component';
 
 import styles from './panels-list.module.scss';
 
@@ -14,7 +14,7 @@ const nightMode = {
   night: 'Night mode',
 };
 
-const PanelsList = () => {
+const PanelsListComponent = () => {
   return (
     <div className={styles.list}>
       <PanelsItem label="Language" selected="en" options={languageOptions} />
@@ -23,4 +23,4 @@ const PanelsList = () => {
   );
 };
 
-export default PanelsList;
+export default PanelsListComponent;

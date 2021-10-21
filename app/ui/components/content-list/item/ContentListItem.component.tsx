@@ -12,7 +12,7 @@ type Props = {
   img?: string
 };
 
-const ContentListItem: React.FC<Props> = ({ title, description, link, img = null }) => {
+const ContentListItemComponent: React.FC<Props> = ({ title, description, link, img = null }) => {
   return (
     <div className={styles.item}>
       <div className={styles.title}>{title}</div>
@@ -33,4 +33,4 @@ const ContentListItem: React.FC<Props> = ({ title, description, link, img = null
   );
 };
 
-export default ContentListItem;
+export default ContentListItemComponent;

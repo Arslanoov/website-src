@@ -1,14 +1,14 @@
 import type { NextPage } from 'next';
 
-import ContentList from '../../ui/components/content-list/list/ContentList';
+import ContentListComponent from '@/ui/components/content-list/list/ContentList.component';
 
-import styles from '../../styles/pages/posts.module.scss';
+import styles from '@/ui/styles/pages/posts.module.scss';
 
 const Posts: NextPage = () => {
   return (
     <div className={'container'}>
       <div className={styles.content}>
-        <ContentList vertical={false} title="Recent posts" />
+        <ContentListComponent vertical={false} title="Recent posts" />
       </div>
     </div>
   );

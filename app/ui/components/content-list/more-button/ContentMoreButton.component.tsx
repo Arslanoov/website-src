@@ -11,7 +11,7 @@ type Props = {
   disabled?: boolean
 };
 
-const ContentMoreButton: React.FC<Props> = ({
+const ContentMoreButtonComponent: React.FC<Props> = ({
   text = 'See all',
   link = null,
   disabled = false
@@ -26,4 +26,4 @@ const ContentMoreButton: React.FC<Props> = ({
   );
 };
 
-export default ContentMoreButton;
+export default ContentMoreButtonComponent;

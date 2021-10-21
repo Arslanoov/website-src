@@ -1,24 +1,24 @@
 import type { NextPage } from 'next';
 
-import styles from '../styles/pages/home.module.scss';
+import styles from '@/ui/styles/pages/home.module.scss';
 
-import ContentList from '../ui/components/content-list/list/ContentList';
-import ContentMoreButton from '../ui/components/content-list/more-button/ContentMoreButton';
+import ContentListComponent from '@/ui/components/content-list/list/ContentList.component';
+import ContentMoreButtonComponent from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
 const Home: NextPage = () => {
   return (
     <div className={`container ${styles['content-container']}`}>
       <div className={styles.blog}>
-        <ContentList title="Recent posts" vertical={true} />
+        <ContentListComponent title="Recent posts" vertical={true} />
         <div className={styles.button}>
-          <ContentMoreButton link='/blog/posts' />
+          <ContentMoreButtonComponent link='/blog/posts' />
         </div>
       </div>
 
       <div className={styles.works}>
-        <ContentList title="Portfolio" vertical={true} />
+        <ContentListComponent title="Portfolio" vertical={true} />
         <div className={styles.button}>
-          <ContentMoreButton link='/portfolio' />
+          <ContentMoreButtonComponent link='/portfolio' />
         </div>
       </div>
     </div>
