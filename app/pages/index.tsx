@@ -35,14 +35,14 @@ const Home: NextPage = () => {
 
         <div className={`container ${styles['content-container']}`}>
           <div className={styles.blog}>
-            <ContentList title="Recent posts" />
+            <ContentList title="Recent posts" vertical={true} />
             <div className={styles.button}>
-              <ContentMoreButton link='/posts' />
+              <ContentMoreButton link='/blog/posts' />
             </div>
           </div>
 
           <div className={styles.works}>
-            <ContentList title="Portfolio" />
+            <ContentList title="Portfolio" vertical={true} />
             <div className={styles.button}>
               <ContentMoreButton link='/portfolio' />
             </div>

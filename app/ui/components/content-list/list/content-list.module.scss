@@ -1,0 +1,28 @@
+.title {
+  margin-bottom: 1rem;
+
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.list {
+  display: grid;
+  align-items: center;
+
+  grid-template-columns: 1fr;
+
+  row-gap: 3rem;
+  column-gap: 3rem;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include desktop-sm {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .item {
+    width: 100%;
+  }
+}
