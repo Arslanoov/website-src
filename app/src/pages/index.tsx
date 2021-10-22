@@ -10,13 +10,13 @@ const Home: NextPage = () => {
     <div className={`container ${styles['content-container']}`}>
       <div className={styles.blog}>
         <ContentListComponent title="Recent posts" vertical={true} prependEl={<div className={styles.button}>
-          <ContentMoreButtonComponent link="/blog/posts" />
+          <ContentMoreButtonComponent link="/posts" />
         </div>} />
       </div>
 
       <div className={styles.works}>
-        <ContentListComponent title="Portfolio" vertical={true} prependEl={<div className={styles.button}>
-          <ContentMoreButtonComponent link="/portfolio" />
+        <ContentListComponent title="Recent projects" vertical={true} prependEl={<div className={styles.button}>
+          <ContentMoreButtonComponent link="/projects" />
         </div>} />
       </div>
     </div>

@@ -7,12 +7,12 @@ import styles from '@/ui/styles/pages/posts.module.scss';
 
 const Posts: NextPage = () => {
   return (
-    <div className={'container'}>
+    <div className="container">
       <div className={styles.content}>
         <div className={styles.button}>
           <ContentMoreButton text="Go back" link="/" />
         </div>
-        <ContentListComponent vertical={false} withPagination={true} title="Recent posts" />
+        <ContentListComponent vertical={false} withPagination={true} title="Posts" />
       </div>
     </div>
   );
