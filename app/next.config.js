@@ -5,7 +5,7 @@ module.exports = {
   reactStrictMode: true,
   sassOptions: {
     includePaths: [path.join(__dirname, 'ui/styles')],
-    prependData: '@import "ui/styles/bootstrap";'
+    prependData: '@import "src/ui/styles/bootstrap";'
   },
   images: {
     domains: ['images.unsplash.com'],

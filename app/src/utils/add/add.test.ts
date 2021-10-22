@@ -1,5 +1,4 @@
-// TODO: Add absolute paths
-import { add } from '../../../utils/test';
+import { add } from './add';
 
 describe('Test Util', () => {
   it('works', () => {

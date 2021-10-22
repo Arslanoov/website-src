@@ -15,13 +15,11 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/domain/*": ["domain/*"],
-      "@/dummy/*": ["dummy/*"],
-      "@/ui/*": ["ui/*"],
-      "@/pages/*": ["pages/*"],
-      "@/styles/*": ["styles/*"],
-      "@/interfaces/*": ["interfaces/*"],
-      "@/utils/*": ["utils/*"],
+      "@/domain/*": ["src/domain/*"],
+      "@/ui/*": ["src/ui/*"],
+      "@/styles/*": ["src/styles/*"],
+      "@/interfaces/*": ["src/interfaces/*"],
+      "@/utils/*": ["src/utils/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

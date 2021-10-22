@@ -5,7 +5,7 @@ import Pagination from '@/ui/components/pagination/Pagination';
 
 import styles from './content-list.module.scss';
 
-import { posts } from '@/dummy/posts';
+import { posts } from '@/utils/dummy/posts';
 
 type Props = {
   title: string

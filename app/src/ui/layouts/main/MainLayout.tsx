@@ -4,7 +4,7 @@ import Head from 'next/head';
 
 import styles from './main-layout.module.scss';
 
-import { textBoxContent, textBoxTitle } from '@/dummy/text';
+import { textBoxContent, textBoxTitle } from '@/utils/dummy/text';
 
 import TextBox from '@/ui/components/text-box/TextBox.component';
 import Avatar from '@/ui/components/avatar/Avatar.component';
