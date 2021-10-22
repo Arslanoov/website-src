@@ -15,7 +15,9 @@ type Props = {
 const ContentListItem: React.FC<Props> = ({ title, description, link, img = null }) => {
   return (
     <div className={styles.item}>
-      <div className={styles.title}>{title}</div>
+      <Link href={link}>
+        <a><h3 className={styles.title}>{title}</h3></a>
+      </Link>
       {img && <div className={styles.wrapper}>
         <Image
           className={styles.image}

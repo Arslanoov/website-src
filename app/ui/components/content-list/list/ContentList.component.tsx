@@ -25,7 +25,7 @@ const ContentList: React.FC<Props> = ({
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   return (
-    <>
+    <div className={styles.content}>
       <h3 className={styles.title}>{title}</h3>
 
       {prependEl}
@@ -47,7 +47,7 @@ const ContentList: React.FC<Props> = ({
         currentPage={currentPage}
         onPageChange={setCurrentPage}
       />}
-    </>
+    </div>
   );
 };
 
