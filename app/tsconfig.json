@@ -12,9 +12,12 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
+      "@/api/*": ["src/api/*"],
       "@/domain/*": ["src/domain/*"],
       "@/ui/*": ["src/ui/*"],
       "@/styles/*": ["src/styles/*"],
