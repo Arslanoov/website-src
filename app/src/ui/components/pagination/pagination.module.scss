@@ -1,0 +1,25 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  margin-top: 1.5rem;
+
+  font-size: 1.5rem;
+
+  .item {
+    width: 3rem;
+    height: 3rem;
+
+    border: .1rem solid black;
+
+    &:disabled {
+      color: #fff;
+      background-color: #000;
+    }
+
+    &:not(:last-of-type) {
+      margin-right: 1rem;
+    }
+  }
+}

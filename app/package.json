@@ -1,0 +1,42 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "lint:style": "npx stylelint \"**/*.{scss,sass,css}\" --ignore-path .gitignore",
+    "test:unit": "jest",
+    "test:unit:watch": "jest --watch",
+    "test:e2e": "cypress open"
+  },
+  "dependencies": {
+    "@mikro-orm/core": "^4.5.9",
+    "@mikro-orm/mongodb": "^4.5.9",
+    "next": "11.1.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "sass": "^1.43.2",
+    "scss-reset": "^1.2.2"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.2",
+    "@types/react": "17.0.30",
+    "babel-jest": "^27.3.1",
+    "cypress": "^8.6.0",
+    "eslint": "7.32.0",
+    "eslint-config-next": "11.1.2",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.3.1",
+    "react-test-renderer": "^17.0.2",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-scss": "^3.21.0",
+    "typescript": "4.4.4"
+  }
+}

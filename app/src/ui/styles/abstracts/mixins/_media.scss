@@ -1,0 +1,43 @@
+// Mobile first
+
+@mixin mobile-sm {
+  @media screen and (min-width: map-get($resolutions, "mobile-sm")) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (min-width: map-get($resolutions, "mobile")) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: map-get($resolutions, "tablet")) {
+    @content;
+  }
+}
+
+@mixin tablet-hor {
+  @media screen and (min-width: map-get($resolutions, "tablet-hor")) {
+    @content;
+  }
+}
+
+@mixin desktop-sm {
+  @media screen and (min-width: map-get($resolutions, "desktop-sm")) {
+    @content;
+  }
+}
+
+@mixin desktop-md {
+  @media screen and (min-width: map-get($resolutions, "desktop-md")) {
+    @content;
+  }
+}
+
+@mixin full-hd {
+  @media screen and (min-width: map-get($resolutions, "full-hd")) {
+    @content;
+  }
+}

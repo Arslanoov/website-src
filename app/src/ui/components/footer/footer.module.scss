@@ -1,0 +1,22 @@
+.footer {
+  grid-column: col-start 1 / col-end 12;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1rem 0;
+
+  font-size: 1.3rem;
+
+  .links {
+    display: flex;
+    align-items: center;
+
+    .link {
+      &:not(:last-of-type) {
+        margin-right: 1rem;
+      }
+    }
+  }
+}

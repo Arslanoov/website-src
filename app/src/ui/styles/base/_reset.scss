@@ -1,0 +1,20 @@
+@import 'scss-reset/_reset.scss';
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
