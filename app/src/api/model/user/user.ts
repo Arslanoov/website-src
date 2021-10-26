@@ -1,8 +1,9 @@
 import { Entity, Enum, PrimaryKey, Property, Unique } from '@mikro-orm/core';
 
-import { Role } from './role';
-import { Id } from '@/api/model/user/id';
 import { IdType } from '@/api/infrastructure/model/user/idType';
+
+import { Role } from './role';
+import { Id } from './id';
 
 @Entity()
 export class User {
