@@ -1,17 +1,17 @@
-version: '3.7'
+version: "3.7"
 services:
   app:
     ports:
       - "3000:3000"
     build:
       context: app
-      dockerfile: ../docker/dev/app.docker
+      dockerfile: Dockerfile
     volumes:
-      - /app/usr/src/app
-      - /usr/src/app/node_modules
-      - /usr/src/app/.next
+      - ./app:/usr/src/app
+      - ./app/node_modules:/usr/src/app/node_modules
+      - ./app/.next:/usr/src/app/.next
     env_file:
-      - app/.env.local
+      - ./app/.env.local
 
   app-postgres:
     image: postgres:14-alpine
@@ -23,6 +23,5 @@ services:
       POSTGRES_DB: red
     ports:
       - "54321:5432"
-
 volumes:
   app-postgres:

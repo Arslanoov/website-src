@@ -7,18 +7,16 @@ import { Id } from './id';
 
 @Entity()
 export class User {
-  @PrimaryKey()
-  @Property({ type: IdType, length: 64})
+  @Property({ type: IdType, length: 64, primary: true })
   private id!: Id
 
-  @Property()
-  @Unique()
+  @Property({ length: 32, unique: true})
   private username!: string
 
-  @Property()
+  @Property({ length: 128 })
   private password!: string
 
-  @Enum({ items: () => Role, array: true, default: Role.User })
+  @Enum({ items: () => Role, default: Role.User })
   private role!: Role
   
   public constructor(id: Id, username: string, password: string, role: Role) {

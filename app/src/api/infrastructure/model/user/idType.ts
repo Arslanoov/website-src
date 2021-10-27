@@ -1,4 +1,4 @@
-import {Type, Platform} from '@mikro-orm/core';
+import { Type, Platform, EntityProperty } from '@mikro-orm/core';
 
 import { Id } from '@/api/model/user/id';
 
@@ -9,5 +9,9 @@ export class IdType extends Type<Id, string> {
 
   public convertToJSValue(value: string, platform: Platform): Id {
     return new Id(value);
+  }
+
+  public getColumnType(prop: EntityProperty, platform: Platform): string {
+    return `varchar(${prop.length})`;
   }
 }
