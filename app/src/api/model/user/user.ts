@@ -5,7 +5,7 @@ import { IdType } from '@/api/infrastructure/model/user/idType';
 import { Id } from './id';
 import { Role } from './role';
 
-// TODO: Add unit tests, add hasher
+// TODO: Add assertions (Author)
 @Entity()
 export class User {
   @Property({ type: IdType, length: 64, primary: true })

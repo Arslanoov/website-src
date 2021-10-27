@@ -8,12 +8,23 @@ import { Role } from '@/api/model/user/role';
 import PasswordManager from '@/api/services/password-manager/passwordManager';
 import IdGenerator from '@/api/services/id/idGenerator';
 
+import UserAlreadyExistsError from '@/api/errors/userAlreadyExistsError';
+
 import Command from './command';
 
 const handler = async ({ username, password }: Command): Promise<User> => {
   const { em } = await initDb();
   const manager = new PasswordManager();
   const idGenerator = new IdGenerator();
+
+  const users = em.getRepository(User);
+  // TODO: Fix
+  // @ts-ignore
+  if (await users.find({
+    username,
+  })) {
+    throw new UserAlreadyExistsError('User with this username already exists.');
+  }
 
   const id = idGenerator.uuid4();
   const hash = await manager.hash(password);
