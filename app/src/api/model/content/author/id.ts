@@ -1,9 +1,9 @@
 import { v4 as uuid } from 'uuid';
 
 export class Id {
-  private readonly data: Identifier
+  private readonly data: string
   
-  public constructor(value: Identifier) {
+  public constructor(value: string) {
     this.data = value;
   }
   

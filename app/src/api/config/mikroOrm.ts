@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import { Options } from '@mikro-orm/core';
 
 import { User } from '@/api/model/user/user';
+import { Author } from '@/api/model/content/author/author';
 
 dotenv.config();
 
@@ -9,7 +10,8 @@ type DatabaseType = 'mongo' | 'mysql' | 'mariadb' | 'postgresql' | 'sqlite' | un
 
 const config: Options = {
   entities: [
-    User
+    User,
+    Author
   ],
   dbName: process.env.DB_NAME,
   type: process.env.DB_TYPE as DatabaseType,
@@ -20,7 +22,7 @@ const config: Options = {
   debug: process.env.NODE_ENV === 'development',
   migrations: {
     tableName: 'migrations',
-    path: 'src/api/services/database/migrations',
+    path: 'src/api/utils/database/migrations',
     pattern: /^[\w-]+\d+\.ts$/,
     transactional: true,
     disableForeignKeys: true,
