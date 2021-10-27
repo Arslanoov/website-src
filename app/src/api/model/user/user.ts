@@ -5,26 +5,33 @@ import { IdType } from '@/api/infrastructure/model/user/idType';
 import { Id } from './id';
 import { Role } from './role';
 
-// TODO: Add unit tests, add hasher
+// TODO: Add assertions (Author)
 @Entity()
 export class User {
   @Property({ type: IdType, length: 64, primary: true })
   private id!: Id
 
-  @Property({ type: 'text', length: 32, unique: true })
+  @Property({ columnType: 'varchar(32)', type: 'text', unique: true })
   private username!: string
 
-  @Property({ type: 'text', length: 128 })
+  @Property({ columnType: 'varchar(128)', type: 'text', })
   private password!: string
 
-  @Enum({ type: 'text', items: () => Role, default: Role.User })
+  @Enum({ columnType: 'varchar(16)', type: 'text', items: () => Role, default: Role.User })
   private role!: Role
 
-  public constructor(id: Id, username: string, password: string, role: Role) {
+  public constructor(id: Id, username: Username, password: string, role: Role) {
     this.id = id;
     this.username = username;
     this.password = password;
     this.role = role;
+  }
+
+  public get identification(): Identification {
+    return {
+      id: this.id.value,
+      username: this.username
+    };
   }
 
   public static newAdmin(username: string, password: string) {

@@ -1,6 +1,6 @@
 export default class Command {
   public constructor(
-    public username: string,
+    public username: Username,
     public password: string
   ) {
   }
