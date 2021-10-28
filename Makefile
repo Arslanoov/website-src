@@ -9,7 +9,7 @@ restart: down up
 build:
 	docker-compose build --no-cache
 
-generate-migration:
+migration:
 	docker-compose run --rm app npx mikro-orm migration:create
 
 migrate:

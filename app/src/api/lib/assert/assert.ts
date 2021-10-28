@@ -1,6 +1,18 @@
 import AssertionError from './assertionError';
 
 export default class Assert {
+  public static moreThan(value: number, name: string, min: number): void {
+    if (value < min) {
+      throw new AssertionError(`${name} must be more than ${min}`);
+    }
+  }
+
+  public static lessThan(value: number, name: string, max: number): void {
+    if (value > max) {
+      throw new AssertionError(`${name} must be less than ${max}`);
+    }
+  }
+
   public static minLength(value: string, name: string, min: number): void {
     if (value.length < min) {
       throw new AssertionError(`${name} must contain more than ${min} characters`);
@@ -27,6 +39,12 @@ export default class Assert {
   public static includes<T>(value: T, name: string, list: T[]): void {
     if (!list.includes(value)) {
       throw new AssertionError(`${name} must be one of the values: ${list.toString()}`);
+    }
+  }
+
+  public static earlierThan(value: Date, compareTo: Date, name: string, compareName: string): void {
+    if (value > compareTo) {
+      throw new AssertionError(`${name} should be earlier than ${compareName}`);
     }
   }
 }

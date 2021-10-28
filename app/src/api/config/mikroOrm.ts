@@ -3,6 +3,7 @@ import { Options } from '@mikro-orm/core';
 
 import { User } from '@/api/model/user/user';
 import { Author } from '@/api/model/content/author/author';
+import { ContentItem } from '@/api/model/content/item/contentItem';
 
 dotenv.config();
 
@@ -11,7 +12,8 @@ type DatabaseType = 'mongo' | 'mysql' | 'mariadb' | 'postgresql' | 'sqlite' | un
 const config: Options = {
   entities: [
     User,
-    Author
+    Author,
+    ContentItem
   ],
   dbName: process.env.DB_NAME,
   type: process.env.DB_TYPE as DatabaseType,
