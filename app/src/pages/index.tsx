@@ -14,11 +14,11 @@ const Home: NextPage = () => {
           vertical={true}
           prependEl={
             <div className={styles.button}>
-              <ContentMoreButtonComponent link="/posts" />
+              <ContentMoreButtonComponent link="/articles" />
             </div>
           }
           title="Recent posts"
-          baseUrl="/posts"
+          baseUrl="/articles"
         />
       </div>
 

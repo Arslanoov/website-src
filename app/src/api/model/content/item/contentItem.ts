@@ -16,7 +16,7 @@ import { Language } from './lang';
 export class ContentItem {
   @Property({ type: IdType, length: 64, primary: true })
   private id!: Id
-  @ManyToOne()
+  @ManyToOne({ type: 'object' })
   private author!: Author
   @Property({ type: CreatedAtType, length: 32 })
   private createdAt!: CreatedAt
@@ -183,6 +183,10 @@ export class ContentItem {
 
   public visit(): void {
     this.views += 1;
+  }
+
+  public get identifier(): Id {
+    return this.id;
   }
 
   // TODO: Add manage methods

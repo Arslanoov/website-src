@@ -10,7 +10,7 @@ import { Id } from './id';
 export class Author {
   @Property({ type: IdType, length: 64, primary: true })
   private id: Id
-  @Property({ columnType: 'varchar(32)', type: 'text', unique: true })
+  @Property({ type: 'text', columnType: 'varchar(32)', unique: true })
   private username: Username
 
   public constructor(id: Id, username: Username) {

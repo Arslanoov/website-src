@@ -40,7 +40,7 @@ const ContentList: React.FC<Props> = ({
         {items.map((item) => <ContentListItem
           key={item.id}
           title={item.title}
-          img={item.img}
+          img={item.cover}
           description={item.description}
           link={`${baseUrl}${item.slug}`}
         />)}

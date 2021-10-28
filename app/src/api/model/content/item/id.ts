@@ -9,6 +9,10 @@ export class Id {
     Assert.uuid(value, 'Id');
     this.data = value;
   }
+
+  public get value(): Identifier {
+    return this.data;
+  }
   
   public static generate() {
     return new Id(uuid());
