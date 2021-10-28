@@ -18,11 +18,11 @@ const handler = async ({ username, password }: Command): Promise<User> => {
   const idGenerator = new IdGenerator();
 
   const users = em.getRepository(User);
-  // TODO: Fix
   // @ts-ignore
-  if (await users.find({
+  const count = await users.count({
     username,
-  })) {
+  });
+  if (count > 0) {
     throw new UserAlreadyExistsError('User with this username already exists.');
   }
 
