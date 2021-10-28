@@ -1,5 +1,7 @@
 import { Entity, Property } from '@mikro-orm/core';
 
+import Assert from '@/assert/assert';
+
 import { IdType } from '@/api/infrastructure/model/content/author/idType';
 
 import { Id } from './id';
@@ -9,10 +11,11 @@ export class Author {
   @Property({ type: IdType, length: 64, primary: true })
   private id: Id
   @Property({ columnType: 'varchar(32)', type: 'text', unique: true })
-  private username: string
+  private username: Username
 
-  public constructor(id: Id, username: string) {
+  public constructor(id: Id, username: Username) {
     this.id = id;
+    Assert.lengthBetween(username, 'Username', 4, 32);
     this.username = username;
   }
 
