@@ -18,6 +18,7 @@
     "baseUrl": ".",
     "paths": {
       "@/api/*": ["src/api/*"],
+      "@/assert/*": ["src/api/lib/assert/*"],
       "@/domain/*": ["src/domain/*"],
       "@/ui/*": ["src/ui/*"],
       "@/styles/*": ["src/styles/*"],

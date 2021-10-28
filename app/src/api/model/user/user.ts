@@ -1,11 +1,12 @@
 import { Entity, Enum, Property } from '@mikro-orm/core';
 
+import Assert from '@/assert/assert';
+
 import { IdType } from '@/api/infrastructure/model/user/idType';
 
 import { Id } from './id';
 import { Role } from './role';
 
-// TODO: Add assertions (Author)
 @Entity()
 export class User {
   @Property({ type: IdType, length: 64, primary: true })
@@ -22,8 +23,11 @@ export class User {
 
   public constructor(id: Id, username: Username, password: string, role: Role) {
     this.id = id;
+    Assert.lengthBetween(username, 'Username', 4, 32);
     this.username = username;
+    Assert.lengthBetween(username, 'Password', 4, 128);
     this.password = password;
+    Assert.includes(role, 'Role', Object.values(Role));
     this.role = role;
   }
 
