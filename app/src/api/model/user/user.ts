@@ -10,16 +10,16 @@ import { Role } from './role';
 @Entity()
 export class User {
   @Property({ type: IdType, length: 64, primary: true })
-  private id!: Id
+  id!: Id
 
-  @Property({ columnType: 'varchar(32)', type: 'text', unique: true })
-  private username!: string
+  @Property({ length: 32, unique: true })
+  username!: string
 
-  @Property({ columnType: 'varchar(128)', type: 'text', })
-  private password!: string
+  @Property({ length: 128 })
+  password!: string
 
-  @Enum({ columnType: 'varchar(16)', type: 'text', items: () => Role, default: Role.User })
-  private role!: Role
+  @Enum({ length: 16, items: () => Role, default: Role.User })
+  role!: Role
 
   public constructor(id: Id, username: Username, password: string, role: Role) {
     this.id = id;

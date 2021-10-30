@@ -15,29 +15,29 @@ import { Language } from './lang';
 @Entity()
 export class ContentItem {
   @Property({ type: IdType, length: 64, primary: true })
-  private id!: Id
-  @ManyToOne({ type: 'object' })
-  private author!: Author
+  id!: Id
+  @ManyToOne()
+  author!: Author
   @Property({ type: CreatedAtType, length: 32 })
-  private createdAt!: CreatedAt
-  @Property({ type: 'text', columnType: 'varchar(64)', length: 64 })
-  private title!: string
-  @Property({ type: 'text', columnType: 'varchar(64)', length: 64 })
-  private slug!: string
-  @Property({ type: 'text', columnType: 'varchar(255)', length: 255 })
-  private description!: string
-  @Property({ type: 'text' })
-  private content!: string
-  @Enum({ columnType: 'varchar(16)', type: 'text', items: () => Status, default: Status.Draft })
-  private status!: Status
-  @Enum({ columnType: 'varchar(16)', type: 'text', items: () => Type, default: Type.Article })
-  private type!: Type
-  @Property({ type: 'integer', columnType: 'integer' })
-  private views!: number
-  @Enum({ columnType: 'varchar(16)', type: 'text', items: () => Language, default: Language.en })
-  private lang!: Language
-  @Property({ type: 'text', columnType: 'varchar(255)', length: 255, nullable: true })
-  private cover?: string
+  createdAt!: CreatedAt
+  @Property({ length: 64 })
+  title!: string
+  @Property({ length: 64 })
+  slug!: string
+  @Property({ length: 255 })
+  description!: string
+  @Property()
+  content!: string
+  @Enum({ length: 16, items: () => Status, default: Status.Draft })
+  status!: Status
+  @Enum({ length: 16, items: () => Type, default: Type.Article })
+  type!: Type
+  @Property()
+  views!: number
+  @Enum({ length: 16, items: () => Language, default: Language.en })
+  lang!: Language
+  @Property({ length: 255, nullable: true })
+  cover?: string
 
   public constructor(
     id: Id,

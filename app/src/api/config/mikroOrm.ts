@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+
 import { Options } from '@mikro-orm/core';
 
 import { User } from '@/api/model/user/user';
