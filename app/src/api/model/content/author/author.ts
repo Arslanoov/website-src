@@ -9,9 +9,9 @@ import { Id } from './id';
 @Entity()
 export class Author {
   @Property({ type: IdType, length: 64, primary: true })
-  private id: Id
-  @Property({ columnType: 'varchar(32)', type: 'text', unique: true })
-  private username: Username
+  id: Id
+  @Property({ length: 32, unique: true })
+  username: Username
 
   public constructor(id: Id, username: Username) {
     this.id = id;

@@ -3,13 +3,12 @@ export type Status = 'Draft' | 'Active';
 
 export type ContentItem = {
   id: string
-  createdAt: string
+  created_at: string
   title: string
   slug: string
-  img: string
   description: string
   content: string
   status: Status
   type: ContentType
-  views: number
+  cover?: string
 };

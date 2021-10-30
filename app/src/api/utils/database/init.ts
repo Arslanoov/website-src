@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+
 import { MikroORM } from '@mikro-orm/core';
 
 import config from '@/api/config/mikroOrm';

@@ -4,26 +4,28 @@ import ContentListComponent from '@/ui/components/content-list/list/ContentList.
 import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
 import { ContentItem } from '@/domain/content/contentItem';
+import { Language } from '@/api/model/content/item/lang';
 
-import { getAllPosts } from '@/api/useCases/posts/getAllPosts';
+import Command from '@/api/useCases/articles/getAll/command';
+import getAllArticles from '@/api/useCases/articles/getAll/handler';
 
 import styles from '@/ui/styles/pages/posts.module.scss';
 
 type Props = {
-  posts: ContentItem[]
+  articles: ContentItem[]
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const posts = await getAllPosts();
+  const articles = await getAllArticles(new Command(Language.en, 1));
 
   return {
     props: {
-      posts
+      articles
     }
   };
 };
 
-const Posts: NextPage<Props> = ({ posts }) => {
+const Articles: NextPage<Props> = ({ articles }) => {
   return (
     <div className="container">
       <div className={styles.content}>
@@ -31,15 +33,15 @@ const Posts: NextPage<Props> = ({ posts }) => {
           <ContentMoreButton text="Go back" link="/" />
         </div>
         <ContentListComponent
-          items={posts}
+          items={articles}
           vertical={false}
           withPagination={true}
-          title="Posts"
-          baseUrl="/posts"
+          title="Articles"
+          baseUrl="/articles"
         />
       </div>
     </div>
   );
 };
 
-export default Posts;
+export default Articles;
