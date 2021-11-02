@@ -1,3 +1,4 @@
+import { ReflectMetadataProvider } from '@mikro-orm/core';
 import dotenv from 'dotenv';
 
 import { Options } from '@mikro-orm/core';
@@ -5,12 +6,13 @@ import { Options } from '@mikro-orm/core';
 import { User } from '@/api/model/user/user';
 import { Author } from '@/api/model/content/author/author';
 import { ContentItem } from '@/api/model/content/item/contentItem';
+import { PostgreSqlDriver } from '@mikro-orm/postgresql';
 
 dotenv.config();
 
 type DatabaseType = 'mongo' | 'mysql' | 'mariadb' | 'postgresql' | 'sqlite' | undefined
 
-const config: Options = {
+const config: Options<PostgreSqlDriver> = {
   entities: [
     User,
     Author,
@@ -23,6 +25,7 @@ const config: Options = {
   user: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   debug: process.env.NODE_ENV === 'development',
+  metadataProvider: ReflectMetadataProvider,
   migrations: {
     tableName: 'migrations',
     path: 'src/api/utils/database/migrations',

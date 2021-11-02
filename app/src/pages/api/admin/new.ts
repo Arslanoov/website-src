@@ -39,7 +39,7 @@ export default async function handler(
     }
 
     return res.status(500).json({
-      message: 'Unknown error.'
+      message: (e as Error).message
     });
   }
 }

@@ -1,4 +1,4 @@
-import initDb from '@/api/utils/database/init';
+import initOrm from '@/api/utils/database/init';
 
 import { User } from '@/api/model/user/user';
 import { Id } from '@/api/model/user/id';
@@ -13,7 +13,7 @@ import UserAlreadyExistsError from '@/api/errors/userAlreadyExistsError';
 import Command from './command';
 
 const handler = async ({ username, password }: Command): Promise<User> => {
-  const { em } = await initDb();
+  const { em } = await initOrm();
   const manager = new PasswordManager();
   const idGenerator = new IdGenerator();
 

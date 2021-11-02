@@ -9,7 +9,6 @@ const PER_PAGE = 6;
 const handler = async (command: Command) => {
   const { em } = await initOrm();
 
-  // @ts-ignore
   const qb = await em.createQueryBuilder(ContentItem);
   qb
     .select([
@@ -22,10 +21,13 @@ const handler = async (command: Command) => {
       'content',
       'cover'
     ])
-    .where('lang', command.lang)
+    .where({
+      'lang': command.lang
+    })
     .limit(PER_PAGE)
     .offset((command.page - 1) * PER_PAGE);
 
+  console.log(qb.getResultList());
   const articles = await qb.getResult();
 
   console.log(articles);
