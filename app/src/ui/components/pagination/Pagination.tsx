@@ -17,7 +17,7 @@ const Pagination: React.FC<Props> = ({ pagesCount, currentPage, onPageChange }) 
       key={i}
       onClick={() => onPageChange(i)}
     >
-      {i}
+      {i + 1}
     </button>);
   }
 

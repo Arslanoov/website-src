@@ -21,7 +21,7 @@ export class CreatedAt {
     const month = CreatedAt.formatDateValue(this.date.getMonth() + 1);
     const hours = CreatedAt.formatDateValue(this.date.getHours());
     const minutes = CreatedAt.formatDateValue(this.date.getMinutes());
-    return `${date}.${month}.${this.date.getFullYear()} ${hours}:${minutes}`;
+    return `${month}.${date}.${this.date.getFullYear()} ${hours}:${minutes}:00`;
   }
 
   public get value(): Date {

@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import ContentListItem from '@/ui/components/content-list/item/ContentListItem.component';
 import Pagination from '@/ui/components/pagination/Pagination';
 
-import { ContentItem } from '@/domain/content/contentItem';
+import { PaginatedContentItems } from '@/domain/content/contentItem';
 
 import styles from './content-list.module.scss';
 
 type Props = {
   title: string
   baseUrl: string
-  items: ContentItem[]
+  paginatedItems: PaginatedContentItems
   vertical?: boolean
   withPagination?: boolean
+  currentPage?: number
+  setCurrentPage: (page: number) => void
   prependEl?: React.ReactElement
 };
 
@@ -21,13 +23,13 @@ type Props = {
 const ContentList: React.FC<Props> = ({
   title,
   baseUrl,
-  items,
+  paginatedItems,
   vertical = false,
   withPagination = false,
+  currentPage = 1,
+  setCurrentPage = () => {},
   prependEl
 }) => {
-  const [currentPage, setCurrentPage] = useState<number>(1);
-
   return (
     <div className={styles.content}>
       <h3 className={styles.title}>{title}</h3>
@@ -37,7 +39,7 @@ const ContentList: React.FC<Props> = ({
       <div className={styles.list} style={{
         gridTemplateColumns: vertical ? '1fr' : ''
       }}>
-        {items.map((item) => <ContentListItem
+        {paginatedItems.items.map((item) => <ContentListItem
           key={item.id}
           title={item.title}
           img={item.cover}
@@ -47,7 +49,7 @@ const ContentList: React.FC<Props> = ({
       </div>
 
       {withPagination && <Pagination
-        pagesCount={items.length}
+        pagesCount={paginatedItems.totalCount}
         currentPage={currentPage}
         onPageChange={setCurrentPage}
       />}

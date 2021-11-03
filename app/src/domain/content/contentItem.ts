@@ -12,3 +12,9 @@ export type ContentItem = {
   type: ContentType
   cover?: string
 };
+
+export type PaginatedContentItems = {
+  items: ContentItem[],
+  totalCount: number,
+  perPage: number
+};

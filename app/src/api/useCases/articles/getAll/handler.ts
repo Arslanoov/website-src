@@ -1,41 +1,53 @@
 import initOrm from '@/api/utils/database/init';
 
 import { ContentItem } from '@/api/model/content/item/contentItem';
+import { Type } from '@/api/model/content/item/type';
 
 import Command from './command';
 
-const PER_PAGE = 6;
+const PER_PAGE = 1;
 
 const handler = async (command: Command) => {
   const { em } = await initOrm();
 
-  const qb = await em.createQueryBuilder(ContentItem);
+  const qb = await em.createQueryBuilder(ContentItem, 'ci');
+
+  qb
+    .select('count(ci.id) as count')
+    .where({
+      lang: command.lang,
+      type: Type.Article
+    });
+
+  const totalCount = await qb.execute();
+
   qb
     .select([
-      'id',
-      'author',
-      'created_at',
-      'title',
-      'slug',
-      'description',
-      'content',
-      'cover'
+      'ci.id',
+      'a.id as authorId',
+      'a.username as authorUsername',
+      'ci.created_at as createdAt',
+      'ci.title',
+      'ci.slug',
+      'ci.description',
+      'ci.content',
+      'ci.cover',
+      'ci.views'
     ])
-    .where({
-      'lang': command.lang
-    })
+    .join('ci.author', 'a')
     .limit(PER_PAGE)
-    .offset((command.page - 1) * PER_PAGE);
+    .offset((command.page - 1) * PER_PAGE)
+    /*.orderBy({
+      'ci.createdAt': 'DESC'
+    })*/;
 
-  console.log(qb.getResultList());
-  const articles = await qb.getResult();
+  const articles = await qb.execute();
 
-  console.log(articles);
-  // TODO: Fix
-  return articles.map((article: ContentItem) => ({
-    ...article,
-    id: article.identifier.value
-  }));
+  return {
+    items: articles,
+    perPage: PER_PAGE,
+    totalCount: totalCount[0].count
+  };
 };
 
 export default handler;

@@ -8,6 +8,9 @@ module.exports = {
     prependData: '@import "src/ui/styles/bootstrap";'
   },
   images: {
-    domains: ['images.unsplash.com'],
+    domains: [
+      'images.unsplash.com',
+      's3-us-west-2.amazonaws.com'
+    ],
   },
 };
