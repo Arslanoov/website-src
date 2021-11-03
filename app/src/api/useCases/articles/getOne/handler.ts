@@ -7,25 +7,29 @@ import Command from './command';
 const handler = async (command: Command) => {
   const { em } = await initOrm();
 
-  // @ts-ignore
-  const qb = await em.createQueryBuilder(ContentItem);
+  const qb = await em.createQueryBuilder(ContentItem, 'ci');
   qb
-    .select(
-      'id',
-      'author',
-      'created_at',
-      'title',
-      'slug',
-      'description',
-      'content',
-      'cover'
-    )
-    .where('id', command.articleId);
+    .select([
+      'ci.id',
+      'a.id as author_id',
+      'a.username as author_username',
+      'ci.created_at as created_at',
+      'ci.title',
+      'ci.slug',
+      'ci.description',
+      'ci.content',
+      'ci.cover',
+      'ci.views'
+    ])
+    .join('ci.author', 'a')
+    .where({
+      'slug': command.slug
+    })
+    .limit(1);
 
-  const article = await qb.getResult();
-  console.log(article);
+  const article = await qb.execute();
 
-  return article;
+  return article?.[0];
 };
 
 export default handler;

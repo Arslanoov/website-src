@@ -15,9 +15,9 @@ const handler = async (command: Command) => {
   qb
     .select([
       'ci.id',
-      'a.id as authorId',
-      'a.username as authorUsername',
-      'ci.created_at as createdAt',
+      'a.id as author_id',
+      'a.username as author_username',
+      'ci.created_at as created_at',
       'ci.title',
       'ci.slug',
       'ci.description',
