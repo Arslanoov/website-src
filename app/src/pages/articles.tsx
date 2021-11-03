@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import type { NextPage, GetServerSideProps } from 'next';
+import { useEffect, useState } from 'react';
+import type { GetServerSideProps, NextPage } from 'next';
 
 import ContentListComponent from '@/ui/components/content-list/list/ContentList.component';
 import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
@@ -10,27 +10,35 @@ import { Language } from '@/api/model/content/item/lang';
 import getAllArticlesCommand from '@/api/useCases/articles/getAll/command';
 import getAllArticlesHandler from '@/api/useCases/articles/getAll/handler';
 
+import { getAllArticles } from '@/app/services/request/contentTypeRequest';
+
 import styles from '@/ui/styles/pages/posts.module.scss';
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const articles = await getAllArticlesHandler(new getAllArticlesCommand(Language.en, 1));
+  const initialArticles = await getAllArticlesHandler(new getAllArticlesCommand(Language.en, 1));
 
   return {
     props: {
-      articles
+      initialArticles
     }
   };
 };
 
 type Props = {
-  articles: PaginatedContentItems
+  initialArticles: PaginatedContentItems
 };
 
-const Articles: NextPage<Props> = ({ articles }) => {
+const Articles: NextPage<Props> = ({ initialArticles }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [articles, setArticles] = useState<PaginatedContentItems>(initialArticles);
 
   useEffect(() => {
+    async function fetchArticles() {
+      const articles = await getAllArticles(currentPage, Language.en);
+      setArticles(articles);
+    }
 
+    fetchArticles();
   }, [currentPage]);
 
   return (

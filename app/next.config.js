@@ -7,6 +7,9 @@ module.exports = {
     includePaths: [path.join(__dirname, 'ui/styles')],
     prependData: '@import "src/ui/styles/bootstrap";'
   },
+  env: {
+    API_BASE_URL: 'http://localhost:3000/api'
+  },
   images: {
     domains: [
       'images.unsplash.com',

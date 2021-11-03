@@ -17,6 +17,7 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
+      "@/app/*": ["src/application/*"],
       "@/api/*": ["src/api/*"],
       "@/assert/*": ["src/api/lib/assert/*"],
       "@/domain/*": ["src/domain/*"],

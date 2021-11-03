@@ -46,7 +46,7 @@ const handler = async (command: Command) => {
   return {
     items: articles,
     perPage: PER_PAGE,
-    totalCount: totalCount[0].count
+    totalCount: Number(totalCount[0].count)
   };
 };
 

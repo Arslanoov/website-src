@@ -11,8 +11,8 @@ export default async function handler(
   req: NextApiRequest, 
   res: NextApiResponse
 ) {
-  const lang: Language = req.body.lang ?? 'en';
-  const page: number = Number(req.body.page) ?? 1;
+  const lang: Language = req.query.lang as Language ?? 'en';
+  const page: number = Number(req.query.page) ?? 1;
 
   // TODO: Add middleware
   if (req.method !== 'GET') {
