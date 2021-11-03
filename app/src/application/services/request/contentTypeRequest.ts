@@ -13,3 +13,14 @@ export const getAllArticles = async (page: number = 1, lang: Language = Language
 
   return response.data;
 };
+
+export const getLatestArticles = async (page: number = 1, lang: Language = Language.en): Promise<PaginatedContentItems> => {
+  const response = await instance.get('/articles/latest', {
+    params: {
+      page,
+      lang
+    }
+  });
+
+  return response.data;
+};

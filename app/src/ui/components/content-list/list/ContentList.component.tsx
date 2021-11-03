@@ -14,7 +14,7 @@ type Props = {
   vertical?: boolean
   withPagination?: boolean
   currentPage?: number
-  setCurrentPage: (page: number) => void
+  setCurrentPage?: (page: number) => void
   prependEl?: React.ReactElement
 };
 
@@ -49,7 +49,7 @@ const ContentList: React.FC<Props> = ({
       </div>
 
       {withPagination && <Pagination
-        pagesCount={paginatedItems.totalCount}
+        pagesCount={paginatedItems.totalCount as number}
         currentPage={currentPage}
         onPageChange={setCurrentPage}
       />}

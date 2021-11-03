@@ -15,6 +15,6 @@ export type ContentItem = {
 
 export type PaginatedContentItems = {
   items: ContentItem[],
-  totalCount: number,
-  perPage: number
+  totalCount?: number,
+  perPage?: number
 };
