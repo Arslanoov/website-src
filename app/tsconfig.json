@@ -17,6 +17,7 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
+      "@/app/*": ["src/application/*"],
       "@/api/*": ["src/api/*"],
       "@/assert/*": ["src/api/lib/assert/*"],
       "@/domain/*": ["src/domain/*"],
@@ -26,6 +27,6 @@
       "@/utils/*": ["src/utils/*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/api/config/mikroOrm.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

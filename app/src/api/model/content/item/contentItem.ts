@@ -28,13 +28,13 @@ export class ContentItem {
   description!: string
   @Property()
   content!: string
-  @Enum({ length: 16, items: () => Status, default: Status.Draft })
+  @Enum({ type: 'string', length: 16, items: () => Status, default: Status.Draft })
   status!: Status
-  @Enum({ length: 16, items: () => Type, default: Type.Article })
+  @Enum({ type: 'string', length: 16, items: () => Type, default: Type.Article })
   type!: Type
   @Property()
   views!: number
-  @Enum({ length: 16, items: () => Language, default: Language.en })
+  @Enum({ type: 'string', length: 16, items: () => Language, default: Language.en })
   lang!: Language
   @Property({ length: 255, nullable: true })
   cover?: string

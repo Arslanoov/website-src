@@ -18,7 +18,7 @@ export class User {
   @Property({ length: 128 })
   password!: string
 
-  @Enum({ length: 16, items: () => Role, default: Role.User })
+  @Enum({ type: 'string', length: 16, items: () => Role, default: Role.User })
   role!: Role
 
   public constructor(id: Id, username: Username, password: string, role: Role) {

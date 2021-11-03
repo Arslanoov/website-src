@@ -15,9 +15,9 @@ const Pagination: React.FC<Props> = ({ pagesCount, currentPage, onPageChange }) 
       className={styles.item}
       disabled={currentPage === i + 1}
       key={i}
-      onClick={() => onPageChange(i)}
+      onClick={() => onPageChange(i + 1)}
     >
-      {i}
+      {i + 1}
     </button>);
   }
 

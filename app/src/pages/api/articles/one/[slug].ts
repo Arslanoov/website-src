@@ -1,36 +1,39 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import signUpHandler from '@/api/useCases/user/signUp/handler';
-import signUpCommand from '@/api/useCases/user/signUp/command';
+import getOneArticleCommand from '@/api/useCases/articles/getOne/command';
+import getOneArticleHandler from '@/api/useCases/articles/getOne/handler';
+
 import CustomError from '@/api/errors/customError';
 
 export default async function handler(
   req: NextApiRequest, 
   res: NextApiResponse
 ) {
-  const username: string | null = req.body.username;
-  const password: string | null = req.body.password;
+  const slug: string | null = req.query.slug as string | null;
 
   // TODO: Add middleware
-  if (req.method !== 'POST') {
+  if (req.method !== 'GET') {
     return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 
-  if (!username || !password) {
+  if (!slug) {
     return res.status(400).json({
-      error: 'Username and password required.'
+      error: 'Article slug required.'
     });
   }
 
   try {
-    const user = await signUpHandler(new signUpCommand(
-      username,
-      password
+    const article = await getOneArticleHandler(new getOneArticleCommand(
+      slug
     ));
 
-    return res.status(200).json({
-      user
-    });
+    if (!article) {
+      return res.status(404).json({
+        error: 'Article not found.'
+      });
+    }
+
+    return res.status(200).json(article);
   } catch (e) {
     if ((e as Error).name === 'CustomError') {
       return res.status(400).json({
@@ -39,7 +42,7 @@ export default async function handler(
     }
 
     return res.status(500).json({
-      message: 'Unknown error'
+      message: (e as Error).message
     });
   }
 }

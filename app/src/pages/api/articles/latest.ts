@@ -1,36 +1,29 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import signUpHandler from '@/api/useCases/user/signUp/handler';
-import signUpCommand from '@/api/useCases/user/signUp/command';
+import { Language } from '@/api/model/content/item/lang';
+
+import getLatestArticlesCommand from '@/api/useCases/articles/getLatest/command';
+import getLatestArticlesHandler from '@/api/useCases/articles/getLatest/handler';
+
 import CustomError from '@/api/errors/customError';
 
 export default async function handler(
   req: NextApiRequest, 
   res: NextApiResponse
 ) {
-  const username: string | null = req.body.username;
-  const password: string | null = req.body.password;
+  const lang: Language = req.query.lang as Language ?? 'en';
 
   // TODO: Add middleware
-  if (req.method !== 'POST') {
+  if (req.method !== 'GET') {
     return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 
-  if (!username || !password) {
-    return res.status(400).json({
-      error: 'Username and password required.'
-    });
-  }
-
   try {
-    const user = await signUpHandler(new signUpCommand(
-      username,
-      password
+    const articles = await getLatestArticlesHandler(new getLatestArticlesCommand(
+      lang,
     ));
 
-    return res.status(200).json({
-      user
-    });
+    return res.status(200).json(articles);
   } catch (e) {
     if ((e as Error).name === 'CustomError') {
       return res.status(400).json({

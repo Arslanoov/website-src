@@ -1,13 +1,17 @@
 import initOrm from '@/api/utils/database/init';
 
 import { ContentItem } from '@/api/model/content/item/contentItem';
+import { Type } from '@/api/model/content/item/type';
 
 import Command from './command';
+
+const LATEST_COUNT = 2;
 
 const handler = async (command: Command) => {
   const { em } = await initOrm();
 
   const qb = await em.createQueryBuilder(ContentItem, 'ci');
+
   qb
     .select([
       'ci.id',
@@ -21,15 +25,21 @@ const handler = async (command: Command) => {
       'ci.cover',
       'ci.views'
     ])
-    .join('ci.author', 'a')
     .where({
-      'slug': command.slug
+      lang: command.lang,
+      type: Type.Article
     })
-    .limit(1);
+    .join('ci.author', 'a')
+    .limit(LATEST_COUNT)
+    /*.orderBy({
+      'ci.createdAt': 'DESC'
+    })*/;
 
-  const article = await qb.execute();
+  const articles = await qb.execute();
 
-  return article?.[0];
+  return {
+    items: articles
+  };
 };
 
 export default handler;
