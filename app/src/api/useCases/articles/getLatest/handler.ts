@@ -2,6 +2,7 @@ import initOrm from '@/api/utils/database/init';
 
 import { ContentItem } from '@/api/model/content/item/contentItem';
 import { Type } from '@/api/model/content/item/type';
+import { Status } from '@/api/model/content/item/status';
 
 import Command from './command';
 
@@ -34,6 +35,12 @@ const handler = async (command: Command) => {
     /*.orderBy({
       'ci.createdAt': 'DESC'
     })*/;
+
+  if (!command.withDraft) {
+    qb.andWhere({
+      'status': Status.Active
+    });
+  }
 
   const articles = await qb.execute();
 

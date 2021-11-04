@@ -21,6 +21,7 @@ export default async function handler(
   try {
     const articles = await getLatestArticlesHandler(new getLatestArticlesCommand(
       lang,
+      false
     ));
 
     return res.status(200).json(articles);

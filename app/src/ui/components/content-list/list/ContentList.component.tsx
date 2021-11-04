@@ -49,7 +49,7 @@ const ContentList: React.FC<Props> = ({
       </div>
 
       {withPagination && <Pagination
-        pagesCount={paginatedItems.totalCount as number}
+        pagesCount={Number(paginatedItems.totalCount) / Number(paginatedItems.perPage)}
         currentPage={currentPage}
         onPageChange={setCurrentPage}
       />}

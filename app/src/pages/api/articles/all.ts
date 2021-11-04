@@ -23,6 +23,7 @@ export default async function handler(
     const articles = await getAllArticlesHandler(new getAllArticlesCommand(
       lang,
       page,
+      false
     ));
 
     return res.status(200).json(articles);
