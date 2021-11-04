@@ -1,4 +1,4 @@
-import { Entity, Enum, Property, ManyToOne } from '@mikro-orm/core';
+import { Entity, Enum, ManyToOne, Property } from '@mikro-orm/core';
 
 import Assert from '@/assert/assert';
 
@@ -192,6 +192,14 @@ export class ContentItem {
 
   public get identifier(): Id {
     return this.id;
+  }
+
+  public activate(): void {
+    this.status = Status.Active;
+  }
+
+  public makeDraft(): void {
+    this.status = Status.Draft;
   }
 
   // TODO: Add manage methods
