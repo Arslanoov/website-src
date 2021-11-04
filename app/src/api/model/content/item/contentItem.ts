@@ -1,4 +1,4 @@
-import { Entity, Enum, Property, ManyToOne } from '@mikro-orm/core';
+import { Entity, Enum, ManyToOne, Property } from '@mikro-orm/core';
 
 import Assert from '@/assert/assert';
 
@@ -37,7 +37,7 @@ export class ContentItem {
   @Enum({ type: 'string', length: 16, items: () => Language, default: Language.en })
   lang!: Language
   @Property({ length: 255, nullable: true })
-  cover?: string
+  cover!: string | null
 
   public constructor(
     id: Id,
@@ -51,7 +51,7 @@ export class ContentItem {
     type: Type,
     views: number,
     lang: Language,
-    cover?: string
+    cover: string | null
   ) {
     this.id = id;
     this.author = author;
@@ -76,6 +76,7 @@ export class ContentItem {
   }
 
   public static new(
+    id: Id,
     author: Author,
     title: string,
     slug: string,
@@ -83,10 +84,10 @@ export class ContentItem {
     content: string,
     type: Type,
     lang: Language,
-    cover?: string
+    cover: string | null
   ): ContentItem {
     return new ContentItem(
-      Id.generate(),
+      id,
       author,
       CreatedAt.now(),
       title,
@@ -107,9 +108,10 @@ export class ContentItem {
     slug: string,
     description: string,
     content: string,
-    cover?: string
+    cover: string | null
   ): ContentItem {
     return ContentItem.new(
+      Id.generate(),
       author,
       title,
       slug,
@@ -127,9 +129,10 @@ export class ContentItem {
     slug: string,
     description: string,
     content: string,
-    cover?: string
+    cover: string | null
   ): ContentItem {
     return ContentItem.new(
+      Id.generate(),
       author,
       title,
       slug,
@@ -147,9 +150,10 @@ export class ContentItem {
     slug: string,
     description: string,
     content: string,
-    cover?: string
+    cover: string | null
   ): ContentItem {
     return ContentItem.new(
+      Id.generate(),
       author,
       title,
       slug,
@@ -167,9 +171,10 @@ export class ContentItem {
     slug: string,
     description: string,
     content: string,
-    cover?: string
+    cover: string | null
   ): ContentItem {
     return ContentItem.new(
+      Id.generate(),
       author,
       title,
       slug,
@@ -187,6 +192,14 @@ export class ContentItem {
 
   public get identifier(): Id {
     return this.id;
+  }
+
+  public activate(): void {
+    this.status = Status.Active;
+  }
+
+  public makeDraft(): void {
+    this.status = Status.Draft;
   }
 
   // TODO: Add manage methods

@@ -2,10 +2,11 @@ import initOrm from '@/api/utils/database/init';
 
 import { ContentItem } from '@/api/model/content/item/contentItem';
 import { Type } from '@/api/model/content/item/type';
+import { Status } from '@/api/model/content/item/status';
 
 import Command from './command';
 
-const PER_PAGE = 1;
+const PER_PAGE = 6;
 
 const handler = async (command: Command) => {
   const { em } = await initOrm();
@@ -18,6 +19,12 @@ const handler = async (command: Command) => {
       lang: command.lang,
       type: Type.Article
     });
+
+  if (!command.withDraft) {
+    qb.andWhere({
+      'status': Status.Active
+    });
+  }
 
   const totalCount = await qb.execute();
 
