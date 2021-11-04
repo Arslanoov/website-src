@@ -2,6 +2,7 @@
   grid-column: col-start 1 / col-end 12;
 
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 
@@ -9,9 +10,18 @@
 
   font-size: 1.3rem;
 
+  @include tablet {
+    flex-direction: row;
+  }
+
   .links {
     display: flex;
+    flex-direction: column;
     align-items: center;
+
+    @include tablet {
+      flex-direction: row;
+    }
 
     .link {
       &:not(:last-of-type) {

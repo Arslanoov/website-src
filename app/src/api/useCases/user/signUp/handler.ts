@@ -18,7 +18,6 @@ const handler = async ({ username, password }: Command): Promise<User> => {
   const idGenerator = new IdGenerator();
 
   const users = em.getRepository(User);
-  // @ts-ignore
   const count = await users.count({
     username,
   });
