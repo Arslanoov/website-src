@@ -1,14 +1,17 @@
 import '@/ui/styles/main.scss';
 
 import type { AppProps } from 'next/app';
+import { SessionProvider } from 'next-auth/react';
 
 import MainLayout from '@/ui/layouts/main/MainLayout';
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps: { session, ...pageProps }, }: AppProps) => {
   return (
-    <MainLayout>
-      <Component {...pageProps} />
-    </MainLayout>
+    <SessionProvider session={session}>
+      <MainLayout>
+        <Component {...pageProps} />
+      </MainLayout>
+    </SessionProvider>
   );
 };
 
