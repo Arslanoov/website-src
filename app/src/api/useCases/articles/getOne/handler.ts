@@ -7,6 +7,17 @@ import Command from './command';
 const handler = async (command: Command) => {
   const { em } = await initOrm();
 
+  const contentItems = em.getRepository(ContentItem);
+  const contentItem = await contentItems.findOne({
+    slug: command.slug
+  }) as ContentItem | null;
+
+  contentItem.visit();
+
+  em.flush();
+
+  // TODO: Merge
+
   const qb = await em.createQueryBuilder(ContentItem, 'ci');
   qb
     .select([

@@ -24,3 +24,8 @@ export const getLatestArticles = async (page: number = 1, lang: Language = Langu
 
   return response.data;
 };
+
+export const getArticle = async (slug: string): Promise<PaginatedContentItems> => {
+  const response = await instance.get(`/api/articles/one/${slug}`);
+  return response.data;
+};

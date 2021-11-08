@@ -11,7 +11,14 @@ import Avatar from '@/ui/components/avatar/Avatar.component';
 import PanelsListComponent from '@/ui/components/panels/list/PanelsList.component';
 import Footer from '@/ui/components/footer/Footer.component';
 
-const MainLayout: React.FC = ({ children }) => {
+type Props = {
+  withDescription: boolean
+};
+
+const MainLayout: React.FC<Props> = ({
+  withDescription = false,
+  children
+}) => {
   return (
     <div>
       <Head>
@@ -22,7 +29,7 @@ const MainLayout: React.FC = ({ children }) => {
 
       <div className={styles.layout}>
         <main>
-          <div className={`container ${styles['about-container']}`}>
+          {withDescription && <div className={`container ${styles['about-container']}`}>
             <div className={styles.box}>
               <TextBox title={textBoxTitle} content={textBoxContent} />
             </div>
@@ -30,7 +37,7 @@ const MainLayout: React.FC = ({ children }) => {
               <Avatar />
               <PanelsListComponent />
             </div>
-          </div>
+          </div>}
 
           {children}
         </main>

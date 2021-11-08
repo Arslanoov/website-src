@@ -12,7 +12,12 @@ type Props = {
   img?: string
 };
 
-const ContentListItem: React.FC<Props> = ({ title, description, link, img = null }) => {
+const ContentListItem: React.FC<Props> = ({
+  title,
+  description,
+  link,
+  img = null
+}) => {
   return (
     <div className={styles.item}>
       <Link href={link}>

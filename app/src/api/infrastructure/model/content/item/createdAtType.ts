@@ -4,11 +4,11 @@ import { CreatedAt } from '@/api/model/content/item/createdAt';
 
 export class CreatedAtType extends Type<CreatedAt, string> {
   public convertToDatabaseValue(value: CreatedAt, platform: Platform, fromQuery?: boolean): string {
-    return String(value);
+    return value.value.toString();
   }
 
   public convertToJSValue(value: string, platform: Platform): CreatedAt {
-    return CreatedAt.fromString(value);
+    return new CreatedAt(new Date(value));
   }
 
   public getColumnType(prop: EntityProperty, platform: Platform): string {

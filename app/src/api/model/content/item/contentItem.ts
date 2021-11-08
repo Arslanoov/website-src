@@ -18,7 +18,7 @@ export class ContentItem {
   id!: Id
   @ManyToOne()
   author!: Author
-  @Property({ type: CreatedAtType, length: 32 })
+  @Property({ type: CreatedAtType, length: 64 })
   createdAt!: CreatedAt
   @Property({ length: 64 })
   title!: string

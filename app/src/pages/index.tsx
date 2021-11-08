@@ -12,7 +12,7 @@ import getLatestArticlesHandler from '@/api/useCases/articles/getLatest/handler'
 import getLatestArticlesCommand from '@/api/useCases/articles/getLatest/command';
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const articles = await getLatestArticlesHandler(new getLatestArticlesCommand(Language.en));
+  const articles = await getLatestArticlesHandler(new getLatestArticlesCommand(Language.en, false));
 
   return {
     props: {
@@ -34,11 +34,11 @@ const Home: NextPage<Props> = ({ articles }) => {
           vertical={true}
           prependEl={
             <div className={styles.button}>
-              <ContentMoreButtonComponent link="/articles" />
+              <ContentMoreButtonComponent link="/blog" />
             </div>
           }
           title="Recent posts"
-          baseUrl="/articles"
+          baseUrl="/blog"
         />
       </div>
 

@@ -52,7 +52,7 @@ const Articles: NextPage<Props> = ({ initialArticles }) => {
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
           title="Articles"
-          baseUrl="/articles"
+          baseUrl="/blog"
           vertical={false}
           withPagination
         />
