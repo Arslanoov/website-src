@@ -7,16 +7,26 @@ import styles from './content-more-button.module.scss';
 type Props = {
   link?: string
   text?: string
-  disabled?: boolean
+  disabled?: boolean,
+  goBack?: boolean
 };
 
 const ContentMoreButton: React.FC<Props> = ({
   text = 'See all',
   link = null,
-  disabled = false
+  disabled = false,
+  goBack = false
 }) => {
   const router = useRouter();
-  const onClick = () => link ? router.push(link) : false;
+  const onClick = () => {
+    if (goBack) {
+      router.back();
+    }
+
+    if (link) {
+      router.push(link);
+    }
+  };
 
   return (
     <button onClick={onClick} className={styles.button} disabled={disabled}>

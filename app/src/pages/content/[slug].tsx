@@ -1,16 +1,16 @@
-import Image from 'next/image';
 import type { GetServerSideProps, NextPage } from 'next';
+import Image from 'next/image';
 
 import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
-import { ContentItem } from '@/domain/content/contentItem';
+import { ContentItem as ContentItemInterface } from '@/domain/content/contentItem';
 
 import getOneContentItemCommand from '@/api/useCases/contentItem/getOne/command';
 import getOneContentItemHandler from '@/api/useCases/contentItem/getOne/handler';
 
 import { dateFormatter } from '@/utils/date/formatter';
 
-import styles from '@/ui/styles/pages/post.module.scss';
+import styles from '@/ui/styles/pages/content-item.module.scss';
 
 export const getServerSideProps: GetServerSideProps = async (req) => {
   const contentItem = await getOneContentItemHandler(new getOneContentItemCommand((req.query.slug ?? '') as string));
@@ -23,16 +23,16 @@ export const getServerSideProps: GetServerSideProps = async (req) => {
 };
 
 type Props = {
-  contentItem: ContentItem
+  contentItem: ContentItemInterface
 };
 
-const ArticleItem: NextPage<Props> = ({ contentItem }) => {
+const ContentItem: NextPage<Props> = ({ contentItem }) => {
   return (
     <>
       <div className="container">
         <div className={styles.wrapper}>
           <div className={styles.button}>
-            <ContentMoreButton text="Go back" link="/" />
+            <ContentMoreButton text="Go back" goBack />
           </div>
           <h1 className={styles.title}>
             {contentItem.title}
@@ -63,4 +63,4 @@ const ArticleItem: NextPage<Props> = ({ contentItem }) => {
   );
 };
 
-export default ArticleItem;
+export default ContentItem;

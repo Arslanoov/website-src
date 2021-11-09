@@ -13,7 +13,7 @@ import getAllContentItemsHandler from '@/api/useCases/contentItem/getAll/handler
 
 import { getAllArticles } from '@/app/services/request/contentTypeRequest';
 
-import styles from '@/ui/styles/pages/posts.module.scss';
+import styles from '@/ui/styles/pages/content-items.module.scss';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const initialArticles = await getAllContentItemsHandler(new getAllContentItemsCommand(

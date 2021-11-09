@@ -1,15 +1,9 @@
 import React from 'react';
-
 import Head from 'next/head';
 
+import Header from '@/ui/components/header/Header.component';
+
 import styles from './main-layout.module.scss';
-
-import { textBoxContent, textBoxTitle } from '@/utils/dummy/text';
-
-import TextBox from '@/ui/components/text-box/TextBox.component';
-import Avatar from '@/ui/components/avatar/Avatar.component';
-import PanelsListComponent from '@/ui/components/panels/list/PanelsList.component';
-import Footer from '@/ui/components/footer/Footer.component';
 
 const MainLayout: React.FC = ({ children }) => {
   return (
@@ -21,21 +15,11 @@ const MainLayout: React.FC = ({ children }) => {
       </Head>
 
       <div className={styles.layout}>
-        <main>
-          <div className={`container ${styles['about-container']}`}>
-            <div className={styles.box}>
-              <TextBox title={textBoxTitle} content={textBoxContent} />
-            </div>
-            <div className={styles.avatar}>
-              <Avatar />
-              <PanelsListComponent />
-            </div>
-          </div>
+        <Header />
 
+        <main>
           {children}
         </main>
-
-        <Footer />
       </div>
     </div>
   );

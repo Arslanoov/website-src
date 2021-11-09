@@ -1,3 +1,58 @@
+.about-container {
+  justify-content: center;
+  align-items: center;
+
+  row-gap: 2rem;
+
+  padding: 2rem 0;
+
+  @include tablet {
+    justify-content: start;
+  }
+
+  .button {
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+
+    text-align: center;
+
+    @include tablet {
+      text-align: left;
+    }
+  }
+
+  .box {
+    grid-column: col-start 1 / col-end 12;
+
+    @include tablet {
+      grid-column: col-start 1 / col-end 6;
+    }
+
+    @include desktop-sm {
+      grid-column: col-start 1 / col-end 8;
+    }
+
+    margin-right: 3rem;
+  }
+
+  .avatar {
+    grid-column: col-start 1 / col-end 12;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include tablet {
+      justify-content: start;
+      grid-column: col-start 7 / col-end 12;
+    }
+
+    @include desktop-sm {
+      grid-column: col-start 9 / col-end 12;
+    }
+  }
+}
+
 .content-container {
   row-gap: 2rem;
 

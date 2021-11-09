@@ -13,7 +13,7 @@ import getAllProjectsHandler from '@/api/useCases/contentItem/getAll/handler';
 
 import { getAllProjects } from '@/app/services/request/contentTypeRequest';
 
-import styles from '@/ui/styles/pages/posts.module.scss';
+import styles from '@/ui/styles/pages/content-items.module.scss';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const initialProjects = await getAllProjectsHandler(new getAllProjectsCommand(
