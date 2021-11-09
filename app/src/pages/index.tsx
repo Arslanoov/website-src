@@ -6,26 +6,38 @@ import ContentMoreButtonComponent from '@/ui/components/content-list/more-button
 import styles from '@/ui/styles/pages/home.module.scss';
 
 import { Language } from '@/api/model/content/item/lang';
+import { Type } from '@/api/model/content/item/type';
 import { PaginatedContentItems } from '@/domain/content/contentItem';
 
-import getLatestArticlesHandler from '@/api/useCases/articles/getLatest/handler';
-import getLatestArticlesCommand from '@/api/useCases/articles/getLatest/command';
+import getLatestContentItemsHandler from '@/api/useCases/contentItem/getLatest/handler';
+import getLatestContentItemsCommand from '@/api/useCases/contentItem/getLatest/command';
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const articles = await getLatestArticlesHandler(new getLatestArticlesCommand(Language.en, false));
+  const articles = await getLatestContentItemsHandler(new getLatestContentItemsCommand(
+    Language.en,
+    Type.Article,
+    false
+  ));
+  const projects = await getLatestContentItemsHandler(new getLatestContentItemsCommand(
+    Language.en,
+    Type.Project,
+    false
+  ));
 
   return {
     props: {
-      articles
+      articles,
+      projects
     }
   };
 };
 
 type Props = {
   articles: PaginatedContentItems
+  projects: PaginatedContentItems
 };
 
-const Home: NextPage<Props> = ({ articles }) => {
+const Home: NextPage<Props> = ({ articles, projects }) => {
   return (
     <div className={`container ${styles['content-container']}`}>
       <div className={styles.blog}>
@@ -34,25 +46,25 @@ const Home: NextPage<Props> = ({ articles }) => {
           vertical={true}
           prependEl={
             <div className={styles.button}>
-              <ContentMoreButtonComponent link="/blog" />
+              <ContentMoreButtonComponent link="/content/blog" />
             </div>
           }
           title="Recent posts"
-          baseUrl="/blog"
+          baseUrl="/content"
         />
       </div>
 
       <div className={styles.works}>
         <ContentListComponent
-          paginatedItems={articles}
+          paginatedItems={projects}
           vertical={true}
           prependEl={
             <div className={styles.button}>
-              <ContentMoreButtonComponent link="/projects" />
+              <ContentMoreButtonComponent link="/content/projects" />
             </div>
           }
           title="Recent projects"
-          baseUrl="/projects"
+          baseUrl="/content"
         />
       </div>
     </div>

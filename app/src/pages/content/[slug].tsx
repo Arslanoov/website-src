@@ -5,29 +5,28 @@ import ContentMoreButton from '@/ui/components/content-list/more-button/ContentM
 
 import { ContentItem } from '@/domain/content/contentItem';
 
-import getOneArticleCommand from '@/api/useCases/articles/getOne/command';
-import getOneArticleHandler from '@/api/useCases/articles/getOne/handler';
+import getOneContentItemCommand from '@/api/useCases/contentItem/getOne/command';
+import getOneContentItemHandler from '@/api/useCases/contentItem/getOne/handler';
 
 import { dateFormatter } from '@/utils/date/formatter';
 
 import styles from '@/ui/styles/pages/post.module.scss';
 
 export const getServerSideProps: GetServerSideProps = async (req) => {
-  const article =
-    await getOneArticleHandler(new getOneArticleCommand((req.query.slug ?? '') as string));
+  const contentItem = await getOneContentItemHandler(new getOneContentItemCommand((req.query.slug ?? '') as string));
 
   return {
     props: {
-      article
+      contentItem
     }
   };
 };
 
 type Props = {
-  article: ContentItem
+  contentItem: ContentItem
 };
 
-const ArticleItem: NextPage<Props> = ({ article }) => {
+const ArticleItem: NextPage<Props> = ({ contentItem }) => {
   return (
     <>
       <div className="container">
@@ -36,17 +35,17 @@ const ArticleItem: NextPage<Props> = ({ article }) => {
             <ContentMoreButton text="Go back" link="/" />
           </div>
           <h1 className={styles.title}>
-            {article.title}
+            {contentItem.title}
           </h1>
           <div className={styles.date}>
-            {dateFormatter(article.createdAt)}
+            {dateFormatter(contentItem.createdAt)}
           </div>
         </div>
       </div>
 
-      {article.cover && <div className={styles.cover}>
+      {contentItem.cover && <div className={styles.cover}>
         <Image
-          src={article.cover}
+          src={contentItem.cover}
           className={styles.image}
           draggable={false}
           layout="fill"
@@ -56,8 +55,8 @@ const ArticleItem: NextPage<Props> = ({ article }) => {
 
       <div className="container">
         <div className={styles.wrapper}>
-          <p className={styles.description}>{article.description}</p>
-          <div className={styles.content}>{article.content}</div>
+          <p className={styles.description}>{contentItem.description}</p>
+          <div className={styles.content}>{contentItem.content}</div>
         </div>
       </div>
     </>

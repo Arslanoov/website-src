@@ -1,9 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { Language } from '@/api/model/content/item/lang';
+import { Type } from '@/api/model/content/item/type';
 
-import getLatestArticlesCommand from '@/api/useCases/articles/getLatest/command';
-import getLatestArticlesHandler from '@/api/useCases/articles/getLatest/handler';
+import getLatestContentItemsCommand from '@/api/useCases/contentItem/getLatest/command';
+import getLatestContentItemsHandler from '@/api/useCases/contentItem/getLatest/handler';
 
 import CustomError from '@/api/errors/customError';
 
@@ -11,7 +12,9 @@ export default async function handler(
   req: NextApiRequest, 
   res: NextApiResponse
 ) {
-  const lang: Language = req.query.lang as Language ?? 'en';
+  // TODO: Remove default value
+  const lang: Language = (req.query.lang ?? 'en') as Language;
+  const type: Type = (req.query.type ?? '') as Type;
 
   // TODO: Add middleware
   if (req.method !== 'GET') {
@@ -19,8 +22,9 @@ export default async function handler(
   }
 
   try {
-    const articles = await getLatestArticlesHandler(new getLatestArticlesCommand(
+    const articles = await getLatestContentItemsHandler(new getLatestContentItemsCommand(
       lang,
+      type,
       false
     ));
 

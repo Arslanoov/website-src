@@ -2,6 +2,8 @@ import initOrm from '@/api/utils/database/init';
 
 import { ContentItem } from '@/api/model/content/item/contentItem';
 
+import ContentItemDoesntExist from '@/api/errors/contentItemDoesntExist';
+
 import Command from './command';
 
 const handler = async (command: Command) => {
@@ -13,6 +15,9 @@ const handler = async (command: Command) => {
   }) as ContentItem | null;
 
   contentItem.visit();
+  if (!contentItem) {
+    throw new ContentItemDoesntExist();
+  }
 
   em.flush();
 

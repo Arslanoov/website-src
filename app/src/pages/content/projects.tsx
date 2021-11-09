@@ -6,39 +6,45 @@ import ContentMoreButton from '@/ui/components/content-list/more-button/ContentM
 
 import { PaginatedContentItems } from '@/domain/content/contentItem';
 import { Language } from '@/api/model/content/item/lang';
+import { Type } from '@/api/model/content/item/type';
 
-import getAllArticlesCommand from '@/api/useCases/articles/getAll/command';
-import getAllArticlesHandler from '@/api/useCases/articles/getAll/handler';
+import getAllProjectsCommand from '@/api/useCases/contentItem/getAll/command';
+import getAllProjectsHandler from '@/api/useCases/contentItem/getAll/handler';
 
-import { getAllArticles } from '@/app/services/request/contentTypeRequest';
+import { getAllProjects } from '@/app/services/request/contentTypeRequest';
 
 import styles from '@/ui/styles/pages/posts.module.scss';
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const initialArticles = await getAllArticlesHandler(new getAllArticlesCommand(Language.en, 1));
+  const initialProjects = await getAllProjectsHandler(new getAllProjectsCommand(
+    Language.en,
+    Type.Project,
+    1,
+    false
+  ));
 
   return {
     props: {
-      initialArticles
+      initialProjects
     }
   };
 };
 
 type Props = {
-  initialArticles: PaginatedContentItems
+  initialProjects: PaginatedContentItems
 };
 
-const Articles: NextPage<Props> = ({ initialArticles }) => {
+const Projects: NextPage<Props> = ({ initialProjects }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [articles, setArticles] = useState<PaginatedContentItems>(initialArticles);
+  const [projects, setProjects] = useState<PaginatedContentItems>(initialProjects);
 
   useEffect(() => {
-    async function fetchArticles() {
-      const articles = await getAllArticles(currentPage, Language.en);
-      setArticles(articles);
+    async function fetchProjects() {
+      const projects = await getAllProjects(currentPage, Language.en);
+      setProjects(projects);
     }
 
-    fetchArticles();
+    fetchProjects();
   }, [currentPage]);
 
   return (
@@ -48,12 +54,12 @@ const Articles: NextPage<Props> = ({ initialArticles }) => {
           <ContentMoreButton text="Go back" link="/" />
         </div>
         <ContentListComponent
-          paginatedItems={articles}
+          paginatedItems={projects}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
-          title="Articles"
-          baseUrl="/blog"
           vertical={false}
+          title="Projects"
+          baseUrl="/content"
           withPagination
         />
       </div>
@@ -61,4 +67,4 @@ const Articles: NextPage<Props> = ({ initialArticles }) => {
   );
 };
 
-export default Articles;
+export default Projects;

@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import getOneArticleCommand from '@/api/useCases/articles/getOne/command';
-import getOneArticleHandler from '@/api/useCases/articles/getOne/handler';
+import getOneContentItemCommand from '@/api/useCases/contentItem/getOne/command';
+import getOneContentItemHandler from '@/api/useCases/contentItem/getOne/handler';
 
 import CustomError from '@/api/errors/customError';
 
@@ -18,18 +18,18 @@ export default async function handler(
 
   if (!slug) {
     return res.status(400).json({
-      error: 'Article slug required.'
+      error: 'Content slug required.'
     });
   }
 
   try {
-    const article = await getOneArticleHandler(new getOneArticleCommand(
+    const article = await getOneContentItemHandler(new getOneContentItemCommand(
       slug
     ));
 
     if (!article) {
       return res.status(404).json({
-        error: 'Article not found.'
+        error: 'Content not found.'
       });
     }
 

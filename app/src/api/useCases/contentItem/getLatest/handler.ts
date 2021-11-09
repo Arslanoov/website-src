@@ -1,7 +1,6 @@
 import initOrm from '@/api/utils/database/init';
 
 import { ContentItem } from '@/api/model/content/item/contentItem';
-import { Type } from '@/api/model/content/item/type';
 import { Status } from '@/api/model/content/item/status';
 
 import Command from './command';
@@ -28,7 +27,7 @@ const handler = async (command: Command) => {
     ])
     .where({
       lang: command.lang,
-      type: Type.Article
+      type: command.type
     })
     .join('ci.author', 'a')
     .limit(LATEST_COUNT)
