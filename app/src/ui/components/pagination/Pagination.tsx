@@ -10,7 +10,7 @@ type Props = {
 
 const Pagination: React.FC<Props> = ({ pagesCount, currentPage, onPageChange }) => {
   const list = [];
-  for (let i = 0; i < pagesCount; i++) {
+  for (let i = 0; i < Math.max(pagesCount, 1); i++) {
     list.push(<button
       className={styles.item}
       disabled={currentPage === i + 1}

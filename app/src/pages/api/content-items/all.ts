@@ -1,9 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { Language } from '@/api/model/content/item/lang';
+import { Type } from '@/api/model/content/item/type';
 
-import getAllArticlesCommand from '@/api/useCases/articles/getAll/command';
-import getAllArticlesHandler from '@/api/useCases/articles/getAll/handler';
+import getAllContentItemsCommand from '@/api/useCases/contentItem/getAll/command';
+import getAllContentItemsHandler from '@/api/useCases/contentItem/getAll/handler';
 
 import CustomError from '@/api/errors/customError';
 
@@ -11,7 +12,9 @@ export default async function handler(
   req: NextApiRequest, 
   res: NextApiResponse
 ) {
-  const lang: Language = req.query.lang as Language ?? 'en';
+  // TODO: Remove default value
+  const lang: Language = (req.query.lang ?? 'en') as Language;
+  const type: Type = (req.query.type ?? '') as Type;
   const page: number = Number(req.query.page) ?? 1;
 
   // TODO: Add middleware
@@ -20,13 +23,14 @@ export default async function handler(
   }
 
   try {
-    const articles = await getAllArticlesHandler(new getAllArticlesCommand(
+    const contentItems = await getAllContentItemsHandler(new getAllContentItemsCommand(
       lang,
+      type,
       page,
       false
     ));
 
-    return res.status(200).json(articles);
+    return res.status(200).json(contentItems);
   } catch (e) {
     if ((e as Error).name === 'CustomError') {
       return res.status(400).json({

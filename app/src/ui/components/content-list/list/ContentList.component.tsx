@@ -44,7 +44,7 @@ const ContentList: React.FC<Props> = ({
           title={item.title}
           img={item.cover}
           description={item.description}
-          link={`${baseUrl}${item.slug}`}
+          link={`${baseUrl}/${item.slug}`}
         />)}
       </div>
 

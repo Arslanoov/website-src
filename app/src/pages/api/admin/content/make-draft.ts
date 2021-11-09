@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import makeDraftHandler from '@/api/useCases/contentItem/make-draft/handler';
-import makeDraftCommand from '@/api/useCases/contentItem/make-draft/command';
+import makeDraftHandler from '@/api/useCases/contentItem/makeDraft/handler';
+import makeDraftCommand from '@/api/useCases/contentItem/makeDraft/command';
 
 export default async function handler(
   req: NextApiRequest,

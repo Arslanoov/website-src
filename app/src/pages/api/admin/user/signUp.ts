@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import signUpHandler from '@/api/useCases/user/signUp/handler';
 import signUpCommand from '@/api/useCases/user/signUp/command';
+
 import CustomError from '@/api/errors/customError';
 
 export default async function handler(

@@ -3,24 +3,37 @@ import instance from './instance';
 import { PaginatedContentItems } from '@/domain/content/contentItem';
 import { Language } from '@/api/model/content/item/lang';
 
+// Articles
+
 export const getAllArticles = async (page: number = 1, lang: Language = Language.en): Promise<PaginatedContentItems> => {
-  const response = await instance.get('/articles/all', {
+  const response = await instance.get('/content-items/all', {
     params: {
       page,
-      lang
+      lang,
+      // TODO: Add enum
+      type: 'Article'
     }
   });
 
   return response.data;
 };
 
-export const getLatestArticles = async (page: number = 1, lang: Language = Language.en): Promise<PaginatedContentItems> => {
-  const response = await instance.get('/articles/latest', {
+// Projects
+
+export const getAllProjects = async (page: number = 1, lang: Language = Language.en): Promise<PaginatedContentItems> => {
+  const response = await instance.get('/content-items/all', {
     params: {
       page,
-      lang
+      lang,
+      // TODO: Add enum
+      type: 'Project'
     }
   });
 
+  return response.data;
+};
+
+export const getContentItem = async (slug: string): Promise<PaginatedContentItems> => {
+  const response = await instance.get(`/api/content-item/one/${slug}`);
   return response.data;
 };

@@ -1,0 +1,55 @@
+.wrapper {
+  grid-column: col-start 1 / col-end 12;
+
+  padding: 2rem 0;
+}
+
+.button {
+  margin-top: 1rem;
+}
+
+.title {
+  font-size: 3.2rem;
+  font-weight: 700;
+
+  @include tablet {
+    font-size: 4.6rem;
+  }
+}
+
+.date {
+  margin-bottom: .5rem;
+  
+  font-size: 1.7rem;
+  font-weight: 300;
+}
+
+.cover {
+  position: relative;
+  width: 100%;
+
+  div {
+    position: unset !important;
+  }
+}
+
+.image {
+  width: 100%;
+
+  object-fit: contain;
+  user-select: none;
+
+  position: relative !important;
+  height: unset !important;
+}
+
+.description,
+.content {
+  margin: 1rem 0;
+
+  font-size: 1.6rem;
+}
+
+.description {
+  color: #808080;
+}

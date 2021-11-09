@@ -21,7 +21,7 @@ const handler = async ({ authorId, title, description, content, type, lang, cove
   const author = await authors.findOne({
     id: new AuthorId(authorId)
   });
-  console.log('author', authorId);
+
   if (!author) {
     throw new AuthorDoesntExist();
   }

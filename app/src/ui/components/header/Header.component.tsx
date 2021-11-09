@@ -1,12 +1,12 @@
 import React from 'react';
 
-import styles from './footer.module.scss';
+import styles from './header.module.scss';
 
-const Footer = () => {
+const Header = () => {
   return (
     <>
-      <footer className="container">
-        <div className={styles.footer}>
+      <header className="container">
+        <div className={styles.header}>
           <div>
             2021
           </div>
@@ -20,9 +20,9 @@ const Footer = () => {
             <a className={styles.link} target="_blank" href="https://career.habr.com/arslanoov" rel="noreferrer">Habr career</a>
           </div>
         </div>
-      </footer>
+      </header>
     </>
   );
 };
 
-export default Footer;
+export default Header;
