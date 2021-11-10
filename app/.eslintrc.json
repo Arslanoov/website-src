@@ -3,7 +3,8 @@
   "rules": {
     "semi": ["error", "always"],
     "indent": ["error", 2],
-    "quotes": [ "error", "single" ]
+    "quotes": [ "error", "single" ],
+    "import/no-anonymous-default-export": 0
     // "no-unused-vars": "off",
   }
 }
