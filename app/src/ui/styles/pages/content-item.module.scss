@@ -24,23 +24,9 @@
   font-weight: 300;
 }
 
-.cover {
-  position: relative;
-  width: 100%;
-
-  div {
-    position: unset !important;
-  }
-}
-
 .image {
   width: 100%;
-
-  object-fit: contain;
   user-select: none;
-
-  position: relative !important;
-  height: unset !important;
 }
 
 .description,

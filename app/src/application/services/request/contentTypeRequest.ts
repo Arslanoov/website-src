@@ -37,3 +37,21 @@ export const getContentItem = async (slug: string): Promise<PaginatedContentItem
   const response = await instance.get(`/api/content-item/one/${slug}`);
   return response.data;
 };
+
+export const createContentType = async (
+  authorId: string,
+  title: string,
+  description: string,
+  content: string,
+  type: string,
+  lang: string,
+  cover: string
+) => instance.post('/admin/content/create', {
+  authorId,
+  title,
+  description,
+  content,
+  type,
+  lang,
+  cover
+});

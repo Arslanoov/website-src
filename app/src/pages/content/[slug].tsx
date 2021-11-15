@@ -1,5 +1,4 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import Image from 'next/image';
 
 import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
@@ -43,15 +42,12 @@ const ContentItem: NextPage<Props> = ({ contentItem }) => {
         </div>
       </div>
 
-      {contentItem.cover && <div className={styles.cover}>
-        <Image
-          src={contentItem.cover}
-          className={styles.image}
-          draggable={false}
-          layout="fill"
-          alt=""
-        />
-      </div>}
+      {contentItem.cover && <img
+        src={contentItem.cover}
+        className={styles.image}
+        draggable={false}
+        alt=""
+      />}
 
       <div className="container">
         <div className={styles.wrapper}>
