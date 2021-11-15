@@ -25,6 +25,8 @@ type Props = {
   contentItem: ContentItemInterface
 };
 
+// TODO: Change reset file
+
 const ContentItem: NextPage<Props> = ({ contentItem }) => {
   return (
     <>
@@ -52,7 +54,10 @@ const ContentItem: NextPage<Props> = ({ contentItem }) => {
       <div className="container">
         <div className={styles.wrapper}>
           <p className={styles.description}>{contentItem.description}</p>
-          <div className={styles.content}>{contentItem.content}</div>
+          <div
+            className={styles.content}
+            dangerouslySetInnerHTML={{__html: contentItem.content}}
+          />
         </div>
       </div>
     </>
