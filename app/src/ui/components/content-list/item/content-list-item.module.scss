@@ -1,4 +1,6 @@
 .item {
+  align-self: start;
+
   .wrapper,
   .description {
     margin-bottom: .5rem;
@@ -21,12 +23,7 @@
 
   .image {
     width: 100%;
-
-    object-fit: contain;
     user-select: none;
-
-    position: relative !important;
-    height: unset !important;
   }
 
   .description {

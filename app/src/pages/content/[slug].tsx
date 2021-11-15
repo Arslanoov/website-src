@@ -1,5 +1,4 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import Image from 'next/image';
 
 import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
@@ -26,6 +25,8 @@ type Props = {
   contentItem: ContentItemInterface
 };
 
+// TODO: Change reset file
+
 const ContentItem: NextPage<Props> = ({ contentItem }) => {
   return (
     <>
@@ -43,20 +44,20 @@ const ContentItem: NextPage<Props> = ({ contentItem }) => {
         </div>
       </div>
 
-      {contentItem.cover && <div className={styles.cover}>
-        <Image
-          src={contentItem.cover}
-          className={styles.image}
-          draggable={false}
-          layout="fill"
-          alt=""
-        />
-      </div>}
+      {contentItem.cover && <img
+        src={contentItem.cover}
+        className={styles.image}
+        draggable={false}
+        alt=""
+      />}
 
       <div className="container">
         <div className={styles.wrapper}>
           <p className={styles.description}>{contentItem.description}</p>
-          <div className={styles.content}>{contentItem.content}</div>
+          <div
+            className={styles.content}
+            dangerouslySetInnerHTML={{__html: contentItem.content}}
+          />
         </div>
       </div>
     </>

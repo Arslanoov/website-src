@@ -1,9 +1,10 @@
 import React from 'react';
 
 import Link from 'next/link';
-import Image from 'next/image';
 
 import styles from './content-list-item.module.scss';
+
+// TODO: Disable telemetry
 
 type Props = {
   title: string,
@@ -23,15 +24,12 @@ const ContentListItem: React.FC<Props> = ({
       <Link href={link}>
         <a><h3 className={styles.title}>{title}</h3></a>
       </Link>
-      {img && <div className={styles.wrapper}>
-        <Image
-          className={styles.image}
-          src={img}
-          alt={title}
-          draggable={false}
-          layout="fill"
-        />
-      </div>}
+      {img && <img
+        className={styles.image}
+        src={img}
+        alt={title}
+        draggable={false}
+      />}
       <div className={styles.description}>{description}</div>
       <Link href={link}>
         <a className={styles.link}>View {'->'}</a>

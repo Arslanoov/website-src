@@ -2,8 +2,16 @@
   grid-column: col-start 1 / col-end 12;
 }
 
-.button {
-  margin-bottom: 2rem;
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  text-align: center;
+  .button {
+    margin-bottom: 2rem;
+
+    &:not(:last-of-type) {
+      margin-right: 2rem;
+    }
+  }
 }
