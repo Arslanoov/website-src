@@ -9,6 +9,7 @@ import getAllContentItemsCommand from '@/api/useCases/contentItem/getAll/command
 import ContentMoreButtonComponent from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
 import styles from '@/ui/styles/pages/manage/content/list.module.scss';
+import React from 'react';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const initialItems = await getAllContentItemsHandler(new getAllContentItemsCommand(
@@ -43,6 +44,8 @@ const ContentItemList: NextPage<Props> = ({ initialItems }) => {
           <ContentMoreButtonComponent text="Back" link="/" />
           <ContentMoreButtonComponent text="Create" link="/manage/content/new" />
         </div>
+
+        <h1 className={styles.title}>Content items</h1>
 
         <table className={styles.table}>
           <thead>
