@@ -54,9 +54,6 @@ const Projects: NextPage<Props> = ({ initialProjects }) => {
           <div className={styles.button}>
             <ContentMoreButton text="Go back" link="/" />
           </div>
-          <div className={styles.button}>
-            <ContentMoreButton text="New" link="/manage/content/new" />
-          </div>
         </div>
         <ContentListComponent
           paginatedItems={projects}

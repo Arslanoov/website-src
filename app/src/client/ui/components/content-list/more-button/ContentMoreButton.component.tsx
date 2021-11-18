@@ -9,16 +9,22 @@ type Props = {
   text?: string
   disabled?: boolean,
   goBack?: boolean
+  onClick?: () => void
 };
 
 const ContentMoreButton: React.FC<Props> = ({
   text = 'See all',
   link = null,
   disabled = false,
-  goBack = false
+  goBack = false,
+  onClick = () => {}
 }) => {
   const router = useRouter();
-  const onClick = () => {
+  const onButtonClick = () => {
+    if (onClick) {
+      onClick();
+    }
+
     if (goBack) {
       router.back();
     }
@@ -29,7 +35,7 @@ const ContentMoreButton: React.FC<Props> = ({
   };
 
   return (
-    <button onClick={onClick} className={styles.button} disabled={disabled}>
+    <button onClick={onButtonClick} className={styles.button} disabled={disabled}>
       {text}
     </button>
   );

@@ -33,8 +33,16 @@ export const getAllProjects = async (page: number = 1, lang: Language = Language
   return response.data;
 };
 
-export const getContentItem = async (slug: string): Promise<PaginatedContentItems> => {
-  const response = await instance.get(`/api/content-item/one/${slug}`);
+export const getAllContentItems = async (page: number): Promise<PaginatedContentItems> => {
+  const response = await instance.get('/api/content-items/all', {
+    page
+  });
+  return response.data;
+};
+
+// TODO: Add type
+export const getContentItem = async (slug: string) => {
+  const response = await instance.get(`/api/content-items/one/${slug}`);
   return response.data;
 };
 

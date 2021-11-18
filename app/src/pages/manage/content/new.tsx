@@ -1,9 +1,12 @@
 import React from 'react';
 
+import Router from 'next/router';
 import dynamic from 'next/dynamic';
 
 // TODO: Add service
 import { createContentType } from '@/app/services/request/contentTypeRequest';
+
+import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
 import styles from '@/ui/styles/pages/manage/content/new.module.scss';
 
@@ -63,6 +66,8 @@ class NewContentItem extends React.Component<null, State> {
       this.state.form.lang,
       this.state.form.cover
     );
+
+    Router.push('/manage/content/list');
   }
 
   public setField(name: string, value: string): void {
@@ -78,6 +83,11 @@ class NewContentItem extends React.Component<null, State> {
     return (
       <div className={styles.form}>
         <h1 className={styles.title}>Create new {this.state.form.type}</h1>
+
+        <div className={styles.align}>
+          <ContentMoreButton link="/manage/content/list" text="Back to list" />
+        </div>
+
         <div className={styles.group}>
           <label
             className={styles.label}
@@ -168,10 +178,9 @@ class NewContentItem extends React.Component<null, State> {
           </div>
         </div>
 
-        <button
-          onClick={this.createNewContentItem}
-          className={styles.submit}
-        >Create draft</button>
+        <div className={styles.align}>
+          <ContentMoreButton onClick={this.createNewContentItem} text="Make draft" />
+        </div>
       </div>
     );
   }
