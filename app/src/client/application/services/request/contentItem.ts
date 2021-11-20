@@ -33,12 +33,21 @@ export const getAllProjects = async (page: number = 1, lang: Language = Language
   return response.data;
 };
 
-export const getContentItem = async (slug: string): Promise<PaginatedContentItems> => {
-  const response = await instance.get(`/api/content-item/one/${slug}`);
+// Content type
+
+export const getAllContentItems = async (page: number = 1, lang: Language = Language.en): Promise<PaginatedContentItems> => {
+  const response = await instance.get('/admin/content/all', {
+    params: {
+      page,
+      lang,
+      type: 'Article'
+    }
+  });
+
   return response.data;
 };
 
-export const createContentType = async (
+export const createContentItem = async (
   authorId: string,
   title: string,
   description: string,
@@ -46,12 +55,9 @@ export const createContentType = async (
   type: string,
   lang: string,
   cover: string
-) => instance.post('/admin/content/create', {
-  authorId,
-  title,
-  description,
-  content,
-  type,
-  lang,
-  cover
-});
+) => instance.post('/admin/content/create', { authorId, title, description, content, type, lang, cover });
+
+export const activateContentItem = async (id: string) => instance.patch('/admin/content/activate', { id });
+export const makeContentItemDraft = async (id: string) => instance.patch('/admin/content/make-draft', { id });
+
+export const removeContentItem = async (id: string) => instance.delete(`/content-items/remove/${id}`);

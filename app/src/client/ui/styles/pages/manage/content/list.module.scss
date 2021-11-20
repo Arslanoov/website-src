@@ -1,0 +1,65 @@
+.content {
+  grid-column: col-start 1 / col-end 12;
+
+  overflow-x: auto;
+
+  margin: 2rem 0;
+
+  .title {
+    margin: 1rem 0;
+
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  .buttons {
+    display: flex;
+    align-items: center;
+
+    & > * {
+      &:not(:last-of-type) {
+        margin-right: 1rem;
+      }
+    }
+  }
+
+  .table {
+    min-width: 100%;
+
+    margin-top: 2rem;
+
+    font-size: 1.4rem;
+
+    .head {
+      font-weight: 700;
+    }
+
+    .cell {
+      padding: 1rem 1rem;
+
+      text-align: center;
+
+      border: .1rem solid #000;
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & > * {
+          &:not(:last-of-type) {
+            margin-right: 0.5rem;
+          }
+        }
+      }
+
+      &:first-of-type {
+        border-left: none;
+      }
+
+      &:last-of-type {
+        border-right: none;
+      }
+    }
+  }
+}

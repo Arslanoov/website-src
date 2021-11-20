@@ -1,21 +1,22 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import makeDraftHandler from '@/api/useCases/contentItem/makeDraft/handler';
-import makeDraftCommand from '@/api/useCases/contentItem/makeDraft/command';
+import removeContentItemCommand from '@/api/useCases/contentItem/remove/command';
+import removeContentItemHandler from '@/api/useCases/contentItem/remove/handler';
+
+import CustomError from '@/api/errors/customError';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method !== 'PATCH') {
+  const id: string = (req.query.id ?? '') as string;
+
+  if (req.method !== 'DELETE') {
     return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 
-  const id: string = req.body.id ?? '';
-
   try {
-    await makeDraftHandler(new makeDraftCommand(id));
-
+    await removeContentItemHandler(new removeContentItemCommand(id));
     return res.status(204).end();
   } catch (e) {
     if ((e as Error).name === 'CustomError') {

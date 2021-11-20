@@ -21,7 +21,7 @@
     "baseUrl": ".",
     "paths": {
       "@/app/*": [
-        "src/application/*"
+        "src/client/application/*"
       ],
       "@/api/*": [
         "src/api/*"
@@ -30,19 +30,16 @@
         "src/api/lib/assert/*"
       ],
       "@/domain/*": [
-        "src/domain/*"
+        "src/client/domain/*"
       ],
       "@/ui/*": [
-        "src/ui/*"
+        "src/client/ui/*"
       ],
       "@/styles/*": [
-        "src/styles/*"
+        "src/client/styles/*"
       ],
-      "@/interfaces/*": [
-        "src/interfaces/*"
-      ],
-      "@/utils/*": [
-        "src/utils/*"
+      "@/common/*": [
+        "src/common/*"
       ]
     },
     "strict": false

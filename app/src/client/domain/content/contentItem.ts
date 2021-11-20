@@ -1,3 +1,4 @@
+// TODO: Unify types
 export type ContentType = 'Post' | 'Project';
 export type Status = 'Draft' | 'Active';
 
@@ -10,6 +11,8 @@ export type ContentItem = {
   content: string
   type: ContentType
   cover?: string
+  status?: Status
+  views?: number
 };
 
 export type PaginatedContentItems = {

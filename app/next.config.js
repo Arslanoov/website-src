@@ -4,8 +4,8 @@ const path = require('path');
 module.exports = {
   reactStrictMode: true,
   sassOptions: {
-    includePaths: [path.join(__dirname, 'ui/styles')],
-    prependData: '@import "src/ui/styles/bootstrap";'
+    includePaths: [path.join(__dirname, 'client/ui/styles')],
+    prependData: '@import "src/client/ui/styles/bootstrap";'
   },
   env: {
     API_BASE_URL: 'http://localhost:3000/api'

@@ -1,3 +1,9 @@
+.manage-container {
+  .button {
+    grid-column: col-start 1 / col-end 12;
+  }
+}
+
 .about-container {
   justify-content: center;
   align-items: center;

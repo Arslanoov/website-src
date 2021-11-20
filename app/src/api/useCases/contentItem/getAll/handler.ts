@@ -3,41 +3,48 @@ import initOrm from '@/api/utils/database/init';
 import { ContentItem } from '@/api/model/content/item/contentItem';
 import { Status } from '@/api/model/content/item/status';
 
+import { PaginatedContentItems } from '@/domain/content/contentItem';
+
 import Command from './command';
 
 const PER_PAGE = 6;
 
-const handler = async (command: Command) => {
+const handler = async (command: Command): Promise<PaginatedContentItems> => {
   const { em } = await initOrm();
 
   const qb = await em.createQueryBuilder(ContentItem, 'ci');
+  qb.select('count(ci.id) as count');
 
-  qb
-    .select('count(ci.id) as count')
-    .where({
-      lang: command.lang,
-      type: command.type
-    });
-
-  if (!command.withDraft) {
+  if (!command.forManage) {
     qb.andWhere({
-      'status': Status.Active
+      lang: command.lang,
+      type: command.type,
+      status: Status.Active
     });
   }
 
   const totalCount = await qb.execute();
+  const selectColumns = [
+    'ci.id',
+    'a.id as author_id',
+    'a.username as author_username',
+    'ci.created_at as createdAt',
+    'ci.title',
+    'ci.slug',
+    'ci.description',
+    'ci.cover'
+  ];
+
+  if (command.forManage) {
+    selectColumns.push(
+      'ci.type',
+      'ci.status',
+      'ci.views'
+    );
+  }
 
   qb
-    .select([
-      'ci.id',
-      'a.id as author_id',
-      'a.username as author_username',
-      'ci.created_at as createdAt',
-      'ci.title',
-      'ci.slug',
-      'ci.description',
-      'ci.cover'
-    ])
+    .select(selectColumns)
     .join('ci.author', 'a')
     .limit(PER_PAGE)
     .offset((command.page - 1) * PER_PAGE)

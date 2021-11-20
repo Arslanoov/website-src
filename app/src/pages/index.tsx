@@ -14,9 +14,11 @@ import getLatestContentItemsCommand from '@/api/useCases/contentItem/getLatest/c
 import TextBox from '@/ui/components/text-box/TextBox.component';
 import Avatar from '@/ui/components/avatar/Avatar.component';
 import PanelsListComponent from '@/ui/components/panels/list/PanelsList.component';
-import { textBoxContent, textBoxTitle } from '@/utils/dummy/text';
+
+import { textBoxContent, textBoxTitle } from '@/app/utils/dummy/text';
 
 import styles from '@/ui/styles/pages/home.module.scss';
+import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const articles = await getLatestContentItemsHandler(new getLatestContentItemsCommand(
@@ -53,6 +55,12 @@ const Home: NextPage<Props> = ({ articles, projects }) => {
         <div className={styles.avatar}>
           <Avatar />
           <PanelsListComponent />
+        </div>
+      </div>
+
+      <div className={`container ${styles['manage-container']}`}>
+        <div className={styles.button}>
+          <ContentMoreButton text="Manage" link="/manage/content/list" />
         </div>
       </div>
 
