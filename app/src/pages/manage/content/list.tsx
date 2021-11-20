@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import type { NextPage } from 'next';
 import { GetServerSideProps } from 'next';
@@ -8,8 +8,9 @@ import { PaginatedContentItems } from '@/domain/content/contentItem';
 import getAllContentItemsHandler from '@/api/useCases/contentItem/getAll/handler';
 import getAllContentItemsCommand from '@/api/useCases/contentItem/getAll/command';
 
-import { removeContentType } from '@/app/services/request/contentTypeRequest';
+import { getAllContentItems, removeContentItem } from '@/app/services/request/contentItem';
 
+import Pagination from '@/ui/components/pagination/Pagination';
 import ContentMoreButtonComponent from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
 import styles from '@/ui/styles/pages/manage/content/list.module.scss';
@@ -34,13 +35,24 @@ type Props = {
 };
 
 const ContentItemList: NextPage<Props> = ({ initialItems }) => {
+  const [contentItems, setContentItems] = useState<PaginatedContentItems>(initialItems);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    async function fetchItems() {
+      const items = await getAllContentItems(currentPage);
+      setContentItems(items);
+    }
+
+    fetchItems();
+  }, [currentPage]);
 
   const onDelete = async (id: string) => {
     if (confirm('Are you sure?')) {
-      setLoading(false);
-      await removeContentType(id);
       setLoading(true);
+      await removeContentItem(id);
+      setLoading(false);
     }
   };
 
@@ -67,7 +79,7 @@ const ContentItemList: NextPage<Props> = ({ initialItems }) => {
             </tr>
           </thead>
           <tbody>
-            {initialItems.items.map((item) => (
+            {contentItems.items.map((item) => (
               <tr key={item.id}>
                 <td className={styles.cell}>
                   {item.id}
@@ -103,6 +115,12 @@ const ContentItemList: NextPage<Props> = ({ initialItems }) => {
             ))}
           </tbody>
         </table>
+
+        <Pagination
+          pagesCount={Number(contentItems.totalCount) / Number(contentItems.perPage)}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+        />
       </div>
     </div>
   );

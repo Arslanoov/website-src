@@ -11,15 +11,15 @@ import { Type } from '@/api/model/content/item/type';
 import getAllProjectsCommand from '@/api/useCases/contentItem/getAll/command';
 import getAllProjectsHandler from '@/api/useCases/contentItem/getAll/handler';
 
-import { getAllProjects } from '@/app/services/request/contentTypeRequest';
+import { getAllProjects } from '@/app/services/request/contentItem';
 
 import styles from '@/ui/styles/pages/content-items.module.scss';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const initialProjects = await getAllProjectsHandler(new getAllProjectsCommand(
+    1,
     Language.en,
     Type.Project,
-    1,
     false
   ));
 

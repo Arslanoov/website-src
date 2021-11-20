@@ -3,8 +3,7 @@ import React from 'react';
 import Router from 'next/router';
 import dynamic from 'next/dynamic';
 
-// TODO: Add service
-import { createContentType } from '@/app/services/request/contentTypeRequest';
+import { createContentItem } from '@/app/services/request/contentItem';
 
 import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
@@ -57,7 +56,7 @@ class NewContentItem extends React.Component<null, State> {
   }
 
   public createNewContentItem = async () => {
-    await createContentType(
+    await createContentItem(
       'ac199200-4e88-4ace-b450-2f319254fcec',
       this.state.form.title,
       this.state.form.description,

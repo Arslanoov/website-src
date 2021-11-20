@@ -11,15 +11,15 @@ import { Type } from '@/api/model/content/item/type';
 import getAllContentItemsCommand from '@/api/useCases/contentItem/getAll/command';
 import getAllContentItemsHandler from '@/api/useCases/contentItem/getAll/handler';
 
-import { getAllArticles } from '@/app/services/request/contentTypeRequest';
+import { getAllArticles } from '@/app/services/request/contentItem';
 
 import styles from '@/ui/styles/pages/content-items.module.scss';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const initialArticles = await getAllContentItemsHandler(new getAllContentItemsCommand(
+    1,
     Language.en,
     Type.Article,
-    1,
     false
   ));
 
@@ -38,6 +38,7 @@ const Articles: NextPage<Props> = ({ initialArticles }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [articles, setArticles] = useState<PaginatedContentItems>(initialArticles);
 
+  // TODO: Remove unused request
   useEffect(() => {
     async function fetchArticles() {
       const articles = await getAllArticles(currentPage, Language.en);
