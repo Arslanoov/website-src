@@ -15,7 +15,7 @@ import TextBox from '@/ui/components/text-box/TextBox.component';
 import Avatar from '@/ui/components/avatar/Avatar.component';
 import PanelsListComponent from '@/ui/components/panels/list/PanelsList.component';
 
-import { textBoxContent, textBoxTitle } from '@/utils/dummy/text';
+import { textBoxContent, textBoxTitle } from '@/app/utils/dummy/text';
 
 import styles from '@/ui/styles/pages/home.module.scss';
 import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';

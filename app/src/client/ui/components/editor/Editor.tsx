@@ -2,7 +2,7 @@ import React, { createRef } from 'react';
 import { createReactEditorJS } from 'react-editor-js';
 
 import tools from '@/app/config/editor/tools';
-import { jsonToHtml } from '@/utils/json-to-html/jsonToHtml';
+import { jsonToHtml } from '@/app/utils/json-to-html/jsonToHtml';
 
 import styles from './editor.module.scss';
 

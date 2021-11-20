@@ -5,3 +5,5 @@ type Identification = {
   id: Identifier
   username: Username
 };
+
+// TODO: Add types

@@ -38,9 +38,6 @@
       "@/styles/*": [
         "src/client/styles/*"
       ],
-      "@/utils/*": [
-        "src/client/utils/*"
-      ],
       "@/common/*": [
         "src/common/*"
       ]

@@ -7,7 +7,7 @@ import { ContentItem as ContentItemInterface } from '@/domain/content/contentIte
 import getOneContentItemCommand from '@/api/useCases/contentItem/getOne/command';
 import getOneContentItemHandler from '@/api/useCases/contentItem/getOne/handler';
 
-import { dateFormatter } from '@/utils/date/formatter';
+import { dateFormatter } from '@/app/utils/date/formatter';
 
 import styles from '@/ui/styles/pages/content-item.module.scss';
 

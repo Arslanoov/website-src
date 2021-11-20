@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import type { NextPage } from 'next';
 import { GetServerSideProps } from 'next';
 
@@ -6,10 +8,11 @@ import { PaginatedContentItems } from '@/domain/content/contentItem';
 import getAllContentItemsHandler from '@/api/useCases/contentItem/getAll/handler';
 import getAllContentItemsCommand from '@/api/useCases/contentItem/getAll/command';
 
+import { removeContentType } from '@/app/services/request/contentTypeRequest';
+
 import ContentMoreButtonComponent from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
 import styles from '@/ui/styles/pages/manage/content/list.module.scss';
-import React from 'react';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const initialItems = await getAllContentItemsHandler(new getAllContentItemsCommand(
@@ -31,9 +34,13 @@ type Props = {
 };
 
 const ContentItemList: NextPage<Props> = ({ initialItems }) => {
-  const onDelete = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const onDelete = async (id: string) => {
     if (confirm('Are you sure?')) {
-      alert('Deleted!');
+      setLoading(false);
+      await removeContentType(id);
+      setLoading(true);
     }
   };
 
@@ -87,7 +94,7 @@ const ContentItemList: NextPage<Props> = ({ initialItems }) => {
                       text="Edit"
                     />
                     <ContentMoreButtonComponent
-                      onClick={onDelete}
+                      onClick={() => onDelete(item.id)}
                       text="Delete"
                     />
                   </div>
