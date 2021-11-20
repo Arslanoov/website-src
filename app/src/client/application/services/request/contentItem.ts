@@ -57,4 +57,7 @@ export const createContentItem = async (
   cover: string
 ) => instance.post('/admin/content/create', { authorId, title, description, content, type, lang, cover });
 
+export const activateContentItem = async (id: string) => instance.patch('/admin/content/activate', { id });
+export const makeContentItemDraft = async (id: string) => instance.patch('/admin/content/make-draft', { id });
+
 export const removeContentItem = async (id: string) => instance.delete(`/content-items/remove/${id}`);

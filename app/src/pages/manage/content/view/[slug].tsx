@@ -9,7 +9,11 @@ import { Status } from '@/api/model/content/item/status';
 import getContentItemHandler from '@/api/useCases/contentItem/getOne/handler';
 import getContentItemCommand from '@/api/useCases/contentItem/getOne/command';
 
-import { removeContentItem } from '@/app/services/request/contentItem';
+import {
+  activateContentItem as activateContentItemRequest,
+  makeContentItemDraft as makeContentItemDraftRequest,
+  removeContentItem
+} from '@/app/services/request/contentItem';
 
 import ContentMoreButtonComponent from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
@@ -36,9 +40,33 @@ type Props = {
 
 const ContentItemView: NextPage<Props> = ({ item }) => {
   const [loading, setLoading] = useState<boolean>(false);
+  const [status, setStatus] = useState<Status>(item.status as Status);
 
-  const makeDraft = (id: string) => {};
-  const activate = (id: string) => {};
+  const makeDraft = (id: string) => {
+    async function makeContentItemDraft() {
+      try {
+        await makeContentItemDraftRequest(id);
+      } catch (e) {}
+    }
+
+    setLoading(true);
+    makeContentItemDraft()
+      .then(() => setStatus(Status.Draft))
+      .finally(() => setLoading(false));
+  };
+
+  const activate = (id: string) => {
+    async function activateContentItem() {
+      try {
+        await activateContentItemRequest(id);
+      } catch (e) {}
+    }
+
+    setLoading(true);
+    activateContentItem()
+      .then(() => setStatus(Status.Active))
+      .finally(() => setLoading(false));
+  };
 
   const onDelete = async (id: string) => {
     if (confirm('Are you sure?')) {
@@ -52,26 +80,30 @@ const ContentItemView: NextPage<Props> = ({ item }) => {
     <div className="container">
       <div className={styles.content}>
         <div className={styles.buttons}>
-          <ContentMoreButtonComponent text="Back" link="/" />
+          <ContentMoreButtonComponent text="Back" link="/manage/content/list" />
 
           <ContentMoreButtonComponent
+            disabled={loading}
             link={`/manage/content/edit/${item.slug}`}
             text="Edit"
           />
 
-          {item.status === Status.Draft ? (
+          {status === Status.Active ? (
             <ContentMoreButtonComponent
+              disabled={loading}
               onClick={() => makeDraft(item.id)}
               text="Make draft"
             />
           ) : (
             <ContentMoreButtonComponent
+              disabled={loading}
               onClick={() => activate(item.id)}
               text="Activate"
             />
           )}
 
           <ContentMoreButtonComponent
+            disabled={loading}
             onClick={() => onDelete(item.id)}
             text="Delete"
           />
@@ -81,8 +113,10 @@ const ContentItemView: NextPage<Props> = ({ item }) => {
 
         <table className={styles.table}>
           <thead>
-            <th />
-            <th />
+            <tr>
+              <th />
+              <th />
+            </tr>
           </thead>
           <tbody>
             <tr>
@@ -105,7 +139,7 @@ const ContentItemView: NextPage<Props> = ({ item }) => {
             </tr>
             <tr>
               <td className={styles.cell}>Status</td>
-              <td className={styles.cell}>{item.status}</td>
+              <td className={styles.cell}>{status}</td>
             </tr>
             <tr>
               <td className={styles.cell}>Views</td>
