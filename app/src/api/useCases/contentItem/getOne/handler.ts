@@ -1,51 +1,66 @@
 import initOrm from '@/api/utils/database/init';
 
 import { ContentItem } from '@/api/model/content/item/contentItem';
+import { Status } from '@/api/model/content/item/status';
 
 import ContentItemDoesntExist from '@/api/errors/contentItemDoesntExist';
 
 import Command from './command';
 
-const handler = async (command: Command) => {
+const handler = async ({ slug, forManage }: Command) => {
   const { em } = await initOrm();
 
   const contentItems = em.getRepository(ContentItem);
-  const contentItem = await contentItems.findOne({
-    slug: command.slug
-  }) as ContentItem | null;
+  const contentItem = await contentItems.findOne({ slug }) as ContentItem | null;
 
-  contentItem.visit();
   if (!contentItem) {
     throw new ContentItemDoesntExist();
+  }
+  
+  if (!forManage) {
+    contentItem.visit();
   }
 
   em.flush();
 
-  // TODO: Merge
-
   const qb = await em.createQueryBuilder(ContentItem, 'ci');
-  qb
-    .select([
-      'ci.id',
+  
+  const toSelect = [
+    'ci.id',
+    'a.username as author_username',
+    'ci.created_at as created_at',
+    'ci.title',
+    'ci.slug',
+    'ci.description',
+    'ci.content',
+    'ci.cover'
+  ];
+
+  if (forManage) {
+    toSelect.push(
       'a.id as author_id',
-      'a.username as author_username',
-      'ci.created_at as created_at',
-      'ci.title',
-      'ci.slug',
-      'ci.description',
-      'ci.content',
-      'ci.cover',
-      'ci.views'
-    ])
+      'ci.status',
+      'ci.views',
+      'ci.type'
+    );
+  }
+  
+  qb
+    .select(toSelect)
     .join('ci.author', 'a')
-    .where({
-      'slug': command.slug
-    })
-    .limit(1);
+    .where({ slug });
+  
+  if (!forManage) {
+    qb.andWhere({
+      status: Status.Active
+    });
+  }
 
-  const article = await qb.execute();
+  qb.limit(1);
 
-  return article?.[0];
+  const articles = await qb.execute();
+
+  return articles[0];
 };
 
 export default handler;

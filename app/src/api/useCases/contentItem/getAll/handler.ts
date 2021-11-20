@@ -7,7 +7,7 @@ import { PaginatedContentItems } from '@/domain/content/contentItem';
 
 import Command from './command';
 
-const PER_PAGE = 1;
+const PER_PAGE = 6;
 
 const handler = async (command: Command): Promise<PaginatedContentItems> => {
   const { em } = await initOrm();

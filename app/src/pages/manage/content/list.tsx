@@ -48,14 +48,6 @@ const ContentItemList: NextPage<Props> = ({ initialItems }) => {
     fetchItems();
   }, [currentPage]);
 
-  const onDelete = async (id: string) => {
-    if (confirm('Are you sure?')) {
-      setLoading(true);
-      await removeContentItem(id);
-      setLoading(false);
-    }
-  };
-
   return (
     <div className="container">
       <div className={styles.content}>
@@ -100,16 +92,10 @@ const ContentItemList: NextPage<Props> = ({ initialItems }) => {
                   {item.views}
                 </td>
                 <td className={styles.cell}>
-                  <div className={styles.buttons}>
-                    <ContentMoreButtonComponent
-                      link={`manage/content/edit/${item.slug}`}
-                      text="Edit"
-                    />
-                    <ContentMoreButtonComponent
-                      onClick={() => onDelete(item.id)}
-                      text="Delete"
-                    />
-                  </div>
+                  <ContentMoreButtonComponent
+                    link={`/manage/content/view/${item.slug}`}
+                    text="View"
+                  />
                 </td>
               </tr>
             ))}
