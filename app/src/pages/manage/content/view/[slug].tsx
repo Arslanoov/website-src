@@ -151,6 +151,12 @@ const ContentItemView: NextPage<Props> = ({ item }) => {
             </tr>
           </tbody>
         </table>
+
+        <h3 className={styles.subtitle}>Content</h3>
+        <div
+          className={styles.content}
+          dangerouslySetInnerHTML={{__html: item.content}}
+        />
       </div>
     </div>
   );
