@@ -22,6 +22,7 @@ export class ContentItem {
   createdAt!: CreatedAt
   @Property({ length: 64 })
   title!: string
+  // TODO: Change length
   @Property({ length: 64 })
   slug!: string
   @Property({ length: 255 })
@@ -186,12 +187,38 @@ export class ContentItem {
     );
   }
 
-  public visit(): void {
-    this.views += 1;
+  public edit(
+    title: string,
+    slug: string,
+    description: string,
+    content: string,
+    lang: Language,
+    type: Type,
+    cover: string | null
+  ): void {
+    Assert.lengthBetween(title, 'Title', 1, 64);
+    this.title = title;
+    Assert.lengthBetween(slug, 'Slug', 1, 64);
+    this.slug = slug;
+    Assert.lengthBetween(description, 'Description', 1, 255);
+    this.description = description;
+    Assert.minLength(content, 'Content', 1);
+    this.content = content;
+    Assert.includes(lang, 'Language', Object.values(Language));
+    this.lang = lang;
+    Assert.includes(type, 'Type', Object.values(Type));
+    this.type = type;
+    this.cover = cover;
+
+    this.makeDraft();
   }
 
   public get identifier(): Id {
     return this.id;
+  }
+
+  public visit(): void {
+    this.views += 1;
   }
 
   public activate(): void {
@@ -201,6 +228,4 @@ export class ContentItem {
   public makeDraft(): void {
     this.status = Status.Draft;
   }
-
-  // TODO: Add manage methods
 }

@@ -41,7 +41,8 @@ const handler = async ({ slug, forManage }: Command) => {
       'a.id as author_id',
       'ci.status',
       'ci.views',
-      'ci.type'
+      'ci.type',
+      'ci.lang'
     );
   }
   

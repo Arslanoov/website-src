@@ -14,9 +14,16 @@
 
   .buttons {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
 
     & > * {
+      margin-bottom: 1rem;
+
+      @include tablet {
+        margin-bottom: 0;
+      }
+
       &:not(:last-of-type) {
         margin-right: 1rem;
       }
@@ -32,6 +39,10 @@
 
     .head {
       font-weight: 700;
+
+      & > * {
+        padding: 0 .5rem;
+      }
     }
 
     .cell {

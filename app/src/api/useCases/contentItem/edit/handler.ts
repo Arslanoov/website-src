@@ -3,11 +3,21 @@ import initOrm from '@/api/utils/database/init';
 import { ContentItem } from '@/api/model/content/item/contentItem';
 import { Id } from '@/api/model/content/item/id';
 
+import SlugGenerator from '@/api/services/slug-generator/slugGenerator';
+
 import ContentItemDoesntExist from '@/api/errors/contentItemDoesntExist';
 
 import Command from './command';
 
-const handler = async ({ id }: Command): Promise<void> => {
+const handler = async ({
+  id,
+  title,
+  description,
+  content,
+  lang,
+  type,
+  cover
+}: Command): Promise<void> => {
   const { em } = await initOrm();
 
   const contentItems = em.getRepository(ContentItem);
@@ -19,7 +29,17 @@ const handler = async ({ id }: Command): Promise<void> => {
     throw new ContentItemDoesntExist();
   }
 
-  contentItem.makeDraft();
+  const slugGenerator = new SlugGenerator();
+
+  contentItem.edit(
+    title,
+    slugGenerator.generate(title),
+    description,
+    content,
+    lang,
+    type,
+    cover
+  );
 
   em.flush();
 };

@@ -1,6 +1,7 @@
 // TODO: Unify types
 export type ContentType = 'Post' | 'Project';
 export type Status = 'Draft' | 'Active';
+export type Language = 'en' | 'ru';
 
 export type ContentItem = {
   id: string
@@ -10,6 +11,7 @@ export type ContentItem = {
   description: string
   content: string
   type: ContentType
+  lang?: Language
   cover?: string
   status?: Status
   views?: number

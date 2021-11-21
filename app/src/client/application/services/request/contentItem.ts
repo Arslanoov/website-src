@@ -47,6 +47,7 @@ export const getAllContentItems = async (page: number = 1, lang: Language = Lang
   return response.data;
 };
 
+// TODO: Remove author id
 export const createContentItem = async (
   authorId: string,
   title: string,
@@ -56,6 +57,16 @@ export const createContentItem = async (
   lang: string,
   cover: string
 ) => instance.post('/admin/content/create', { authorId, title, description, content, type, lang, cover });
+
+export const editContentItem = async (
+  id: string,
+  title: string,
+  description: string,
+  content: string,
+  type: string,
+  lang: string,
+  cover: string
+) => instance.patch('/admin/content/edit', { id, title, description, content, type, lang, cover });
 
 export const activateContentItem = async (id: string) => instance.patch('/admin/content/activate', { id });
 export const makeContentItemDraft = async (id: string) => instance.patch('/admin/content/make-draft', { id });
