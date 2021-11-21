@@ -29,6 +29,8 @@ export class ContentItem {
   description!: string
   @Property()
   content!: string
+  @Property()
+  rawContent!: string
   @Enum({ type: 'string', length: 16, items: () => Status, default: Status.Draft })
   status!: Status
   @Enum({ type: 'string', length: 16, items: () => Type, default: Type.Article })
@@ -48,6 +50,7 @@ export class ContentItem {
     slug: string,
     description: string,
     content: string,
+    rawContent: string,
     status: Status,
     type: Type,
     views: number,
@@ -65,6 +68,8 @@ export class ContentItem {
     this.description = description;
     Assert.minLength(content, 'Content', 1);
     this.content = content;
+    Assert.minLength(rawContent, 'Raw content', 1);
+    this.rawContent = rawContent;
     Assert.includes(status, 'Status', Object.values(Status));
     this.status = status;
     Assert.includes(type, 'Type', Object.values(Type));
@@ -83,6 +88,7 @@ export class ContentItem {
     slug: string,
     description: string,
     content: string,
+    rawContent: string,
     type: Type,
     lang: Language,
     cover: string | null
@@ -95,94 +101,11 @@ export class ContentItem {
       slug,
       description,
       content,
+      rawContent,
       Status.Draft,
       type,
       0,
       lang,
-      cover
-    );
-  }
-
-  public static newRuArticle(
-    author: Author,
-    title: string,
-    slug: string,
-    description: string,
-    content: string,
-    cover: string | null
-  ): ContentItem {
-    return ContentItem.new(
-      Id.generate(),
-      author,
-      title,
-      slug,
-      description,
-      content,
-      Type.Article,
-      Language.ru,
-      cover
-    );
-  }
-
-  public static newEnArticle(
-    author: Author,
-    title: string,
-    slug: string,
-    description: string,
-    content: string,
-    cover: string | null
-  ): ContentItem {
-    return ContentItem.new(
-      Id.generate(),
-      author,
-      title,
-      slug,
-      description,
-      content,
-      Type.Article,
-      Language.en,
-      cover
-    );
-  }
-
-  public static newRuProject(
-    author: Author,
-    title: string,
-    slug: string,
-    description: string,
-    content: string,
-    cover: string | null
-  ): ContentItem {
-    return ContentItem.new(
-      Id.generate(),
-      author,
-      title,
-      slug,
-      description,
-      content,
-      Type.Project,
-      Language.ru,
-      cover
-    );
-  }
-
-  public static newEnProject(
-    author: Author,
-    title: string,
-    slug: string,
-    description: string,
-    content: string,
-    cover: string | null
-  ): ContentItem {
-    return ContentItem.new(
-      Id.generate(),
-      author,
-      title,
-      slug,
-      description,
-      content,
-      Type.Project,
-      Language.en,
       cover
     );
   }
@@ -192,6 +115,7 @@ export class ContentItem {
     slug: string,
     description: string,
     content: string,
+    rawContent: string,
     lang: Language,
     type: Type,
     cover: string | null
@@ -204,6 +128,8 @@ export class ContentItem {
     this.description = description;
     Assert.minLength(content, 'Content', 1);
     this.content = content;
+    Assert.minLength(rawContent, 'Raw content', 1);
+    this.rawContent = rawContent;
     Assert.includes(lang, 'Language', Object.values(Language));
     this.lang = lang;
     Assert.includes(type, 'Type', Object.values(Type));

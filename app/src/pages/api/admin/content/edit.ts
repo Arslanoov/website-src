@@ -18,6 +18,7 @@ export default async function handler(
   const title: string = req.body.title ?? '';
   const description: string = req.body.description ?? '';
   const content: string = req.body.content ?? '';
+  const rawContent: string = req.body.rawContent ?? '';
   const lang: string = req.body.lang ?? '';
   const type: string = req.body.type ?? '';
   const cover: string = req.body.cover ?? null;
@@ -28,6 +29,7 @@ export default async function handler(
       title,
       description,
       content,
+      rawContent,
       lang as Language,
       type as Type,
       cover

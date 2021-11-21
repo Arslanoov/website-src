@@ -10,6 +10,7 @@ export type ContentItem = {
   slug: string
   description: string
   content: string
+  rawContent?: string
   type: ContentType
   lang?: Language
   cover?: string

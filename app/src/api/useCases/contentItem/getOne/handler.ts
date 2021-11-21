@@ -42,7 +42,8 @@ const handler = async ({ slug, forManage }: Command) => {
       'ci.status',
       'ci.views',
       'ci.type',
-      'ci.lang'
+      'ci.lang',
+      'ci.raw_content'
     );
   }
   

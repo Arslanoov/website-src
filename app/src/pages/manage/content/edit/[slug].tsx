@@ -6,6 +6,8 @@ import dynamic from 'next/dynamic';
 
 import { editContentItem } from '@/app/services/request/contentItem';
 
+import { jsonToHtml } from '@/app/utils/json-to-html/jsonToHtml';
+
 import { ContentItem as ContentItemInterface } from '@/domain/content/contentItem';
 
 import getOneContentItemHandler from '@/api/useCases/contentItem/getOne/handler';
@@ -25,11 +27,12 @@ const langs = {
   'Russian': 'ru'
 };
 
-type NewContentItemForm = {
+type EditContentItemForm = {
   title: string
   description: string
   cover: string
   content: string
+  rawContent: string
   type: string
   lang: string
 };
@@ -54,7 +57,7 @@ type Props = {
 };
 
 type State = {
-  form: NewContentItemForm
+  form: EditContentItemForm
 };
 
 const Editor = dynamic(import('@/ui/components/editor/Editor'), {
@@ -64,8 +67,12 @@ const Editor = dynamic(import('@/ui/components/editor/Editor'), {
 class EditContentItem extends React.Component<Props, State> {
   public constructor(props) {
     super(props);
+    console.log(this.props.contentItem.rawContent);
     this.state = {
-      form: this.props.contentItem as NewContentItemForm
+      form: {
+        ...this.props.contentItem as EditContentItemForm,
+        rawContent: JSON.parse(this.props.contentItem.rawContent)
+      }
     };
   }
 
@@ -79,6 +86,7 @@ class EditContentItem extends React.Component<Props, State> {
       this.state.form.title,
       this.state.form.description,
       this.state.form.content,
+      this.state.form.rawContent,
       this.state.form.type,
       this.state.form.lang,
       this.state.form.cover
@@ -92,6 +100,16 @@ class EditContentItem extends React.Component<Props, State> {
       form: {
         ...prevState.form,
         [name]: value
+      }
+    }));
+  }
+
+  public setContent(value: string): void {
+    this.setState((prevState) => ({
+      form: {
+        ...prevState.form,
+        content: jsonToHtml(value),
+        rawContent: JSON.stringify(value)
       }
     }));
   }
@@ -156,7 +174,8 @@ class EditContentItem extends React.Component<Props, State> {
           >Content</label>
           <div className={styles.rounded}>
             <Editor
-              onChange={(value: string) => this.setField('content', value)}
+              onChange={(value: string) => this.setContent(value)}
+              initialValue={this.state.form.rawContent}
             />
           </div>
         </div>

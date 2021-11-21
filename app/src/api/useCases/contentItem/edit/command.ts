@@ -7,6 +7,7 @@ export default class Command {
     public title: string,
     public description: string,
     public content: string,
+    public rawContent: string,
     public lang: Language,
     public type: Type,
     public cover: string | null

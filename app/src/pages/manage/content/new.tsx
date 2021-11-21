@@ -5,6 +5,8 @@ import dynamic from 'next/dynamic';
 
 import { createContentItem } from '@/app/services/request/contentItem';
 
+import { jsonToHtml } from '@/app/utils/json-to-html/jsonToHtml';
+
 import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
 import styles from '@/ui/styles/pages/manage/content/new.module.scss';
@@ -24,6 +26,7 @@ type NewContentItemForm = {
   description: string
   cover: string
   content: string
+  rawContent: string
   type: string
   lang: string
 };
@@ -44,6 +47,7 @@ class NewContentItem extends React.Component<null, State> {
         title: '',
         description: '',
         cover: '',
+        rawContent: '',
         content: '',
         type: Object.values(types)[0],
         lang: Object.values(langs)[0]
@@ -61,6 +65,7 @@ class NewContentItem extends React.Component<null, State> {
       this.state.form.title,
       this.state.form.description,
       this.state.form.content,
+      this.state.form.rawContent,
       this.state.form.type,
       this.state.form.lang,
       this.state.form.cover
@@ -74,6 +79,16 @@ class NewContentItem extends React.Component<null, State> {
       form: {
         ...prevState.form,
         [name]: value
+      }
+    }));
+  }
+
+  public setContent(value: string): void {
+    this.setState((prevState) => ({
+      form: {
+        ...prevState.form,
+        content: jsonToHtml(value),
+        rawContent: JSON.stringify(value)
       }
     }));
   }
@@ -138,7 +153,7 @@ class NewContentItem extends React.Component<null, State> {
           >Content</label>
           <div className={styles.rounded}>
             <Editor
-              onChange={(value: string) => this.setField('content', value)}
+              onChange={(value: string) => this.setContent(value)}
             />
           </div>
         </div>

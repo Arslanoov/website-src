@@ -14,6 +14,7 @@ const handler = async ({
   title,
   description,
   content,
+  rawContent,
   lang,
   type,
   cover
@@ -33,9 +34,10 @@ const handler = async ({
 
   contentItem.edit(
     title,
-    slugGenerator.generate(title),
+    `${id}-${slugGenerator.generate(title)}`,
     description,
     content,
+    rawContent,
     lang,
     type,
     cover

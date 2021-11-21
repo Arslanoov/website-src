@@ -14,7 +14,16 @@ import AuthorDoesntExist from '@/api/errors/authorDoesntExist';
 
 import Command from './command';
 
-const handler = async ({ authorId, title, description, content, type, lang, cover }: Command): Promise<void> => {
+const handler = async ({
+  authorId,
+  title,
+  description,
+  content,
+  rawContent,
+  type,
+  lang,
+  cover
+}: Command): Promise<void> => {
   const { em } = await initOrm();
 
   const authors = em.getRepository(Author);
@@ -38,6 +47,7 @@ const handler = async ({ authorId, title, description, content, type, lang, cove
     `${id}-${slugGenerator.generate(title)}`,
     description,
     content,
+    rawContent,
     type as Type,
     lang as Language,
     cover

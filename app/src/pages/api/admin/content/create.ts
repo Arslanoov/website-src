@@ -11,7 +11,7 @@ export default async function handler(
     return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 
-  const { authorId, title, description, content, type, lang, cover }: {
+  const { authorId, title, description, content, rawContent, type, lang, cover }: {
     [key: string]: string
   } = req.body;
 
@@ -21,6 +21,7 @@ export default async function handler(
       title,
       description,
       content,
+      rawContent,
       type,
       lang,
       cover ?? null
