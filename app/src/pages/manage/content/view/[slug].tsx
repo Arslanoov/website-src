@@ -138,6 +138,10 @@ const ContentItemView: NextPage<Props> = ({ item }) => {
               <td className={styles.cell}>{item.type}</td>
             </tr>
             <tr>
+              <td className={styles.cell}>Language</td>
+              <td className={styles.cell}>{item.lang}</td>
+            </tr>
+            <tr>
               <td className={styles.cell}>Status</td>
               <td className={styles.cell}>{status}</td>
             </tr>
@@ -147,6 +151,12 @@ const ContentItemView: NextPage<Props> = ({ item }) => {
             </tr>
           </tbody>
         </table>
+
+        <h3 className={styles.subtitle}>Content</h3>
+        <div
+          className={styles.content}
+          dangerouslySetInnerHTML={{__html: item.content}}
+        />
       </div>
     </div>
   );

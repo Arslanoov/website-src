@@ -1,11 +1,17 @@
 import React from 'react';
 
+import { GetServerSideProps } from 'next';
 import Router from 'next/router';
 import dynamic from 'next/dynamic';
 
-import { createContentItem } from '@/app/services/request/contentItem';
+import { editContentItem } from '@/app/services/request/contentItem';
 
 import { jsonToHtml } from '@/app/utils/json-to-html/jsonToHtml';
+
+import { ContentItem as ContentItemInterface } from '@/domain/content/contentItem';
+
+import getOneContentItemHandler from '@/api/useCases/contentItem/getOne/handler';
+import getOneContentItemCommand from '@/api/useCases/contentItem/getOne/command';
 
 import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
@@ -21,7 +27,7 @@ const langs = {
   'Russian': 'ru'
 };
 
-type NewContentItemForm = {
+type EditContentItemForm = {
   title: string
   description: string
   cover: string
@@ -31,26 +37,41 @@ type NewContentItemForm = {
   lang: string
 };
 
+export const getServerSideProps: GetServerSideProps = async (req) => {
+  const contentItem = await getOneContentItemHandler(
+    new getOneContentItemCommand(
+      (req.query.slug ?? '') as string,
+      true
+    )
+  );
+
+  return {
+    props: {
+      contentItem
+    }
+  };
+};
+
+type Props = {
+  contentItem: ContentItemInterface
+};
+
 type State = {
-  form: NewContentItemForm
+  form: EditContentItemForm
 };
 
 const Editor = dynamic(import('@/ui/components/editor/Editor'), {
   ssr: false
 });
 
-class NewContentItem extends React.Component<null, State> {
+class EditContentItem extends React.Component<Props, State> {
   public constructor(props) {
     super(props);
+    console.log(this.props.contentItem.rawContent);
     this.state = {
       form: {
-        title: '',
-        description: '',
-        cover: '',
-        rawContent: '',
-        content: '',
-        type: Object.values(types)[0],
-        lang: Object.values(langs)[0]
+        ...this.props.contentItem as EditContentItemForm,
+        rawContent: JSON.parse(this.props.contentItem.rawContent)
       }
     };
   }
@@ -60,8 +81,8 @@ class NewContentItem extends React.Component<null, State> {
   }
 
   public createNewContentItem = async () => {
-    await createContentItem(
-      'ac199200-4e88-4ace-b450-2f319254fcec',
+    await editContentItem(
+      this.props.contentItem.id,
       this.state.form.title,
       this.state.form.description,
       this.state.form.content,
@@ -154,6 +175,7 @@ class NewContentItem extends React.Component<null, State> {
           <div className={styles.rounded}>
             <Editor
               onChange={(value: string) => this.setContent(value)}
+              initialValue={this.state.form.rawContent}
             />
           </div>
         </div>
@@ -193,11 +215,11 @@ class NewContentItem extends React.Component<null, State> {
         </div>
 
         <div className={styles.align}>
-          <ContentMoreButton onClick={this.createNewContentItem} text="Make draft" />
+          <ContentMoreButton onClick={this.createNewContentItem} text="Edit and make draft" />
         </div>
       </div>
     );
   }
 }
 
-export default NewContentItem;
+export default EditContentItem;

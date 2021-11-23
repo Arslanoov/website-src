@@ -2,7 +2,6 @@ import React, { createRef } from 'react';
 import { createReactEditorJS } from 'react-editor-js';
 
 import tools from '@/app/config/editor/tools';
-import { jsonToHtml } from '@/app/utils/json-to-html/jsonToHtml';
 
 import styles from './editor.module.scss';
 
@@ -10,6 +9,7 @@ const EditorJs = createReactEditorJS();
 
 type Props = {
   onChange: (value: string) => void
+  initialValue?: string
 };
 
 class Editor extends React.Component<Props> {
@@ -29,13 +29,14 @@ class Editor extends React.Component<Props> {
   }
 
   public handleSave = async () => {
-    this.props.onChange(jsonToHtml(await this.editorJS.current.save()));
+    this.props.onChange(await this.editorJS.current.save());
   }
 
   public render() {
     return <>
       <EditorJs
         onInitialize={this.handleInitialize}
+        defaultValue={this.props.initialValue ?? ''}
         tools={tools}
       />
       <button onClick={this.handleSave} className={styles.button}>Save</button>
