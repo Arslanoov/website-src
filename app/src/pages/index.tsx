@@ -1,8 +1,7 @@
 import React from 'react';
-import type { GetServerSideProps, NextPage } from 'next';
+import type { GetServerSideProps } from 'next';
 
-import ContentListComponent from '@/ui/components/content-list/list/ContentList.component';
-import ContentMoreButtonComponent from '@/ui/components/content-list/more-button/ContentMoreButton.component';
+import { useSession } from 'next-auth/react';
 
 import { Language } from '@/api/model/content/item/lang';
 import { Type } from '@/api/model/content/item/type';
@@ -11,14 +10,18 @@ import { PaginatedContentItems } from '@/domain/content/contentItem';
 import getLatestContentItemsHandler from '@/api/useCases/contentItem/getLatest/handler';
 import getLatestContentItemsCommand from '@/api/useCases/contentItem/getLatest/command';
 
+import MainLayout from '@/ui/layouts/main/MainLayout';
+
 import TextBox from '@/ui/components/text-box/TextBox.component';
 import Avatar from '@/ui/components/avatar/Avatar.component';
 import PanelsListComponent from '@/ui/components/panels/list/PanelsList.component';
+import ContentListComponent from '@/ui/components/content-list/list/ContentList.component';
+import ContentMoreButtonComponent from '@/ui/components/content-list/more-button/ContentMoreButton.component';
+import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
 import { textBoxContent, textBoxTitle } from '@/app/utils/dummy/text';
 
 import styles from '@/ui/styles/pages/home.module.scss';
-import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const articles = await getLatestContentItemsHandler(new getLatestContentItemsCommand(
@@ -45,7 +48,10 @@ type Props = {
   projects: PaginatedContentItems
 };
 
-const Home: NextPage<Props> = ({ articles, projects }) => {
+export default function Home({ articles, projects }: Props) {
+  // TODO: Add enum
+  const { status, data: session } = useSession();
+
   return (
     <>
       <div className={`container ${styles['about-container']}`}>
@@ -58,11 +64,12 @@ const Home: NextPage<Props> = ({ articles, projects }) => {
         </div>
       </div>
 
-      <div className={`container ${styles['manage-container']}`}>
+      {JSON.stringify(session)}
+      {status === 'authenticated' && <div className={`container ${styles['manage-container']}`}>
         <div className={styles.button}>
           <ContentMoreButton text="Manage" link="/manage/content/list" />
         </div>
-      </div>
+      </div>}
 
       <div className={`container ${styles['content-container']}`}>
         <div className={styles.blog}>
@@ -97,4 +104,4 @@ const Home: NextPage<Props> = ({ articles, projects }) => {
   );
 };
 
-export default Home;
+Home.getLayout = (page) => <MainLayout>{page}</MainLayout>;
