@@ -9,6 +9,8 @@ import getOneContentItemHandler from '@/api/useCases/contentItem/getOne/handler'
 
 import { dateFormatter } from '@/app/utils/date/formatter';
 
+import MainLayout from '@/ui/layouts/main/MainLayout';
+
 import styles from '@/ui/styles/pages/content-item.module.scss';
 
 export const getServerSideProps: GetServerSideProps = async (req) => {
@@ -27,7 +29,7 @@ type Props = {
 
 // TODO: Change reset file
 
-const ContentItem: NextPage<Props> = ({ contentItem }) => {
+export default function ContentItem({ contentItem }: Props) {
   return (
     <>
       <div className="container">
@@ -64,4 +66,4 @@ const ContentItem: NextPage<Props> = ({ contentItem }) => {
   );
 };
 
-export default ContentItem;
+ContentItem.getLayout = (page) => <MainLayout>{page}</MainLayout>;

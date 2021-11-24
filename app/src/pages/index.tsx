@@ -11,7 +11,6 @@ import getLatestContentItemsHandler from '@/api/useCases/contentItem/getLatest/h
 import getLatestContentItemsCommand from '@/api/useCases/contentItem/getLatest/command';
 
 import MainLayout from '@/ui/layouts/main/MainLayout';
-
 import TextBox from '@/ui/components/text-box/TextBox.component';
 import Avatar from '@/ui/components/avatar/Avatar.component';
 import PanelsListComponent from '@/ui/components/panels/list/PanelsList.component';
@@ -64,8 +63,7 @@ export default function Home({ articles, projects }: Props) {
         </div>
       </div>
 
-      {JSON.stringify(session)}
-      {status === 'authenticated' && <div className={`container ${styles['manage-container']}`}>
+      {status === 'authenticated' && session.user.role === 'Admin' && <div className={`container ${styles['manage-container']}`}>
         <div className={styles.button}>
           <ContentMoreButton text="Manage" link="/manage/content/list" />
         </div>

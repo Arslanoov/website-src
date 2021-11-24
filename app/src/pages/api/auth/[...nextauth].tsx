@@ -45,7 +45,6 @@ export default NextAuth({
             role: user.role
           };
         } catch (e) {
-          console.log('ERR', e.message);
           throw new Error(e.message);
         }
       }

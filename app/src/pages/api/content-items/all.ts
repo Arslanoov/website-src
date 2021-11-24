@@ -24,9 +24,9 @@ export default async function handler(
 
   try {
     const contentItems = await getAllContentItemsHandler(new getAllContentItemsCommand(
+      page,
       lang,
       type,
-      page,
       false
     ));
 
