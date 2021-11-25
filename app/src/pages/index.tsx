@@ -59,7 +59,7 @@ export default function Home({ articles, projects }: Props) {
         </div>
         <div className={styles.avatar}>
           <Avatar />
-          <PanelsListComponent />
+          {/*<PanelsListComponent />*/}
         </div>
       </div>
 
