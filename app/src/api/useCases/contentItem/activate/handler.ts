@@ -7,7 +7,7 @@ import ContentItemDoesntExist from '@/api/errors/contentItemDoesntExist';
 
 import Command from './command';
 
-const handler = async ({ id }: Command): Promise<void> => {
+const handler = async ({ id, authorId }: Command): Promise<void> => {
   const { em } = await initOrm();
 
   const contentItems = em.getRepository(ContentItem);
@@ -15,7 +15,7 @@ const handler = async ({ id }: Command): Promise<void> => {
     id: new Id(id)
   }) as ContentItem | null;
 
-  if (!contentItem) {
+  if (!contentItem || contentItem.author.id.value !== authorId) {
     throw new ContentItemDoesntExist();
   }
 

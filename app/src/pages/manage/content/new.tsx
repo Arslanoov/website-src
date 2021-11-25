@@ -31,6 +31,14 @@ type NewContentItemForm = {
   lang: string
 };
 
+type Props = {
+  session: {
+    user: {
+      id: string
+    }
+  }
+};
+
 type State = {
   form: NewContentItemForm
 };
@@ -39,7 +47,7 @@ const Editor = dynamic(import('@/ui/components/editor/Editor'), {
   ssr: false
 });
 
-class NewContentItem extends React.Component<null, State> {
+class NewContentItem extends React.Component<Props, State> {
   public constructor(props) {
     super(props);
     this.state = {
@@ -61,7 +69,6 @@ class NewContentItem extends React.Component<null, State> {
 
   public createNewContentItem = async () => {
     await createContentItem(
-      'ac199200-4e88-4ace-b450-2f319254fcec',
       this.state.form.title,
       this.state.form.description,
       this.state.form.content,

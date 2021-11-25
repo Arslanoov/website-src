@@ -15,22 +15,14 @@ export default NextAuth({
     maxAge: 30 * 24 * 60 * 60
   },
   callbacks: {
-    // TODO: Remove ts ignore
-    // TODO: Remove any
-    async signIn(credentials: any) {
-      // TODO: Add enum for role
-      return credentials.user.id && credentials.user.role === 'Admin';
+    async signIn({ user }) {
+      return user.id && user.role === 'Admin';
     },
-    // @ts-ignore
-    async session(credentials) {
-      if (credentials) {
-        // @ts-ignore
-        credentials.session.user = credentials.token.token.user;
-      }
-      return credentials;
+    async session({ session, token }) {
+      session.user = token.user;
+      return session;
     },
-    // @ts-ignore
-    async jwt(token, user) {
+    async jwt({ token, user }) {
       if (user) token.user = user;
       return token;
     },
@@ -53,7 +45,6 @@ export default NextAuth({
             role: user.role
           };
         } catch (e) {
-          console.log('ERR', e.message);
           throw new Error(e.message);
         }
       }

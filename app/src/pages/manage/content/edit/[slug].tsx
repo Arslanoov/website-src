@@ -67,7 +67,6 @@ const Editor = dynamic(import('@/ui/components/editor/Editor'), {
 class EditContentItem extends React.Component<Props, State> {
   public constructor(props) {
     super(props);
-    console.log(this.props.contentItem.rawContent);
     this.state = {
       form: {
         ...this.props.contentItem as EditContentItemForm,

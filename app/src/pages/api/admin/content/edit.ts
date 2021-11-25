@@ -1,5 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+import { getSession } from 'next-auth/react';
+
 import { Language } from '@/api/model/content/item/lang';
 import { Type } from '@/api/model/content/item/type';
 
@@ -14,6 +16,15 @@ export default async function handler(
     return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 
+  // TODO: Add middleware
+  const session = await getSession({ req });
+  if (!session?.user) {
+    return res.status(401).end('Unauthenticated');
+  }
+  if (session.user.role !== 'Admin') {
+    return res.status(403).end('Access denied');
+  }
+
   const id: string = req.body.id ?? '';
   const title: string = req.body.title ?? '';
   const description: string = req.body.description ?? '';
@@ -26,6 +37,7 @@ export default async function handler(
   try {
     await editHandler(new editCommand(
       id,
+      session.user.id,
       title,
       description,
       content,

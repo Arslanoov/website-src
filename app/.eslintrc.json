@@ -5,7 +5,8 @@
     "indent": ["error", 2],
     "quotes": [ "error", "single" ],
     "import/no-anonymous-default-export": 0,
-    "@next/next/no-img-element": 0
+    "@next/next/no-img-element": 0,
+    "react/display-name": 0
     // "no-unused-vars": "off",
   }
 }

@@ -1,6 +1,7 @@
 export default class Command {
   public constructor(
-    public id: string
+    public id: string,
+    public authorId: string
   ) {
   }
 }

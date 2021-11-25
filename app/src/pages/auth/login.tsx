@@ -1,10 +1,13 @@
-import type { GetServerSideProps, NextPage } from 'next';
+import type { GetServerSideProps } from 'next';
+import Router from 'next/router';
 
 import type { ChangeEvent } from 'react';
 import { useState } from 'react';
 
 import type { LiteralUnion, ClientSafeProvider } from 'next-auth/react';
 import { signIn, useSession, getProviders, getCsrfToken } from 'next-auth/react';
+
+import MainLayout from '@/ui/layouts/main/MainLayout';
 
 import styles from '@/ui/styles/pages/auth/login.module.scss';
 
@@ -26,7 +29,7 @@ type Props = {
   csrfToken: string
 };
 
-const Login: NextPage<Props> = ({ providers, csrfToken }) => {
+export default function Login({ providers, csrfToken }: Props) {
   const session = useSession();
 
   const credentialsProvider = providers.credentials;
@@ -35,7 +38,8 @@ const Login: NextPage<Props> = ({ providers, csrfToken }) => {
   const [password, setPassword] = useState<string>('');
 
   if (session.data) {
-    return <div className={styles.alert}>Already signed in</div>;
+    Router.push('/');
+    return <div />;
   }
 
   return (
@@ -85,4 +89,4 @@ const Login: NextPage<Props> = ({ providers, csrfToken }) => {
   );
 };
 
-export default Login;
+Login.getLayout = (page) => <MainLayout>{page}</MainLayout>;

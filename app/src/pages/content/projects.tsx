@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
-import type { GetServerSideProps, NextPage } from 'next';
-
-import ContentListComponent from '@/ui/components/content-list/list/ContentList.component';
-import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
+import type { GetServerSideProps } from 'next';
 
 import { PaginatedContentItems } from '@/domain/content/contentItem';
 import { Language } from '@/api/model/content/item/lang';
 import { Type } from '@/api/model/content/item/type';
 
+import { getAllProjects } from '@/app/services/request/contentItem';
+
 import getAllProjectsCommand from '@/api/useCases/contentItem/getAll/command';
 import getAllProjectsHandler from '@/api/useCases/contentItem/getAll/handler';
 
-import { getAllProjects } from '@/app/services/request/contentItem';
+import MainLayout from '@/ui/layouts/main/MainLayout';
+import ContentListComponent from '@/ui/components/content-list/list/ContentList.component';
+import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
 import styles from '@/ui/styles/pages/content-items.module.scss';
 
@@ -34,10 +35,11 @@ type Props = {
   initialProjects: PaginatedContentItems
 };
 
-const Projects: NextPage<Props> = ({ initialProjects }) => {
+export default function Projects({ initialProjects }: Props) {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [projects, setProjects] = useState<PaginatedContentItems>(initialProjects);
 
+  // TODO: Remove unused query
   useEffect(() => {
     async function fetchProjects() {
       const projects = await getAllProjects(currentPage, Language.en);
@@ -69,4 +71,4 @@ const Projects: NextPage<Props> = ({ initialProjects }) => {
   );
 };
 
-export default Projects;
+Projects.getLayout = (page) => <MainLayout>{page}</MainLayout>;
