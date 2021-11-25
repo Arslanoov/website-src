@@ -1,5 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+import { getSession } from 'next-auth/react';
+
 import { Language } from '@/api/model/content/item/lang';
 import { Type } from '@/api/model/content/item/type';
 
@@ -12,13 +14,22 @@ export default async function handler(
   req: NextApiRequest, 
   res: NextApiResponse
 ) {
-  const lang: Language = (req.query.lang ?? 'en') as Language;
-  const type: Type = (req.query.type ?? '') as Type;
-  const page: number = Number(req.query.page) ?? 1;
-
   if (req.method !== 'GET') {
     return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
+
+  // TODO: Add middleware
+  const session = await getSession({ req });
+  if (!session?.user) {
+    return res.status(401).end('Unauthenticated');
+  }
+  if (session.user.role !== 'Admin') {
+    return res.status(403).end('Access denied');
+  }
+
+  const lang: Language = (req.query.lang ?? 'en') as Language;
+  const type: Type = (req.query.type ?? '') as Type;
+  const page: number = Number(req.query.page) ?? 1;
 
   try {
     const contentItems = await getAllContentItemsHandler(new getAllContentItemsCommand(

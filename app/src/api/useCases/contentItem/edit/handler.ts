@@ -11,6 +11,7 @@ import Command from './command';
 
 const handler = async ({
   id,
+  authorId,
   title,
   description,
   content,
@@ -26,7 +27,7 @@ const handler = async ({
     id: new Id(id)
   }) as ContentItem | null;
 
-  if (!contentItem) {
+  if (!contentItem || contentItem.author.id.value !== authorId) {
     throw new ContentItemDoesntExist();
   }
 
