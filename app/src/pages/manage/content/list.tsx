@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-import type { NextPage } from 'next';
-
 import { PaginatedContentItems } from '@/domain/content/contentItem';
 
 import { getAllContentItems } from '@/app/services/request/contentItem';
 
+import AdminLayout from '@/ui/layouts/admin/AdminLayout';
 import Pagination from '@/ui/components/pagination/Pagination';
 import ContentMoreButtonComponent from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
 import styles from '@/ui/styles/pages/manage/content/list.module.scss';
 
-const ContentItemList: NextPage = () => {
+export default function ContentItemList() {
   const [loading, setLoading] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [contentItems, setContentItems] = useState<PaginatedContentItems>({
@@ -106,4 +105,4 @@ const ContentItemList: NextPage = () => {
   );
 };
 
-export default ContentItemList;
+ContentItemList.getLayout = (page) => <AdminLayout>{page}</AdminLayout>;
