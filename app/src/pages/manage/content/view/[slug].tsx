@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-import type { NextPage } from 'next';
 import { GetServerSideProps } from 'next';
 
 import { ContentItem } from '@/domain/content/contentItem';
@@ -15,6 +14,7 @@ import {
   removeContentItem
 } from '@/app/services/request/contentItem';
 
+import AdminLayout from '@/ui/layouts/admin/AdminLayout';
 import ContentMoreButtonComponent from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
 import styles from '@/ui/styles/pages/manage/content/list.module.scss';
@@ -38,7 +38,7 @@ type Props = {
   item: ContentItem
 };
 
-const ContentItemView: NextPage<Props> = ({ item }) => {
+export default function ContentItemView({ item }: Props) {
   const [loading, setLoading] = useState<boolean>(false);
   const [status, setStatus] = useState<Status>(item.status as Status);
 
@@ -162,4 +162,4 @@ const ContentItemView: NextPage<Props> = ({ item }) => {
   );
 };
 
-export default ContentItemView;
+ContentItemView.getLayout = (page) => <AdminLayout>{page}</AdminLayout>;
