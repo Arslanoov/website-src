@@ -2,13 +2,16 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { getSession } from 'next-auth/react';
 
+import CustomError from '@/api/errors/customError';
+
 import { Language } from '@/api/model/content/item/lang';
 import { Type } from '@/api/model/content/item/type';
 
+import { SessionUserInterface } from '@/common/types/user/auth';
+import { UserRole } from '@/common/types/user/user';
+
 import getAllContentItemsCommand from '@/api/useCases/contentItem/getAll/command';
 import getAllContentItemsHandler from '@/api/useCases/contentItem/getAll/handler';
-
-import CustomError from '@/api/errors/customError';
 
 export default async function handler(
   req: NextApiRequest, 
@@ -23,7 +26,7 @@ export default async function handler(
   if (!session?.user) {
     return res.status(401).end('Unauthenticated');
   }
-  if (session.user.role !== 'Admin') {
+  if ((session.user as SessionUserInterface).role !== UserRole.Admin) {
     return res.status(403).end('Access denied');
   }
 

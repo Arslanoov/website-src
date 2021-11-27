@@ -7,13 +7,15 @@ import { Language } from '@/api/model/content/item/lang';
 import { Type } from '@/api/model/content/item/type';
 import { PaginatedContentItems } from '@/domain/content/contentItem';
 
+import { AuthStatus, SessionUserInterface } from '@/common/types/user/auth';
+import { UserRole } from '@/common/types/user/user';
+
 import getLatestContentItemsHandler from '@/api/useCases/contentItem/getLatest/handler';
 import getLatestContentItemsCommand from '@/api/useCases/contentItem/getLatest/command';
 
 import MainLayout from '@/ui/layouts/main/MainLayout';
 import TextBox from '@/ui/components/text-box/TextBox.component';
 import Avatar from '@/ui/components/avatar/Avatar.component';
-import PanelsListComponent from '@/ui/components/panels/list/PanelsList.component';
 import ContentListComponent from '@/ui/components/content-list/list/ContentList.component';
 import ContentMoreButtonComponent from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
@@ -48,8 +50,8 @@ type Props = {
 };
 
 export default function Home({ articles, projects }: Props) {
-  // TODO: Add enum
   const { status, data: session } = useSession();
+  const user = session.user as SessionUserInterface | null;
 
   return (
     <>
@@ -63,11 +65,15 @@ export default function Home({ articles, projects }: Props) {
         </div>
       </div>
 
-      {status === 'authenticated' && session.user.role === 'Admin' && <div className={`container ${styles['manage-container']}`}>
-        <div className={styles.button}>
-          <ContentMoreButton text="Manage" link="/manage/content/list" />
+      {
+        status === AuthStatus.logged &&
+        user.role === UserRole.Admin &&
+        <div className={`container ${styles['manage-container']}`}>
+          <div className={styles.button}>
+            <ContentMoreButton text="Manage" link="/manage/content/list" />
+          </div>
         </div>
-      </div>}
+      }
 
       <div className={`container ${styles['content-container']}`}>
         <div className={styles.blog}>

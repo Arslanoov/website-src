@@ -2,6 +2,9 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { getSession } from 'next-auth/react';
 
+import { SessionUserInterface } from '@/common/types/user/auth';
+import { UserRole } from '@/common/types/user/user';
+
 import signUpHandler from '@/api/useCases/contentItem/create/handler';
 import signUpCommand from '@/api/useCases/contentItem/create/command';
 
@@ -18,7 +21,9 @@ export default async function handler(
   if (!session?.user) {
     return res.status(401).end('Unauthenticated');
   }
-  if (session.user.role !== 'Admin') {
+  
+  const user = session.user as SessionUserInterface;
+  if (user.role !== UserRole.Admin) {
     return res.status(403).end('Access denied');
   }
 
@@ -28,7 +33,7 @@ export default async function handler(
 
   try {
     await signUpHandler(new signUpCommand(
-      session.user.id,
+      user.id,
       title,
       description,
       content,

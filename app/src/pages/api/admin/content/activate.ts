@@ -2,6 +2,9 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { getSession } from 'next-auth/react';
 
+import { SessionUserInterface } from '@/common/types/user/auth';
+import { UserRole } from '@/common/types/user/user';
+
 import activateHandler from '@/api/useCases/contentItem/activate/handler';
 import activateCommand from '@/api/useCases/contentItem/activate/command';
 
@@ -18,14 +21,16 @@ export default async function handler(
   if (!session?.user) {
     return res.status(401).end('Unauthenticated');
   }
-  if (session.user.role !== 'Admin') {
+
+  const user = session.user as SessionUserInterface;
+  if (user.role !== UserRole.Admin) {
     return res.status(403).end('Access denied');
   }
 
   const id: string = req.body.id ?? '';
 
   try {
-    await activateHandler(new activateCommand(id, session.user.id));
+    await activateHandler(new activateCommand(id, user.id));
 
     return res.status(204).end();
   } catch (e) {

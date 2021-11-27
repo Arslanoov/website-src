@@ -5,6 +5,9 @@ import { getSession } from 'next-auth/react';
 import { Language } from '@/api/model/content/item/lang';
 import { Type } from '@/api/model/content/item/type';
 
+import { SessionUserInterface } from '@/common/types/user/auth';
+import { UserRole } from '@/common/types/user/user';
+
 import editHandler from '@/api/useCases/contentItem/edit/handler';
 import editCommand from '@/api/useCases/contentItem/edit/command';
 
@@ -21,7 +24,9 @@ export default async function handler(
   if (!session?.user) {
     return res.status(401).end('Unauthenticated');
   }
-  if (session.user.role !== 'Admin') {
+  
+  const user = session.user as SessionUserInterface;
+  if (user.role !== UserRole.Admin) {
     return res.status(403).end('Access denied');
   }
 
@@ -37,7 +42,7 @@ export default async function handler(
   try {
     await editHandler(new editCommand(
       id,
-      session.user.id,
+      user.id,
       title,
       description,
       content,
