@@ -23,5 +23,10 @@ services:
       POSTGRES_DB: red
     ports:
       - "54321:5432"
+
+  app-redis:
+    image: redis:6.2.6
+    ports:
+      - "63791:6379"
 volumes:
   app-postgres:

@@ -5,6 +5,8 @@ import { Status } from '@/api/model/content/item/status';
 
 import { PaginatedContentItems } from '@/domain/content/contentItem';
 
+import { REVALIDATE_TIME } from '@/common/config/cache';
+
 import Command from './command';
 
 const PER_PAGE = 6;
@@ -20,7 +22,7 @@ const handler = async (command: Command): Promise<PaginatedContentItems> => {
       lang: command.lang,
       type: command.type,
       status: Status.Active
-    });
+    }).cache(REVALIDATE_TIME);
   }
 
   const totalCount = await qb.execute();

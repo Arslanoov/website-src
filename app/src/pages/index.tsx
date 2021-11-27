@@ -51,7 +51,7 @@ type Props = {
 
 export default function Home({ articles, projects }: Props) {
   const { status, data: session } = useSession();
-  const user = session.user as SessionUserInterface | null;
+  const user = session?.user as SessionUserInterface | null;
 
   return (
     <>

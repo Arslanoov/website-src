@@ -3,6 +3,8 @@ import initOrm from '@/api/utils/database/init';
 import { ContentItem } from '@/api/model/content/item/contentItem';
 import { Status } from '@/api/model/content/item/status';
 
+import { REVALIDATE_TIME } from '@/common/config/cache';
+
 import Command from './command';
 
 const LATEST_COUNT = 2;
@@ -41,7 +43,7 @@ const handler = async (command: Command) => {
     });
   }
 
-  const articles = await qb.execute();
+  const articles = await qb.cache().execute();
 
   return {
     items: articles
