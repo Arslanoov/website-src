@@ -30,14 +30,9 @@ export default async function handler(
     return res.status(403).end('Access denied');
   }
 
-  const id: string = req.body.id ?? '';
-  const title: string = req.body.title ?? '';
-  const description: string = req.body.description ?? '';
-  const content: string = req.body.content ?? '';
-  const rawContent: string = req.body.rawContent ?? '';
-  const lang: string = req.body.lang ?? '';
-  const type: string = req.body.type ?? '';
-  const cover: string = req.body.cover ?? null;
+  const { id = '', title = '', description = '', content = '', rawContent = '', lang = '', type = '', cover = null }: {
+    [key: string]: string | null
+  } = req.body;
 
   try {
     await editHandler(new editCommand(

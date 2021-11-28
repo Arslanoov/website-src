@@ -27,8 +27,8 @@ export default async function handler(
     return res.status(403).end('Access denied');
   }
 
-  const username: string | null = req.body.username;
-  const password: string | null = req.body.password;
+  const username: string | null = req.body.username ?? null;
+  const password: string | null = req.body.password ?? null;
 
   if (!username || !password) {
     return res.status(400).json({
