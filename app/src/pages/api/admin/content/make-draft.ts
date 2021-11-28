@@ -2,8 +2,8 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { getSession } from 'next-auth/react';
 
-import { SessionUserInterface } from '@/common/types/user/auth';
-import { UserRole } from '@/common/types/user/user';
+import { SessionUserInterface } from '@/domain/user/auth';
+import { UserRole } from '@/domain/user/user';
 
 import makeDraftHandler from '@/api/useCases/contentItem/makeDraft/handler';
 import makeDraftCommand from '@/api/useCases/contentItem/makeDraft/command';

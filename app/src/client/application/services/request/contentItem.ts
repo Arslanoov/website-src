@@ -2,6 +2,7 @@ import instance from './instance';
 
 import { PaginatedContentItems } from '@/domain/content/contentItem';
 import { Language } from '@/api/model/content/item/lang';
+import { Type } from '@/domain/content/contentItem';
 
 // Articles
 
@@ -10,8 +11,7 @@ export const getAllArticles = async (page: number = 1, lang: Language = Language
     params: {
       page,
       lang,
-      // TODO: Add enum
-      type: 'Article'
+      type: Type.article
     }
   });
 
@@ -25,8 +25,7 @@ export const getAllProjects = async (page: number = 1, lang: Language = Language
     params: {
       page,
       lang,
-      // TODO: Add enum
-      type: 'Project'
+      type: Type.project
     }
   });
 
@@ -40,7 +39,7 @@ export const getAllContentItems = async (page: number = 1, lang: Language = Lang
     params: {
       page,
       lang,
-      type: 'Article'
+      type: Type.article
     }
   });
 

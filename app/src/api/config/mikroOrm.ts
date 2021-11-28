@@ -8,7 +8,7 @@ import { User } from '@/api/model/user/user';
 import { Author } from '@/api/model/content/author/author';
 import { ContentItem } from '@/api/model/content/item/contentItem';
 
-import { REVALIDATE_TIME } from '@/common/config/cache';
+import { REVALIDATE_TIME } from '@/api/config/cache';
 
 dotenv.config();
 

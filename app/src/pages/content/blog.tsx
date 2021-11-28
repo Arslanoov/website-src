@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import type { GetServerSideProps } from 'next';
 
-import { PaginatedContentItems } from '@/domain/content/contentItem';
-import { Language } from '@/api/model/content/item/lang';
-import { Type } from '@/api/model/content/item/type';
+import { Language as ApiLanguage } from '@/api/model/content/item/lang';
+import { Type as ApiType } from '@/api/model/content/item/type';
+
+import { PaginatedContentItems, Language, Type } from '@/domain/content/contentItem';
 
 import { getAllArticles } from '@/app/services/request/contentItem';
 
@@ -19,8 +20,8 @@ import styles from '@/ui/styles/pages/content-items.module.scss';
 export const getServerSideProps: GetServerSideProps = async () => {
   const initialArticles = await getAllContentItemsHandler(new getAllContentItemsCommand(
     1,
-    Language.en,
-    Type.Article,
+    Language.english as unknown as ApiLanguage,
+    Type.article as unknown as ApiType,
     false
   ));
 
@@ -42,7 +43,7 @@ export default function Page({ initialArticles }: Props) {
   // TODO: Remove unused request
   useEffect(() => {
     async function fetchArticles() {
-      const articles = await getAllArticles(currentPage, Language.en);
+      const articles = await getAllArticles(currentPage, Language.english as unknown as ApiLanguage);
       setArticles(articles);
     }
 

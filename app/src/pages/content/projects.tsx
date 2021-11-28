@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import type { GetServerSideProps } from 'next';
 
-import { PaginatedContentItems } from '@/domain/content/contentItem';
-import { Language } from '@/api/model/content/item/lang';
-import { Type } from '@/api/model/content/item/type';
+import { Language as ApiLanguage } from '@/api/model/content/item/lang';
+import { Type as ApiType } from '@/api/model/content/item/type';
+
+import { PaginatedContentItems, Language, Type } from '@/domain/content/contentItem';
 
 import { getAllProjects } from '@/app/services/request/contentItem';
 
@@ -19,8 +20,8 @@ import styles from '@/ui/styles/pages/content-items.module.scss';
 export const getServerSideProps: GetServerSideProps = async () => {
   const initialProjects = await getAllProjectsHandler(new getAllProjectsCommand(
     1,
-    Language.en,
-    Type.Project,
+    Language.english as unknown as ApiLanguage,
+    Type.project as unknown as ApiType,
     false
   ));
 
@@ -42,7 +43,7 @@ export default function Projects({ initialProjects }: Props) {
   // TODO: Remove unused query
   useEffect(() => {
     async function fetchProjects() {
-      const projects = await getAllProjects(currentPage, Language.en);
+      const projects = await getAllProjects(currentPage, Language.english as unknown as ApiLanguage);
       setProjects(projects);
     }
 

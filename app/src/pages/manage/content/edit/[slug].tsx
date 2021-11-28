@@ -8,7 +8,7 @@ import { editContentItem } from '@/app/services/request/contentItem';
 
 import { jsonToHtml } from '@/app/utils/json-to-html/jsonToHtml';
 
-import { ContentItem as ContentItemInterface } from '@/domain/content/contentItem';
+import { ContentItem as ContentItemInterface, Language, Type } from '@/domain/content/contentItem';
 
 import getOneContentItemHandler from '@/api/useCases/contentItem/getOne/handler';
 import getOneContentItemCommand from '@/api/useCases/contentItem/getOne/command';
@@ -16,16 +16,6 @@ import getOneContentItemCommand from '@/api/useCases/contentItem/getOne/command'
 import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
 import styles from '@/ui/styles/pages/manage/content/new.module.scss';
-
-const types = {
-  'Article': 'Article',
-  'Project': 'Project'
-};
-
-const langs = {
-  'English': 'en',
-  'Russian': 'ru'
-};
 
 type EditContentItemForm = {
   title: string
@@ -192,7 +182,7 @@ class EditContentItem extends React.Component<Props, State> {
               name="type"
               id="type"
             >
-              {Object.keys(types).map((type) => <option key={type} value={types[type]}>{type}</option>)}
+              {Object.keys(Type).map((type) => <option key={type} value={Type[type]}>{type}</option>)}
             </select>
           </div>
 
@@ -208,7 +198,7 @@ class EditContentItem extends React.Component<Props, State> {
               name="lang"
               id="lang"
             >
-              {Object.keys(langs).map((lang) => <option key={lang} value={langs[lang]}>{lang}</option>)}
+              {Object.keys(Language).map((lang) => <option key={lang} value={Language[lang]}>{lang}</option>)}
             </select>
           </div>
         </div>

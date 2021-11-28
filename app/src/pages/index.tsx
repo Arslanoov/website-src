@@ -3,12 +3,12 @@ import type { GetServerSideProps } from 'next';
 
 import { useSession } from 'next-auth/react';
 
-import { Language } from '@/api/model/content/item/lang';
-import { Type } from '@/api/model/content/item/type';
-import { PaginatedContentItems } from '@/domain/content/contentItem';
+import { Language as ApiLanguage } from '@/api/model/content/item/lang';
+import { Type as ApiType } from '@/api/model/content/item/type';
 
-import { AuthStatus, SessionUserInterface } from '@/common/types/user/auth';
-import { UserRole } from '@/common/types/user/user';
+import { PaginatedContentItems, Language, Type } from '@/domain/content/contentItem';
+import { AuthStatus, SessionUserInterface } from '@/domain/user/auth';
+import { UserRole } from '@/domain/user/user';
 
 import getLatestContentItemsHandler from '@/api/useCases/contentItem/getLatest/handler';
 import getLatestContentItemsCommand from '@/api/useCases/contentItem/getLatest/command';
@@ -26,13 +26,13 @@ import styles from '@/ui/styles/pages/home.module.scss';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const articles = await getLatestContentItemsHandler(new getLatestContentItemsCommand(
-    Language.en,
-    Type.Article,
+    Language.english as unknown as ApiLanguage,
+    Type.article as unknown as ApiType,
     false
   ));
   const projects = await getLatestContentItemsHandler(new getLatestContentItemsCommand(
-    Language.en,
-    Type.Project,
+    Language.english as unknown as ApiLanguage,
+    Type.project as unknown as ApiType,
     false
   ));
 

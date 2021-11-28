@@ -5,8 +5,8 @@ import { getSession } from 'next-auth/react';
 import { Language } from '@/api/model/content/item/lang';
 import { Type } from '@/api/model/content/item/type';
 
-import { SessionUserInterface } from '@/common/types/user/auth';
-import { UserRole } from '@/common/types/user/user';
+import { SessionUserInterface } from '@/domain/user/auth';
+import { UserRole } from '@/domain/user/user';
 
 import editHandler from '@/api/useCases/contentItem/edit/handler';
 import editCommand from '@/api/useCases/contentItem/edit/command';

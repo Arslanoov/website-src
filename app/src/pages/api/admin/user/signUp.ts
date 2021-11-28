@@ -4,8 +4,8 @@ import { getSession } from 'next-auth/react';
 
 import CustomError from '@/api/errors/customError';
 
-import { SessionUserInterface } from '@/common/types/user/auth';
-import { UserRole } from '@/common/types/user/user';
+import { SessionUserInterface } from '@/domain/user/auth';
+import { UserRole } from '@/domain/user/user';
 
 import signUpHandler from '@/api/useCases/user/signUp/handler';
 import signUpCommand from '@/api/useCases/user/signUp/command';

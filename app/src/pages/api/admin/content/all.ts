@@ -7,8 +7,8 @@ import CustomError from '@/api/errors/customError';
 import { Language } from '@/api/model/content/item/lang';
 import { Type } from '@/api/model/content/item/type';
 
-import { SessionUserInterface } from '@/common/types/user/auth';
-import { UserRole } from '@/common/types/user/user';
+import { SessionUserInterface } from '@/domain/user/auth';
+import { UserRole } from '@/domain/user/user';
 
 import getAllContentItemsCommand from '@/api/useCases/contentItem/getAll/command';
 import getAllContentItemsHandler from '@/api/useCases/contentItem/getAll/handler';
