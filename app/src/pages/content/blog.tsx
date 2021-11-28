@@ -36,7 +36,7 @@ type Props = {
   page: number
 };
 
-export default function Page({ articles, page }: Props) {
+export default function Blog({ articles, page }: Props) {
   const changePage = (page: number) => Router.push(`/content/blog?page=${page}`);
 
   return (
@@ -61,6 +61,4 @@ export default function Page({ articles, page }: Props) {
   );
 };
 
-Page.getLayout = function getLayout(page) {
-  return <MainLayout>{page}</MainLayout>;
-};
+Blog.getLayout = (page) => <MainLayout>{page}</MainLayout>;
