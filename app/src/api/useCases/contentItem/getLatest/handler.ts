@@ -1,11 +1,11 @@
 import initOrm from '@/api/utils/database/init';
 
+import { PER_PAGE_REVIEW_LIST } from '@/api/config/pagination';
+
 import { ContentItem } from '@/api/model/content/item/contentItem';
 import { Status } from '@/api/model/content/item/status';
 
 import Command from './command';
-
-const LATEST_COUNT = 2;
 
 const handler = async (command: Command) => {
   const { em } = await initOrm();
@@ -30,7 +30,7 @@ const handler = async (command: Command) => {
       type: command.type
     })
     .join('ci.author', 'a')
-    .limit(LATEST_COUNT)
+    .limit(PER_PAGE_REVIEW_LIST)
     /*.orderBy({
       'ci.createdAt': 'DESC'
     })*/;
