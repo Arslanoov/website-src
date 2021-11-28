@@ -21,7 +21,6 @@ export default async function handler(
     return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 
-  // TODO: Add middleware
   const session = await getSession({ req });
   if (!session?.user) {
     return res.status(401).end('Unauthenticated');

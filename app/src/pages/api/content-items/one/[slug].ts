@@ -11,7 +11,6 @@ export default async function handler(
 ) {
   const slug: string | null = req.query.slug as string | null;
 
-  // TODO: Add middleware
   if (req.method !== 'GET') {
     return res.status(405).end(`Method ${req.method} Not Allowed`);
   }

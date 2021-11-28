@@ -15,7 +15,6 @@ export default async function handler(
   const lang: Language = (req.query.lang ?? '') as Language;
   const type: Type = (req.query.type ?? '') as Type;
 
-  // TODO: Add middleware
   if (req.method !== 'GET') {
     return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
