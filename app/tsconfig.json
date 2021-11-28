@@ -34,15 +34,10 @@
       ],
       "@/ui/*": [
         "src/client/ui/*"
-      ],
-      "@/styles/*": [
-        "src/client/styles/*"
-      ],
-      "@/common/*": [
-        "src/common/*"
       ]
     },
-    "strict": false
+    "strict": false,
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",
