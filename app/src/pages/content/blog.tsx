@@ -1,12 +1,10 @@
-import { useEffect, useState } from 'react';
 import type { GetServerSideProps } from 'next';
+import Router from 'next/router';
 
 import { Language as ApiLanguage } from '@/api/model/content/item/lang';
 import { Type as ApiType } from '@/api/model/content/item/type';
 
 import { PaginatedContentItems, Language, Type } from '@/domain/content/contentItem';
-
-import { getAllArticles } from '@/app/services/request/contentItem';
 
 import getAllContentItemsCommand from '@/api/useCases/contentItem/getAll/command';
 import getAllContentItemsHandler from '@/api/useCases/contentItem/getAll/handler';
@@ -17,9 +15,9 @@ import ContentMoreButton from '@/ui/components/content-list/more-button/ContentM
 
 import styles from '@/ui/styles/pages/content-items.module.scss';
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const initialArticles = await getAllContentItemsHandler(new getAllContentItemsCommand(
-    1,
+export const getServerSideProps: GetServerSideProps = async ({ query: { page = 1 }}) => {
+  const articles = await getAllContentItemsHandler(new getAllContentItemsCommand(
+    Number(page),
     Language.english as unknown as ApiLanguage,
     Type.article as unknown as ApiType,
     false
@@ -27,28 +25,19 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return {
     props: {
-      initialArticles
+      articles,
+      page: Number(page)
     }
   };
 };
 
 type Props = {
-  initialArticles: PaginatedContentItems
+  articles: PaginatedContentItems,
+  page: number
 };
 
-export default function Page({ initialArticles }: Props) {
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [articles, setArticles] = useState<PaginatedContentItems>(initialArticles);
-
-  // TODO: Remove unused request
-  useEffect(() => {
-    async function fetchArticles() {
-      const articles = await getAllArticles(currentPage, Language.english as unknown as ApiLanguage);
-      setArticles(articles);
-    }
-
-    fetchArticles();
-  }, [currentPage]);
+export default function Page({ articles, page }: Props) {
+  const changePage = (page: number) => Router.push(`/content/blog?page=${page}`);
 
   return (
     <div className="container">
@@ -60,8 +49,8 @@ export default function Page({ initialArticles }: Props) {
         </div>
         <ContentListComponent
           paginatedItems={articles}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
+          currentPage={page}
+          setCurrentPage={changePage}
           vertical={false}
           title="Articles"
           baseUrl="/content"

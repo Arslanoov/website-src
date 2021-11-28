@@ -4,36 +4,6 @@ import { PaginatedContentItems } from '@/domain/content/contentItem';
 import { Language } from '@/api/model/content/item/lang';
 import { Type } from '@/domain/content/contentItem';
 
-// Articles
-
-export const getAllArticles = async (page: number = 1, lang: Language = Language.en): Promise<PaginatedContentItems> => {
-  const response = await instance.get('/content-items/all', {
-    params: {
-      page,
-      lang,
-      type: Type.article
-    }
-  });
-
-  return response.data;
-};
-
-// Projects
-
-export const getAllProjects = async (page: number = 1, lang: Language = Language.en): Promise<PaginatedContentItems> => {
-  const response = await instance.get('/content-items/all', {
-    params: {
-      page,
-      lang,
-      type: Type.project
-    }
-  });
-
-  return response.data;
-};
-
-// Content type
-
 export const getAllContentItems = async (page: number = 1, lang: Language = Language.en): Promise<PaginatedContentItems> => {
   const response = await instance.get('/admin/content/all', {
     params: {

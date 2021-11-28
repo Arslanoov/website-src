@@ -1,1 +1,1 @@
-export const REVALIDATE_TIME = 300000;
+export const REVALIDATE_TIME = process.env.NODE_ENV === 'development' ? 20 : 300000;
