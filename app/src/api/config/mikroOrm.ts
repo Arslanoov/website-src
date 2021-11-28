@@ -12,7 +12,7 @@ import { REVALIDATE_TIME } from '@/common/config/cache';
 
 dotenv.config();
 
-type DatabaseType = 'mongo' | 'mysql' | 'mariadb' | 'postgresql' | 'sqlite' | undefined
+type DatabaseType = 'mongo' | 'mysql' | 'mariadb' | 'postgresql' | 'sqlite' | undefined;
 
 const config: Options<PostgreSqlDriver> = {
   entities: [
@@ -46,10 +46,9 @@ const config: Options<PostgreSqlDriver> = {
     adapter: RedisCacheAdapter,
     expiration: REVALIDATE_TIME,
     options: {
-      // Added env vars
-      host: 'app-redis',
-      port: 6379,
-      password: null
+      host: process.env.REDIS_HOST,
+      port: Number(process.env.REDIS_PORT),
+      password: process.env.REDIS_PASSWORD
     }
   }
 };
