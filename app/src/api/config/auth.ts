@@ -1,0 +1,1 @@
+export const AUTH_AGE = 30 * 24 * 60 * 60;
