@@ -4,22 +4,13 @@ import Router from 'next/router';
 import dynamic from 'next/dynamic';
 
 import { createContentItem } from '@/app/services/request/contentItem';
-
 import { jsonToHtml } from '@/app/utils/json-to-html/jsonToHtml';
+
+import { Language, Type } from '@/domain/content/contentItem';
 
 import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
 import styles from '@/ui/styles/pages/manage/content/new.module.scss';
-
-const types = {
-  'Article': 'Article',
-  'Project': 'Project'
-};
-
-const langs = {
-  'English': 'en',
-  'Russian': 'ru'
-};
 
 type NewContentItemForm = {
   title: string
@@ -57,8 +48,8 @@ class NewContentItem extends React.Component<Props, State> {
         cover: '',
         rawContent: '',
         content: '',
-        type: Object.values(types)[0],
-        lang: Object.values(langs)[0]
+        type: Object.values(Type)[0],
+        lang: Object.values(Language)[0]
       }
     };
   }
@@ -178,7 +169,7 @@ class NewContentItem extends React.Component<Props, State> {
               name="type"
               id="type"
             >
-              {Object.keys(types).map((type) => <option key={type} value={types[type]}>{type}</option>)}
+              {Object.keys(Type).map((type) => <option key={type} value={Type[type]}>{type}</option>)}
             </select>
           </div>
 
@@ -194,7 +185,7 @@ class NewContentItem extends React.Component<Props, State> {
               name="lang"
               id="lang"
             >
-              {Object.keys(langs).map((lang) => <option key={lang} value={langs[lang]}>{lang}</option>)}
+              {Object.keys(Language).map((lang) => <option key={lang} value={Language[lang]}>{lang}</option>)}
             </select>
           </div>
         </div>

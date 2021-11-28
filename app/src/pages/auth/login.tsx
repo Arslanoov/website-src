@@ -23,9 +23,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 };
 
-// TODO: Remove any
 type Props = {
-  providers: Record<LiteralUnion<any>, ClientSafeProvider>,
+  providers: Record<LiteralUnion<string>, ClientSafeProvider>,
   csrfToken: string
 };
 

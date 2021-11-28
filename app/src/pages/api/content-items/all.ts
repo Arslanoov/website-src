@@ -12,12 +12,10 @@ export default async function handler(
   req: NextApiRequest, 
   res: NextApiResponse
 ) {
-  // TODO: Remove default value
-  const lang: Language = (req.query.lang ?? 'en') as Language;
+  const lang: Language = (req.query.lang ?? '') as Language;
   const type: Type = (req.query.type ?? '') as Type;
   const page: number = Number(req.query.page) ?? 1;
 
-  // TODO: Add middleware
   if (req.method !== 'GET') {
     return res.status(405).end(`Method ${req.method} Not Allowed`);
   }

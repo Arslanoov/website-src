@@ -1,16 +1,18 @@
-import { ReflectMetadataProvider } from '@mikro-orm/core';
 import dotenv from 'dotenv';
 
-import { Options } from '@mikro-orm/core';
+import { ReflectMetadataProvider, Options } from '@mikro-orm/core';
+import { PostgreSqlDriver } from '@mikro-orm/postgresql';
+import { RedisCacheAdapter } from 'mikro-orm-cache-adapter-redis';
 
 import { User } from '@/api/model/user/user';
 import { Author } from '@/api/model/content/author/author';
 import { ContentItem } from '@/api/model/content/item/contentItem';
-import { PostgreSqlDriver } from '@mikro-orm/postgresql';
+
+import { REVALIDATE_TIME } from '@/api/config/cache';
 
 dotenv.config();
 
-type DatabaseType = 'mongo' | 'mysql' | 'mariadb' | 'postgresql' | 'sqlite' | undefined
+type DatabaseType = 'mongo' | 'mysql' | 'mariadb' | 'postgresql' | 'sqlite' | undefined;
 
 const config: Options<PostgreSqlDriver> = {
   entities: [
@@ -24,8 +26,11 @@ const config: Options<PostgreSqlDriver> = {
   port: Number(process.env.DB_PORT),
   user: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
-  debug: process.env.NODE_ENV === 'development',
+  debug: true,
   metadataProvider: ReflectMetadataProvider,
+  /*cache: {
+    enabled: true,
+  },*/
   migrations: {
     tableName: 'migrations',
     path: 'src/api/utils/database/migrations',
@@ -37,6 +42,15 @@ const config: Options<PostgreSqlDriver> = {
     safe: false,
     emit: 'ts',
   },
+  resultCache: {
+    adapter: RedisCacheAdapter,
+    expiration: REVALIDATE_TIME,
+    options: {
+      host: process.env.REDIS_HOST,
+      port: Number(process.env.REDIS_PORT),
+      password: process.env.REDIS_PASSWORD
+    }
+  }
 };
 
 export default config;

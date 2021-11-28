@@ -1,13 +1,13 @@
 import initOrm from '@/api/utils/database/init';
 
+import { PER_PAGE_FULL_LIST } from '@/api/config/pagination';
+
 import { ContentItem } from '@/api/model/content/item/contentItem';
 import { Status } from '@/api/model/content/item/status';
 
 import { PaginatedContentItems } from '@/domain/content/contentItem';
 
 import Command from './command';
-
-const PER_PAGE = 6;
 
 const handler = async (command: Command): Promise<PaginatedContentItems> => {
   const { em } = await initOrm();
@@ -20,7 +20,7 @@ const handler = async (command: Command): Promise<PaginatedContentItems> => {
       lang: command.lang,
       type: command.type,
       status: Status.Active
-    });
+    }).cache();
   }
 
   const totalCount = await qb.execute();
@@ -47,8 +47,8 @@ const handler = async (command: Command): Promise<PaginatedContentItems> => {
   qb
     .select(selectColumns)
     .join('ci.author', 'a')
-    .limit(PER_PAGE)
-    .offset((command.page - 1) * PER_PAGE)
+    .limit(PER_PAGE_FULL_LIST)
+    .offset((command.page - 1) * PER_PAGE_FULL_LIST)
     /*.orderBy({
       'ci.createdAt': 'DESC'
     })*/;
@@ -57,7 +57,7 @@ const handler = async (command: Command): Promise<PaginatedContentItems> => {
 
   return {
     items: articles,
-    perPage: PER_PAGE,
+    perPage: PER_PAGE_FULL_LIST,
     totalCount: Number(totalCount[0].count)
   };
 };

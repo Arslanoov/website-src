@@ -16,7 +16,7 @@ const handler = async ({ slug, forManage }: Command) => {
   if (!contentItem) {
     throw new ContentItemDoesntExist();
   }
-  
+
   if (!forManage) {
     contentItem.visit();
   }
@@ -55,7 +55,7 @@ const handler = async ({ slug, forManage }: Command) => {
   if (!forManage) {
     qb.andWhere({
       status: Status.Active
-    });
+    }).cache();
   }
 
   qb.limit(1);

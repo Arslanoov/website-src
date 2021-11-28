@@ -2,6 +2,9 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { getSession } from 'next-auth/react';
 
+import { SessionUserInterface } from '@/domain/user/auth';
+import { UserRole } from '@/domain/user/user';
+
 import makeDraftHandler from '@/api/useCases/contentItem/makeDraft/handler';
 import makeDraftCommand from '@/api/useCases/contentItem/makeDraft/command';
 
@@ -13,12 +16,13 @@ export default async function handler(
     return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 
-  // TODO: Add middleware
   const session = await getSession({ req });
   if (!session?.user) {
     return res.status(401).end('Unauthenticated');
   }
-  if (session.user.role !== 'Admin') {
+
+  const user = session.user as SessionUserInterface;
+  if (user.role !== UserRole.Admin) {
     return res.status(403).end('Access denied');
   }
 

@@ -1,7 +1,23 @@
-// TODO: Unify types
-export type ContentType = 'Post' | 'Project';
-export type Status = 'Draft' | 'Active';
-export type Language = 'en' | 'ru';
+export enum Type {
+  article = 'Article',
+  project = 'Project'
+}
+
+export type ContentType = Type.article | Type.project;
+
+export enum Language {
+  russian = 'ru',
+  english = 'en',
+}
+
+export type LanguageType = Language.english | Language.russian;
+
+export enum Status {
+  draft = 'Draft',
+  active = 'Active',
+}
+
+export type StatusType = Status.draft | Status.active;
 
 export type ContentItem = {
   id: string

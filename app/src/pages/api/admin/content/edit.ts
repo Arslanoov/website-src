@@ -5,6 +5,9 @@ import { getSession } from 'next-auth/react';
 import { Language } from '@/api/model/content/item/lang';
 import { Type } from '@/api/model/content/item/type';
 
+import { SessionUserInterface } from '@/domain/user/auth';
+import { UserRole } from '@/domain/user/user';
+
 import editHandler from '@/api/useCases/contentItem/edit/handler';
 import editCommand from '@/api/useCases/contentItem/edit/command';
 
@@ -16,28 +19,24 @@ export default async function handler(
     return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 
-  // TODO: Add middleware
   const session = await getSession({ req });
   if (!session?.user) {
     return res.status(401).end('Unauthenticated');
   }
-  if (session.user.role !== 'Admin') {
+
+  const user = session.user as SessionUserInterface;
+  if (user.role !== UserRole.Admin) {
     return res.status(403).end('Access denied');
   }
 
-  const id: string = req.body.id ?? '';
-  const title: string = req.body.title ?? '';
-  const description: string = req.body.description ?? '';
-  const content: string = req.body.content ?? '';
-  const rawContent: string = req.body.rawContent ?? '';
-  const lang: string = req.body.lang ?? '';
-  const type: string = req.body.type ?? '';
-  const cover: string = req.body.cover ?? null;
+  const { id = '', title = '', description = '', content = '', rawContent = '', lang = '', type = '', cover = null }: {
+    [key: string]: string | null
+  } = req.body;
 
   try {
     await editHandler(new editCommand(
       id,
-      session.user.id,
+      user.id,
       title,
       description,
       content,

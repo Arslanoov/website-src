@@ -4,8 +4,6 @@ import Link from 'next/link';
 
 import styles from './content-list-item.module.scss';
 
-// TODO: Disable telemetry
-
 type Props = {
   title: string,
   description: string,

@@ -18,8 +18,6 @@ type Props = {
   prependEl?: React.ReactElement
 };
 
-// TODO: Add classnames
-
 const ContentList: React.FC<Props> = ({
   title,
   baseUrl,

@@ -5,7 +5,7 @@ services:
       - "3000:3000"
     build:
       context: app
-      dockerfile: docker/dev/Dockerfile
+      dockerfile: docker/prod/Dockerfile
     volumes:
       - ./app:/usr/src/app
       - ./app/node_modules:/usr/src/app/node_modules
@@ -23,10 +23,5 @@ services:
       POSTGRES_DB: red
     ports:
       - "54321:5432"
-
-  app-redis:
-    image: redis:6.2.6
-    ports:
-      - "63791:6379"
 volumes:
   app-postgres:

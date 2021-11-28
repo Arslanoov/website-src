@@ -2,10 +2,13 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { getSession } from 'next-auth/react';
 
+import CustomError from '@/api/errors/customError';
+
+import { SessionUserInterface } from '@/domain/user/auth';
+import { UserRole } from '@/domain/user/user';
+
 import signUpHandler from '@/api/useCases/user/signUp/handler';
 import signUpCommand from '@/api/useCases/user/signUp/command';
-
-import CustomError from '@/api/errors/customError';
 
 export default async function handler(
   req: NextApiRequest, 
@@ -15,17 +18,16 @@ export default async function handler(
     return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 
-  // TODO: Add middleware
   const session = await getSession({ req });
   if (!session?.user) {
     return res.status(401).end('Unauthenticated');
   }
-  if (session.user.role !== 'Admin') {
+  if ((session.user as SessionUserInterface).role !== UserRole.Admin) {
     return res.status(403).end('Access denied');
   }
 
-  const username: string | null = req.body.username;
-  const password: string | null = req.body.password;
+  const username: string | null = req.body.username ?? null;
+  const password: string | null = req.body.password ?? null;
 
   if (!username || !password) {
     return res.status(400).json({

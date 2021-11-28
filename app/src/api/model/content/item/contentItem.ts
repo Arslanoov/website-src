@@ -22,8 +22,7 @@ export class ContentItem {
   createdAt!: CreatedAt
   @Property({ length: 64 })
   title!: string
-  // TODO: Change length
-  @Property({ length: 64 })
+  @Property({ length: 128 })
   slug!: string
   @Property({ length: 255 })
   description!: string
