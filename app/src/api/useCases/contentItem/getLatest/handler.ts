@@ -3,8 +3,6 @@ import initOrm from '@/api/utils/database/init';
 import { ContentItem } from '@/api/model/content/item/contentItem';
 import { Status } from '@/api/model/content/item/status';
 
-import { REVALIDATE_TIME } from '@/common/config/cache';
-
 import Command from './command';
 
 const LATEST_COUNT = 2;
@@ -40,10 +38,10 @@ const handler = async (command: Command) => {
   if (!command.withDraft) {
     qb.andWhere({
       'status': Status.Active
-    });
+    }).cache();
   }
 
-  const articles = await qb.cache().execute();
+  const articles = await qb.execute();
 
   return {
     items: articles

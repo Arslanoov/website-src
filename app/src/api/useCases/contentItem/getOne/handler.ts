@@ -5,8 +5,6 @@ import { Status } from '@/api/model/content/item/status';
 
 import ContentItemDoesntExist from '@/api/errors/contentItemDoesntExist';
 
-import { REVALIDATE_TIME } from '@/common/config/cache';
-
 import Command from './command';
 
 const handler = async ({ slug, forManage }: Command) => {
@@ -57,7 +55,7 @@ const handler = async ({ slug, forManage }: Command) => {
   if (!forManage) {
     qb.andWhere({
       status: Status.Active
-    }).cache(REVALIDATE_TIME);
+    }).cache();
   }
 
   qb.limit(1);
