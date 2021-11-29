@@ -26,8 +26,6 @@ export class ContentItem {
   @Property({ length: 255 })
   description!: string
   @Property()
-  content!: string
-  @Property()
   rawContent!: string
   @Enum({ type: 'string', length: 16, items: () => Status, default: Status.Draft })
   status!: Status
@@ -47,7 +45,6 @@ export class ContentItem {
     title: string,
     slug: string,
     description: string,
-    content: string,
     rawContent: string,
     status: Status,
     type: Type,
@@ -64,8 +61,6 @@ export class ContentItem {
     this.slug = slug;
     Assert.lengthBetween(description, 'Description', 1, 255);
     this.description = description;
-    Assert.minLength(content, 'Content', 1);
-    this.content = content;
     Assert.minLength(rawContent, 'Raw content', 1);
     this.rawContent = rawContent;
     Assert.includes(status, 'Status', Object.values(Status));
@@ -85,7 +80,6 @@ export class ContentItem {
     title: string,
     slug: string,
     description: string,
-    content: string,
     rawContent: string,
     type: Type,
     lang: Language,
@@ -98,7 +92,6 @@ export class ContentItem {
       title,
       slug,
       description,
-      content,
       rawContent,
       Status.Draft,
       type,
@@ -112,7 +105,6 @@ export class ContentItem {
     title: string,
     slug: string,
     description: string,
-    content: string,
     rawContent: string,
     lang: Language,
     type: Type,
@@ -124,8 +116,6 @@ export class ContentItem {
     this.slug = slug;
     Assert.lengthBetween(description, 'Description', 1, 255);
     this.description = description;
-    Assert.minLength(content, 'Content', 1);
-    this.content = content;
     Assert.minLength(rawContent, 'Raw content', 1);
     this.rawContent = rawContent;
     Assert.includes(lang, 'Language', Object.values(Language));

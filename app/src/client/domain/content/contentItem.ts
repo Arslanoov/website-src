@@ -25,7 +25,6 @@ export type ContentItem = {
   title: string
   slug: string
   description: string
-  content: string
   rawContent?: string
   type: ContentType
   lang?: Language

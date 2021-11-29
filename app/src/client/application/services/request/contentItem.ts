@@ -19,7 +19,6 @@ export const getAllContentItems = async (page: number = 1, lang: Language = Lang
 export const createContentItem = async (
   title: string,
   description: string,
-  content: string,
   rawContent: string,
   type: string,
   lang: string,
@@ -27,7 +26,6 @@ export const createContentItem = async (
 ) => instance.post('/admin/content/create', {
   title,
   description,
-  content,
   rawContent,
   type,
   lang,
@@ -38,12 +36,11 @@ export const editContentItem = async (
   id: string,
   title: string,
   description: string,
-  content: string,
   rawContent: string,
   type: string,
   lang: string,
   cover: string
-) => instance.patch('/admin/content/edit', { id, title, description, content, rawContent, type, lang, cover });
+) => instance.patch('/admin/content/edit', { id, title, description, rawContent, type, lang, cover });
 
 export const activateContentItem = async (id: string) => instance.patch('/admin/content/activate', { id });
 export const makeContentItemDraft = async (id: string) => instance.patch('/admin/content/make-draft', { id });

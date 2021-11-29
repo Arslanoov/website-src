@@ -21,7 +21,6 @@ const handler = async (command: Command) => {
       'ci.title',
       'ci.slug',
       'ci.description',
-      'ci.content',
       'ci.cover',
       'ci.views'
     ])

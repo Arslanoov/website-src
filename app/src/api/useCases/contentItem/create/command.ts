@@ -3,7 +3,6 @@ export default class Command {
     public authorId: string,
     public title: string,
     public description: string,
-    public content: string,
     public rawContent: string,
     public type: string,
     public lang: string,

@@ -1,4 +1,5 @@
 import type { GetServerSideProps } from 'next';
+import dynamic from 'next/dynamic';
 
 import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
@@ -27,7 +28,9 @@ type Props = {
   contentItem: ContentItemInterface
 };
 
-// TODO: Change reset file
+const Editor = dynamic(import('@/ui/components/editor/Editor'), {
+  ssr: false
+});
 
 export default function ContentItem({ contentItem }: Props) {
   return (
@@ -56,10 +59,13 @@ export default function ContentItem({ contentItem }: Props) {
       <div className="container">
         <div className={styles.wrapper}>
           <p className={styles.description}>{contentItem.description}</p>
-          <div
-            className={styles.content}
-            dangerouslySetInnerHTML={{__html: contentItem.content}}
-          />
+          <div className={styles.content}>
+            <Editor
+              initialValue={JSON.parse(contentItem.rawContent)}
+              onChange={() => {}}
+              readOnly
+            />
+          </div>
         </div>
       </div>
     </>

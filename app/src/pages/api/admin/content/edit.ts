@@ -29,7 +29,7 @@ export default async function handler(
     return res.status(403).end('Access denied');
   }
 
-  const { id = '', title = '', description = '', content = '', rawContent = '', lang = '', type = '', cover = null }: {
+  const { id = '', title = '', description = '', rawContent = '', lang = '', type = '', cover = null }: {
     [key: string]: string | null
   } = req.body;
 
@@ -39,7 +39,6 @@ export default async function handler(
       user.id,
       title,
       description,
-      content,
       rawContent,
       lang as Language,
       type as Type,

@@ -4,7 +4,6 @@ import Router from 'next/router';
 import dynamic from 'next/dynamic';
 
 import { createContentItem } from '@/app/services/request/contentItem';
-import { jsonToHtml } from '@/app/utils/json-to-html/jsonToHtml';
 
 import { Language, Type } from '@/domain/content/contentItem';
 
@@ -16,7 +15,6 @@ type NewContentItemForm = {
   title: string
   description: string
   cover: string
-  content: string
   rawContent: string
   type: string
   lang: string
@@ -47,7 +45,6 @@ class NewContentItem extends React.Component<Props, State> {
         description: '',
         cover: '',
         rawContent: '',
-        content: '',
         type: Object.values(Type)[0],
         lang: Object.values(Language)[0]
       }
@@ -55,14 +52,13 @@ class NewContentItem extends React.Component<Props, State> {
   }
 
   public shouldComponentUpdate(nextProps: Readonly<null>, nextState: Readonly<State>, nextContext: any): boolean {
-    return this.state.form.content === nextState.form.content;
+    return this.state.form.rawContent === nextState.form.rawContent;
   }
 
   public createNewContentItem = async () => {
     await createContentItem(
       this.state.form.title,
       this.state.form.description,
-      this.state.form.content,
       this.state.form.rawContent,
       this.state.form.type,
       this.state.form.lang,
@@ -85,7 +81,6 @@ class NewContentItem extends React.Component<Props, State> {
     this.setState((prevState) => ({
       form: {
         ...prevState.form,
-        content: jsonToHtml(value),
         rawContent: JSON.stringify(value)
       }
     }));
@@ -152,6 +147,7 @@ class NewContentItem extends React.Component<Props, State> {
           <div className={styles.rounded}>
             <Editor
               onChange={(value: string) => this.setContent(value)}
+              readOnly={false}
             />
           </div>
         </div>

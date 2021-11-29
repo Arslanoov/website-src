@@ -6,8 +6,6 @@ import dynamic from 'next/dynamic';
 
 import { editContentItem } from '@/app/services/request/contentItem';
 
-import { jsonToHtml } from '@/app/utils/json-to-html/jsonToHtml';
-
 import { ContentItem as ContentItemInterface, Language, Type } from '@/domain/content/contentItem';
 
 import getOneContentItemHandler from '@/api/useCases/contentItem/getOne/handler';
@@ -21,7 +19,6 @@ type EditContentItemForm = {
   title: string
   description: string
   cover: string
-  content: string
   rawContent: string
   type: string
   lang: string
@@ -66,7 +63,7 @@ class EditContentItem extends React.Component<Props, State> {
   }
 
   public shouldComponentUpdate(nextProps: Readonly<null>, nextState: Readonly<State>, nextContext: any): boolean {
-    return this.state.form.content === nextState.form.content;
+    return this.state.form.rawContent === nextState.form.rawContent;
   }
 
   public createNewContentItem = async () => {
@@ -74,7 +71,6 @@ class EditContentItem extends React.Component<Props, State> {
       this.props.contentItem.id,
       this.state.form.title,
       this.state.form.description,
-      this.state.form.content,
       this.state.form.rawContent,
       this.state.form.type,
       this.state.form.lang,
@@ -97,7 +93,6 @@ class EditContentItem extends React.Component<Props, State> {
     this.setState((prevState) => ({
       form: {
         ...prevState.form,
-        content: jsonToHtml(value),
         rawContent: JSON.stringify(value)
       }
     }));
@@ -165,6 +160,7 @@ class EditContentItem extends React.Component<Props, State> {
             <Editor
               onChange={(value: string) => this.setContent(value)}
               initialValue={this.state.form.rawContent}
+              readOnly={false}
             />
           </div>
         </div>
