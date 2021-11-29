@@ -1,17 +1,25 @@
 import { Type, Platform, EntityProperty } from '@mikro-orm/core';
 
-import { CreatedAt } from '@/api/model/content/item/createdAt';
+import CustomError from '@/api/errors/customError';
 
-export class CreatedAtType extends Type<CreatedAt, string> {
-  public convertToDatabaseValue(value: CreatedAt, platform: Platform, fromQuery?: boolean): string {
-    return value.value.toString();
+export class CreatedAtType extends Type<Date, string> {
+  public convertToDatabaseValue(value: Date | string | undefined, platform: Platform, fromQuery?: boolean): string {
+    if (value instanceof Date) {
+      return value.toISOString().substr(0, 10);
+    }
+
+    if (!value || value.toString().match(/^\d{4}-\d{2}-\d{2}$/)) {
+      return value as string;
+    }
+
+    throw new CustomError('Invalid date');
   }
 
-  public convertToJSValue(value: string, platform: Platform): CreatedAt {
-    return new CreatedAt(new Date(value));
+  public convertToJSValue(value: string, platform: Platform): Date {
+    return new Date(value);
   }
 
   public getColumnType(prop: EntityProperty, platform: Platform): string {
-    return `varchar(${prop.length})`;
+    return 'date';
   }
 }
