@@ -3,25 +3,23 @@ const formatDateValue = (value: number): string => {
 };
 
 const MONTHS = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
+  'January',
+  'February',
+  'March',
+  'April',
   'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec'
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
 ];
 
 export const dateFormatter = (dateString: string) => {
   const date = new Date(dateString);
   const day = formatDateValue(date.getDate());
   const month = MONTHS[formatDateValue(date.getMonth() + 1)];
-  const hours = formatDateValue(date.getHours());
-  const minutes = formatDateValue(date.getMinutes());
-  return ` ${hours}:${minutes}, ${month} ${day} ${date.getFullYear()}Y`;
+  return `${month} ${day}, ${date.getFullYear()}`;
 };

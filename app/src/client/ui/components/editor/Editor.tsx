@@ -8,7 +8,8 @@ import styles from './editor.module.scss';
 const EditorJs = createReactEditorJS();
 
 type Props = {
-  onChange: (value: string) => void
+  onChange: (value: string) => void,
+  readOnly: boolean,
   initialValue?: string
 };
 
@@ -33,14 +34,18 @@ class Editor extends React.Component<Props> {
   }
 
   public render() {
-    return <>
+    return <div className={this.props.readOnly ? 'content-view' : ''}>
       <EditorJs
         onInitialize={this.handleInitialize}
         defaultValue={this.props.initialValue ?? ''}
+        readOnly={this.props.readOnly}
         tools={tools}
       />
-      <button onClick={this.handleSave} className={styles.button}>Save</button>
-    </>;
+      {
+        !this.props.readOnly &&
+        <button onClick={this.handleSave} className={styles.button}>Save</button>
+      }
+    </div>;
   }
 }
 

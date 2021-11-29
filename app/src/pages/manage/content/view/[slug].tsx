@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-import { GetServerSideProps } from 'next';
+import type { GetServerSideProps } from 'next';
+import dynamic from 'next/dynamic';
 
 import { ContentItem } from '@/domain/content/contentItem';
 import { Status } from '@/api/model/content/item/status';
@@ -38,9 +39,13 @@ type Props = {
   item: ContentItem
 };
 
+const Editor = dynamic(import('@/ui/components/editor/Editor'), {
+  ssr: false
+});
+
 export default function ContentItemView({ item }: Props) {
   const [loading, setLoading] = useState<boolean>(false);
-  const [status, setStatus] = useState<Status>(item.status as Status);
+  const [status, setStatus] = useState<Status>(item.status as unknown as Status);
 
   const makeDraft = (id: string) => {
     async function makeContentItemDraft() {
@@ -153,9 +158,10 @@ export default function ContentItemView({ item }: Props) {
         </table>
 
         <h3 className={styles.subtitle}>Content</h3>
-        <div
-          className={styles.content}
-          dangerouslySetInnerHTML={{__html: item.content}}
+        <Editor
+          initialValue={JSON.parse(item.rawContent)}
+          onChange={() => {}}
+          readOnly
         />
       </div>
     </div>

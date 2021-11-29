@@ -21,7 +21,6 @@ const handler = async (command: Command) => {
       'ci.title',
       'ci.slug',
       'ci.description',
-      'ci.content',
       'ci.cover',
       'ci.views'
     ])
@@ -31,9 +30,9 @@ const handler = async (command: Command) => {
     })
     .join('ci.author', 'a')
     .limit(PER_PAGE_REVIEW_LIST)
-    /*.orderBy({
+    .orderBy({
       'ci.createdAt': 'DESC'
-    })*/;
+    });
 
   if (!command.withDraft) {
     qb.andWhere({

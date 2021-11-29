@@ -49,9 +49,9 @@ const handler = async (command: Command): Promise<PaginatedContentItems> => {
     .join('ci.author', 'a')
     .limit(PER_PAGE_FULL_LIST)
     .offset((command.page - 1) * PER_PAGE_FULL_LIST)
-    /*.orderBy({
+    .orderBy({
       'ci.createdAt': 'DESC'
-    })*/;
+    });
 
   const articles = await qb.execute();
 

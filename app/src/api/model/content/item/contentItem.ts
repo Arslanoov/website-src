@@ -7,7 +7,6 @@ import { CreatedAtType } from '@/api/infrastructure/model/content/item/createdAt
 
 import { Author } from '@/api/model/content/author/author';
 import { Id } from './id';
-import { CreatedAt } from './createdAt';
 import { Status } from './status';
 import { Type } from './type';
 import { Language } from './lang';
@@ -18,16 +17,14 @@ export class ContentItem {
   id!: Id
   @ManyToOne()
   author!: Author
-  @Property({ type: CreatedAtType, length: 64 })
-  createdAt!: CreatedAt
+  @Property({ type: CreatedAtType })
+  createdAt!: Date
   @Property({ length: 64 })
   title!: string
   @Property({ length: 128 })
   slug!: string
   @Property({ length: 255 })
   description!: string
-  @Property()
-  content!: string
   @Property()
   rawContent!: string
   @Enum({ type: 'string', length: 16, items: () => Status, default: Status.Draft })
@@ -44,11 +41,10 @@ export class ContentItem {
   public constructor(
     id: Id,
     author: Author,
-    createdAt: CreatedAt,
+    createdAt: Date,
     title: string,
     slug: string,
     description: string,
-    content: string,
     rawContent: string,
     status: Status,
     type: Type,
@@ -65,8 +61,6 @@ export class ContentItem {
     this.slug = slug;
     Assert.lengthBetween(description, 'Description', 1, 255);
     this.description = description;
-    Assert.minLength(content, 'Content', 1);
-    this.content = content;
     Assert.minLength(rawContent, 'Raw content', 1);
     this.rawContent = rawContent;
     Assert.includes(status, 'Status', Object.values(Status));
@@ -86,7 +80,6 @@ export class ContentItem {
     title: string,
     slug: string,
     description: string,
-    content: string,
     rawContent: string,
     type: Type,
     lang: Language,
@@ -95,11 +88,10 @@ export class ContentItem {
     return new ContentItem(
       id,
       author,
-      CreatedAt.now(),
+      new Date(),
       title,
       slug,
       description,
-      content,
       rawContent,
       Status.Draft,
       type,
@@ -113,7 +105,6 @@ export class ContentItem {
     title: string,
     slug: string,
     description: string,
-    content: string,
     rawContent: string,
     lang: Language,
     type: Type,
@@ -125,8 +116,6 @@ export class ContentItem {
     this.slug = slug;
     Assert.lengthBetween(description, 'Description', 1, 255);
     this.description = description;
-    Assert.minLength(content, 'Content', 1);
-    this.content = content;
     Assert.minLength(rawContent, 'Raw content', 1);
     this.rawContent = rawContent;
     Assert.includes(lang, 'Language', Object.values(Language));
