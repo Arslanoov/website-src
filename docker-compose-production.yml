@@ -8,8 +8,6 @@ services:
       dockerfile: docker/prod/Dockerfile
     volumes:
       - ./app:/usr/src/app
-      - ./app/node_modules:/usr/src/app/node_modules
-      - ./app/.next:/usr/src/app/.next
     env_file:
       - ./app/.env.local
 

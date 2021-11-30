@@ -43,7 +43,6 @@
     "react-dom": "^17.0.2",
     "react-editor-js": "^2.0.3",
     "reflect-metadata": "^0.1.13",
-    "scss-reset": "^1.2.2",
     "slugify": "^1.6.1",
     "uuid": "^8.3.2"
   },
