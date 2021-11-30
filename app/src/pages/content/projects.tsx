@@ -4,7 +4,7 @@ import Router from 'next/router';
 import { Language as ApiLanguage } from '@/api/model/content/item/lang';
 import { Type as ApiType } from '@/api/model/content/item/type';
 
-import { PaginatedContentItems, Language, Type } from '@/domain/content/contentItem';
+import { PaginatedContentItems, Type } from '@/domain/content/contentItem';
 
 import getAllProjectsCommand from '@/api/useCases/contentItem/getAll/command';
 import getAllProjectsHandler from '@/api/useCases/contentItem/getAll/handler';
@@ -15,10 +15,10 @@ import ContentMoreButton from '@/ui/components/content-list/more-button/ContentM
 
 import styles from '@/ui/styles/pages/content-items.module.scss';
 
-export const getServerSideProps: GetServerSideProps = async ({ query: { page = 1}}) => {
+export const getServerSideProps: GetServerSideProps = async ({ query: { page = 1}, locale }) => {
   const projects = await getAllProjectsHandler(new getAllProjectsCommand(
     Number(page),
-    Language.english as unknown as ApiLanguage,
+    locale as ApiLanguage,
     Type.project as unknown as ApiType,
     false
   ));

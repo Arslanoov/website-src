@@ -1,19 +1,22 @@
 import React from 'react';
 
+import { useRouter } from 'next/router';
+
+import { getText } from '@/app/utils/i18n/helper';
+
 import styles from './text-box.module.scss';
 
-type Props = {
-  title: string
-  content: string
-};
+const TextBox: React.FC = () => {
+  const { locale } = useRouter();
 
-const TextBox: React.FC<Props> = ({ title, content }) => (
-  <div>
-    <div className={styles.title}>{title}</div>
-    <div className={styles.text}>
-      {content}
+  return (
+    <div>
+      <div className={styles.title}>{getText(locale, 'about-me-title')}</div>
+      <div className={styles.text}>
+        {getText(locale, 'about-me')}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default TextBox;

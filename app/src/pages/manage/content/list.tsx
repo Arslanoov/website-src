@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
+import { useRouter } from 'next/router';
+
 import { PaginatedContentItems } from '@/domain/content/contentItem';
 
 import { getAllContentItems } from '@/app/services/request/contentItem';
+import { getText } from '@/app/utils/i18n/helper';
 
 import AdminLayout from '@/ui/layouts/admin/AdminLayout';
 import Pagination from '@/ui/components/pagination/Pagination';
@@ -11,6 +14,8 @@ import ContentMoreButtonComponent from '@/ui/components/content-list/more-button
 import styles from '@/ui/styles/pages/manage/content/list.module.scss';
 
 export default function ContentItemList() {
+  const { locale } = useRouter();
+  
   const [loading, setLoading] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [contentItems, setContentItems] = useState<PaginatedContentItems>({
@@ -37,7 +42,7 @@ export default function ContentItemList() {
           <ContentMoreButtonComponent text="Create" link="/manage/content/new" />
         </div>
 
-        <h1 className={styles.title}>Content items</h1>
+        <h1 className={styles.title}>{getText(locale, 'content-items')}</h1>
 
         {/* TODO: Add spinner */}
         {loading && <div>

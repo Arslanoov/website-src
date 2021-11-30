@@ -49,7 +49,6 @@
     align-items: center;
 
     @include tablet {
-      justify-content: start;
       grid-column: col-start 7 / col-end 12;
     }
 
