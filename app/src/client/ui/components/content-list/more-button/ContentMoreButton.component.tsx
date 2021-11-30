@@ -20,6 +20,7 @@ const ContentMoreButton: React.FC<Props> = ({
   onClick = () => {}
 }) => {
   const router = useRouter();
+
   const onButtonClick = () => {
     if (onClick) {
       onClick();
@@ -30,7 +31,7 @@ const ContentMoreButton: React.FC<Props> = ({
     }
 
     if (link) {
-      router.push(link);
+      router.push(`/${router.locale}${link}`);
     }
   };
 

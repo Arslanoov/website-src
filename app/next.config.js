@@ -7,8 +7,9 @@ module.exports = {
     includePaths: [path.join(__dirname, 'client/ui/styles')],
     prependData: '@import "src/client/ui/styles/bootstrap";'
   },
-  env: {
-    API_BASE_URL: 'http://localhost:3000/api'
+  i18n: {
+    locales: ['en', 'ru'],
+    defaultLocale: 'en',
   },
   images: {
     domains: [

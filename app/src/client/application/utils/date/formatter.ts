@@ -20,6 +20,6 @@ const MONTHS = [
 export const dateFormatter = (dateString: string) => {
   const date = new Date(dateString);
   const day = formatDateValue(date.getDate());
-  const month = MONTHS[formatDateValue(date.getMonth() + 1)];
+  const month = MONTHS[date.getMonth()];
   return `${month} ${day}, ${date.getFullYear()}`;
 };

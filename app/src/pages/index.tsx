@@ -6,7 +6,7 @@ import { useSession } from 'next-auth/react';
 import { Language as ApiLanguage } from '@/api/model/content/item/lang';
 import { Type as ApiType } from '@/api/model/content/item/type';
 
-import { PaginatedContentItems, Language, Type } from '@/domain/content/contentItem';
+import { PaginatedContentItems, Type } from '@/domain/content/contentItem';
 import { AuthStatus, SessionUserInterface } from '@/domain/user/auth';
 import { UserRole } from '@/domain/user/user';
 
@@ -24,14 +24,14 @@ import { textBoxContent, textBoxTitle } from '@/app/utils/dummy/text';
 
 import styles from '@/ui/styles/pages/home.module.scss';
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   const articles = await getLatestContentItemsHandler(new getLatestContentItemsCommand(
-    Language.english as unknown as ApiLanguage,
+    locale as unknown as ApiLanguage,
     Type.article as unknown as ApiType,
     false
   ));
   const projects = await getLatestContentItemsHandler(new getLatestContentItemsCommand(
-    Language.english as unknown as ApiLanguage,
+    locale as unknown as ApiLanguage,
     Type.project as unknown as ApiType,
     false
   ));
