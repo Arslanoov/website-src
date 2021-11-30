@@ -1,5 +1,6 @@
 import type { GetServerSideProps } from 'next';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
 
 import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
@@ -33,6 +34,8 @@ const Editor = dynamic(import('@/ui/components/editor/Editor'), {
 });
 
 export default function ContentItem({ contentItem }: Props) {
+  const { locale } = useRouter();
+
   return (
     <>
       <div className="container">
@@ -44,7 +47,7 @@ export default function ContentItem({ contentItem }: Props) {
             {contentItem.title}
           </h1>
           <div className={styles.date}>
-            {dateFormatter(contentItem.createdAt)}
+            {dateFormatter(contentItem.createdAt, locale)}
           </div>
         </div>
       </div>
