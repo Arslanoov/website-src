@@ -1,9 +1,13 @@
 import React from 'react';
 
-import ContentListItem from '@/ui/components/content-list/item/ContentListItem.component';
-import Pagination from '@/ui/components/pagination/Pagination';
+import { useRouter } from 'next/router';
+
+import { getText } from '@/app/utils/i18n/helper';
 
 import { PaginatedContentItems } from '@/domain/content/contentItem';
+
+import ContentListItem from '@/ui/components/content-list/item/ContentListItem.component';
+import Pagination from '@/ui/components/pagination/Pagination';
 
 import styles from './content-list.module.scss';
 
@@ -28,9 +32,11 @@ const ContentList: React.FC<Props> = ({
   setCurrentPage = () => {},
   prependEl
 }) => {
+  const { locale } = useRouter();
+
   return (
     <div className={styles.content}>
-      <h3 className={styles.title}>{title}</h3>
+      <h3 className={styles.title}>{getText(locale, title)}</h3>
 
       {prependEl}
 

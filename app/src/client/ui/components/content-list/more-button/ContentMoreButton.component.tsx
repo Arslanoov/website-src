@@ -2,6 +2,8 @@ import React from 'react';
 
 import { useRouter } from 'next/router';
 
+import { getText } from '@/app/utils/i18n/helper';
+
 import styles from './content-more-button.module.scss';
 
 type Props = {
@@ -37,7 +39,7 @@ const ContentMoreButton: React.FC<Props> = ({
 
   return (
     <button onClick={onButtonClick} className={styles.button} disabled={disabled}>
-      {text}
+      {getText(router.locale, text)}
     </button>
   );
 };

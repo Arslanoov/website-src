@@ -19,9 +19,7 @@
     align-items: center;
 
     .link {
-      &:not(:last-of-type) {
-        margin-right: 1rem;
-      }
+      margin-right: 1rem;
     }
   }
 }

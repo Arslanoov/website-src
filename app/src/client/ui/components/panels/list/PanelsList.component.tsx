@@ -1,24 +1,32 @@
 import React from 'react';
 
-import PanelsItem from '@/ui/components/panels/item/PanelsItem.component';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+import { getText } from '@/app/utils/i18n/helper';
+
+import { Language } from '@/domain/content/contentItem';
 
 import styles from './panels-list.module.scss';
 
-const languageOptions = {
-  en: 'English',
-  ru: 'Русский',
-};
-
-const nightMode = {
+/*const nightMode = {
   light: 'Light mode',
   night: 'Night mode',
-};
+};*/
 
 const PanelsList = () => {
+  const { locale } = useRouter();
+
   return (
     <div className={styles.list}>
-      <PanelsItem label="Language" selected="en" options={languageOptions} />
-      <PanelsItem label="Night mode" selected="light" options={nightMode} />
+      <Link
+        locale={locale === Language.english ? Language.russian : Language.english}
+        href="/"
+      >
+        <a>
+          {getText(locale, 'change-lang')} ({locale === Language.english ? Language.russian : Language.english})
+        </a>
+      </Link>
     </div>
   );
 };

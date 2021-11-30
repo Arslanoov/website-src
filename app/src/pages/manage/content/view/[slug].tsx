@@ -114,8 +114,6 @@ export default function ContentItemView({ item }: Props) {
           />
         </div>
 
-        <h1 className={styles.title}>Content items</h1>
-
         <table className={styles.table}>
           <thead>
             <tr>

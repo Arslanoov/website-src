@@ -18,7 +18,7 @@ import styles from '@/ui/styles/pages/content-items.module.scss';
 export const getServerSideProps: GetServerSideProps = async ({ query: { page = 1}, locale }) => {
   const projects = await getAllProjectsHandler(new getAllProjectsCommand(
     Number(page),
-    locale as unknown as ApiLanguage,
+    locale as ApiLanguage,
     Type.project as unknown as ApiType,
     false
   ));

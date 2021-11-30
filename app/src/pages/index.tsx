@@ -16,22 +16,21 @@ import getLatestContentItemsCommand from '@/api/useCases/contentItem/getLatest/c
 import MainLayout from '@/ui/layouts/main/MainLayout';
 import TextBox from '@/ui/components/text-box/TextBox.component';
 import Avatar from '@/ui/components/avatar/Avatar.component';
+import PanelsList from '@/ui/components/panels/list/PanelsList.component';
 import ContentListComponent from '@/ui/components/content-list/list/ContentList.component';
 import ContentMoreButtonComponent from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
-
-import { textBoxContent, textBoxTitle } from '@/app/utils/dummy/text';
 
 import styles from '@/ui/styles/pages/home.module.scss';
 
 export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   const articles = await getLatestContentItemsHandler(new getLatestContentItemsCommand(
-    locale as unknown as ApiLanguage,
+    locale as ApiLanguage,
     Type.article as unknown as ApiType,
     false
   ));
   const projects = await getLatestContentItemsHandler(new getLatestContentItemsCommand(
-    locale as unknown as ApiLanguage,
+    locale as ApiLanguage,
     Type.project as unknown as ApiType,
     false
   ));
@@ -57,11 +56,10 @@ export default function Home({ articles, projects }: Props) {
     <>
       <div className={`container ${styles['about-container']}`}>
         <div className={styles.box}>
-          <TextBox title={textBoxTitle} content={textBoxContent} />
+          <TextBox />
         </div>
         <div className={styles.avatar}>
           <Avatar />
-          {/*<PanelsListComponent />*/}
         </div>
       </div>
 

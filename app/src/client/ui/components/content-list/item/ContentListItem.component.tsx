@@ -1,6 +1,9 @@
 import React from 'react';
 
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+import { getText } from '@/app/utils/i18n/helper';
 
 import styles from './content-list-item.module.scss';
 
@@ -17,6 +20,8 @@ const ContentListItem: React.FC<Props> = ({
   link,
   img = null
 }) => {
+  const { locale } = useRouter();
+
   return (
     <div className={styles.item}>
       <Link href={link}>
@@ -30,7 +35,7 @@ const ContentListItem: React.FC<Props> = ({
       />}
       <div className={styles.description}>{description}</div>
       <Link href={link}>
-        <a className={styles.link}>View {'->'}</a>
+        <a className={styles.link}>{getText(locale, 'View')} {'->'}</a>
       </Link>
     </div>
   );
