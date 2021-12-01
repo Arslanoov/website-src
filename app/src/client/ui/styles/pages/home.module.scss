@@ -1,4 +1,11 @@
 .manage-container {
+  display: flex;
+  justify-content: center;
+
+  @include tablet {
+    display: grid;
+  }
+
   .button {
     grid-column: col-start 1 / col-end 12;
   }
