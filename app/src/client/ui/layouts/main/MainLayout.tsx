@@ -9,7 +9,7 @@ const MainLayout: React.FC = ({ children }) => {
   return (
     <div>
       <Head>
-        <title>arslanoov.red</title>
+        <title>Arslanoov</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Red" />
         <link rel="icon" href="/favicon.ico" />
