@@ -16,10 +16,16 @@ services:
     volumes:
       - app-postgres:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: app
-      POSTGRES_PASSWORD: secret
-      POSTGRES_DB: red
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     ports:
       - "54321:5432"
+
+  app-redis:
+    image: redis:6.2.6
+    ports:
+      - "63791:6379"
+
 volumes:
   app-postgres:
