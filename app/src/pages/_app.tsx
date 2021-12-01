@@ -2,6 +2,7 @@ import '@/ui/styles/main.scss';
 
 import type { ReactElement, ReactNode } from 'react';
 import { useEffect } from 'react';
+import ym from 'react-yandex-metrika';
 
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
@@ -20,7 +21,6 @@ type AppPropsWithLayout = AppProps & {
 
 Router.events.on('routeChangeComplete', (url: string) => {
   if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
-    // @ts-ignore
     ym('hit', url);
   }
 });
@@ -29,7 +29,6 @@ const App = ({ Component, pageProps: { session, ...pageProps }}: AppPropsWithLay
   useEffect(() => {
     if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
       const url = window.location.pathname + window.location.search;
-      // @ts-ignore
       ym('hit', url);
     }
   }, []);
@@ -42,7 +41,6 @@ const App = ({ Component, pageProps: { session, ...pageProps }}: AppPropsWithLay
   return (
     <>
       {
-        process.env.NODE_ENV === 'production' &&
         <YMInitializer
           accounts={[parseInt(process.env.YM_COUNTER_ID as string)]}
           options={{
