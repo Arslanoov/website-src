@@ -43,7 +43,7 @@ const App = ({ Component, pageProps: { session, ...pageProps }}: AppPropsWithLay
       <YMInitializer
         accounts={[parseInt(process.env.YM_COUNTER_ID as string)]}
         options={{
-          defer: true
+          webvisor: true
         }}
         version="2"
       />
