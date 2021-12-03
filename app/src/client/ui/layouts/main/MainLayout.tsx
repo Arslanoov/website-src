@@ -12,6 +12,7 @@ const MainLayout: React.FC = ({ children }) => {
         <title>Arslanoov</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Red" />
+        <meta name="yandex-verification" content="c6e27706431d2eba" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
