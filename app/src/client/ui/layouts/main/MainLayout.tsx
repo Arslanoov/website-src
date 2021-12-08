@@ -6,11 +6,18 @@ import Header from '@/ui/components/header/Header.component';
 
 import styles from './main-layout.module.scss';
 
-const MainLayout: React.FC = ({ children }) => {
+type Props = {
+  title?: string
+};
+
+const MainLayout: React.FC<Props> = ({
+  children,
+  title = ''
+}) => {
   return (
     <div>
       <Head>
-        <title>Arslanoov</title>
+        <title>{title ? `Arslanoov - ${title}` : 'Arslanoov'}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Red" />
         <meta name="yandex-verification" content="c6e27706431d2eba" />

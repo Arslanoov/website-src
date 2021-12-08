@@ -61,4 +61,4 @@ export default function Projects({ projects, page }: Props) {
   );
 };
 
-Projects.getLayout = (page) => <MainLayout>{page}</MainLayout>;
+Projects.getLayout = (page) => <MainLayout title="Projects">{page}</MainLayout>;

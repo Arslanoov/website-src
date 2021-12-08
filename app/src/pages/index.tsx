@@ -15,8 +15,6 @@ import getLatestContentItemsCommand from '@/api/useCases/contentItem/getLatest/c
 
 import MainLayout from '@/ui/layouts/main/MainLayout';
 import TextBox from '@/ui/components/text-box/TextBox.component';
-import Avatar from '@/ui/components/avatar/Avatar.component';
-import PanelsList from '@/ui/components/panels/list/PanelsList.component';
 import ContentListComponent from '@/ui/components/content-list/list/ContentList.component';
 import ContentMoreButtonComponent from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';

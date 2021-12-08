@@ -61,4 +61,4 @@ export default function Blog({ articles, page }: Props) {
   );
 };
 
-Blog.getLayout = (page) => <MainLayout>{page}</MainLayout>;
+Blog.getLayout = (page) => <MainLayout title="Blog">{page}</MainLayout>;

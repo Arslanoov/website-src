@@ -12,4 +12,4 @@ export default function NotFound() {
   );
 };
 
-NotFound.getLayout = (page) => <MainLayout>{page}</MainLayout>;
+NotFound.getLayout = (page) => <MainLayout title="Not Found">{page}</MainLayout>;
