@@ -28,15 +28,9 @@
   .box {
     grid-column: col-start 1 / col-end 12;
 
-    /*@include tablet {
-      grid-column: col-start 1 / col-end 6;
+    @include tablet {
+      grid-column: col-start 1 / col-end 9;
     }
-
-    @include desktop-sm {
-      grid-column: col-start 1 / col-end 8;
-    }*/
-
-    /*margin-right: 3rem;*/
   }
 
   .avatar {
