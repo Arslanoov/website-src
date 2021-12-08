@@ -8,6 +8,7 @@ export default {
       'provident quaerat quasi quia quidem recusandae, repellat temporibus ullam, vero voluptatem?',
     'content-items': 'Content items',
     'change-lang': 'Change language',
+    'home': 'Home',
 
     'January': 'January',
     'February': 'February',
@@ -62,6 +63,7 @@ export default {
     'December': 'Декабрь',
 
     'See all': 'Все подряд',
+    'home': 'Главная',
     'Back': 'Назад',
     'Go back': 'Назад',
     'Home': 'На главную',

@@ -58,9 +58,9 @@ export default function Home({ articles, projects }: Props) {
         <div className={styles.box}>
           <TextBox />
         </div>
-        <div className={styles.avatar}>
+        {/* <div className={styles.avatar}>
           <Avatar />
-        </div>
+        </div> */}
       </div>
 
       {

@@ -1,11 +1,42 @@
+.page {
+  margin-top: 2rem;
+}
+
 .wrapper {
   grid-column: col-start 1 / col-end 12;
 
-  padding: 2rem 0;
+  margin-bottom: 2rem;
+
+  border-radius: 1.5rem;
+  box-shadow: 0 .1rem 1rem rgba(0, 0, 0, .2);
+
+  @include tablet-hor {
+    grid-column: col-start 2 / col-end 11;
+  }
+
+  .content {
+    padding: 1rem 1.5rem;
+  }
 }
 
-.button {
-  margin-top: 1rem;
+.row {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  & > * {
+    margin-bottom: .5rem;
+
+    @include tablet {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .title {
@@ -27,12 +58,13 @@
 .image {
   width: 100%;
   user-select: none;
+
+  border-radius: 1.5rem 1.5rem 0 0;
 }
 
 .description,
 .content {
   width: 100%;
-  margin: 1rem 0;
 
   font-size: 1.6rem;
 }

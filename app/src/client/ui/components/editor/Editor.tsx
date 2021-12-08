@@ -25,7 +25,7 @@ class Editor extends React.Component<Props> {
     return false;
   }
 
-  public handleInitialize = instance => {
+  public handleInitialize = (instance) => {
     this.editorJS.current = instance;
   }
 
