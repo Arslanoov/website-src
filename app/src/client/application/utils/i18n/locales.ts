@@ -25,6 +25,8 @@ export default {
 
     'See all': 'See all',
     'Back': 'Back',
+    'Articles': 'Articles',
+    'Projects': 'Projects',
     'Go back': 'Go back',
     'Home': 'Home',
     'View': 'View',
@@ -65,6 +67,8 @@ export default {
     'See all': 'Все подряд',
     'home': 'Главная',
     'Back': 'Назад',
+    'Articles': 'Статьи',
+    'Projects': 'Проекты',
     'Go back': 'Назад',
     'Home': 'На главную',
     'Recent posts': 'Свежие публикации',
