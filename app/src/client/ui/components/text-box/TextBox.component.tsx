@@ -10,7 +10,7 @@ const TextBox: React.FC = () => {
   const { locale } = useRouter();
 
   return (
-    <div>
+    <div className={styles.item}>
       <div className={styles.title}>{getText(locale, 'about-me-title')}</div>
       <div className={styles.text}>
         {getText(locale, 'about-me')}

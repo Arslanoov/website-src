@@ -18,8 +18,8 @@ const ContentListItem: React.FC<Props> = ({
   img = null
 }) => {
   return (
-    <Link href={link}>
-      <a className={styles.link}>
+    <Link href={link} passHref>
+      <div className={`${styles.link} ${styles.item}`}>
         <div className={styles.item}>
           {img && <img
             className={styles.image}
@@ -34,7 +34,7 @@ const ContentListItem: React.FC<Props> = ({
             <div className={styles.description}>{description}</div>
           </div>
         </div>
-      </a>
+      </div>
     </Link>
   );
 };
