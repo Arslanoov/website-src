@@ -6,18 +6,19 @@ import Table from '@editorjs/table';
 import Warning from '@editorjs/warning';
 import Code from '@editorjs/code';
 import LinkTool from '@editorjs/link';
-import Image from '@editorjs/image';
 import Raw from '@editorjs/raw';
 import Quote from '@editorjs/quote';
 import Marker from '@editorjs/marker';
 import CheckList from '@editorjs/checklist';
 import Delimiter from '@editorjs/delimiter';
+import SimpleImage from '@editorjs/simple-image';
+import InlineCode from '@editorjs/inline-code';
 
 export default {
   header: {
     class: Header,
     config: {
-      placeholder: 'Заголовок',
+      placeholder: 'Header',
       levels: [2, 3, 4],
       defaultLevel: 2
     },
@@ -36,7 +37,8 @@ export default {
   warning: Warning,
   code: Code,
   linkTool: LinkTool,
-  image: Image,
+  simpleImage: SimpleImage,
+  inlineCode: InlineCode,
   raw: Raw,
   quote: Quote,
   marker: Marker,

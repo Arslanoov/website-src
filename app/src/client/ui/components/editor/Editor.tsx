@@ -25,10 +25,6 @@ class Editor extends React.Component<Props> {
     return false;
   }
 
-  public componentWillUnmount() {
-    this.editorJS.destroy();
-  }
-
   public handleInitialize = (instance) => {
     this.editorJS.current = instance;
   }
