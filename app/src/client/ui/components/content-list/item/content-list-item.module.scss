@@ -1,6 +1,8 @@
-.item {
+.link {
   align-self: start;
+}
 
+.item {
   box-shadow: rgba(0, 0, 0, 0.2) 0 .1rem 1rem 0;
   border-radius: 1.5rem;
 
@@ -38,9 +40,5 @@
   .description {
     font-size: 1.3rem;
     font-weight: 300;
-  }
-
-  .link {
-    font-size: 1.4rem;
   }
 }
