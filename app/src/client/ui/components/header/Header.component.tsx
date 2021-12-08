@@ -9,9 +9,7 @@ const Header = () => {
     <>
       <header className="container">
         <div className={styles.header}>
-          <div>
-            2021
-          </div>
+          <div>2021</div>
           <div className={styles.links}>
             <a className={styles.link} target="_blank" href="mailto:rasul@arslanoov.red" rel="noreferrer">rasul@arslanoov.red</a>
             <a className={styles.link} target="_blank" href="https://github.com/Arslanoov" rel="noreferrer">GitHub</a>
