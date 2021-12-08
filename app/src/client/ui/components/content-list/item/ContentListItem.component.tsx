@@ -24,19 +24,21 @@ const ContentListItem: React.FC<Props> = ({
 
   return (
     <div className={styles.item}>
-      <Link href={link}>
-        <a><h3 className={styles.title}>{title}</h3></a>
-      </Link>
       {img && <img
         className={styles.image}
         src={img}
         alt={title}
         draggable={false}
       />}
-      <div className={styles.description}>{description}</div>
-      <Link href={link}>
-        <a className={styles.link}>{getText(locale, 'View')} {'->'}</a>
-      </Link>
+      <div className={styles.content}>
+        <Link href={link}>
+          <a><h3 className={styles.title}>{title}</h3></a>
+        </Link>
+        <div className={styles.description}>{description}</div>
+        <Link href={link}>
+          <a className={styles.link}>{getText(locale, 'View')} {'->'}</a>
+        </Link>
+      </div>
     </div>
   );
 };

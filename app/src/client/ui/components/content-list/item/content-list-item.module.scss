@@ -1,6 +1,13 @@
 .item {
   align-self: start;
 
+  box-shadow: rgba(0, 0, 0, 0.2) 0 .1rem 1rem 0;
+  border-radius: 1.5rem;
+
+  .content {
+    padding: 1rem 2rem 1.5rem 2rem;
+  }
+
   .wrapper,
   .description {
     margin-bottom: .5rem;
@@ -24,6 +31,8 @@
   .image {
     width: 100%;
     user-select: none;
+
+    border-radius: 1.5rem 1.5rem 0 0;
   }
 
   .description {
