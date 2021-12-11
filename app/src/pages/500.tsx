@@ -6,7 +6,7 @@ import styles from '@/ui/styles/pages/error.module.scss';
 export default function NotFound() {
   return (
     <div className={styles.error}>
-      <h2 className={styles.title}>Server error</h2>
+      <h2 className={styles.title}>500</h2>
       <ContentMoreButton text="Home" link="/" />
     </div>
   );

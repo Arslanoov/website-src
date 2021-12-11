@@ -6,7 +6,7 @@ import styles from '@/ui/styles/pages/error.module.scss';
 export default function NotFound() {
   return (
     <div className={styles.error}>
-      <h2 className={styles.title}>Not Found</h2>
+      <h1 className={styles.title}>404</h1>
       <ContentMoreButton text="Home" link="/" />
     </div>
   );
