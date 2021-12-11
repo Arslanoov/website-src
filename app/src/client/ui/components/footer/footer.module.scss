@@ -1,17 +1,18 @@
-.header {
+.footer {
   grid-column: col-start 1 / col-end 12;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
 
   padding: 1rem 0;
 
-  font-size: 1.3rem;
+  font-size: 1.6rem;
 
   @include tablet {
     flex-direction: row;
+
+    align-items: center;
   }
 
   .links {

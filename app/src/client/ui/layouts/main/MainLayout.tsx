@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
 
-import Header from '@/ui/components/header/Header.component';
+import Footer from '@/ui/components/footer/Footer.component';
 
 import styles from './main-layout.module.scss';
 
@@ -28,11 +28,11 @@ const MainLayout: React.FC<Props> = ({
       </Head>
 
       <div className={styles.layout}>
-        <Header />
-
         <main>
           {children}
         </main>
+
+        <Footer />
       </div>
 
       <Script

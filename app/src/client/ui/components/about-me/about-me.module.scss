@@ -1,0 +1,58 @@
+.about-container {
+  row-gap: 3rem;
+  align-items: end;
+
+  margin-bottom: 2rem;
+
+  width: 100%;
+
+  @include tablet {
+    row-gap: 0;
+  }
+
+  .left {
+    grid-column: col-start 1 / col-end 12;
+
+    @include tablet {
+      grid-column: col-start 1 / col-end 6;
+    }
+  }
+
+  .right {
+    grid-column: col-start 1 / col-end 12;
+
+    @include tablet {
+      grid-column: col-start 7 / col-end 12;
+    }
+  }
+}
+
+.avatar {
+  width: 5rem;
+  height: 5rem;
+
+  border-radius: 5rem;
+}
+
+.name {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.short-description {
+  font-size: 1.6rem;
+}
+
+.right {
+  font-size: 1.6rem;
+}
+
+.paragraph {
+  &:not(:last-of-type) {
+    margin-bottom: 1rem;
+  }
+}
+
+.link {
+  color: #1c9dec;
+}

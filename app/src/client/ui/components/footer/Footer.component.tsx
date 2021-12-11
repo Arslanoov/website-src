@@ -2,13 +2,13 @@ import React from 'react';
 
 import PanelsList from '@/ui/components/panels/list/PanelsList.component';
 
-import styles from './header.module.scss';
+import styles from './footer.module.scss';
 
-const Header = () => {
+const Footer = () => {
   return (
     <>
       <header className="container">
-        <div className={styles.header}>
+        <div className={styles.footer}>
           <div>2021</div>
           <div className={styles.links}>
             <a className={styles.link} target="_blank" href="mailto:rasul@arslanoov.red" rel="noreferrer">rasul@arslanoov.red</a>
@@ -26,4 +26,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Footer;
