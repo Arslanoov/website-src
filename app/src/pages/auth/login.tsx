@@ -88,4 +88,4 @@ export default function Login({ providers, csrfToken }: Props) {
   );
 };
 
-Login.getLayout = (page) => <MainLayout>{page}</MainLayout>;
+Login.getLayout = (page) => <MainLayout title="Login">{page}</MainLayout>;

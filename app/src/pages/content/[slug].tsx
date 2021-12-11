@@ -76,4 +76,4 @@ export default function ContentItem({ contentItem }: Props) {
   );
 };
 
-ContentItem.getLayout = (page) => <MainLayout>{page}</MainLayout>;
+ContentItem.getLayout = (page) => <MainLayout title="Content">{page}</MainLayout>;

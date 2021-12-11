@@ -5,7 +5,7 @@
   @include grid-columns(15px);
 
   @include mobile {
-    @include grid-columns(35px);
+    @include grid-columns(25px);
   }
 
   @include tablet {

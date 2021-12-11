@@ -22,9 +22,9 @@ const AdminLayout: React.FC = ({ children }) => {
     router.push('/');
     return <div />;
   }
-  
+
   return (
-    <MainLayout>{children}</MainLayout>
+    <MainLayout title="Admin Panel">{children}</MainLayout>
   );
 };
 

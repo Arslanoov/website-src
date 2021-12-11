@@ -2,27 +2,37 @@ import React from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
 
-import Header from '@/ui/components/header/Header.component';
+import Footer from '@/ui/components/footer/Footer.component';
 
 import styles from './main-layout.module.scss';
 
-const MainLayout: React.FC = ({ children }) => {
+type Props = {
+  title?: string
+};
+
+const MainLayout: React.FC<Props> = ({
+  children,
+  title = ''
+}) => {
   return (
     <div>
       <Head>
-        <title>Arslanoov</title>
+        <title>{title ? `Arslanoov - ${title}` : 'Arslanoov'}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Red" />
+        <meta name="description" content="Frontend developer website." />
         <meta name="yandex-verification" content="c6e27706431d2eba" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
       <div className={styles.layout}>
-        <Header />
-
         <main>
           {children}
         </main>
+
+        <Footer />
       </div>
 
       <Script

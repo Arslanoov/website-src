@@ -19,14 +19,14 @@ const PanelsList = () => {
 
   return (
     <div className={styles.list}>
-      {/*<Link
+      <Link
         locale={locale === Language.english ? Language.russian : Language.english}
         href="/"
       >
         <a>
-          {getText(locale, 'change-lang')} ({locale === Language.english ? Language.russian : Language.english})
+          {getText(locale, 'change-lang')}
         </a>
-      </Link>*/}
+      </Link>
     </div>
   );
 };

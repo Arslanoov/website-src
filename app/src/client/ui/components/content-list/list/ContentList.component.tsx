@@ -40,23 +40,36 @@ const ContentList: React.FC<Props> = ({
 
       {prependEl}
 
-      <div className={styles.list} style={{
-        gridTemplateColumns: vertical ? '1fr' : ''
-      }}>
-        {paginatedItems.items.map((item) => <ContentListItem
-          key={item.id}
-          title={item.title}
-          img={item.cover}
-          description={item.description}
-          link={`${baseUrl}/${item.slug}`}
-        />)}
-      </div>
+      {paginatedItems.items.length === 0 ? <div className={styles['not-found']}>
+        <p>{getText(locale, 'nothing-here')}</p>
+        <p>
+          {getText(locale, 'smth-interesting')} <a
+            className={styles.link}
+            href="https://github.com/Arslanoov"
+            target="blank"
+          >
+             GitHub
+          </a>?
+        </p>
+      </div>: <>
+        <div className={styles.list} style={{
+          gridTemplateColumns: vertical ? '1fr' : ''
+        }}>
+          {paginatedItems.items.map((item) => <ContentListItem
+            key={item.id}
+            title={item.title}
+            img={item.cover}
+            description={item.description}
+            link={`${baseUrl}/${item.slug}`}
+          />)}
+        </div>
 
-      {withPagination && <Pagination
-        pagesCount={Number(paginatedItems.totalCount) / Number(paginatedItems.perPage)}
-        currentPage={currentPage}
-        onPageChange={setCurrentPage}
-      />}
+        {withPagination && <Pagination
+          pagesCount={Number(paginatedItems.totalCount) / Number(paginatedItems.perPage)}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+        />}
+      </>}
     </div>
   );
 };
