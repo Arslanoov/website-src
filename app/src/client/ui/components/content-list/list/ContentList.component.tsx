@@ -41,9 +41,9 @@ const ContentList: React.FC<Props> = ({
       {prependEl}
 
       {paginatedItems.items.length === 0 ? <div className={styles['not-found']}>
-        <p>Ууупс. Походу здесь ничего нет :(</p>
+        <p>{getText(locale, 'nothing-here')}</p>
         <p>
-          Возможно, есть что-то интересное на моем <a
+          {getText(locale, 'smth-interesting')} <a
             className={styles.link}
             href="https://github.com/Arslanoov"
             target="blank"

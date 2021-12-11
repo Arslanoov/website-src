@@ -1,11 +1,5 @@
 export default {
   'en': {
-    'about-me-title': 'About me',
-    'about-me': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' +
-      'Accusantium cum delectus est magnam minima modi nam quidem, quos repudiandae.' +
-      'Aliquid animi aperiam, autem corporis delectus doloremque eligendi error excepturi' +
-      'impedit ipsam ipsum labore laborum magnam nam natus officia officiis' +
-      'provident quaerat quasi quia quidem recusandae, repellat temporibus ullam, vero voluptatem?',
     'content-items': 'Content items',
     'change-lang': 'Change language',
     'home': 'Home',
@@ -40,14 +34,19 @@ export default {
     'Make draft': 'Make draft',
     'Back to list': 'Back to list',
     'Edit and make draft': 'Edit and make draft',
+    'Go Back': 'Go Back',
+
+    'about-me-name': 'Rasul Arslanov',
+    'about-me-p1': 'I turn layouts into working web applications' +
+      ', always work for the result.',
+    'about-me-articles': 'Sometimes I write articles ',
+    'about-me-click': 'click',
+    'about-me-reviews': ' and my projects reviews ',
+
+    'nothing-here': 'Oops. It looks like this page is empty :(',
+    'smth-interesting': 'Maybe you\'ll find something interesting in my '
   },
   'ru': {
-    'about-me-title': 'Обо мне',
-    'about-me': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.' +
-      'Accusantium cum delectus est magnam minima modi nam quidem, quos repudiandae.' +
-      'Aliquid animi aperiam, autem corporis delectus doloremque eligendi error excepturi' +
-      'impedit ipsam ipsum labore laborum magnam nam natus officia officiis' +
-      'provident quaerat quasi quia quidem recusandae, repellat temporibus ullam, vero voluptatem?',
     'content-items': 'Контент',
     'change-lang': 'Поменять язык',
 
@@ -82,5 +81,16 @@ export default {
     'Make draft': 'В черновик',
     'Back to list': 'Назад к списку',
     'Edit and make draft': 'Отредактировать',
+    'Go Back': 'Назад',
+
+    'about-me-name': 'Расуль Арсланов',
+    'about-me-p1': 'Превращаю макеты в работающие веб приложения.\n' +
+      '          Работаю на результат, умею доводить проекты до конца.',
+    'about-me-articles': 'Иногда пишу статьи ',
+    'about-me-click': 'тык',
+    'about-me-reviews': ' и обзоры своих проектов ',
+
+    'nothing-here': 'Ууупс. Походу здесь ничего нет :(',
+    'smth-interesting': 'Возможно, есть что-то интересное на моем'
   }
 };
