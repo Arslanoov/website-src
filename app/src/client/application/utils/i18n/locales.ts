@@ -37,11 +37,6 @@ export default {
     'Go Back': 'Go Back',
 
     'about-me-name': 'Rasul Arslanov',
-    'about-me-p1': 'I turn layouts into working web applications' +
-      ', always work for the result.',
-    'about-me-articles': 'Sometimes I write articles ',
-    'about-me-click': 'click',
-    'about-me-reviews': ' and my projects reviews ',
 
     'nothing-here': 'Oops. It looks like this page is empty :(',
     'smth-interesting': 'Maybe you\'ll find something interesting in my '
@@ -84,11 +79,6 @@ export default {
     'Go Back': 'Назад',
 
     'about-me-name': 'Расуль Арсланов',
-    'about-me-p1': 'Превращаю макеты в работающие веб приложения.\n' +
-      '          Работаю на результат, умею доводить проекты до конца.',
-    'about-me-articles': 'Иногда пишу статьи ',
-    'about-me-click': 'тык',
-    'about-me-reviews': ' и обзоры своих проектов ',
 
     'nothing-here': 'Ууупс. Походу здесь ничего нет :(',
     'smth-interesting': 'Возможно, есть что-то интересное на моем'
