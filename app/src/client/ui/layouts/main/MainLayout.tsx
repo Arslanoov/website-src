@@ -47,6 +47,7 @@ const MainLayout: React.FC<Props> = ({
                             id:86750287,
                             clickmap:true,
                             trackLinks:true,
+                            webvisor: true,
                             accurateTrackBounce:true
                         });
                     } catch(e) { }
