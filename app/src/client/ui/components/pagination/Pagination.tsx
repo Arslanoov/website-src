@@ -8,7 +8,7 @@ type Props = {
   pagesCount: number
   currentPage: number
   url?: string | null
-  onPageChange: (page: number) => void
+  onPageChange?: (page: number) => void
 };
 
 const Pagination: React.FC<Props> = ({
