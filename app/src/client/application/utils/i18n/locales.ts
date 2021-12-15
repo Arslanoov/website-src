@@ -39,7 +39,8 @@ export default {
     'about-me-name': 'Rasul Arslanov',
 
     'nothing-here': 'Oops. It looks like this page is empty :(',
-    'smth-interesting': 'Maybe you\'ll find something interesting in my '
+    'smth-interesting': 'Maybe you\'ll find something interesting in my ',
+    'noscript': 'You should enable JS to watch the readable content'
   },
   'ru': {
     'content-items': 'Контент',
@@ -81,6 +82,7 @@ export default {
     'about-me-name': 'Расуль Арсланов',
 
     'nothing-here': 'Ууупс. Походу здесь ничего нет :(',
-    'smth-interesting': 'Возможно, есть что-то интересное на моем'
+    'smth-interesting': 'Возможно, есть что-то интересное на моем',
+    'noscript': 'Вы должны включить JavaScript чтобы получить данные в читабельном формате'
   }
 };

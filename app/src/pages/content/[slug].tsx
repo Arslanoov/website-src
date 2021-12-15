@@ -2,9 +2,11 @@ import type { GetServerSideProps } from 'next';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 
-import { ContentItem as ContentItemInterface } from '@/domain/content/contentItem';
+import { ContentItem as ContentItemInterface, Type } from '@/domain/content/contentItem';
 
 import { dateFormatter } from '@/app/utils/date/formatter';
+
+import { getText } from '@/app/utils/i18n/helper';
 
 import getOneContentItemCommand from '@/api/useCases/contentItem/getOne/command';
 import getOneContentItemHandler from '@/api/useCases/contentItem/getOne/handler';
@@ -51,7 +53,10 @@ export default function ContentItem({ contentItem }: Props) {
               <h1 className={styles.title}>
                 {contentItem.title}
               </h1>
-              <ContentMoreButton text="Back" goBack />
+              <ContentMoreButton
+                link={`/content/${contentItem.type === Type.article ? 'blog' : 'projects'}`}
+                text="Back"
+              />
             </div>
             <div className={styles.date}>
               {dateFormatter(contentItem.createdAt, locale)}
@@ -69,6 +74,12 @@ export default function ContentItem({ contentItem }: Props) {
               onChange={() => {}}
               readOnly
             />
+            <noscript dangerouslySetInnerHTML={{
+              __html: `<p>
+                ${getText(locale, 'noscript')} <br />
+                ${JSON.stringify(JSON.parse(contentItem.rawContent).blocks)}
+              </p>`
+            }} />
           </div>
         </div>
       </div>

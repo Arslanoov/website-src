@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Link from 'next/link';
+
 import { useRouter } from 'next/router';
 
 import { getText } from '@/app/utils/i18n/helper';
@@ -10,7 +12,6 @@ type Props = {
   link?: string
   text?: string
   disabled?: boolean,
-  goBack?: boolean
   onClick?: () => void
 };
 
@@ -18,7 +19,6 @@ const ContentMoreButton: React.FC<Props> = ({
   text = 'See all',
   link = null,
   disabled = false,
-  goBack = false,
   onClick = () => {}
 }) => {
   const router = useRouter();
@@ -27,20 +27,18 @@ const ContentMoreButton: React.FC<Props> = ({
     if (onClick) {
       onClick();
     }
-
-    if (goBack) {
-      router.back();
-    }
-
-    if (link) {
-      router.push(`/${router.locale}${link}`);
-    }
   };
 
   return (
-    <button onClick={onButtonClick} className={styles.button} disabled={disabled}>
-      {getText(router.locale, text)}
-    </button>
+    link ? (
+      <Link href={`/${router.locale}${link}`}>
+        <a className={disabled ? '#' : styles.button}>{getText(router.locale, text)}</a>
+      </Link>
+    ) : (
+      <button onClick={onButtonClick} className={styles.button} disabled={disabled}>
+        {getText(router.locale, text)}
+      </button>
+    )
   );
 };
 

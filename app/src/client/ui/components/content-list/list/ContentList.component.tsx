@@ -14,11 +14,11 @@ import styles from './content-list.module.scss';
 type Props = {
   title: string
   baseUrl: string
+  paginationUrl?: string
   paginatedItems: PaginatedContentItems
   vertical?: boolean
   withPagination?: boolean
   currentPage?: number
-  setCurrentPage?: (page: number) => void
   prependEl?: React.ReactElement
 };
 
@@ -29,7 +29,7 @@ const ContentList: React.FC<Props> = ({
   vertical = false,
   withPagination = false,
   currentPage = 1,
-  setCurrentPage = () => {},
+  paginationUrl = '',
   prependEl
 }) => {
   const { locale } = useRouter();
@@ -67,7 +67,7 @@ const ContentList: React.FC<Props> = ({
         {withPagination && <Pagination
           pagesCount={Number(paginatedItems.totalCount) / Number(paginatedItems.perPage)}
           currentPage={currentPage}
-          onPageChange={setCurrentPage}
+          url={paginationUrl}
         />}
       </>}
     </div>

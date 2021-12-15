@@ -37,8 +37,6 @@ type Props = {
 };
 
 export default function Blog({ articles, page }: Props) {
-  const changePage = (page: number) => Router.push(`/content/blog?page=${page}`);
-
   return (
     <div className="container">
       <div className={styles.content}>
@@ -50,10 +48,10 @@ export default function Blog({ articles, page }: Props) {
         <ContentListComponent
           paginatedItems={articles}
           currentPage={page}
-          setCurrentPage={changePage}
           vertical={false}
           title="Articles"
           baseUrl="/content"
+          paginationUrl="/content/blog"
           withPagination
         />
       </div>
