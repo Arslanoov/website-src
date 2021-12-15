@@ -7,17 +7,17 @@ import Footer from '@/ui/components/footer/Footer.component';
 import styles from './main-layout.module.scss';
 
 type Props = {
-  title?: string
+  title?: string | null
 };
 
 const MainLayout: React.FC<Props> = ({
   children,
-  title = ''
+  title = null
 }) => {
   return (
     <div>
       <Head>
-        <title>{title ? `Arslanoov - ${title}` : 'Arslanoov'}</title>
+        <title>{title ?? 'Rasul Arslanov'}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Frontend developer website." />
         <meta name="yandex-verification" content="c6e27706431d2eba" />
