@@ -51,7 +51,7 @@ const handler = async ({
     cover
   );
 
-  em.persist(contentItem);
+  em.persist(em.create(ContentItem, contentItem));
   em.flush();
 };
 

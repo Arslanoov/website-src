@@ -42,6 +42,8 @@ const handler = async ({
     cover
   );
 
+  em.persist(contentItem);
+
   em.flush();
 };
 

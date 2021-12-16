@@ -43,6 +43,7 @@ export default async function handler(
 
     return res.status(201).end();
   } catch (e) {
+    console.log(e.message);
     if ((e as Error).name === 'CustomError') {
       return res.status(400).json({
         message: (e as Error).message
