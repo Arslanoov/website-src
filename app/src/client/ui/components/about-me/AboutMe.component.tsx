@@ -31,9 +31,6 @@ const AboutMe: React.FC<Props> = ({ lang }) => {
               Работаю на результат, умею доводить проекты до конца.
             </p>
             <p className={styles.paragraph}>
-              Личные качества: внимательность, трудолюбие, оперативность, ответственность.
-            </p>
-            <p className={styles.paragraph}>
               Иногда пишу статьи
               (<Link href="/content/blog"><a className={styles.link}>тык</a></Link>)
               и обзоры своих проектов
@@ -43,15 +40,7 @@ const AboutMe: React.FC<Props> = ({ lang }) => {
         ) : (
           <>
             <p className={styles.paragraph}>
-              Hi! I am an experienced Frontend Developer.
-              I work quickly and efficiently, so I provide bug-free apps with high-quality and easy-to-maintain code.
-            </p>
-            <p className={styles.paragraph}>
-              Have an experience of creating reactive & performant web applications with modern technologies.
-              Also I create beautiful layouts with CSS and its pre processors, such as SCSS (SASS), Less & Stylus.
-            </p>
-            <p className={styles.paragraph}>
-              Personal qualities: attentiveness, diligence, efficiency, responsibility.
+              Hi! I'm a Frontend Developer.
             </p>
             <p className={styles.paragraph}>
               Sometimes I write articles
