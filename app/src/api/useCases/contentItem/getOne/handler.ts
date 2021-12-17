@@ -33,7 +33,8 @@ const handler = async ({ slug, forManage }: Command) => {
     'ci.slug',
     'ci.description',
     'ci.raw_content',
-    'ci.cover'
+    'ci.cover',
+    'ci.type',
   ];
 
   if (forManage) {
@@ -41,7 +42,6 @@ const handler = async ({ slug, forManage }: Command) => {
       'a.id as author_id',
       'ci.status',
       'ci.views',
-      'ci.type',
       'ci.lang'
     );
   }

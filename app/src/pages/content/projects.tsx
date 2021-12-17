@@ -1,5 +1,4 @@
 import type { GetServerSideProps } from 'next';
-import Router from 'next/router';
 
 import { Language as ApiLanguage } from '@/api/model/content/item/lang';
 import { Type as ApiType } from '@/api/model/content/item/type';
@@ -37,8 +36,6 @@ type Props = {
 };
 
 export default function Projects({ projects, page }: Props) {
-  const changePage = (page: number) => Router.push(`/content/projects?page=${page}`);
-
   return (
     <div className="container">
       <div className={styles.content}>
@@ -50,10 +47,10 @@ export default function Projects({ projects, page }: Props) {
         <ContentListComponent
           paginatedItems={projects}
           currentPage={page}
-          setCurrentPage={changePage}
           vertical={false}
           title="Projects"
           baseUrl="/content"
+          paginationUrl="/content/projects"
           withPagination
         />
       </div>

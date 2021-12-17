@@ -37,7 +37,6 @@ const handler = async (command: Command): Promise<PaginatedContentItems> => {
 
   if (command.forManage) {
     selectColumns.push(
-      'ci.type',
       'ci.status',
       'ci.views',
       'ci.lang'
