@@ -24,10 +24,10 @@ const AboutMe: React.FC<Props> = ({ lang }) => {
         {lang === Language.russian ? (
           <>
             <p className={styles.paragraph}>
-              Привет! Я фронтенд-разработчик.
+              Привет! Меня зовут Расуль.
             </p>
             <p className={styles.paragraph}>
-              Превращаю макеты в работающие веб приложения.
+              Я фронтенд-разработчик. Превращаю макеты в работающие веб приложения.
               Работаю на результат, умею доводить проекты до конца.
             </p>
             <p className={styles.paragraph}>
@@ -40,7 +40,11 @@ const AboutMe: React.FC<Props> = ({ lang }) => {
         ) : (
           <>
             <p className={styles.paragraph}>
-              Hi! I'm a Frontend Developer.
+              Hi! My name is Rasul.
+            </p>
+            <p className={styles.paragraph}>
+              I am Frontend Developer. I turn layouts into working web applications.
+              Always work for the result, bring projects to the end.
             </p>
             <p className={styles.paragraph}>
               Sometimes I write articles
