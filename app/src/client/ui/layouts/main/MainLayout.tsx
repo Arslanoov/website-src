@@ -35,11 +35,12 @@ const MainLayout: React.FC<Props> = ({
         <Footer />
       </div>
 
-      <Script
-        id="yandex-metrika"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
+      {process.env.NODE_ENV === 'production' && <>
+        <Script
+          id="yandex-metrika"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
             (function(m,e,t,r,i,k,a) {
               m[i]=m[i] || function() {
                 (m[i].a=m[i].a||[]).push(arguments)
@@ -56,17 +57,18 @@ const MainLayout: React.FC<Props> = ({
               webvisor:true
             });
           `
-        }}
-      />
+          }}
+        />
 
-      <noscript>
-        <div>
-          <img src="https://mc.yandex.ru/watch/86750287" style={{
-            position: 'absolute',
-            left: '-9999px'
-          }} alt="" />
-        </div>
-      </noscript>
+        <noscript>
+          <div>
+            <img src="https://mc.yandex.ru/watch/86750287" style={{
+              position: 'absolute',
+              left: '-9999px'
+            }} alt="" />
+          </div>
+        </noscript>
+      </>}
     </div>
   );
 };

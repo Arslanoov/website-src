@@ -7,7 +7,7 @@ import styles from './footer.module.scss';
 const Footer = () => {
   return (
     <>
-      <header className="container">
+      <footer className="container">
         <div className={styles.footer}>
           <div>2021+</div>
           <div className={styles.links}>
@@ -21,7 +21,7 @@ const Footer = () => {
             <a className={styles.link} target="_blank" href="https://vc.ru/u/979383-rasul-arslanov/details/all" rel="noreferrer">VC</a>*/}
           </div>
         </div>
-      </header>
+      </footer>
     </>
   );
 };
