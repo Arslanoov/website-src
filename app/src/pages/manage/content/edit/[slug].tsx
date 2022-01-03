@@ -57,7 +57,7 @@ class EditContentItem extends React.Component<Props, State> {
     this.state = {
       form: {
         ...this.props.contentItem as EditContentItemForm,
-        rawContent: JSON.parse(this.props.contentItem.rawContent)
+        rawContent: this.props.contentItem.rawContent
       }
     };
   }
@@ -93,7 +93,7 @@ class EditContentItem extends React.Component<Props, State> {
     this.setState((prevState) => ({
       form: {
         ...prevState.form,
-        rawContent: JSON.stringify(value)
+        rawContent: value
       }
     }));
   }
@@ -160,7 +160,6 @@ class EditContentItem extends React.Component<Props, State> {
             <Editor
               onChange={(value: string) => this.setContent(value)}
               initialValue={this.state.form.rawContent}
-              readOnly={false}
             />
           </div>
         </div>

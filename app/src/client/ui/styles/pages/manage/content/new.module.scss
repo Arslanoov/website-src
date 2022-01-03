@@ -11,12 +11,6 @@
     font-weight: 700;
   }
 
-  .rounded {
-    background: #fff;
-    
-    border: .1rem solid #000;
-  }
-
   .row {
     align-self: center;
 
@@ -59,11 +53,14 @@
     }
 
     .input,
+    .textarea {
+      padding: .2rem .5rem;
+    }
+
+    .input,
     .textarea,
     .rounded {
       width: 90%;
-
-      padding: .2rem .5rem;
 
       font-size: 1.6rem;
 
@@ -74,9 +71,6 @@
 
     .input {
       outline: 0;
-    }
-
-    .textarea {
     }
 
     .select {

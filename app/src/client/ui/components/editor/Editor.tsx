@@ -1,51 +1,84 @@
-import React, { createRef } from 'react';
-import { createReactEditorJS } from 'react-editor-js';
+import React from 'react';
 
-import tools from '@/app/config/editor/tools';
+import { EditorState, ContentState, convertToRaw, convertFromHTML } from 'draft-js';
+import { Editor as EditorComponent } from 'react-draft-wysiwyg';
+
+import draftToHtml from 'draftjs-to-html';
 
 import styles from './editor.module.scss';
 
-const EditorJs = createReactEditorJS();
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 type Props = {
-  onChange: (value: string) => void,
-  readOnly: boolean,
+  onChange: (value: string) => void
   initialValue?: string
 };
 
-class Editor extends React.Component<Props> {
-  private editorJS
+type State = {
+  editorState: EditorState
+  compiledState: string
+};
 
+class Editor extends React.Component<Props, State> {
   public constructor(props) {
     super(props);
-    this.editorJS = createRef();
+
+    let editorState;
+
+    if (this.props.initialValue) {
+      const blocksFromHTML = convertFromHTML(this.props.initialValue);
+      editorState = EditorState.createWithContent(ContentState.createFromBlockArray(
+        blocksFromHTML.contentBlocks,
+        blocksFromHTML.entityMap,
+      ));
+    } else {
+      editorState = EditorState.createEmpty();
+    }
+
+    this.state = {
+      editorState,
+      compiledState: ''
+    };
   }
 
-  public shouldComponentUpdate(nextProps: Readonly<Props>, nextState: Readonly<{}>, nextContext: any): boolean {
-    return false;
+  public componentDidMount() {
+    this.handleSave();
   }
 
-  public handleInitialize = (instance) => {
-    this.editorJS.current = instance;
+  public handleChange = (state: EditorState) => {
+    this.setState({
+      editorState: state,
+    });
   }
 
-  public handleSave = async () => {
-    this.props.onChange(await this.editorJS.current.save());
+  public handleSave = () => {
+    const compiled = draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()));
+    this.setState({
+      compiledState: compiled
+    });
+    this.props.onChange(compiled);
   }
 
   public render() {
-    return <div className={this.props.readOnly ? 'content-view' : ''}>
-      <EditorJs
-        onInitialize={this.handleInitialize}
-        defaultValue={this.props.initialValue ?? ''}
-        readOnly={this.props.readOnly}
-        tools={tools}
-      />
-      {
-        !this.props.readOnly &&
+    return (
+      <div>
+        <div className={styles.editor}>
+          <EditorComponent
+            editorState={this.state.editorState}
+            toolbarClassName="toolbarClassName"
+            wrapperClassName="wrapperClassName"
+            editorClassName="editorClassName"
+            onEditorStateChange={this.handleChange}
+          />
+        </div>
+        <textarea
+          className={styles.preview}
+          value={this.state.compiledState}
+          disabled
+        />
         <button onClick={this.handleSave} className={styles.button}>Save</button>
-      }
-    </div>;
+      </div>
+    );
   }
 }
 

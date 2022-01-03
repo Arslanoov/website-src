@@ -147,7 +147,6 @@ class NewContentItem extends React.Component<Props, State> {
           <div className={styles.rounded}>
             <Editor
               onChange={(value: string) => this.setContent(value)}
-              readOnly={false}
             />
           </div>
         </div>
