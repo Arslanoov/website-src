@@ -74,15 +74,21 @@
     }
 
     .select {
-      font-size: 1.5rem;
+      padding: 0.5rem 1rem;
 
-      padding: .2rem 1rem;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+
+      border: 0.1rem solid #000;
+      border-radius: 0.5rem;
+
+      background: #fff;
     }
   }
 
   .align {
     align-self: center;
 
-    margin: 1rem 0;
+    margin: 2rem 0;
   }
 }

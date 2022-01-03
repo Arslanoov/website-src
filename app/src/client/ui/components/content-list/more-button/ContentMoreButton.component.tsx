@@ -31,8 +31,8 @@ const ContentMoreButton: React.FC<Props> = ({
 
   return (
     link ? (
-      <Link href={`/${router.locale}${link}`}>
-        <a className={disabled ? '#' : styles.button}>{getText(router.locale, text)}</a>
+      <Link href={disabled ? '#' : `/${router.locale}${link}`}>
+        <a className={styles.button}>{getText(router.locale, text)}</a>
       </Link>
     ) : (
       <button onClick={onButtonClick} className={styles.button} disabled={disabled}>
