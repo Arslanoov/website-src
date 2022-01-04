@@ -43,7 +43,7 @@ const handler = async ({
     new ContentItemId(id),
     author,
     title,
-    `${id}-${slugGenerator.generate(title)}`,
+    `${id.substring(0, 8)}-${slugGenerator.generate(title)}`,
     description,
     rawContent,
     type as Type,
