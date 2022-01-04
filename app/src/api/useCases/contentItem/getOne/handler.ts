@@ -1,4 +1,4 @@
-import initOrm from '@/api/utils/database/init';
+import { getEntityManager } from '@/api/utils/database/getEntityManager';
 
 import { ContentItem } from '@/api/model/content/item/contentItem';
 import { Status } from '@/api/model/content/item/status';
@@ -8,7 +8,7 @@ import ContentItemDoesntExist from '@/api/errors/contentItemDoesntExist';
 import Command from './command';
 
 const handler = async ({ slug, forManage }: Command) => {
-  const { em } = await initOrm();
+  const em = await getEntityManager();
 
   const contentItems = em.getRepository(ContentItem);
   const contentItem = await contentItems.findOne({ slug }) as ContentItem | null;
@@ -21,7 +21,7 @@ const handler = async ({ slug, forManage }: Command) => {
     contentItem.visit();
   }
 
-  em.flush();
+  await em.flush();
 
   const qb = await em.createQueryBuilder(ContentItem, 'ci');
   

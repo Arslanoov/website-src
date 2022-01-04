@@ -1,4 +1,4 @@
-import initOrm from '@/api/utils/database/init';
+import { getEntityManager } from '@/api/utils/database/getEntityManager';
 
 import { User } from '@/api/model/user/user';
 import { Id } from '@/api/model/user/id';
@@ -13,7 +13,7 @@ import UserAlreadyExistsError from '@/api/errors/userAlreadyExistsError';
 import Command from './command';
 
 const handler = async ({ username, password }: Command): Promise<User> => {
-  const { em } = await initOrm();
+  const em = await getEntityManager();
   const manager = new PasswordManager();
   const idGenerator = new IdGenerator();
 
@@ -34,9 +34,7 @@ const handler = async ({ username, password }: Command): Promise<User> => {
     username
   });
 
-  em.persist(user);
-  em.persist(author);
-  await em.flush();
+  em.persist([user, author]);
 
   return user;
 };

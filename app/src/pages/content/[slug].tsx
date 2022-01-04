@@ -5,8 +5,6 @@ import { ContentItem as ContentItemInterface, Type } from '@/domain/content/cont
 
 import { dateFormatter } from '@/app/utils/date/formatter';
 
-import { getText } from '@/app/utils/i18n/helper';
-
 import getOneContentItemCommand from '@/api/useCases/contentItem/getOne/command';
 import getOneContentItemHandler from '@/api/useCases/contentItem/getOne/handler';
 

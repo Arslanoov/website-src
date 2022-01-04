@@ -1,11 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+import { withORM } from '@/api/utils/database/withORM';
+
 import removeContentItemCommand from '@/api/useCases/contentItem/remove/command';
 import removeContentItemHandler from '@/api/useCases/contentItem/remove/handler';
 
 import CustomError from '@/api/errors/customError';
 
-export default async function handler(
+async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -30,3 +32,5 @@ export default async function handler(
     });
   }
 }
+
+export default withORM(handler);

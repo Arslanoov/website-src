@@ -1,6 +1,8 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
+import { initORM } from '@/api/utils/database/initORM';
+
 import { AUTH_AGE } from '@/api/config/auth';
 
 import { Role } from '@/api/model/user/role';
@@ -40,6 +42,8 @@ export default NextAuth({
       },
       async authorize(credentials) {
         try {
+          const orm = await initORM();
+
           const user = await getUserHandler(
             new getUserCommand(credentials.username, credentials.password)
           );

@@ -2,6 +2,8 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { getSession } from 'next-auth/react';
 
+import { withORM } from '@/api/utils/database/withORM';
+
 import CustomError from '@/api/errors/customError';
 
 import { Language } from '@/api/model/content/item/lang';
@@ -13,7 +15,7 @@ import { UserRole } from '@/domain/user/user';
 import getAllContentItemsCommand from '@/api/useCases/contentItem/getAll/command';
 import getAllContentItemsHandler from '@/api/useCases/contentItem/getAll/handler';
 
-export default async function handler(
+async function handler(
   req: NextApiRequest, 
   res: NextApiResponse
 ) {
@@ -54,3 +56,5 @@ export default async function handler(
     });
   }
 }
+
+export default withORM(handler);

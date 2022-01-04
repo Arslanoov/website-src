@@ -1,4 +1,4 @@
-import initOrm from '@/api/utils/database/init';
+import { getEntityManager } from '@/api/utils/database/getEntityManager';
 
 import { PER_PAGE_REVIEW_LIST } from '@/api/config/pagination';
 
@@ -8,7 +8,7 @@ import { Status } from '@/api/model/content/item/status';
 import Command from './command';
 
 const handler = async (command: Command) => {
-  const { em } = await initOrm();
+  const em = await getEntityManager();
 
   const qb = await em.createQueryBuilder(ContentItem, 'ci');
 
