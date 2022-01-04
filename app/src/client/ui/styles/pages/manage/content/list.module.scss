@@ -22,20 +22,21 @@
     font-size: 2rem;
   }
 
+  .content {
+    font-size: 1.6rem;
+  }
+
   .buttons {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
 
     & > * {
+      margin-right: 1rem;
       margin-bottom: 1rem;
 
       @include tablet {
         margin-bottom: 0;
-      }
-
-      &:not(:last-of-type) {
-        margin-right: 1rem;
       }
     }
   }

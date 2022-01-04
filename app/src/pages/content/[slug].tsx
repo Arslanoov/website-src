@@ -1,12 +1,9 @@
 import type { GetServerSideProps } from 'next';
-import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 
 import { ContentItem as ContentItemInterface, Type } from '@/domain/content/contentItem';
 
 import { dateFormatter } from '@/app/utils/date/formatter';
-
-import { getText } from '@/app/utils/i18n/helper';
 
 import getOneContentItemCommand from '@/api/useCases/contentItem/getOne/command';
 import getOneContentItemHandler from '@/api/useCases/contentItem/getOne/handler';
@@ -29,10 +26,6 @@ export const getServerSideProps: GetServerSideProps = async (req) => {
 type Props = {
   contentItem: ContentItemInterface
 };
-
-const Editor = dynamic(import('@/ui/components/editor/Editor'), {
-  ssr: false
-});
 
 export default function ContentItem({ contentItem }: Props) {
   const { locale } = useRouter();
@@ -69,16 +62,8 @@ export default function ContentItem({ contentItem }: Props) {
       <div className="container">
         <div className={styles.wrapper}>
           <div className={styles.content}>
-            <Editor
-              initialValue={JSON.parse(contentItem.rawContent)}
-              onChange={() => {}}
-              readOnly
-            />
-            <noscript dangerouslySetInnerHTML={{
-              __html: `<p>
-                ${getText(locale, 'noscript')} <br />
-                ${JSON.stringify(JSON.parse(contentItem.rawContent).blocks)}
-              </p>`
+            <div dangerouslySetInnerHTML={{
+              __html: contentItem.rawContent
             }} />
           </div>
         </div>

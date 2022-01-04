@@ -1,4 +1,4 @@
-import initOrm from '@/api/utils/database/init';
+import { getEntityManager } from '@/api/utils/database/getEntityManager';
 
 import { User } from '@/api/model/user/user';
 
@@ -9,7 +9,7 @@ import CredentialsError from '@/api/errors/credentialsError';
 import Command from './command';
 
 const handler = async (command: Command) => {
-  const { em } = await initOrm();
+  const em = await getEntityManager();
   
   const users = em.getRepository(User);
   const user: User | null = await users.findOne({

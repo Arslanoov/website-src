@@ -11,12 +11,6 @@
     font-weight: 700;
   }
 
-  .rounded {
-    background: #fff;
-    
-    border: .1rem solid #000;
-  }
-
   .row {
     align-self: center;
 
@@ -59,11 +53,14 @@
     }
 
     .input,
+    .textarea {
+      padding: .2rem .5rem;
+    }
+
+    .input,
     .textarea,
     .rounded {
       width: 90%;
-
-      padding: .2rem .5rem;
 
       font-size: 1.6rem;
 
@@ -76,19 +73,22 @@
       outline: 0;
     }
 
-    .textarea {
-    }
-
     .select {
-      font-size: 1.5rem;
+      padding: 0.5rem 1rem;
 
-      padding: .2rem 1rem;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+
+      border: 0.1rem solid #000;
+      border-radius: 0.5rem;
+
+      background: #fff;
     }
   }
 
   .align {
     align-self: center;
 
-    margin: 1rem 0;
+    margin: 2rem 0;
   }
 }

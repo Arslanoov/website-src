@@ -24,14 +24,11 @@ const AboutMe: React.FC<Props> = ({ lang }) => {
         {lang === Language.russian ? (
           <>
             <p className={styles.paragraph}>
-              Привет! Я фронтенд-разработчик.
+              Привет! Меня зовут Расуль.
             </p>
             <p className={styles.paragraph}>
-              Превращаю макеты в работающие веб приложения.
+              Я фронтенд-разработчик. Превращаю макеты в работающие веб приложения.
               Работаю на результат, умею доводить проекты до конца.
-            </p>
-            <p className={styles.paragraph}>
-              Личные качества: внимательность, трудолюбие, оперативность, ответственность.
             </p>
             <p className={styles.paragraph}>
               Иногда пишу статьи
@@ -43,15 +40,11 @@ const AboutMe: React.FC<Props> = ({ lang }) => {
         ) : (
           <>
             <p className={styles.paragraph}>
-              Hi! I am an experienced Frontend Developer.
-              I work quickly and efficiently, so I provide bug-free apps with high-quality and easy-to-maintain code.
+              Hi! My name is Rasul.
             </p>
             <p className={styles.paragraph}>
-              Have an experience of creating reactive & performant web applications with modern technologies.
-              Also I create beautiful layouts with CSS and its pre processors, such as SCSS (SASS), Less & Stylus.
-            </p>
-            <p className={styles.paragraph}>
-              Personal qualities: attentiveness, diligence, efficiency, responsibility.
+              I am Frontend Developer. I turn layouts into working web applications.
+              Always work for the result, bring projects to the end.
             </p>
             <p className={styles.paragraph}>
               Sometimes I write articles

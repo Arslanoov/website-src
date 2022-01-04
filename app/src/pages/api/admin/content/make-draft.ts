@@ -2,13 +2,15 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { getSession } from 'next-auth/react';
 
+import { withORM } from '@/api/utils/database/withORM';
+
 import { SessionUserInterface } from '@/domain/user/auth';
 import { UserRole } from '@/domain/user/user';
 
 import makeDraftHandler from '@/api/useCases/contentItem/makeDraft/handler';
 import makeDraftCommand from '@/api/useCases/contentItem/makeDraft/command';
 
-export default async function handler(
+async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -44,3 +46,5 @@ export default async function handler(
     });
   }
 }
+
+export default withORM(handler);

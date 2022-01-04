@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-
 import type { GetServerSideProps } from 'next';
-import dynamic from 'next/dynamic';
 
 import { ContentItem } from '@/domain/content/contentItem';
 import { Status } from '@/api/model/content/item/status';
@@ -38,10 +36,6 @@ export const getServerSideProps: GetServerSideProps = async (req) => {
 type Props = {
   item: ContentItem
 };
-
-const Editor = dynamic(import('@/ui/components/editor/Editor'), {
-  ssr: false
-});
 
 export default function ContentItemView({ item }: Props) {
   const [loading, setLoading] = useState<boolean>(false);
@@ -156,11 +150,7 @@ export default function ContentItemView({ item }: Props) {
         </table>
 
         <h3 className={styles.subtitle}>Content</h3>
-        <Editor
-          initialValue={JSON.parse(item.rawContent)}
-          onChange={() => {}}
-          readOnly
-        />
+        <div className={styles.content} dangerouslySetInnerHTML={{ __html: item.rawContent }} />
       </div>
     </div>
   );

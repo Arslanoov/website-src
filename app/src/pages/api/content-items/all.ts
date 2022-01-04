@@ -1,5 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+import { withORM } from '@/api/utils/database/withORM';
+
 import { Language } from '@/api/model/content/item/lang';
 import { Type } from '@/api/model/content/item/type';
 
@@ -8,7 +10,7 @@ import getAllContentItemsHandler from '@/api/useCases/contentItem/getAll/handler
 
 import CustomError from '@/api/errors/customError';
 
-export default async function handler(
+async function handler(
   req: NextApiRequest, 
   res: NextApiResponse
 ) {
@@ -41,3 +43,5 @@ export default async function handler(
     });
   }
 }
+
+export default withORM(handler);

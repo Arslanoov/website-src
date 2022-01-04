@@ -1,5 +1,25 @@
+.editor,
+.preview {
+  background-color: #fff;
+}
+
+.editor {
+  padding: 1rem;
+
+  border-radius: 0.5rem;
+}
+
+.preview {
+  width: 100%;
+  min-height: 20rem;
+
+  margin: 2rem 0;
+}
+
 .button {
   padding: .5rem 1rem;
 
-  border: .1rem solid #000;
+  background-color: #fff;
+
+  border: .1rem solid #767676;
 }

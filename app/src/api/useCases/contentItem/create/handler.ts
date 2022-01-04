@@ -1,4 +1,4 @@
-import initOrm from '@/api/utils/database/init';
+import { getEntityManager } from '@/api/utils/database/getEntityManager';
 
 import { ContentItem } from '@/api/model/content/item/contentItem';
 import { Id as ContentItemId } from '@/api/model/content/item/id';
@@ -23,7 +23,7 @@ const handler = async ({
   lang,
   cover
 }: Command): Promise<void> => {
-  const { em } = await initOrm();
+  const em = await getEntityManager();
 
   const authors = em.getRepository(Author);
   const author = await authors.findOne({
@@ -52,7 +52,7 @@ const handler = async ({
   );
 
   em.persist(em.create(ContentItem, contentItem));
-  em.flush();
+  await em.flush();
 };
 
 export default handler;
