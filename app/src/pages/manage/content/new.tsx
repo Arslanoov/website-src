@@ -8,6 +8,7 @@ import { createContentItem } from '@/app/services/request/contentItem';
 import { Language, Type } from '@/domain/content/contentItem';
 
 import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
+import AdminLayout from '@/ui/layouts/admin/AdminLayout';
 
 import styles from '@/ui/styles/pages/manage/content/new.module.scss';
 
@@ -36,7 +37,7 @@ const Editor = dynamic(import('@/ui/components/editor/Editor'), {
   ssr: false
 });
 
-class NewContentItem extends React.Component<Props, State> {
+export default class NewContentItem extends React.Component<Props, State> {
   public constructor(props) {
     super(props);
     this.state = {
@@ -49,6 +50,10 @@ class NewContentItem extends React.Component<Props, State> {
         lang: Object.values(Language)[0]
       }
     };
+  }
+
+  public getLayout(page) {
+    return <AdminLayout>{page}</AdminLayout>;
   }
 
   public shouldComponentUpdate(nextProps: Readonly<null>, nextState: Readonly<State>, nextContext: any): boolean {
@@ -88,109 +93,109 @@ class NewContentItem extends React.Component<Props, State> {
 
   public render() {
     return (
-      <div className={styles.form}>
-        <h1 className={styles.title}>Create new {this.state.form.type}</h1>
+      <AdminLayout>
+        <div className={styles.form}>
+          <h1 className={styles.title}>Create new {this.state.form.type}</h1>
 
-        <div className={styles.align}>
-          <ContentMoreButton link="/manage/content/list" text="Back to list" />
-        </div>
+          <div className={styles.align}>
+            <ContentMoreButton link="/manage/content/list" text="Back to list" />
+          </div>
 
-        <div className={styles.group}>
-          <label
-            className={styles.label}
-            htmlFor="title"
-          >Title</label>
-          <input
-            onChange={(e) => this.setField('title', e.target.value)}
-            value={this.state.form.title}
-            className={styles.input}
-            placeholder="Title"
-            type="text"
-            id="title"
-          />
-        </div>
-
-        <div className={styles.group}>
-          <label
-            className={styles.label}
-            htmlFor="cover"
-          >Cover link</label>
-          <input
-            onChange={(e) => this.setField('cover', e.target.value)}
-            value={this.state.form.cover}
-            className={styles.input}
-            placeholder="https://"
-            type="text"
-            id="cover"
-          />
-        </div>
-
-        <div className={styles.group}>
-          <label
-            className={styles.label}
-            htmlFor="description"
-          >Description</label>
-          <textarea
-            onChange={(e) => this.setField('description', e.target.value)}
-            value={this.state.form.description}
-            className={styles.textarea}
-            rows={15}
-            placeholder="Description"
-            id="description"
-          />
-        </div>
-
-        <div className={styles.group}>
-          <label
-            className={styles.label}
-          >Content</label>
-          <div className={styles.rounded}>
-            <Editor
-              onChange={(value: string) => this.setContent(value)}
+          <div className={styles.group}>
+            <label
+              className={styles.label}
+              htmlFor="title"
+            >Title</label>
+            <input
+              onChange={(e) => this.setField('title', e.target.value)}
+              value={this.state.form.title}
+              className={styles.input}
+              placeholder="Title"
+              type="text"
+              id="title"
             />
           </div>
-        </div>
 
-        <div className={styles.row}>
           <div className={styles.group}>
             <label
               className={styles.label}
-              htmlFor="type"
-            >Type</label>
-            <select
-              onChange={(e: React.ChangeEvent<HTMLSelectElement>) => this.setField('type', e.target.value)}
-              value={this.state.form.type}
-              className={styles.select}
-              name="type"
-              id="type"
-            >
-              {Object.keys(Type).map((type) => <option key={type} value={Type[type]}>{type}</option>)}
-            </select>
+              htmlFor="cover"
+            >Cover link</label>
+            <input
+              onChange={(e) => this.setField('cover', e.target.value)}
+              value={this.state.form.cover}
+              className={styles.input}
+              placeholder="https://"
+              type="text"
+              id="cover"
+            />
           </div>
 
           <div className={styles.group}>
             <label
               className={styles.label}
-              htmlFor="lang"
-            >Language</label>
-            <select
-              onChange={(e: React.ChangeEvent<HTMLSelectElement>) => this.setField('lang', e.target.value)}
-              value={this.state.form.lang}
-              className={styles.select}
-              name="lang"
-              id="lang"
-            >
-              {Object.keys(Language).map((lang) => <option key={lang} value={Language[lang]}>{lang}</option>)}
-            </select>
+              htmlFor="description"
+            >Description</label>
+            <textarea
+              onChange={(e) => this.setField('description', e.target.value)}
+              value={this.state.form.description}
+              className={styles.textarea}
+              rows={15}
+              placeholder="Description"
+              id="description"
+            />
+          </div>
+
+          <div className={styles.group}>
+            <label
+              className={styles.label}
+            >Content</label>
+            <div className={styles.rounded}>
+              <Editor
+                onChange={(value: string) => this.setContent(value)}
+              />
+            </div>
+          </div>
+
+          <div className={styles.row}>
+            <div className={styles.group}>
+              <label
+                className={styles.label}
+                htmlFor="type"
+              >Type</label>
+              <select
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => this.setField('type', e.target.value)}
+                value={this.state.form.type}
+                className={styles.select}
+                name="type"
+                id="type"
+              >
+                {Object.keys(Type).map((type) => <option key={type} value={Type[type]}>{type}</option>)}
+              </select>
+            </div>
+
+            <div className={styles.group}>
+              <label
+                className={styles.label}
+                htmlFor="lang"
+              >Language</label>
+              <select
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => this.setField('lang', e.target.value)}
+                value={this.state.form.lang}
+                className={styles.select}
+                name="lang"
+                id="lang"
+              >
+                {Object.keys(Language).map((lang) => <option key={lang} value={Language[lang]}>{lang}</option>)}
+              </select>
+            </div>
+          </div>
+
+          <div className={styles.align}>
+            <ContentMoreButton onClick={this.createNewContentItem} text="Make draft" />
           </div>
         </div>
-
-        <div className={styles.align}>
-          <ContentMoreButton onClick={this.createNewContentItem} text="Make draft" />
-        </div>
-      </div>
+      </AdminLayout>
     );
   }
 }
-
-export default NewContentItem;
