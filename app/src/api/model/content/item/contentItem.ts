@@ -57,7 +57,7 @@ export class ContentItem {
     this.createdAt = createdAt;
     Assert.lengthBetween(title, 'Title', 1, 64);
     this.title = title;
-    Assert.lengthBetween(slug, 'Slug', 1, 64);
+    Assert.lengthBetween(slug, 'Slug', 1, 128);
     this.slug = slug;
     Assert.lengthBetween(description, 'Description', 1, 255);
     this.description = description;
@@ -112,7 +112,7 @@ export class ContentItem {
   ): void {
     Assert.lengthBetween(title, 'Title', 1, 64);
     this.title = title;
-    Assert.lengthBetween(slug, 'Slug', 1, 64);
+    Assert.lengthBetween(slug, 'Slug', 1, 128);
     this.slug = slug;
     Assert.lengthBetween(description, 'Description', 1, 255);
     this.description = description;

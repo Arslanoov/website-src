@@ -34,7 +34,7 @@ const handler = async ({
 
   contentItem.edit(
     title,
-    `${id}-${slugGenerator.generate(title)}`,
+    `${id.substring(0, 8)}-${slugGenerator.generate(title)}`,
     description,
     rawContent,
     lang,
