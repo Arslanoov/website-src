@@ -2,7 +2,7 @@ import React from 'react';
 
 import Link from 'next/link';
 
-import {Language, LanguageType} from '@/domain/content/contentItem';
+import { Language, LanguageType } from '@/domain/content/contentItem';
 
 import { getText } from '@/app/utils/i18n/helper';
 
