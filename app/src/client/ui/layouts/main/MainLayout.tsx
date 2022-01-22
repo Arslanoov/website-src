@@ -20,6 +20,8 @@ const MainLayout: React.FC<Props> = ({
   useEffect(() => {
     const func = debounce(updateHeight);
     window.addEventListener('resize', func);
+    updateHeight();
+
     return () => window.removeEventListener('resize', func);
   }, []);
 
