@@ -4,10 +4,6 @@
 
   @include grid-columns(15px);
 
-  @include mobile {
-    @include grid-columns(25px);
-  }
-
   @include tablet {
     @include grid-columns(calc(50vw - 480px));
   }

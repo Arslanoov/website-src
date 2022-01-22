@@ -1,7 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P');
 
 html {
-  font-size: 62.5%;
+  font-size: 45%;
+
+  @include mobile {
+    font-size: 50%;
+  }
+
+  @include tablet {
+    font-size: 62.5%;
+  }
 }
 
 body,

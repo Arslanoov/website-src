@@ -34,13 +34,6 @@ export default function ContentItem({ contentItem }: Props) {
     <div className={styles.page}>
       <div className="container">
         <div className={styles.wrapper}>
-          {contentItem.cover && <img
-            src={contentItem.cover}
-            className={styles.image}
-            draggable={false}
-            alt=""
-          />}
-
           <div className={styles.content}>
             <div className={styles.row}>
               <h1 className={styles.title}>
@@ -55,6 +48,13 @@ export default function ContentItem({ contentItem }: Props) {
               {dateFormatter(contentItem.createdAt, locale)}
             </div>
             <p className={styles.description}>{contentItem.description}</p>
+
+            {contentItem.cover && <img
+              src={contentItem.cover}
+              className={styles.image}
+              draggable={false}
+              alt=""
+            />}
           </div>
         </div>
       </div>

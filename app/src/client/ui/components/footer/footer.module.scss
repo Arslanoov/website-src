@@ -20,8 +20,19 @@
     flex-wrap: wrap;
     align-items: center;
 
+    margin-top: .5rem;
+
+    @include tablet {
+      margin-top: 0;
+    }
+
     .link {
       margin-right: 2rem;
+      margin-bottom: .5rem;
+
+      @include tablet {
+        margin-bottom: 0;
+      }
     }
   }
 }
