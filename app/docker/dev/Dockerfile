@@ -1,6 +1,6 @@
 FROM node:16
 
-ENV PORT 3000
+ENV PORT 3001
 
 WORKDIR /usr/src/app
 COPY . /usr/src/app
