@@ -1,4 +1,5 @@
 import React from 'react';
+import type { GetServerSideProps } from 'next';
 
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
@@ -13,7 +14,22 @@ import ContentMoreButton from '@/ui/components/content-list/more-button/ContentM
 
 import styles from '@/ui/styles/pages/home.module.scss';
 
-export default function Home() {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  let referer: string;
+  try {
+    referer = new URL(req.headers.referer).hostname ?? '';
+  } catch (_) {
+    referer = '';
+  }
+
+  return {
+    props: {
+      withTyping: referer !== process.env.SITE_URL,
+    }
+  };
+};
+
+export default function Home({ withTyping }) {
   const { status, data: session } = useSession();
   const user = session?.user as SessionUserInterface | null;
 
@@ -21,6 +37,7 @@ export default function Home() {
 
   return (
     <>
+      <AboutMe lang={locale as LanguageType} withTyping={withTyping} />
       {
         status === AuthStatus.logged &&
         user.role === UserRole.Admin &&
@@ -30,8 +47,6 @@ export default function Home() {
           </div>
         </div>
       }
-
-      <AboutMe lang={locale as LanguageType} />
     </>
   );
 };

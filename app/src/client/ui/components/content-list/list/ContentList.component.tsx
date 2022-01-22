@@ -58,7 +58,6 @@ const ContentList: React.FC<Props> = ({
           {paginatedItems.items.map((item) => <ContentListItem
             key={item.id}
             title={item.title}
-            img={item.cover}
             description={item.description}
             link={`${baseUrl}/${item.slug}`}
           />)}

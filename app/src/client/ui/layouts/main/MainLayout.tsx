@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
+
+import { debounce } from '@/app/utils/debounce';
+import { updateHeight } from '@/app/utils/window/updateHeight';
 
 import Footer from '@/ui/components/footer/Footer.component';
 
@@ -14,6 +17,14 @@ const MainLayout: React.FC<Props> = ({
   children,
   title = null
 }) => {
+  useEffect(() => {
+    const func = debounce(updateHeight);
+    window.addEventListener('resize', func);
+    updateHeight();
+
+    return () => window.removeEventListener('resize', func);
+  }, []);
+
   return (
     <div>
       <Head>

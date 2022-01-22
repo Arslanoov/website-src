@@ -6,43 +6,21 @@
   box-shadow: rgba(0, 0, 0, 0.2) 0 .1rem 1rem 0;
   border-radius: 1.5rem;
 
-  &:hover {
-    cursor: pointer;
-  }
-
-  .content {
-    padding: 1rem 2rem 1.5rem 2rem;
-  }
-
   .wrapper,
   .description {
     margin-bottom: .5rem;
   }
 
   .title {
-    margin-bottom: 1rem;
+    margin-bottom: .3rem;
 
-    font-size: 1.6rem;
-  }
-
-  .wrapper {
-    position: relative;
-    width: 100%;
-
-    div {
-      position: unset !important;
-    }
-  }
-
-  .image {
-    width: 100%;
-    user-select: none;
-
-    border-radius: 1.5rem 1.5rem 0 0;
+    font-size: 1.8rem;
   }
 
   .description {
     font-size: 1.3rem;
     font-weight: 300;
+
+    opacity: .7;
   }
 }

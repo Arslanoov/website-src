@@ -1,5 +1,4 @@
 import type { GetServerSideProps } from 'next';
-import Router from 'next/router';
 
 import { Language as ApiLanguage } from '@/api/model/content/item/lang';
 import { Type as ApiType } from '@/api/model/content/item/type';

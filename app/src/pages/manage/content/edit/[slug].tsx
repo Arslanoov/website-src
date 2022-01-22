@@ -104,7 +104,7 @@ class EditContentItem extends React.Component<Props, State> {
     return (
       <AdminLayout>
         <div className={styles.form}>
-          <h1 className={styles.title}>Create new {this.state.form.type}</h1>
+          <h1 className={styles.title}>Edit {this.state.form.type}</h1>
 
           <div className={styles.align}>
             <ContentMoreButton link="/manage/content/list" text="Back to list" />

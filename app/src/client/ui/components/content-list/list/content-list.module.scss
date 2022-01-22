@@ -2,28 +2,20 @@
   margin-bottom: 2rem;
 
   .title {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 
     font-size: 2rem;
     font-weight: 600;
+
+    color: #069990;
   }
 
   .list {
-    display: grid;
-    align-items: center;
-
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
 
     row-gap: 3rem;
     column-gap: 3rem;
-
-    @include tablet {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @include desktop-sm {
-      grid-template-columns: repeat(3, 1fr);
-    }
 
     .item {
       width: 100%;
