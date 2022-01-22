@@ -21,6 +21,7 @@ export default function Home() {
 
   return (
     <>
+      <AboutMe lang={locale as LanguageType} />
       {
         status === AuthStatus.logged &&
         user.role === UserRole.Admin &&
@@ -30,8 +31,6 @@ export default function Home() {
           </div>
         </div>
       }
-
-      <AboutMe lang={locale as LanguageType} />
     </>
   );
 };
