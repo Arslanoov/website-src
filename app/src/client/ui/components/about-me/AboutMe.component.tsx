@@ -12,20 +12,28 @@ import styles from './about-me.module.scss';
 
 type Props = {
   lang: LanguageType,
+  withTyping: boolean,
 };
 
-const AboutMe: React.FC<Props> = ({ lang }) => {
-  const [isTyped, setIsTyped] = useState<boolean>(false);
+const AboutMe: React.FC<Props> = ({ lang, withTyping }) => {
+  const [isTyped, setIsTyped] = useState<boolean>(!withTyping);
 
   return (
     <div className={`container ${styles['about-container']}`}>
       <div className={styles.content}>
-        <Typist onTypingDone={() => setIsTyped(true)} cursor={{ element: '' }}>
+        {withTyping ? (
+          <Typist onTypingDone={() => setIsTyped(true)} key={lang} cursor={{ element: '' }}>
+            <div className={styles.top}>
+              <h1 className={styles.name}>{getText(lang, 'about-me-name')}</h1>
+              <div className={styles['short-description']}>Frontend Developer</div>
+            </div>
+          </Typist>
+        ) : (
           <div className={styles.top}>
             <h1 className={styles.name}>{getText(lang, 'about-me-name')}</h1>
             <div className={styles['short-description']}>Frontend Developer</div>
           </div>
-        </Typist>
+        )}
         <div className={`${styles.center} ${isTyped && styles.typed}`}>
           {lang === Language.russian ? (
             <>
@@ -45,8 +53,8 @@ const AboutMe: React.FC<Props> = ({ lang }) => {
                   Always work for the result, bring projects to the end.
               </p>
               <p className={styles.links}>
-                <Link href="/content/blog"><a className={styles.link}>Blog</a></Link>
-                <Link href="/content/projects"><a className={styles.link}>Projects</a></Link>
+                <Link href="/content/blog"><a className={styles.link}>{'->'} Blog</a></Link>
+                <Link href="/content/projects"><a className={styles.link}>{'->'} Projects</a></Link>
               </p>
             </>
           )}
