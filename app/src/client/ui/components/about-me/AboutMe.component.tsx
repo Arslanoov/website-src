@@ -42,8 +42,8 @@ const AboutMe: React.FC<Props> = ({ lang, withTyping }) => {
                   Работаю на результат, умею доводить проекты до конца.
               </p>
               <p className={styles.links}>
-                <Link href="/content/blog"><a className={styles.link}>Блог</a></Link>
-                <Link href="/content/projects"><a className={styles.link}>Проекты</a></Link>
+                <Link href="/content/blog"><a className={styles.link}>{'->'} Блог</a></Link>
+                <Link href="/content/projects"><a className={styles.link}>{'->'} Проекты</a></Link>
               </p>
             </>
           ) : (
