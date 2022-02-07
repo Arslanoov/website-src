@@ -9,6 +9,9 @@ restart: down up
 build:
 	docker-compose -f docker-compose.yml build --no-cache
 
+install-deps:
+	docker-compose run --rm app npm i
+
 migration:
 	docker-compose run --rm app npx mikro-orm migration:create
 

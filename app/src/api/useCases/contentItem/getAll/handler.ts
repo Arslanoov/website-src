@@ -28,7 +28,7 @@ const handler = async (command: Command): Promise<PaginatedContentItems> => {
     'ci.id',
     'a.id as author_id',
     'a.username as author_username',
-    'ci.created_at as createdAt',
+    'ci.created_at',
     'ci.title',
     'ci.slug',
     'ci.description',

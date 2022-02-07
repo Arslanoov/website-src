@@ -58,7 +58,8 @@ const ContentList: React.FC<Props> = ({
           {paginatedItems.items.map((item) => <ContentListItem
             key={item.id}
             title={item.title}
-            description={item.description}
+            createdAt={item.createdAt}
+            locale={locale}
             link={`${baseUrl}/${item.slug}`}
           />)}
         </div>

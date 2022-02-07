@@ -1,16 +1,8 @@
 .wrapper {
   grid-column: col-start 1 / col-end 12;
 
-  margin-bottom: 2rem;
-
   border-radius: 1.5rem;
   box-shadow: 0 .1rem 1rem rgba(0, 0, 0, .2);
-
-  .content {
-    word-break: break-all;
-
-    float: left;
-  }
 }
 
 .row {
@@ -58,11 +50,20 @@
 .content {
   width: 100%;
 
-  font-size: 1.6rem;
+  word-break: break-all;
+
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+
+.description,
+.content * {
+  font-family: Roboto, sans-serif !important;
+  background-color: #000 !important;
+  color: #fff !important;
 }
 
 .description {
-  margin-bottom: 2rem;
-
+  margin: 1rem 0 0;
   color: #808080;
 }

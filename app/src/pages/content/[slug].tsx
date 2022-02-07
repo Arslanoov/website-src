@@ -34,28 +34,26 @@ export default function ContentItem({ contentItem }: Props) {
     <div className={styles.page}>
       <div className="container">
         <div className={styles.wrapper}>
-          <div className={styles.content}>
-            <div className={styles.row}>
-              <h1 className={styles.title}>
-                {contentItem.title}
-              </h1>
-              <ContentMoreButton
-                link={`/content/${contentItem.type === Type.article ? 'blog' : 'projects'}`}
-                text="Back"
-              />
-            </div>
-            <div className={styles.date}>
-              {dateFormatter(contentItem.createdAt, locale)}
-            </div>
-            <p className={styles.description}>{contentItem.description}</p>
-
-            {contentItem.cover && <img
-              src={contentItem.cover}
-              className={styles.image}
-              draggable={false}
-              alt=""
-            />}
+          <div className={styles.row}>
+            <h1 className={styles.title}>
+              {contentItem.title}
+            </h1>
+            <ContentMoreButton
+              link={`/content/${contentItem.type === Type.article ? 'blog' : 'projects'}`}
+              text="Back"
+            />
           </div>
+          <div className={styles.date}>
+            {dateFormatter(contentItem.createdAt, locale)}
+          </div>
+          <p className={styles.description}>{contentItem.description}</p>
+
+          {contentItem.cover && <img
+            src={contentItem.cover}
+            className={styles.image}
+            draggable={false}
+            alt=""
+          />}
         </div>
       </div>
 
@@ -63,7 +61,7 @@ export default function ContentItem({ contentItem }: Props) {
         <div className={styles.wrapper}>
           <div className={styles.content}>
             <div dangerouslySetInnerHTML={{
-              __html: contentItem.rawContent
+              __html: JSON.parse(contentItem.rawContent)
             }} />
           </div>
         </div>
