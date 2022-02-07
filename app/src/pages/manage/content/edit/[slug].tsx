@@ -95,7 +95,7 @@ class EditContentItem extends React.Component<Props, State> {
     this.setState((prevState) => ({
       form: {
         ...prevState.form,
-        rawContent: value.replace(/\\"/g, '"')
+        rawContent: JSON.stringify(value)
       }
     }));
   }
