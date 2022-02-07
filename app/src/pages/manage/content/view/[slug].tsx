@@ -150,7 +150,11 @@ export default function ContentItemView({ item }: Props) {
         </table>
 
         <h3 className={styles.subtitle}>Content</h3>
-        <div className={styles.content} dangerouslySetInnerHTML={{ __html: item.rawContent }} />
+        <div
+          className={styles.content}
+          dangerouslySetInnerHTML={{
+            __html: JSON.parse(item.rawContent)
+          }} />
       </div>
     </div>
   );
