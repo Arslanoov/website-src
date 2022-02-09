@@ -61,9 +61,16 @@
   font-family: Roboto, sans-serif !important;
   background-color: #000 !important;
   color: #fff !important;
+
+  a {
+    &,
+    span {
+      color: #1f83ff !important;
+    }
+  }
 }
 
 .description {
-  margin: 1rem 0 0;
+  margin: 1rem 0 2rem;
   color: #808080;
 }
