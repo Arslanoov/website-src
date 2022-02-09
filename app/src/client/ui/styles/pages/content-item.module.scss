@@ -63,7 +63,10 @@
   color: #fff !important;
 
   a {
-    color: #1f83ff !important;
+    &,
+    span {
+      color: #1f83ff !important;
+    }
   }
 }
 
