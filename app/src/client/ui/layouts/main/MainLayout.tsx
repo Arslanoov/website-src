@@ -10,12 +10,14 @@ import Footer from '@/ui/components/footer/Footer.component';
 import styles from './main-layout.module.scss';
 
 type Props = {
-  title?: string | null
+  title?: string | null,
+  isAdmin?: boolean
 };
 
 const MainLayout: React.FC<Props> = ({
   children,
-  title = null
+  title = null,
+  isAdmin = false
 }) => {
   useEffect(() => {
     const func = debounce(updateHeight);
@@ -46,7 +48,7 @@ const MainLayout: React.FC<Props> = ({
         <Footer />
       </div>
 
-      {process.env.NODE_ENV === 'production' && <>
+      {process.env.NODE_ENV === 'production' && !isAdmin && <>
         <Script
           id="yandex-metrika"
           strategy="afterInteractive"

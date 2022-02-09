@@ -15,16 +15,18 @@ const AdminLayout: React.FC = ({ children }) => {
     return <div />;
   }
 
+  const isAdmin = (session.user as SessionUserInterface).role === 'Admin';
+
   if (
     status === AuthStatus.guest ||
-    (session.user as SessionUserInterface).role !== 'Admin'
+    !isAdmin
   ) {
     router.push('/');
     return <div />;
   }
 
   return (
-    <MainLayout title="Admin Panel">{children}</MainLayout>
+    <MainLayout isAdmin={isAdmin} title="Admin Panel">{children}</MainLayout>
   );
 };
 
