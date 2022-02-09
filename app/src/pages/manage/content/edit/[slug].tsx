@@ -162,7 +162,7 @@ class EditContentItem extends React.Component<Props, State> {
             <div className={styles.rounded}>
               <Editor
                 onChange={(value: string) => this.setContent(value)}
-                initialValue={this.state.form.rawContent}
+                initialValue={JSON.parse(this.state.form.rawContent)}
               />
             </div>
           </div>
