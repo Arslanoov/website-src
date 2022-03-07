@@ -1,8 +1,5 @@
 .wrapper {
-  grid-column: col-start 1 / col-end 12;
-
   border-radius: 1.5rem;
-  box-shadow: 0 .1rem 1rem rgba(0, 0, 0, .2);
 }
 
 .row {
@@ -58,10 +55,6 @@
 
 .description,
 .content * {
-  font-family: Roboto, sans-serif !important;
-  background-color: #000 !important;
-  color: #fff !important;
-
   a {
     &,
     span {
@@ -72,5 +65,4 @@
 
 .description {
   margin: 1rem 0 2rem;
-  color: #808080;
 }

@@ -2,8 +2,9 @@ import React from 'react';
 
 import Link from 'next/link';
 
+import { dateFormatter } from '@/app/utils/date/formatter';
+
 import styles from './content-list-item.module.scss';
-import {dateFormatter} from '@/app/utils/date/formatter';
 
 type Props = {
   title: string,
