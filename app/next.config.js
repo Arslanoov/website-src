@@ -1,7 +1,8 @@
 const path = require('path');
+const withImages = require('next-images');
 
 /** @type {import('next').NextConfig} */
-module.exports = {
+module.exports = withImages({
   reactStrictMode: true,
   sassOptions: {
     includePaths: [path.join(__dirname, 'client/ui/styles')],
@@ -11,4 +12,4 @@ module.exports = {
     locales: ['en', 'ru'],
     defaultLocale: 'en',
   },
-};
+});

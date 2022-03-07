@@ -5,9 +5,12 @@ import Script from 'next/script';
 import { debounce } from '@/app/utils/debounce';
 import { updateHeight } from '@/app/utils/window/updateHeight';
 
-import Footer from '@/ui/components/footer/Footer.component';
+import Header from '@/ui/sections/header/Header';
+import Socials from '@/ui/sections/socials/Socials';
 
 import styles from './main-layout.module.scss';
+
+import backgroundImage from '@/assets/img/background.svg';
 
 type Props = {
   title?: string | null,
@@ -40,12 +43,24 @@ const MainLayout: React.FC<Props> = ({
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
-      <div className={styles.layout}>
-        <main>
-          {children}
-        </main>
+      <div
+        style={{
+          background: `url(${backgroundImage}) no-repeat`,
+          backgroundSize: 'cover'
+        }}
+        className="container"
+      >
+        <div
+          className={styles.layout}
+        >
+          <Header />
 
-        <Footer />
+          <main>
+            {children}
+          </main>
+
+          <Socials />
+        </div>
       </div>
 
       {process.env.NODE_ENV === 'production' && !isAdmin && <>

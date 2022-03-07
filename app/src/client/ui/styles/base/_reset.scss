@@ -10,7 +10,8 @@ html {
 body {
   box-sizing: border-box;
 
-  background-color: #f1f2f5;
+  background-color: #0a192f;
+  color: #fff;
 }
 
 *,
@@ -51,4 +52,14 @@ a[role=button] {
   &:hover {
     cursor: pointer;
   }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
 }

@@ -18,7 +18,7 @@ export default {
     'December': 'December',
 
     'See all': 'See all',
-    'Back': 'Back',
+    'Back': '<- Back',
     'Articles': 'Articles',
     'Projects': 'Projects',
     'Go back': 'Go back',
@@ -61,7 +61,7 @@ export default {
 
     'See all': 'Все подряд',
     'home': 'Главная',
-    'Back': 'Назад',
+    'Back': '<- Назад',
     'Articles': 'Статьи',
     'Projects': 'Проекты',
     'Go back': 'Назад',
