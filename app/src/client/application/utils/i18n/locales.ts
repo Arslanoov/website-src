@@ -37,10 +37,12 @@ export default {
     'Go Back': 'Go Back',
 
     'about-me-name': 'Rasul Arslanov',
+    'about-me-description': 'I build things for the web',
 
     'nothing-here': 'Oops. It looks like this page is empty :(',
     'smth-interesting': 'Maybe you\'ll find something interesting in my ',
-    'noscript': 'You should enable JS to watch the readable content'
+    'noscript': 'You should enable JS to watch the readable content',
+    'github': 'Check out my github!'
   },
   'ru': {
     'content-items': 'Контент',
@@ -80,9 +82,11 @@ export default {
     'Go Back': 'Назад',
 
     'about-me-name': 'Расуль Арсланов',
+    'about-me-description': 'Превращаю макеты в работающие веб приложения',
 
     'nothing-here': 'Ууупс. Походу здесь ничего нет :(',
     'smth-interesting': 'Возможно, есть что-то интересное на моем ',
-    'noscript': 'Вы должны включить JavaScript чтобы получить данные в читабельном формате'
+    'noscript': 'Вы должны включить JavaScript чтобы получить данные в читабельном формате',
+    'github': 'Посмотри мой github!'
   }
 };

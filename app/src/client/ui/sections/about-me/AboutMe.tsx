@@ -1,8 +1,13 @@
 import React from 'react';
+import { useRouter } from 'next/router';
+
+import { getText } from '@/app/utils/i18n/helper';
 
 import styles from './about-me.module.scss';
 
 const AboutMe = () => {
+  const { locale } = useRouter();
+
   const onPortfolioClick = () => window.open(
     'https://github.com/Arslanoov',
     '_blank',
@@ -12,16 +17,16 @@ const AboutMe = () => {
   return (
     <>
       <h1 className={styles.name}>
-        Rasul Arslanov.
+        {getText(locale, 'about-me-name')}.
       </h1>
       <h2 className={styles.profession}>
         Frontend Developer
       </h2>
       <p className={styles.description}>
-        I build things for the web.
+        {getText(locale, 'about-me-description')}.
       </p>
       <button onClick={onPortfolioClick} className={styles.button}>
-        Check out my github!
+        {getText(locale, 'github')}
       </button>
     </>
   );
