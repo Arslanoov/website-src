@@ -1,5 +1,15 @@
 .button {
-  grid-column: col-start 1 / col-end 12;
+  display: block;
 
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  padding: 1rem 1.5rem;
+
+  border-bottom-color: rgb(118, 118, 118);
+  border-bottom-width: 2px;
+  border-left-color: rgb(118, 118, 118);
+  border-left-width: 2px;
+  border-right-color: rgb(118, 118, 118);
+  border-right-width: 2px;
+  border-top-color: rgb(118, 118, 118);
+  border-top-width: 2px;
 }
