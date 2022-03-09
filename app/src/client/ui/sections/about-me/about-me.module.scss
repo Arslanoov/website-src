@@ -1,7 +1,20 @@
-.button {
-  display: block;
+.name {
+  font-size: 5rem;
+}
 
-  margin-top: 1rem;
+.profession {
+  font-size: 2.5rem;
+
+  line-height: 0.6;
+
+  margin-bottom: 3rem;
+}
+
+.description {
+  font-size: 1.8rem;
+}
+
+.button {
   padding: 1rem 1.5rem;
 
   border-bottom-color: rgb(118, 118, 118);
