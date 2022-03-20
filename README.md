@@ -1,5 +1,5 @@
 <h2 align="center">
-    <a href="https://arslanoov.red">arslanoov.red</a>
+    <a href="https://red.arslanoov.site">link to the website</a>
 </h2>
 
 <p align="center">
