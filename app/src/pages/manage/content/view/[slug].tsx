@@ -76,86 +76,84 @@ export default function ContentItemView({ item }: Props) {
   };
 
   return (
-    <div className="container">
-      <div className={styles.content}>
-        <div className={styles.buttons}>
-          <ContentMoreButtonComponent text="Back" link="/manage/content/list" />
+    <div className={styles.content}>
+      <div className={styles.buttons}>
+        <ContentMoreButtonComponent text="Back" link="/manage/content/list" />
 
+        <ContentMoreButtonComponent
+          disabled={loading}
+          link={`/manage/content/edit/${item.slug}`}
+          text="Edit"
+        />
+
+        {status === Status.Active ? (
           <ContentMoreButtonComponent
             disabled={loading}
-            link={`/manage/content/edit/${item.slug}`}
-            text="Edit"
+            onClick={() => makeDraft(item.id)}
+            text="Make draft"
           />
-
-          {status === Status.Active ? (
-            <ContentMoreButtonComponent
-              disabled={loading}
-              onClick={() => makeDraft(item.id)}
-              text="Make draft"
-            />
-          ) : (
-            <ContentMoreButtonComponent
-              disabled={loading}
-              onClick={() => activate(item.id)}
-              text="Activate"
-            />
-          )}
-
+        ) : (
           <ContentMoreButtonComponent
             disabled={loading}
-            onClick={() => onDelete(item.id)}
-            text="Delete"
+            onClick={() => activate(item.id)}
+            text="Activate"
           />
-        </div>
+        )}
 
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th />
-              <th />
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className={styles.cell}>ID</td>
-              <td className={styles.cell}>{item.id}</td>
-            </tr>
-            <tr>
-              <td className={styles.cell}>Cover</td>
-              <td className={styles.cell}>
-                {item.cover ? <img src={item.cover} width="200px" alt="" /> : 'No cover found'}
-              </td>
-            </tr>
-            <tr>
-              <td className={styles.cell}>Title</td>
-              <td className={styles.cell}>{item.title}</td>
-            </tr>
-            <tr>
-              <td className={styles.cell}>Type</td>
-              <td className={styles.cell}>{item.type}</td>
-            </tr>
-            <tr>
-              <td className={styles.cell}>Language</td>
-              <td className={styles.cell}>{item.lang}</td>
-            </tr>
-            <tr>
-              <td className={styles.cell}>Status</td>
-              <td className={styles.cell}>{status}</td>
-            </tr>
-            <tr>
-              <td className={styles.cell}>Views</td>
-              <td className={styles.cell}>{item.views}</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3 className={styles.subtitle}>Content</h3>
-        <div
-          className={styles.content}
-          dangerouslySetInnerHTML={{
-            __html: JSON.parse(item.rawContent)
-          }} />
+        <ContentMoreButtonComponent
+          disabled={loading}
+          onClick={() => onDelete(item.id)}
+          text="Delete"
+        />
       </div>
+
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            <th />
+            <th />
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td className={styles.cell}>ID</td>
+            <td className={styles.cell}>{item.id}</td>
+          </tr>
+          <tr>
+            <td className={styles.cell}>Cover</td>
+            <td className={styles.cell}>
+              {item.cover ? <img src={item.cover} width="200px" alt="" /> : 'No cover found'}
+            </td>
+          </tr>
+          <tr>
+            <td className={styles.cell}>Title</td>
+            <td className={styles.cell}>{item.title}</td>
+          </tr>
+          <tr>
+            <td className={styles.cell}>Type</td>
+            <td className={styles.cell}>{item.type}</td>
+          </tr>
+          <tr>
+            <td className={styles.cell}>Language</td>
+            <td className={styles.cell}>{item.lang}</td>
+          </tr>
+          <tr>
+            <td className={styles.cell}>Status</td>
+            <td className={styles.cell}>{status}</td>
+          </tr>
+          <tr>
+            <td className={styles.cell}>Views</td>
+            <td className={styles.cell}>{item.views}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 className={styles.subtitle}>Content</h3>
+      <div
+        className={styles.content}
+        dangerouslySetInnerHTML={{
+          __html: JSON.parse(item.rawContent)
+        }} />
     </div>
   );
 };
