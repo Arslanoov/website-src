@@ -1,6 +1,4 @@
 .content {
-  grid-column: col-start 1 / col-end 12;
-
   overflow-x: auto;
 
   margin: 2rem 0;
@@ -25,10 +23,11 @@
   .content {
     font-size: 1.8rem;
 
-    * {
-      font-family: Roboto, sans-serif !important;
-      background-color: #000 !important;
-      color: #fff !important;
+    a {
+      &,
+      span {
+        color: #1f83ff !important;
+      }
     }
   }
 
@@ -67,7 +66,7 @@
 
       text-align: center;
 
-      border: .1rem solid #000;
+      border: .1rem solid #fff;
 
       .buttons {
         display: flex;

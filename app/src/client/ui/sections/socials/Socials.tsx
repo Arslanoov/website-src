@@ -33,8 +33,8 @@ const Socials = () => {
         </a>
       </li>
       <li className={styles.item}>
-        <a href="mailto:rasul@arslanoov.red">
-          rasul@arslanoov<span className={styles.colored}>.red</span>
+        <a href="mailto:rasularslanoov@gmail.com">
+          rasularslanoov<span className={styles.colored}>@gmail.com</span>
         </a>
       </li>
     </ul>
