@@ -1,16 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
 
 import { debounce } from '@/app/utils/debounce';
 import { updateHeight } from '@/app/utils/window/updateHeight';
+import { generateRandomNumber } from '@/app/utils/random-number';
 
 import Header from '@/ui/sections/header/Header';
 import Socials from '@/ui/sections/socials/Socials';
 
 import styles from './main-layout.module.scss';
-
-import backgroundImage from '@/assets/img/background.svg';
 
 type Props = {
   title?: string | null,
@@ -22,7 +21,11 @@ const MainLayout: React.FC<Props> = ({
   title = null,
   isAdmin = false
 }) => {
+  const [randomNumber, setRandomNumber] = useState<number>(undefined);
+
   useEffect(() => {
+    setRandomNumber(generateRandomNumber(1, 6));
+
     const func = debounce(updateHeight);
     window.addEventListener('resize', func);
     updateHeight();
@@ -45,7 +48,8 @@ const MainLayout: React.FC<Props> = ({
 
       <div
         style={{
-          background: `url(${backgroundImage}) no-repeat`,
+          backgroundImage: randomNumber && `url(/img/background/${randomNumber}.svg)`,
+          backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover'
         }}
         className="container"
