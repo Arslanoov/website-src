@@ -24,14 +24,14 @@ const MainLayout: React.FC<Props> = ({
   const [randomNumber, setRandomNumber] = useState<number>(undefined);
 
   useEffect(() => {
-    setRandomNumber(generateRandomNumber(1, 6));
+    setRandomNumber(isAdmin ? 2 : generateRandomNumber(1, 6));
 
     const func = debounce(updateHeight);
     window.addEventListener('resize', func);
     updateHeight();
 
     return () => window.removeEventListener('resize', func);
-  }, []);
+  }, [isAdmin]);
 
   return (
     <div>
