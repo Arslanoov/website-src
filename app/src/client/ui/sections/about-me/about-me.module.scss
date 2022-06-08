@@ -12,6 +12,14 @@
 
 .description {
   font-size: 1.8rem;
+
+  &:first-of-type {
+    margin-bottom: 0.5rem;
+  }
+
+  &:last-of-type {
+    margin-top: 0.5rem;
+  }
 }
 
 .button {

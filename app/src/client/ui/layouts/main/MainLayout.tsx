@@ -1,10 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
-
-import { debounce } from '@/app/utils/debounce';
-import { updateHeight } from '@/app/utils/window/updateHeight';
-import { generateRandomNumber } from '@/app/utils/random-number';
 
 import Header from '@/ui/sections/header/Header';
 import Socials from '@/ui/sections/socials/Socials';
@@ -21,18 +17,6 @@ const MainLayout: React.FC<Props> = ({
   title = null,
   isAdmin = false
 }) => {
-  const [randomNumber, setRandomNumber] = useState<number>(undefined);
-
-  useEffect(() => {
-    setRandomNumber(isAdmin ? 2 : generateRandomNumber(1, 6));
-
-    const func = debounce(updateHeight);
-    window.addEventListener('resize', func);
-    updateHeight();
-
-    return () => window.removeEventListener('resize', func);
-  }, [isAdmin]);
-
   return (
     <div>
       <Head>
@@ -46,14 +30,7 @@ const MainLayout: React.FC<Props> = ({
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
-      <div
-        style={{
-          backgroundImage: randomNumber && `url(/img/background/${randomNumber}.svg)`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover'
-        }}
-        className="container"
-      >
+      <div className="container">
         <div
           className={styles.layout}
         >
