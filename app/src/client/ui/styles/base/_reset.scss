@@ -9,10 +9,6 @@ html {
 
 body {
   box-sizing: border-box;
-
-  background-image: url("/img/background.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
   background-color: $main-color;
   color: $secondary-color;
 }

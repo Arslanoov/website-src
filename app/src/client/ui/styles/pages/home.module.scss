@@ -1,15 +1,62 @@
-.button {
-  display: block;
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-  margin-top: 1rem;
-  padding: 1rem 1.5rem;
+  height: 100vh;
+}
 
-  border-bottom-color: rgb(118, 118, 118);
-  border-bottom-width: 2px;
-  border-left-color: rgb(118, 118, 118);
-  border-left-width: 2px;
-  border-right-color: rgb(118, 118, 118);
-  border-right-width: 2px;
-  border-top-color: rgb(118, 118, 118);
-  border-top-width: 2px;
+.title {
+  display: flex;
+  flex-direction: column;
+
+  font-size: 160px;
+
+  & > * {
+    &:hover::after {
+      transform: translateX(50px);
+    }
+
+    &::after {
+      display: inline-block;
+
+      transition: all .3s;
+    }
+
+    &:first-of-type {
+      color: $accent-color;
+
+      &::after {
+        content: "Hello.";
+      }
+
+      &:hover::after {
+        content: "Work";
+      }
+    }
+
+    &:nth-of-type(2) {
+      color: $secondary-color;
+
+      &::after {
+        content: "I am";
+      }
+
+      &:hover::after {
+        content: "Blog";
+      }
+    }
+
+    &:last-of-type {
+      color: $secondary-color;
+
+      &::after {
+        content: "Rasul";
+      }
+
+      &:hover::after {
+        content: "Contact";
+      }
+    }
+  }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import Router from 'next/router';
+import Link from 'next/link';
 
 import { useSession } from 'next-auth/react';
 
@@ -7,9 +8,6 @@ import { AuthStatus, SessionUserInterface } from '@/domain/user/auth';
 import { UserRole } from '@/domain/user/user';
 
 import MainLayout from '@/ui/layouts/main/MainLayout';
-import AboutMe from '@/ui/sections/about-me/AboutMe';
-
-import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
 import styles from '@/ui/styles/pages/home.module.scss';
 
@@ -21,7 +19,6 @@ export default function Home() {
 
   return (
     <>
-      <AboutMe />
       {
         status === AuthStatus.logged &&
         user.role === UserRole.Admin &&
@@ -29,6 +26,14 @@ export default function Home() {
           Manage
         </button>
       }
+
+      <div className={styles.container}>
+        <h1 className={styles.title}>
+          <Link href="/content/projects"><a></a></Link>
+          <Link href="/content/blog"><a></a></Link>
+          <Link href="/contact"><a></a></Link>
+        </h1>
+      </div>
     </>
   );
 };

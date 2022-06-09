@@ -2,9 +2,6 @@ import React from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
 
-import Header from '@/ui/sections/header/Header';
-import Socials from '@/ui/sections/socials/Socials';
-
 import styles from './main-layout.module.scss';
 
 type Props = {
@@ -34,13 +31,9 @@ const MainLayout: React.FC<Props> = ({
         <div
           className={styles.layout}
         >
-          <Header />
-
           <main>
             {children}
           </main>
-
-          <Socials />
         </div>
       </div>
 
