@@ -33,6 +33,7 @@ export default function Home() {
           <Link href="/content/blog"><a></a></Link>
           <Link href="/contact"><a></a></Link>
         </h1>
+        <img className={styles.photo} src="/img/me.jpg" alt=""/>
       </div>
     </>
   );
