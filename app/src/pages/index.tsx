@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <div className="container">
       <div className={styles.container}>
-        <h1 className={styles.title}>
+        <h1 className={`${styles.title} ${locale === Language.english ? styles.title_en : styles.title_ru}`}>
           <Link href="/content/projects"><a></a></Link>
           <Link href="/content/blog"><a></a></Link>
           <Link href="/contact"><a></a></Link>

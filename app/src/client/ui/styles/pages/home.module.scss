@@ -37,55 +37,119 @@
 
       transition: all .3s;
     }
+  }
 
-    &:first-of-type {
-      color: $accent-color;
+  &_en {
+    & > * {
+      &:first-of-type {
+        color: $accent-color;
 
-      &::after {
-        content: "Hello.";
+        &::after {
+          content: "Hello.";
+        }
+
+        &:hover::after {
+          content: "Work";
+        }
       }
 
-      &:hover::after {
-        content: "Work";
+      &:nth-of-type(2) {
+        color: $secondary-color;
+
+        &::after {
+          content: "I am";
+        }
+
+        &:hover::after {
+          content: "Blog";
+        }
+      }
+
+      &:nth-of-type(3) {
+        color: $secondary-color;
+
+        &::after {
+          content: "Rasul";
+        }
+
+        &:hover::after {
+          content: "Contact";
+        }
+      }
+
+      &:nth-of-type(4) {
+        font-size: 2rem;
+
+        color: $accent-color;
+      }
+
+      &:nth-of-type(5) {
+        margin-top: 1rem;
+
+        font-size: 2rem;
+
+        color: $accent-color;
       }
     }
+  }
 
-    &:nth-of-type(2) {
-      color: $secondary-color;
+  &_ru {
+    & > * {
+      font-size: 8rem;
 
-      &::after {
-        content: "I am";
+      @include tablet {
+        font-size: 12rem;
       }
 
-      &:hover::after {
-        content: "Blog";
+      &:first-of-type {
+        color: $accent-color;
+
+        &::after {
+          content: "Привет.";
+        }
+
+        &:hover::after {
+          content: "Проекты";
+        }
       }
-    }
 
-    &:nth-of-type(3) {
-      color: $secondary-color;
+      &:nth-of-type(2) {
+        color: $secondary-color;
 
-      &::after {
-        content: "Rasul";
+        &::after {
+          content: "Я";
+        }
+
+        &:hover::after {
+          content: "Блог";
+        }
       }
 
-      &:hover::after {
-        content: "Contact";
+      &:nth-of-type(3) {
+        color: $secondary-color;
+
+        &::after {
+          content: "Расуль";
+        }
+
+        &:hover::after {
+          content: "Контакты";
+        }
       }
-    }
 
-    &:nth-of-type(4) {
-      font-size: 2rem;
+      &:nth-of-type(4) {
+        font-size: 2rem;
 
-      color: $accent-color;
-    }
+        color: $accent-color;
+      }
 
-    &:nth-of-type(5) {
-      margin-top: 1rem;
+      &:nth-of-type(5) {
+        margin-top: 1rem;
 
-      font-size: 2rem;
+        font-size: 2rem;
 
-      color: $accent-color;
+        color: $accent-color;
+      }
     }
   }
 }
