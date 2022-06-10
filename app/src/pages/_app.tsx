@@ -20,18 +20,15 @@ type AppPropsWithLayout = AppProps & {
 const variants = {
   initial: {
     opacity: 0,
-    left: '-100%',
-    scale: 0.8
+    scale: 0.4
   },
   animate: {
     opacity: 1,
-    left: 0,
     scale: 1
   },
   exit: {
     opacity: 0,
-    left: '100%',
-    scale: 1
+    scale: 0.4
   }
 };
 
