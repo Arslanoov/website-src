@@ -1,12 +1,8 @@
 .button {
-  padding: .9rem 0;
+  padding: 1rem 1.5rem;
 
   font-size: 1.8rem;
   font-weight: 500;
 
   color: $accent-color;
-
-  &:disabled {
-    padding: 1rem 1.5rem;
-  }
 }
