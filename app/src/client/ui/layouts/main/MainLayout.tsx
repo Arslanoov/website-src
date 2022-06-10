@@ -14,6 +14,12 @@ const MainLayout: React.FC<Props> = ({
   title = null,
   isAdmin = false
 }) => {
+  /* useEffect(() => {
+    const func = debounce(updateHeight);
+    window.addEventListener('resize', func);
+    return () => window.removeEventListener('resize', func);
+  }, []); */
+
   return (
     <div>
       <Head>
