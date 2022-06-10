@@ -9,6 +9,8 @@ import { SessionProvider } from 'next-auth/react';
 
 import { m, domAnimation, AnimatePresence, LazyMotion } from 'framer-motion';
 
+import { usePageTransitionFix } from '@/ui/hooks/usePageTransitionFix';
+
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
 };
@@ -20,15 +22,18 @@ type AppPropsWithLayout = AppProps & {
 const variants = {
   initial: {
     opacity: 0,
-    scale: 0.4
+    left: '-100%',
+    scale: 0.6
   },
   animate: {
     opacity: 1,
+    left: 0,
     scale: 1
   },
   exit: {
     opacity: 0,
-    scale: 0.4
+    left: '100%',
+    scale: 0.6
   }
 };
 
@@ -37,6 +42,8 @@ const transition = {
 };
 
 const App = ({ Component, router, pageProps: { session, ...pageProps }}: AppPropsWithLayout) => {
+  usePageTransitionFix();
+
   const getLayout = Component.getLayout || ((page) => page);
 
   const layoutPage = getLayout(<Component {...pageProps} />);
@@ -47,7 +54,6 @@ const App = ({ Component, router, pageProps: { session, ...pageProps }}: AppProp
         <AnimatePresence exitBeforeEnter={true}>
           <m.div
             key={`${process.env.SITE_URL}${router.route}`}
-            className="page-wrap"
             initial="initial"
             animate="animate"
             exit="exit"
