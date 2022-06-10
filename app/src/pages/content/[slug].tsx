@@ -33,7 +33,7 @@ export default function ContentItem({ contentItem }: Props) {
   return (
     <>
       <div className={styles.preview}>
-        <a onClick={() => router.back()} className={styles.back}>Back to Home</a>
+        <a onClick={() => router.back()} className={styles.back}>Previous Page</a>
         <div className={styles.row}>
           <h1 className={styles.title}>{contentItem.title}</h1>
           <div className={styles.date}>

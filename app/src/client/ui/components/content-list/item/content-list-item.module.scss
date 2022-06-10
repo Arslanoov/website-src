@@ -13,9 +13,13 @@
   .title {
     margin-bottom: .3rem;
 
-    font-size: 7rem;
+    font-size: 4rem;
 
     color: $main-color;
+
+    @include tablet {
+      font-size: 7rem;
+    }
   }
 
   .date {

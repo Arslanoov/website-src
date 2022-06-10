@@ -18,7 +18,7 @@
   .back {
     position: absolute;
     top: 50%;
-    left: 0;
+    left: -3rem;
 
     font-size: 3rem;
 
@@ -26,5 +26,9 @@
 
     transform: translateY(-50%) rotate(90deg);
     transform-origin: top center;
+
+    @include mobile {
+      left: 0;
+    }
   }
 }
