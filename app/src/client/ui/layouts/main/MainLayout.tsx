@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
-
-import { debounce } from '@/app/utils/debounce';
-import { updateHeight } from '@/app/utils/window/updateHeight';
 
 import styles from './main-layout.module.scss';
 
@@ -17,11 +14,11 @@ const MainLayout: React.FC<Props> = ({
   title = null,
   isAdmin = false
 }) => {
-  useEffect(() => {
+  /* useEffect(() => {
     const func = debounce(updateHeight);
     window.addEventListener('resize', func);
     return () => window.removeEventListener('resize', func);
-  }, []);
+  }, []); */
 
   return (
     <div>
