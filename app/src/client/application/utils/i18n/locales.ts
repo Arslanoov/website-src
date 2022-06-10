@@ -36,13 +36,18 @@ export default {
     'Edit and make draft': 'Edit and make draft',
     'Go Back': '<- Back',
 
+    'back-to-home': 'Back to Home',
+    'previous-page': 'Previous Page',
+
     'about-me-name': 'Rasul Arslanov',
     'about-me-description': 'I build things for the web',
+    'about-me-exp': 'years of commercial experience',
 
     'nothing-here': 'Oops. It looks like this page is empty :(',
     'smth-interesting': 'Maybe you\'ll find something interesting in my ',
     'noscript': 'You should enable JS to watch the readable content',
-    'github': 'Check out my github!'
+    'github': 'Check out my github!',
+    'contact': 'Contact'
   },
   'ru': {
     'content-items': 'Контент',
@@ -83,10 +88,15 @@ export default {
 
     'about-me-name': 'Расуль Арсланов',
     'about-me-description': 'Превращаю макеты в работающие веб приложения',
+    'about-me-exp': 'лет коммерческого опыта',
+
+    'back-to-home': 'На главную',
+    'previous-page': 'Назад',
 
     'nothing-here': 'Ууупс. Походу здесь ничего нет :(',
     'smth-interesting': 'Возможно, есть что-то интересное на моем ',
     'noscript': 'Вы должны включить JavaScript чтобы получить данные в читабельном формате',
-    'github': 'Посмотри мой github!'
+    'github': 'Посмотри мой github!',
+    'contact': 'Связаться'
   }
 };

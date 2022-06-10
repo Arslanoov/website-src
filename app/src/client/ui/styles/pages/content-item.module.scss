@@ -1,68 +1,126 @@
-.wrapper {
-  border-radius: 1.5rem;
+.preview {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+
+  color: $main-color;
+  background-color: $accent-color;
+}
+
+.back {
+  position: absolute;
+  top: 50%;
+  left: 0;
+
+  font-size: 3rem;
+
+  color: $secondary-color;
+
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: top center;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .row {
+  width: 50%;
+}
+
+.wrapper {
+  column-gap: 3rem;
+
+  color: $accent-color;
+  background-color: $main-color;
+}
+
+.content {
+  grid-column: col-start 2 / col-end 11;
+
   display: flex;
-  flex-direction: column-reverse;
-  align-items: flex-start;
+  flex-direction: column;
 
-  @include tablet {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  & > * {
-    margin-bottom: .5rem;
-
-    @include tablet {
-      margin-bottom: 0;
-    }
-  }
+  margin-top: 10%;
+  padding: 5rem 0;
 }
 
 .title {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 700;
 
+  @include mobile {
+    font-size: 4rem;
+  }
+
   @include tablet {
-    font-size: 4.6rem;
+    font-size: 6rem;
   }
 }
 
 .date {
   margin-bottom: .5rem;
   
-  font-size: 1.7rem;
+  font-size: 2rem;
   font-weight: 300;
 }
 
-.image {
-  width: 30rem;
-  user-select: none;
-}
-
-.description,
-.content {
-  width: 100%;
-
-  word-break: break-all;
-
+.description {
   font-size: 1.8rem;
-  line-height: 1.2;
+
+  color: $secondary-color;
 }
 
-.description,
-.content * {
-  a {
-    &,
-    span {
-      color: #1f83ff !important;
-    }
+.image {
+  grid-column: col-start 1 / col-end 8;
+
+  position: relative;
+  transform: translateY(-50%);
+
+  width: 200px;
+
+  @include tablet {
+    grid-column: col-start 2 / col-end 5;
+
+    position: sticky;
+    top: 50%;
   }
 }
 
-.description {
-  margin: 1rem 0 2rem;
+.text {
+  grid-column: col-start 1 / col-end 12;
+
+  padding: 4rem 0;
+
+  word-break: break-all;
+
+  font-size: 1.7rem;
+
+  @include tablet {
+    grid-column: col-start 3 / col-end 11;
+  }
+
+  h3 {
+    font-size: 2.5rem;
+  }
+
+  li {
+    margin: 0 !important;
+  }
+
+  * {
+    font-family: Graphik, serif;
+
+    a {
+      &,
+      span {
+        color: $link-color !important;
+      }
+    }
+  }
 }

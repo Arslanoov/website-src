@@ -1,15 +1,16 @@
 import type { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 
-import { ContentItem as ContentItemInterface, Type } from '@/domain/content/contentItem';
+import { ContentItem as ContentItemInterface } from '@/domain/content/contentItem';
 
 import { dateFormatter } from '@/app/utils/date/formatter';
 
 import getOneContentItemCommand from '@/api/useCases/contentItem/getOne/command';
 import getOneContentItemHandler from '@/api/useCases/contentItem/getOne/handler';
 
+import { getText } from '@/app/utils/i18n/helper';
+
 import MainLayout from '@/ui/layouts/main/MainLayout';
-import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
 
 import styles from '@/ui/styles/pages/content-item.module.scss';
 
@@ -28,41 +29,33 @@ type Props = {
 };
 
 export default function ContentItem({ contentItem }: Props) {
-  const { locale } = useRouter();
+  const router = useRouter();
 
   return (
-    <div className={styles.page}>
-      <div className={styles.wrapper}>
+    <>
+      <div className={styles.preview}>
+        <a onClick={() => router.back()} className={styles.back}>{getText(router.locale, 'previous-page')}</a>
         <div className={styles.row}>
-          <h1 className={styles.title}>
-            {contentItem.title}
-          </h1>
-          <ContentMoreButton
-            link={`/content/${contentItem.type === Type.article ? 'blog' : 'projects'}`}
-            text="Back"
-          />
+          <h1 className={styles.title}>{contentItem.title}</h1>
+          <div className={styles.date}>
+            {dateFormatter(contentItem.createdAt, router.locale)}
+          </div>
+          <p className={styles.description}>{contentItem.description}</p>
         </div>
-        <div className={styles.date}>
-          {dateFormatter(contentItem.createdAt, locale)}
-        </div>
-        <p className={styles.description}>{contentItem.description}</p>
-
+      </div>
+      <div className={`${styles.wrapper} container`}>
         {contentItem.cover && <img
           src={contentItem.cover}
           className={styles.image}
           draggable={false}
           alt=""
         />}
-      </div>
 
-      <div className={styles.wrapper}>
-        <div className={styles.content}>
-          <div dangerouslySetInnerHTML={{
-            __html: JSON.parse(contentItem.rawContent)
-          }} />
-        </div>
+        <div className={styles.text} dangerouslySetInnerHTML={{
+          __html: JSON.parse(contentItem.rawContent)
+        }} />
       </div>
-    </div>
+    </>
   );
 };
 

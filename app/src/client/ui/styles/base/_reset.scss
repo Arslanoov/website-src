@@ -1,17 +1,11 @@
 html {
   overflow-y: scroll;
-  scrollbar-width: none;
-}
-
-::-webkit-scrollbar {
-  display: none;
 }
 
 body {
   box-sizing: border-box;
-
-  background-color: #0a192f;
-  color: #fff;
+  background-color: $main-color;
+  color: $accent-color;
 }
 
 *,
@@ -26,7 +20,7 @@ a {
 
 button,
 a {
-  color: #fff;
+  color: $accent-color;
 }
 
 body {
@@ -36,7 +30,7 @@ body {
 }
 
 ul li {
-  color: #fff;
+  color: $accent-color;
   list-style-type: disc;
 }
 

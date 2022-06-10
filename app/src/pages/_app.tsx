@@ -7,6 +7,8 @@ import type { AppProps } from 'next/app';
 
 import { SessionProvider } from 'next-auth/react';
 
+import { m, domAnimation, AnimatePresence, LazyMotion } from 'framer-motion';
+
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
 };
@@ -15,14 +17,55 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 };
 
-const App = ({ Component, pageProps: { session, ...pageProps }}: AppPropsWithLayout) => {
+const variants = {
+  initial: {
+    opacity: 0,
+    left: '-100%',
+    top: 0,
+    scale: 0.8
+  },
+  animate: {
+    opacity: 1,
+    left: 0,
+    top: 0,
+    scale: 1
+  },
+  exit: {
+    opacity: 0,
+    left: '100%',
+    top: 0,
+    scale: 1
+  }
+};
+
+const transition = {
+  duration: 0.5
+};
+
+const App = ({ Component, router, pageProps: { session, ...pageProps }}: AppPropsWithLayout) => {
+  const url = `${process.env.SITE_URL}${router.route}`;
+
   const getLayout = Component.getLayout || ((page) => page);
 
-  const layoutPage = getLayout(<Component {...pageProps} />);
+  const layoutPage = getLayout(<Component {...pageProps} key={url} />);
 
   return (
     <SessionProvider session={session}>
-      {layoutPage}
+      <LazyMotion features={domAnimation}>
+        <AnimatePresence exitBeforeEnter={true} onExitComplete={() => window.scrollTo(0, 0)}>
+          <m.div
+            key={`${process.env.SITE_URL}${router.route}`}
+            className="page-wrap"
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={variants}
+            transition={transition}
+          >
+            {layoutPage}
+          </m.div>
+        </AnimatePresence>
+      </LazyMotion>
     </SessionProvider>
   );
 };

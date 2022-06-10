@@ -37,22 +37,15 @@ type Props = {
 
 export default function Projects({ projects, page }: Props) {
   return (
-    <>
-      <div className={styles.buttons}>
-        <div className={styles.button}>
-          <ContentMoreButton text="Go back" link="/" />
-        </div>
-      </div>
-      <ContentListComponent
-        paginatedItems={projects}
-        currentPage={page}
-        vertical={false}
-        title="Projects"
-        baseUrl="/content"
-        paginationUrl="/content/projects"
-        withPagination
-      />
-    </>
+    <ContentListComponent
+      paginatedItems={projects}
+      currentPage={page}
+      vertical={false}
+      title="Projects"
+      baseUrl="/content"
+      paginationUrl="/content/projects"
+      withPagination
+    />
   );
 };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 import { getText } from '@/app/utils/i18n/helper';
 
@@ -35,42 +36,48 @@ const ContentList: React.FC<Props> = ({
   const { locale } = useRouter();
 
   return (
-    <div className={styles.content}>
-      <h3 className={styles.title}>{getText(locale, title)}</h3>
+    <>
+      <div className={styles.preview}>
+        <Link href="/"><a className={styles.back}>{getText(locale, 'back-to-home')}</a></Link>
+        <h2 className={styles.title}>{getText(locale, title)}</h2>
 
-      {prependEl}
+        {prependEl}
+      </div>
+      <div className={`${styles.wrapper} container`}>
+        <div className={styles.content}>
+          {paginatedItems.items.length === 0 ? <div className={styles['not-found']}>
+            <p>{getText(locale, 'nothing-here')}</p>
+            <p>
+              {getText(locale, 'smth-interesting')} <a
+                className={styles.link}
+                href="https://github.com/Arslanoov"
+                target="blank"
+              >
+              GitHub
+              </a>?
+            </p>
+          </div>: <>
+            <div className={styles.list} style={{
+              gridTemplateColumns: vertical ? '1fr' : ''
+            }}>
+              {paginatedItems.items.map((item) => <ContentListItem
+                key={item.id}
+                title={item.title}
+                createdAt={item.createdAt}
+                locale={locale}
+                link={`${baseUrl}/${item.slug}`}
+              />)}
+            </div>
 
-      {paginatedItems.items.length === 0 ? <div className={styles['not-found']}>
-        <p>{getText(locale, 'nothing-here')}</p>
-        <p>
-          {getText(locale, 'smth-interesting')} <a
-            className={styles.link}
-            href="https://github.com/Arslanoov"
-            target="blank"
-          >
-             GitHub
-          </a>?
-        </p>
-      </div>: <>
-        <div className={styles.list} style={{
-          gridTemplateColumns: vertical ? '1fr' : ''
-        }}>
-          {paginatedItems.items.map((item) => <ContentListItem
-            key={item.id}
-            title={item.title}
-            createdAt={item.createdAt}
-            locale={locale}
-            link={`${baseUrl}/${item.slug}`}
-          />)}
+            {withPagination && <Pagination
+              pagesCount={Number(paginatedItems.totalCount) / Number(paginatedItems.perPage)}
+              currentPage={currentPage}
+              url={paginationUrl}
+            />}
+          </>}
         </div>
-
-        {withPagination && <Pagination
-          pagesCount={Number(paginatedItems.totalCount) / Number(paginatedItems.perPage)}
-          currentPage={currentPage}
-          url={paginationUrl}
-        />}
-      </>}
-    </div>
+      </div>
+    </>
   );
 };
 
