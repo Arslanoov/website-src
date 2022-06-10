@@ -15,7 +15,7 @@ const AdminLayout: React.FC = ({ children }) => {
     return <div />;
   }
 
-  const isAdmin = (session.user as SessionUserInterface).role === 'Admin';
+  const isAdmin = (session?.user as SessionUserInterface)?.role === 'Admin';
 
   if (
     status === AuthStatus.guest ||
