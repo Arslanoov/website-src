@@ -86,7 +86,7 @@
   width: 200px;
 
   @include tablet {
-    grid-column: col-start 2 / col-end 5;
+    grid-column: col-start 2 / col-end 3;
 
     position: sticky;
     top: 50%;
@@ -103,7 +103,7 @@
   font-size: 1.7rem;
 
   @include tablet {
-    grid-column: col-start 6 / col-end 11;
+    grid-column: col-start 4 / col-end 11;
   }
 
   h3 {
