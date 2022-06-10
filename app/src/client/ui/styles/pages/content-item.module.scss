@@ -12,10 +12,6 @@
   background-color: $accent-color;
 }
 
-.row {
-  width: 50%;
-}
-
 .back {
   position: absolute;
   top: 50%;
@@ -27,10 +23,14 @@
 
   transform: translateY(-50%) rotate(90deg);
   transform-origin: top center;
-  
+
   &:hover {
     cursor: pointer;
   }
+}
+
+.row {
+  width: 50%;
 }
 
 .wrapper {
