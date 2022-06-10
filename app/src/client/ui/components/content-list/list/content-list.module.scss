@@ -1,24 +1,64 @@
-.content {
+.preview {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100vh;
+
+  background-color: $secondary-color;
+}
+
+.back {
+  position: absolute;
+  top: 50%;
+  left: 0;
+
+  font-size: 3rem;
+
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: top center;
+}
+
+.title {
   margin-bottom: 2rem;
 
-  .title {
-    margin-bottom: 2rem;
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 0.6;
 
-    font-size: 3.5rem;
-    font-weight: 700;
-    line-height: 0.6;
-  }
+  color: $accent-color;
+}
+
+.wrapper {
+  width: 100%;
+
+  background-color: $accent-color;
+}
+
+.content {
+  grid-column: col-start 2 / col-end 11;
+
+  padding: 6rem 0;
+
+  color: $main-color;
 
   p {
     margin: 0;
+  }
+
+  &,
+  p {
+    font-size: 2rem;
   }
 
   .list {
     display: flex;
     flex-direction: column;
 
-    row-gap: 3rem;
-    column-gap: 3rem;
+    row-gap: 6rem;
 
     .item {
       width: 100%;

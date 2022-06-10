@@ -13,12 +13,16 @@
   .title {
     margin-bottom: .3rem;
 
-    font-size: 2.4rem;
+    font-size: 7rem;
+
+    color: $main-color;
   }
 
   .date {
-    font-size: 1.3rem;
+    font-size: 2rem;
     font-weight: 300;
+
+    color: $secondary-color;
 
     opacity: .7;
   }

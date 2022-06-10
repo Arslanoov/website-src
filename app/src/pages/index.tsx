@@ -15,27 +15,21 @@ export default function Home() {
   const { status, data: session } = useSession();
   const user = session?.user as SessionUserInterface | null;
 
-  const toManagePage = () => Router.push('/manage/content/list');
-
   return (
-    <>
-      {
-        status === AuthStatus.logged &&
-        user.role === UserRole.Admin &&
-        <button onClick={toManagePage} className={styles.button}>
-          Manage
-        </button>
-      }
-
+    <div className="container">
       <div className={styles.container}>
         <h1 className={styles.title}>
           <Link href="/content/projects"><a></a></Link>
           <Link href="/content/blog"><a></a></Link>
           <Link href="/contact"><a></a></Link>
+          {
+            status === AuthStatus.logged &&
+            user.role === UserRole.Admin &&
+            <Link href="/manage/content/list"><a></a></Link>
+          }
         </h1>
-        <img className={styles.photo} src="/img/me.jpg" alt=""/>
       </div>
-    </>
+    </div>
   );
 };
 

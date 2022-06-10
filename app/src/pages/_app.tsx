@@ -21,16 +21,19 @@ const variants = {
   initial: {
     opacity: 0,
     left: '-100%',
+    top: 0,
     scale: 0.8
   },
   animate: {
     opacity: 1,
     left: 0,
+    top: 0,
     scale: 1
   },
   exit: {
     opacity: 0,
     left: '100%',
+    top: 0,
     scale: 1
   }
 };
@@ -49,7 +52,7 @@ const App = ({ Component, router, pageProps: { session, ...pageProps }}: AppProp
   return (
     <SessionProvider session={session}>
       <LazyMotion features={domAnimation}>
-        <AnimatePresence exitBeforeEnter={true} >
+        <AnimatePresence exitBeforeEnter={true} onExitComplete={() => window.scrollTo(0, 0)}>
           <m.div
             key={`${process.env.SITE_URL}${router.route}`}
             className="page-wrap"

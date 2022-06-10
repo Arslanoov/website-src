@@ -1,70 +1,106 @@
-.wrapper {
-  border-radius: 1.5rem;
+.preview {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+
+  color: $main-color;
+  background-color: $accent-color;
 }
 
 .row {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: flex-start;
+  width: 50%;
+}
 
-  @include tablet {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
+.back {
+  position: absolute;
+  top: 50%;
+  left: 0;
 
-  & > * {
-    font-family: Regular;
+  font-size: 3rem;
 
-    margin-bottom: .5rem;
+  color: $secondary-color;
 
-    @include tablet {
-      margin-bottom: 0;
-    }
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: top center;
+  
+  &:hover {
+    cursor: pointer;
   }
 }
 
-.title {
-  font-size: 3.5rem;
-  font-weight: 700;
+.wrapper {
+  column-gap: 3rem;
 
-  @include tablet {
-    font-size: 4.6rem;
-  }
+  color: $accent-color;
+  background-color: $main-color;
+}
+
+.content {
+  grid-column: col-start 2 / col-end 11;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 10%;
+  padding: 5rem 0;
+}
+
+.title {
+  font-size: 6rem;
+  font-weight: 700;
 }
 
 .date {
   margin-bottom: .5rem;
   
-  font-size: 1.7rem;
+  font-size: 2rem;
   font-weight: 300;
 }
 
-.image {
-  width: 30rem;
-  user-select: none;
+.description {
+  font-size: 1.8rem;
+
+  color: $secondary-color;
 }
 
-.description,
-.content {
-  width: 100%;
+.image {
+  grid-column: col-start 2 / col-end 5;
+
+  position: sticky;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.text {
+  grid-column: col-start 6 / col-end 11;
+
+  padding: 4rem 0;
 
   word-break: break-all;
 
-  font-size: 1.8rem;
-  line-height: 1.2;
-}
+  font-size: 1.7rem;
 
-.description,
-.content * {
-  a {
-    &,
-    span {
-      color: $blue-color !important;
+  h3 {
+    font-size: 2.5rem;
+  }
+
+  li {
+    margin: 0 !important;
+  }
+
+  * {
+    font-family: Graphik, serif;
+
+    a {
+      &,
+      span {
+        color: $link-color !important;
+      }
     }
   }
-}
-
-.description {
-  margin: 1rem 0 2rem;
 }

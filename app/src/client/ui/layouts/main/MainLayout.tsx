@@ -27,14 +27,10 @@ const MainLayout: React.FC<Props> = ({
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
 
-      <div className="container">
-        <div
-          className={styles.layout}
-        >
-          <main>
-            {children}
-          </main>
-        </div>
+      <div className={styles.layout}>
+        <main>
+          {children}
+        </main>
       </div>
 
       {process.env.NODE_ENV === 'production' && !isAdmin && <>
