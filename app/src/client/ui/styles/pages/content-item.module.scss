@@ -7,6 +7,7 @@
   align-items: center;
 
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
 
   color: $main-color;
   background-color: $accent-color;
