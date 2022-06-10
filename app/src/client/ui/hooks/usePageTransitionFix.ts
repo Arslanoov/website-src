@@ -1,5 +1,5 @@
-import Router from 'next/router';
 import { useEffect } from 'react';
+import Router from 'next/router';
 
 export const OPACITY_EXIT_DURATION = 1;
 
@@ -30,7 +30,9 @@ export const usePageTransitionFix = () => {
 
   useEffect(() => {
     const asPath = Router.router?.asPath;
-    Router.router?.push(asPath);
+    if (Router.router.route !== '/404') {
+      Router.router?.push(asPath);
+    }
     // ? Use replace() instead of push()?
   }, []);
 };
