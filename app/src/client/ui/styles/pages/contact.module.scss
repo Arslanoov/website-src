@@ -15,7 +15,7 @@
 .back {
   position: absolute;
   top: 50%;
-  left: -3rem;
+  left: 0;
 
   font-size: 3rem;
 
@@ -23,10 +23,6 @@
 
   transform: translateY(-50%) rotate(90deg);
   transform-origin: top center;
-
-  @include mobile {
-    left: 0;
-  }
 
   &:hover {
     cursor: pointer;

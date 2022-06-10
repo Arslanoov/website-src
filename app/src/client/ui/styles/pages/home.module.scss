@@ -76,11 +76,15 @@
     &:nth-of-type(4) {
       font-size: 2rem;
 
-      color: $secondary-color;
+      color: $accent-color;
+    }
 
-      &::after {
-        content: "Manage";
-      }
+    &:nth-of-type(5) {
+      margin-top: 1rem;
+
+      font-size: 2rem;
+
+      color: $accent-color;
     }
   }
 }

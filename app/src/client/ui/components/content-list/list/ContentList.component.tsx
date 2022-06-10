@@ -38,7 +38,7 @@ const ContentList: React.FC<Props> = ({
   return (
     <>
       <div className={styles.preview}>
-        <Link href="/"><a className={styles.back}>Back to Home</a></Link>
+        <Link href="/"><a className={styles.back}>{getText(locale, 'back-to-home')}</a></Link>
         <h2 className={styles.title}>{getText(locale, title)}</h2>
 
         {prependEl}

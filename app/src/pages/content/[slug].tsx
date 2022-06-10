@@ -1,6 +1,5 @@
 import type { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 import { ContentItem as ContentItemInterface } from '@/domain/content/contentItem';
 
@@ -8,6 +7,8 @@ import { dateFormatter } from '@/app/utils/date/formatter';
 
 import getOneContentItemCommand from '@/api/useCases/contentItem/getOne/command';
 import getOneContentItemHandler from '@/api/useCases/contentItem/getOne/handler';
+
+import { getText } from '@/app/utils/i18n/helper';
 
 import MainLayout from '@/ui/layouts/main/MainLayout';
 
@@ -33,7 +34,7 @@ export default function ContentItem({ contentItem }: Props) {
   return (
     <>
       <div className={styles.preview}>
-        <a onClick={() => router.back()} className={styles.back}>Previous Page</a>
+        <a onClick={() => router.back()} className={styles.back}>{getText(router.locale, 'previous-page')}</a>
         <div className={styles.row}>
           <h1 className={styles.title}>{contentItem.title}</h1>
           <div className={styles.date}>
