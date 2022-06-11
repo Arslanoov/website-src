@@ -1,19 +1,19 @@
 import type { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
-import {ContentItem as ContentItemInterface, Type} from '@/domain/content/contentItem';
+import { ContentItem as ContentItemInterface, Type } from '@/domain/content/contentItem';
 
-import {dateFormatter} from '@/app/utils/date/formatter';
+import { dateFormatter } from '@/app/utils/date/formatter';
 
 import getOneContentItemCommand from '@/api/useCases/contentItem/getOne/command';
 import getOneContentItemHandler from '@/api/useCases/contentItem/getOne/handler';
 
-import {getText} from '@/app/utils/i18n/helper';
+import { getText } from '@/app/utils/i18n/helper';
 
 import MainLayout from '@/ui/layouts/main/MainLayout';
 
 import styles from '@/ui/styles/pages/content-item.module.scss';
-import Link from 'next/link';
 
 export const getServerSideProps: GetServerSideProps = async (req) => {
   const contentItem = await getOneContentItemHandler(new getOneContentItemCommand((req.query.slug ?? '') as string));
