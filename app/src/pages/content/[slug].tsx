@@ -1,18 +1,19 @@
 import type { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 
-import { ContentItem as ContentItemInterface } from '@/domain/content/contentItem';
+import {ContentItem as ContentItemInterface, Type} from '@/domain/content/contentItem';
 
-import { dateFormatter } from '@/app/utils/date/formatter';
+import {dateFormatter} from '@/app/utils/date/formatter';
 
 import getOneContentItemCommand from '@/api/useCases/contentItem/getOne/command';
 import getOneContentItemHandler from '@/api/useCases/contentItem/getOne/handler';
 
-import { getText } from '@/app/utils/i18n/helper';
+import {getText} from '@/app/utils/i18n/helper';
 
 import MainLayout from '@/ui/layouts/main/MainLayout';
 
 import styles from '@/ui/styles/pages/content-item.module.scss';
+import Link from 'next/link';
 
 export const getServerSideProps: GetServerSideProps = async (req) => {
   const contentItem = await getOneContentItemHandler(new getOneContentItemCommand((req.query.slug ?? '') as string));
@@ -29,16 +30,18 @@ type Props = {
 };
 
 export default function ContentItem({ contentItem }: Props) {
-  const router = useRouter();
+  const { locale } = useRouter();
 
   return (
     <>
       <div className={styles.preview}>
-        <a onClick={() => router.back()} className={styles.back}>{getText(router.locale, 'previous-page')}</a>
+        <Link href={`/content/${contentItem.type === Type.article ? 'blog' : 'projects'}`}>
+          <a className={styles.back}>{getText(locale, 'previous-page')}</a>
+        </Link>
         <div className={styles.row}>
           <h1 className={styles.title}>{contentItem.title}</h1>
           <div className={styles.date}>
-            {dateFormatter(contentItem.createdAt, router.locale)}
+            {dateFormatter(contentItem.createdAt, locale)}
           </div>
           <p className={styles.description}>{contentItem.description}</p>
         </div>
