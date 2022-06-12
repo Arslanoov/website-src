@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 
 import { AuthStatus, SessionUserInterface } from '@/domain/user/auth';
@@ -9,20 +8,18 @@ import MainLayout from '@/ui/layouts/main/MainLayout';
 
 const AdminLayout: React.FC = ({ children }) => {
   const { status, data: session } = useSession();
-  const router = useRouter();
 
   if (typeof window === 'undefined' || status === 'loading') {
-    return <div />;
+    return <div>403</div>;
   }
 
-  const isAdmin = (session.user as SessionUserInterface).role === 'Admin';
+  const isAdmin = (session?.user as SessionUserInterface)?.role === 'Admin';
 
   if (
     status === AuthStatus.guest ||
     !isAdmin
   ) {
-    router.push('/');
-    return <div />;
+    return <div>403</div>;
   }
 
   return (

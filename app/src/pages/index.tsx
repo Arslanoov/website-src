@@ -10,6 +10,8 @@ import { Language } from '@/domain/content/contentItem';
 
 import MainLayout from '@/ui/layouts/main/MainLayout';
 
+import { getText } from '@/app/utils/i18n/helper';
+
 import styles from '@/ui/styles/pages/home.module.scss';
 
 export default function Home() {
@@ -20,7 +22,7 @@ export default function Home() {
   return (
     <div className="container">
       <div className={styles.container}>
-        <h1 className={styles.title}>
+        <h1 className={`${styles.title} ${locale === Language.english ? styles.title_en : styles.title_ru}`}>
           <Link href="/content/projects"><a></a></Link>
           <Link href="/content/blog"><a></a></Link>
           <Link href="/contact"><a></a></Link>
@@ -43,6 +45,8 @@ export default function Home() {
             <Link href="/manage/content/list"><a>Manage</a></Link>
           }
         </h1>
+
+        <div className={styles.hint}>{getText(locale, 'tap-hint')}</div>
       </div>
     </div>
   );
