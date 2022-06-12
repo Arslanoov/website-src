@@ -1,3 +1,13 @@
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-0.6rem);
+  }
+}
+
 .container {
   grid-column: col-start 1 / col-end 12;
 
@@ -10,6 +20,25 @@
 
   @include tablet {
     grid-column: col-start 2 / col-end 11;
+  }
+}
+
+.hint {
+  position: fixed;
+  bottom: 5%;
+  left: 0;
+  right: 0;
+
+  font-size: 1.7rem;
+
+  text-align: center;
+
+  color: $accent-color;
+
+  animation: bounce .5s cubic-bezier(.4, .5, .5, 1) infinite alternate;
+
+  @include tablet {
+    display: none;
   }
 }
 
