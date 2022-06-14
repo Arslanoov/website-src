@@ -44,6 +44,7 @@ export default {
     'about-me-exp': 'years of commercial experience',
 
     'tap-hint': 'Tap on any word',
+    'hover-hint': 'Hover mouse on any word',
     'nothing-here': 'Oops. It looks like this page is empty :(',
     'smth-interesting': 'Maybe you\'ll find something interesting in my ',
     'noscript': 'You should enable JS to watch the readable content',
@@ -95,6 +96,7 @@ export default {
     'previous-page': 'Назад',
 
     'tap-hint': 'Нажми на любое слово',
+    'hover-hint': 'Наведи мышку на любое слово',
     'nothing-here': 'Ууупс. Походу здесь ничего нет :(',
     'smth-interesting': 'Возможно, есть что-то интересное на моем ',
     'noscript': 'Вы должны включить JavaScript чтобы получить данные в читабельном формате',

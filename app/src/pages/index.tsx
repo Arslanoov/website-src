@@ -46,7 +46,8 @@ export default function Home() {
           }
         </h1>
 
-        <div className={styles.hint}>{getText(locale, 'tap-hint')}</div>
+        <div className={`${styles.hint} ${styles.tap}`}>{getText(locale, 'tap-hint')}</div>
+        <div className={`${styles.hint} ${styles.hover}`}>{getText(locale, 'hover-hint')}</div>
       </div>
     </div>
   );
