@@ -35,7 +35,7 @@ export default function ContentItem({ contentItem }: Props) {
   return (
     <>
       <div className={styles.preview}>
-        <Link href={`/content/${contentItem.type === Type.article ? 'blog' : 'projects'}`}>
+        <Link href={`/${contentItem.type === Type.article ? 'blog' : 'projects'}`}>
           <a className={styles.back}>{getText(locale, 'previous-page')}</a>
         </Link>
         <div className={styles.row}>

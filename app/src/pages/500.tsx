@@ -7,7 +7,6 @@ import MainLayout from '@/ui/layouts/main/MainLayout';
 
 import styles from '@/ui/styles/pages/error.module.scss';
 
-
 export default function NotFound() {
   const router = useRouter();
 

@@ -23,8 +23,8 @@ export default function Home() {
     <div className="container">
       <div className={styles.container}>
         <h1 className={`${styles.title} ${locale === Language.english ? styles.title_en : styles.title_ru}`}>
-          <Link href="/content/projects"><a></a></Link>
-          <Link href="/content/blog"><a></a></Link>
+          <Link href="/projects"><a></a></Link>
+          <Link href="/blog"><a></a></Link>
           <Link href="/contact"><a></a></Link>
           <Link
             locale={locale === Language.english ? Language.russian : Language.english}

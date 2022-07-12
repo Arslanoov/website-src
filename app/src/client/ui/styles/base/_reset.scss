@@ -1,5 +1,6 @@
 html {
   overflow-y: scroll;
+  overflow-x: hidden;
 
   scrollbar-width: auto;
   scrollbar-color: $secondary-color transparent;
@@ -11,7 +12,7 @@ body {
   color: $accent-color;
 
   &::-webkit-scrollbar {
-    width: 15px;
+    width: 10px;
 
     border-left: 1px solid $accent-color;
 
@@ -23,7 +24,7 @@ body {
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $accent-color;
+    background-color: $secondary-color;
 
     transition: background-color .5s;
 
