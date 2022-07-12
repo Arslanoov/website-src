@@ -1,8 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
+import { useRouter } from 'next/router';
 
 import styles from './main-layout.module.scss';
+import {Language} from '@/domain/content/contentItem';
 
 type Props = {
   title?: string | null,
@@ -20,12 +22,20 @@ const MainLayout: React.FC<Props> = ({
     return () => window.removeEventListener('resize', func);
   }, []); */
 
+  const { locale } = useRouter();
+
   return (
     <div>
       <Head>
-        <title>{title ?? 'Rasul Arslanov'}</title>
+        <title>{title ?? (locale === Language.russian ? 'Расуль Арсланов' : 'Rasul Arslanov')}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Frontend developer website." />
+        <meta name="description"
+          content={
+            locale === Language.russian ?
+              'Фронтенд разработчик. Превращаю макеты в работающие веб приложения. Пишу статьи. 2+ лет коммерческого опыта' :
+              'Frontend developer with 2+ years of collection experience. Turn layouts into working web applications. Write articles.'
+          }
+        />
         <meta name="yandex-verification" content="c6e27706431d2eba" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
