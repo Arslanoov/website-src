@@ -50,12 +50,6 @@ const App = ({ Component, router, pageProps: { session, ...pageProps }}: AppProp
       <LazyMotion features={domAnimation}>
         <AnimatePresence exitBeforeEnter>
           <m.div
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              bottom: 0,
-            }}
             key={`${process.env.SITE_URL}${router.route}`}
             initial="initial"
             animate="animate"
