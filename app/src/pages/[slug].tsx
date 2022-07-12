@@ -15,14 +15,23 @@ import MainLayout from '@/ui/layouts/main/MainLayout';
 
 import styles from '@/ui/styles/pages/content-item.module.scss';
 
-export const getServerSideProps: GetServerSideProps = async (req) => {
-  const contentItem = await getOneContentItemHandler(new getOneContentItemCommand((req.query.slug ?? '') as string));
-
-  return {
-    props: {
-      contentItem
-    }
-  };
+export const getServerSideProps: GetServerSideProps = async ({  res, query }) => {
+  try {
+    const contentItem = await getOneContentItemHandler(new getOneContentItemCommand((query.slug ?? '') as string));
+    return {
+      props: {
+        contentItem
+      }
+    };
+  } catch (e) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/404'
+      },
+      props: {}
+    };
+  }
 };
 
 type Props = {

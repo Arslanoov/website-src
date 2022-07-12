@@ -50,7 +50,7 @@ const handler = async ({ slug, forManage }: Command) => {
     .select(toSelect)
     .join('ci.author', 'a')
     .where({ slug });
-  
+
   if (!forManage) {
     qb.andWhere({
       status: Status.Active
@@ -60,6 +60,10 @@ const handler = async ({ slug, forManage }: Command) => {
   qb.limit(1);
 
   const articles = await qb.execute();
+
+  if (!articles || articles.length < 1) {
+    throw new ContentItemDoesntExist();
+  }
 
   return articles[0];
 };
