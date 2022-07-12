@@ -22,18 +22,15 @@ type AppPropsWithLayout = AppProps & {
 const variants = {
   initial: {
     opacity: 0,
-    left: '-100%',
-    scale: 0.6
+    scale: 0.75
   },
   animate: {
     opacity: 1,
-    left: 0,
     scale: 1
   },
   exit: {
     opacity: 0,
-    left: '100%',
-    scale: 0.6
+    scale: 0.75
   }
 };
 
@@ -51,8 +48,14 @@ const App = ({ Component, router, pageProps: { session, ...pageProps }}: AppProp
   return (
     <SessionProvider session={session}>
       <LazyMotion features={domAnimation}>
-        <AnimatePresence exitBeforeEnter={true}>
+        <AnimatePresence exitBeforeEnter>
           <m.div
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              bottom: 0,
+            }}
             key={`${process.env.SITE_URL}${router.route}`}
             initial="initial"
             animate="animate"
