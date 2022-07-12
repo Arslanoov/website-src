@@ -15,14 +15,23 @@ import MainLayout from '@/ui/layouts/main/MainLayout';
 
 import styles from '@/ui/styles/pages/content-item.module.scss';
 
-export const getServerSideProps: GetServerSideProps = async (req) => {
-  const contentItem = await getOneContentItemHandler(new getOneContentItemCommand((req.query.slug ?? '') as string));
-
-  return {
-    props: {
-      contentItem
-    }
-  };
+export const getServerSideProps: GetServerSideProps = async ({  res, query }) => {
+  try {
+    const contentItem = await getOneContentItemHandler(new getOneContentItemCommand((query.slug ?? '') as string));
+    return {
+      props: {
+        contentItem
+      }
+    };
+  } catch (e) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/404'
+      },
+      props: {}
+    };
+  }
 };
 
 type Props = {
@@ -35,7 +44,7 @@ export default function ContentItem({ contentItem }: Props) {
   return (
     <>
       <div className={styles.preview}>
-        <Link href={`/content/${contentItem.type === Type.article ? 'blog' : 'projects'}`}>
+        <Link href={`/${contentItem.type === Type.article ? 'blog' : 'projects'}`}>
           <a className={styles.back}>{getText(locale, 'previous-page')}</a>
         </Link>
         <div className={styles.row}>

@@ -10,9 +10,6 @@ import getAllContentItemsHandler from '@/api/useCases/contentItem/getAll/handler
 
 import MainLayout from '@/ui/layouts/main/MainLayout';
 import ContentListComponent from '@/ui/components/content-list/list/ContentList.component';
-import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
-
-import styles from '@/ui/styles/pages/content-items.module.scss';
 
 export const getServerSideProps: GetServerSideProps = async ({ query: { page = 1 }, locale}) => {
   const articles = await getAllContentItemsHandler(new getAllContentItemsCommand(
@@ -42,8 +39,8 @@ export default function Blog({ articles, page }: Props) {
       currentPage={page}
       vertical={false}
       title="Articles"
-      baseUrl="/content"
-      paginationUrl="/content/blog"
+      baseUrl="/"
+      paginationUrl="blog"
       withPagination
     />
   );

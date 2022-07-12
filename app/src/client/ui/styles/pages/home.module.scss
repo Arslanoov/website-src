@@ -36,9 +36,19 @@
   color: $accent-color;
 
   animation: bounce .5s cubic-bezier(.4, .5, .5, 1) infinite alternate;
+}
 
+.tap {
   @include tablet {
     display: none;
+  }
+}
+
+.hover {
+  display: none;
+
+  @include tablet {
+    display: block;
   }
 }
 

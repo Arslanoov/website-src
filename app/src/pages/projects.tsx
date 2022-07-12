@@ -10,9 +10,6 @@ import getAllProjectsHandler from '@/api/useCases/contentItem/getAll/handler';
 
 import MainLayout from '@/ui/layouts/main/MainLayout';
 import ContentListComponent from '@/ui/components/content-list/list/ContentList.component';
-import ContentMoreButton from '@/ui/components/content-list/more-button/ContentMoreButton.component';
-
-import styles from '@/ui/styles/pages/content-items.module.scss';
 
 export const getServerSideProps: GetServerSideProps = async ({ query: { page = 1}, locale }) => {
   const projects = await getAllProjectsHandler(new getAllProjectsCommand(
@@ -42,8 +39,8 @@ export default function Projects({ projects, page }: Props) {
       currentPage={page}
       vertical={false}
       title="Projects"
-      baseUrl="/content"
-      paginationUrl="/content/projects"
+      baseUrl="/"
+      paginationUrl="projects"
       withPagination
     />
   );
