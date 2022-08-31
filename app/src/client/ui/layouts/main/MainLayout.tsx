@@ -32,8 +32,8 @@ const MainLayout: React.FC<Props> = ({
         <meta name="description"
           content={
             locale === Language.russian ?
-              'Фронтенд разработчик. Превращаю макеты в работающие веб приложения. Пишу статьи. 2+ лет коммерческого опыта' :
-              'Frontend developer with 2+ years of collection experience. Turn layouts into working web applications. Write articles.'
+              'Фронтенд разработчик. Превращаю макеты в работающие веб приложения. Пишу статьи. 3+ лет коммерческого опыта' :
+              'Frontend developer with 3+ years of collection experience. Turn layouts into working web applications. Write articles.'
           }
         />
         <meta name="yandex-verification" content="c6e27706431d2eba" />
