@@ -86,7 +86,7 @@ export default class NewContentItem extends React.Component<Props, State> {
     this.setState((prevState) => ({
       form: {
         ...prevState.form,
-        rawContent: value
+        rawContent: JSON.stringify(value)
       }
     }));
   }
