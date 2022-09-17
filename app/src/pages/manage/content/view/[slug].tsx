@@ -152,7 +152,7 @@ export default function ContentItemView({ item }: Props) {
       <div
         className={styles.content}
         dangerouslySetInnerHTML={{
-          __html: JSON.parse(item.rawContent)
+          __html: item.rawContent
         }} />
     </div>
   );
