@@ -64,7 +64,7 @@ export default function ContentItem({ contentItem }: Props) {
         />}
 
         <div className={styles.text} dangerouslySetInnerHTML={{
-          __html: JSON.parse(contentItem.rawContent)
+          __html: contentItem.rawContent
         }} />
       </div>
     </>
