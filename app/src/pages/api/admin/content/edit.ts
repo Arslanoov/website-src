@@ -41,7 +41,7 @@ async function handler(
       user.id,
       title,
       description,
-      rawContent,
+      JSON.parse(rawContent),
       lang as Language,
       type as Type,
       cover
