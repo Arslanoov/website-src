@@ -1,0 +1,73 @@
+.header,
+.list,
+.aboutme {
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    grid-column: col-start 2 / col-end 11;
+
+    justify-content: space-between;
+
+    padding: 20px 0;
+}
+
+.aboutme {
+    gap: 15px;
+
+    font-size: 1.8rem;
+
+    color: $secondary-color;
+}
+
+.avatar {
+    border-radius: 30px;
+}
+
+.list {
+    gap: 30px;
+    list-style: none;
+
+    font-size: 1.6rem;
+}
+
+.item {
+    padding: 5px;
+
+    &::after {
+        display: block;
+
+        content: "";
+        width: 0;
+        height: 5px;
+
+        margin-top: 10px;
+
+        transition: width 0.2s;
+    }
+
+    &.active {
+        &::after {
+            width: 100%;
+
+            background-color: $accent-color;
+        }
+    }
+
+    &:not(.active):hover {
+        &::after {
+            width: 100%;
+
+            background-color: $dark-secondary-color;
+        }
+    }
+
+    a {
+        color: $secondary-color;
+    }
+}
+
+.num {
+    font-weight: 700;
+}

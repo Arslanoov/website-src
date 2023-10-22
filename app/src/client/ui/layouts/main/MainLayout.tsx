@@ -3,8 +3,11 @@ import Head from 'next/head';
 import Script from 'next/script';
 import { useRouter } from 'next/router';
 
+import { Language } from '@/domain/content/contentItem';
+
+import Header from '@/ui/components/header/Header.component';
+
 import styles from './main-layout.module.scss';
-import {Language} from '@/domain/content/contentItem';
 
 type Props = {
   title?: string | null,
@@ -32,8 +35,8 @@ const MainLayout: React.FC<Props> = ({
         <meta name="description"
           content={
             locale === Language.russian ?
-              'Фронтенд разработчик. Превращаю макеты в работающие веб приложения. Пишу статьи. 3+ лет коммерческого опыта' :
-              'Frontend developer with 3+ years of collection experience. Turn layouts into working web applications. Write articles.'
+              'Фронтенд разработчик. Превращаю макеты в работающие веб приложения. 4+ лет коммерческого опыта.' :
+              'Frontend developer with 4+ years of commercial experience. Turn layouts into working web applications.'
           }
         />
         <meta name="yandex-verification" content="c6e27706431d2eba" />
@@ -44,9 +47,11 @@ const MainLayout: React.FC<Props> = ({
       </Head>
 
       <div className={styles.layout}>
-        <main>
-          {children}
+        <main className="container">
+          <Header />
         </main>
+
+        {children}
       </div>
 
       {process.env.NODE_ENV === 'production' && !isAdmin && <>

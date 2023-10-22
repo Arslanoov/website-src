@@ -14,5 +14,8 @@ module.exports = withImages({
   i18n: {
     locales: ['en', 'ru'],
     defaultLocale: 'en'
-  }
+  },
+  images: {
+    domains: ['avatars.githubusercontent.com'],
+  },
 });

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 import { useSession } from 'next-auth/react';
@@ -9,8 +10,6 @@ import { UserRole } from '@/domain/user/user';
 import { Language } from '@/domain/content/contentItem';
 
 import MainLayout from '@/ui/layouts/main/MainLayout';
-
-import { getText } from '@/app/utils/i18n/helper';
 
 import styles from '@/ui/styles/pages/home.module.scss';
 
@@ -22,15 +21,15 @@ export default function Home() {
   return (
     <div className="container">
       <div className={styles.container}>
-        <h1 className={`${styles.title} ${locale === Language.english ? styles.title_en : styles.title_ru}`}>
-          <Link href="/projects"><a></a></Link>
-          <Link href="/blog"><a></a></Link>
-          <Link href="/contact"><a></a></Link>
+        <div className={`${styles.content} ${locale === Language.english ? styles.title_en : styles.title_ru}`}>
+          <h2 className={styles.subtitle}>Hey there</h2>
+          <h1 className={styles.title}>I make websites</h1>
+          <p className={styles.description}>I also write some notes about the web & building pet-projects in my free time.</p>
           <Link
             locale={locale === Language.english ? Language.russian : Language.english}
             href={asPath}
           >
-            <a>
+            <a className={styles.langChange}>
               {locale.toUpperCase()} {'-> '}
               {
                 (locale === Language.english ?
@@ -44,10 +43,24 @@ export default function Home() {
             user.role === UserRole.Admin &&
             <Link href="/manage/content/list"><a>Manage</a></Link>
           }
-        </h1>
+        </div>
 
-        <div className={`${styles.hint} ${styles.tap}`}>{getText(locale, 'tap-hint')}</div>
-        <div className={`${styles.hint} ${styles.hover}`}>{getText(locale, 'hover-hint')}</div>
+        <div className={`${styles.hint} ${styles.hover} ${styles.socials}`}>
+          <div className={styles.socialsTop}>
+            <a href="https://github.com/Arslanoov" target="_blank" rel="noreferrer">
+              <Image src="/icons/github.svg" width={32} height={32} alt="github" />
+            </a>
+
+            <a href="https://www.linkedin.com/in/arslanoov/" target="_blank" rel="noreferrer">
+              <Image src="/icons/linkedin.svg" width={32} height={32} alt="linkedin" />
+            </a>
+          </div>
+          <div>
+            <a href="mailto:rasularslanoov@gmail.com">
+              rasularslanoov@gmail.com
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -2,7 +2,6 @@ export default {
   'en': {
     'content-items': 'Content items',
     'change-lang': 'Change language',
-    'home': 'Home',
 
     'January': 'January',
     'February': 'February',
@@ -17,6 +16,9 @@ export default {
     'November': 'November',
     'December': 'December',
 
+    'home': 'home',
+    'projects': 'projects',
+    'notes': 'notes',
     'See all': 'See all',
     'Back': '<- Back',
     'Articles': 'Articles',
@@ -43,8 +45,6 @@ export default {
     'about-me-description': 'I build things for the web',
     'about-me-exp': 'years of commercial experience',
 
-    'tap-hint': 'Tap on any word',
-    'hover-hint': 'Hover mouse on any word',
     'nothing-here': 'Oops. It looks like this page is empty :(',
     'smth-interesting': 'Maybe you\'ll find something interesting in my ',
     'noscript': 'You should enable JS to watch the readable content',
@@ -68,8 +68,10 @@ export default {
     'November': 'Ноябрь',
     'December': 'Декабрь',
 
+    'home': 'главная',
+    'projects': 'проекты',
+    'notes': 'заметки',
     'See all': 'Все подряд',
-    'home': 'Главная',
     'Back': '<- Назад',
     'Articles': 'Статьи',
     'Projects': 'Проекты',
