@@ -11,11 +11,13 @@ type Props = {
   link: string,
   createdAt: string,
   locale: string,
+  description: string,
 };
 
 const ContentListItem: React.FC<Props> = ({
   title,
   link,
+  description,
   createdAt,
   locale
 }) => {
@@ -27,6 +29,9 @@ const ContentListItem: React.FC<Props> = ({
             <a><h3 className={styles.title}>{title}</h3></a>
           </Link>
           <div className={styles.date}>{dateFormatter(createdAt, locale)}</div>
+          <p className={styles.description}>
+            {description}
+          </p>
         </div>
       </div>
     </div>

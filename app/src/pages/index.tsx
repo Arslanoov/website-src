@@ -41,7 +41,13 @@ export default function Home() {
           {
             status === AuthStatus.logged &&
             user.role === UserRole.Admin &&
-            <Link href="/manage/content/list"><a>Manage</a></Link>
+              (
+                <div className={styles.manage}>
+                  <Link href="/manage/content/list">
+                    <a>Manage</a>
+                  </Link>
+                </div>
+              )
           }
         </div>
 

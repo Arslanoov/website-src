@@ -35,7 +35,7 @@
 
   text-align: center;
 
-  animation: bounce .5s cubic-bezier(.4, .5, .5, 1) infinite alternate;
+  // animation: bounce .5s cubic-bezier(.4, .5, .5, 1) infinite alternate;
 }
 
 .socials {
@@ -91,6 +91,14 @@
 .description,
 .langChange {
   color: $secondary-color;
+}
+
+.manage {
+  margin-top: 0.3rem;
+
+  a {
+    color: $secondary-color;
+  }
 }
 
 .italic {

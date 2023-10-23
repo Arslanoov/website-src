@@ -12,17 +12,19 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.aboutme}>
-        <Image
+      <Link href="/">
+        <a className={styles.aboutme}>
+          <Image
             draggable={false}
             className={styles.avatar}
-            width={30}
-            height={30}
+            width={40}
+            height={40}
             src="https://avatars.githubusercontent.com/u/51407990?v=4"
             alt="me"
-        />
-        <div className={styles.name}>Rasul Arslanov</div>
-      </div>
+          />
+          <div className={styles.name}>Rasul Arslanov</div>
+        </a>
+      </Link>
 
       <ul className={styles.list}>
         <li className={`${styles.item} ${router.pathname === '/' ? styles.active : ''}`}>

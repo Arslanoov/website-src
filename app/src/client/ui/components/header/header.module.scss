@@ -15,14 +15,17 @@
 
 .aboutme {
     gap: 15px;
-
-    font-size: 1.8rem;
-
-    color: $secondary-color;
 }
 
 .avatar {
     border-radius: 30px;
+}
+
+.name {
+    font-size: 1.8rem;
+    font-weight: 500;
+
+    color: $secondary-color;
 }
 
 .list {

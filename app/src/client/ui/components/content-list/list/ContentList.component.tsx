@@ -38,10 +38,7 @@ const ContentList: React.FC<Props> = ({
   return (
     <>
       <div className={styles.preview}>
-        <Link href="/"><a className={styles.back}>{getText(locale, 'back-to-home')}</a></Link>
         <h2 className={styles.title}>{getText(locale, title)}</h2>
-
-        {prependEl}
       </div>
       <div className={`${styles.wrapper} container`}>
         <div className={styles.content}>
@@ -64,6 +61,7 @@ const ContentList: React.FC<Props> = ({
                 key={item.id}
                 title={item.title}
                 createdAt={item.createdAt}
+                description={item.description}
                 locale={locale}
                 link={`${baseUrl}/${item.slug}`}
               />)}

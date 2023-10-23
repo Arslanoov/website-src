@@ -3,6 +3,11 @@
 
   margin: 2rem 3rem;
 
+  &,
+  a {
+    color: $secondary-color;
+  }
+
   .title,
   .subtitle {
     font-weight: 700;

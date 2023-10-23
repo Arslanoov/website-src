@@ -33,7 +33,7 @@ const variants = {
 };
 
 const transition = {
-  duration: 0.6
+  duration: 0.3
 };
 
 const App = ({ Component, router, pageProps: { session, ...pageProps }}: AppPropsWithLayout) => {
