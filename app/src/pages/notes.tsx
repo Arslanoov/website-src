@@ -40,7 +40,7 @@ export default function Notes({ articles, page }: Props) {
       vertical={false}
       title="Notes"
       baseUrl="/"
-      paginationUrl="blog"
+      paginationUrl="notes"
       withPagination
     />
   );

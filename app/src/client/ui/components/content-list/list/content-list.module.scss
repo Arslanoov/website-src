@@ -1,5 +1,9 @@
 .preview {
-  padding: 4rem 0;
+  padding-top: 0;
+
+  @include tablet {
+    padding: 4rem 0;
+  }
 }
 
 .title {
@@ -21,11 +25,15 @@
 }
 
 .content {
-  grid-column: col-start 4 / col-end 9;
+  grid-column: col-start 1 / col-end 12;
 
   padding: 2.5rem 0;
 
   color: $secondary-color;
+
+  @include tablet {
+    grid-column: col-start 4 / col-end 9;
+  }
 
   p {
     margin: 0;
@@ -49,6 +57,7 @@
 
   .not-found {
     font-size: 1.6rem;
+    text-align: center;
   }
 }
 

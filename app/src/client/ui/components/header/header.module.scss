@@ -8,9 +8,15 @@
 .header {
     grid-column: col-start 2 / col-end 11;
 
-    justify-content: space-between;
+    flex-direction: column;
 
     padding: 20px 0;
+
+    @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
 
 .aboutme {
@@ -29,10 +35,23 @@
 }
 
 .list {
-    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
     list-style: none;
 
     font-size: 1.6rem;
+
+    padding-left: 0;
+
+    @include tablet {
+        flex-direction: row;
+        align-items: center;
+        gap: 30px;
+
+        margin-top: 30px;
+    }
 }
 
 .item {

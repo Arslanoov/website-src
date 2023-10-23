@@ -21,7 +21,7 @@ export default {
     'notes': 'notes',
     'See all': 'See all',
     'Back': '<- Back',
-    'Articles': 'Articles',
+    'Articles': 'Notes',
     'Projects': 'Projects',
     'Go back': '<- Back',
     'Home': 'Home',
@@ -49,7 +49,7 @@ export default {
     'smth-interesting': 'Maybe you\'ll find something interesting in my ',
     'noscript': 'You should enable JS to watch the readable content',
     'github': 'Check out my github!',
-    'contact': 'Contact'
+    'contact': 'contact'
   },
   'ru': {
     'content-items': 'Контент',
@@ -73,7 +73,7 @@ export default {
     'notes': 'заметки',
     'See all': 'Все подряд',
     'Back': '<- Назад',
-    'Articles': 'Статьи',
+    'Articles': 'Заметки',
     'Projects': 'Проекты',
     'Go back': '<- Назад',
     'Home': 'На главную',
@@ -103,6 +103,6 @@ export default {
     'smth-interesting': 'Возможно, есть что-то интересное на моем ',
     'noscript': 'Вы должны включить JavaScript чтобы получить данные в читабельном формате',
     'github': 'Посмотри мой github!',
-    'contact': 'Связаться'
+    'contact': 'контакты'
   }
 };

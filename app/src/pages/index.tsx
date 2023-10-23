@@ -51,7 +51,7 @@ export default function Home() {
           }
         </div>
 
-        <div className={`${styles.hint} ${styles.hover} ${styles.socials}`}>
+        <div className={`${styles.hint} ${styles.socials}`}>
           <div className={styles.socialsTop}>
             <a href="https://github.com/Arslanoov" target="_blank" rel="noreferrer">
               <Image src="/icons/github.svg" width={32} height={32} alt="github" />

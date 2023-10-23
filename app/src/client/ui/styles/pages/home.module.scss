@@ -17,11 +17,11 @@
 
   padding-bottom: 5%;
 
-  height: calc(100vh - 150px);
-  height: calc(var(--vh, 1vh) * 100 - 150px);
-
   @include tablet {
     grid-column: col-start 2 / col-end 11;
+
+    height: calc(100vh - 150px);
+    height: calc(var(--vh, 1vh) * 100 - 150px);
   }
 }
 
@@ -58,14 +58,6 @@
 .tap {
   @include tablet {
     display: none;
-  }
-}
-
-.hover {
-  display: none;
-
-  @include tablet {
-    display: block;
   }
 }
 

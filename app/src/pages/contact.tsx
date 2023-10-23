@@ -12,11 +12,6 @@ export default function Contact() {
 
   return (
     <>
-      <div className={styles.preview}>
-        <Link href="/"><a className={styles.back}>{getText(router.locale, 'back-to-home')}</a></Link>
-        <h2 className={styles.title}>{getText(router.locale, 'contact')}</h2>
-      </div>
-
       <div className="container">
         <div className={styles.wrapper}>
           <ul className={styles.list}>

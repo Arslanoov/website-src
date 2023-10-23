@@ -44,7 +44,7 @@ const ContentList: React.FC<Props> = ({
         <div className={styles.content}>
           {paginatedItems.items.length === 0 ? <div className={styles['not-found']}>
             <p>{getText(locale, 'nothing-here')}</p>
-            <p>
+            {/*<p>
               {getText(locale, 'smth-interesting')} <a
                 className={styles.link}
                 href="https://github.com/Arslanoov"
@@ -52,7 +52,7 @@ const ContentList: React.FC<Props> = ({
               >
               GitHub
               </a>?
-            </p>
+            </p>*/}
           </div>: <>
             <div className={styles.list} style={{
               gridTemplateColumns: vertical ? '1fr' : ''

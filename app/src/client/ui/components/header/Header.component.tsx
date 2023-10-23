@@ -51,6 +51,14 @@ const Header = () => {
             </a>
           </Link>
         </li>
+        <li className={`${styles.item} ${router.pathname === '/contact' ? styles.active : ''}`}>
+          <Link href="/contact">
+            <a>
+              <span className={styles.num}>04</span>&nbsp;
+              {getText(router.locale, 'contact')}
+            </a>
+          </Link>
+        </li>
       </ul>
     </header>
   );
