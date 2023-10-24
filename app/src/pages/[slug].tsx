@@ -43,7 +43,7 @@ export default function ContentItem({ contentItem }: Props) {
 
   return (
     <>
-      <div className={styles.preview}>
+      <div className={`${styles.wrapper} container`}>
         <div className={styles.row}>
           <h1 className={styles.title}>{contentItem.title}</h1>
           <div className={styles.date}>
