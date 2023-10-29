@@ -2,7 +2,6 @@ export default {
   'en': {
     'content-items': 'Content items',
     'change-lang': 'Change language',
-    'home': 'Home',
 
     'January': 'January',
     'February': 'February',
@@ -17,9 +16,12 @@ export default {
     'November': 'November',
     'December': 'December',
 
+    'home': 'home',
+    'projects': 'projects',
+    'notes': 'notes',
     'See all': 'See all',
     'Back': '<- Back',
-    'Articles': 'Articles',
+    'Articles': 'Notes',
     'Projects': 'Projects',
     'Go back': '<- Back',
     'Home': 'Home',
@@ -43,13 +45,11 @@ export default {
     'about-me-description': 'I build things for the web',
     'about-me-exp': 'years of commercial experience',
 
-    'tap-hint': 'Tap on any word',
-    'hover-hint': 'Hover mouse on any word',
     'nothing-here': 'Oops. It looks like this page is empty :(',
     'smth-interesting': 'Maybe you\'ll find something interesting in my ',
     'noscript': 'You should enable JS to watch the readable content',
     'github': 'Check out my github!',
-    'contact': 'Contact'
+    'contact': 'contact'
   },
   'ru': {
     'content-items': 'Контент',
@@ -68,10 +68,12 @@ export default {
     'November': 'Ноябрь',
     'December': 'Декабрь',
 
+    'home': 'главная',
+    'projects': 'проекты',
+    'notes': 'заметки',
     'See all': 'Все подряд',
-    'home': 'Главная',
     'Back': '<- Назад',
-    'Articles': 'Статьи',
+    'Articles': 'Заметки',
     'Projects': 'Проекты',
     'Go back': '<- Назад',
     'Home': 'На главную',
@@ -101,6 +103,6 @@ export default {
     'smth-interesting': 'Возможно, есть что-то интересное на моем ',
     'noscript': 'Вы должны включить JavaScript чтобы получить данные в читабельном формате',
     'github': 'Посмотри мой github!',
-    'contact': 'Связаться'
+    'contact': 'контакты'
   }
 };

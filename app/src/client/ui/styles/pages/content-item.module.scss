@@ -1,44 +1,15 @@
-.preview {
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
-
-  color: $main-color;
-  background-color: $accent-color;
-}
-
-.back {
-  position: absolute;
-  top: 50%;
-  left: 0;
-
-  font-size: 3rem;
-
-  color: $secondary-color;
-
-  transform: translateY(-50%) rotate(90deg);
-  transform-origin: top center;
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
 .row {
-  width: 50%;
+  grid-column: col-start 1 / col-end 12;
+
+  @include tablet {
+    grid-column: col-start 2 / col-end 11;
+  }
 }
 
 .wrapper {
   column-gap: 3rem;
 
   color: $accent-color;
-  background-color: $main-color;
 }
 
 .content {
@@ -47,50 +18,63 @@
   display: flex;
   flex-direction: column;
 
-  margin-top: 10%;
   padding: 5rem 0;
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 700;
+  font-family: 'Playfair Display', serif;
+
+  color: $secondary-color;
 
   @include mobile {
-    font-size: 4rem;
+    font-size: 6rem;
   }
 
   @include tablet {
-    font-size: 6rem;
+    font-size: 8.5rem;
   }
 }
 
 .date {
   margin-bottom: .5rem;
-  
-  font-size: 2rem;
+
+  font-size: 2.5rem;
   font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.4rem;
+
+  color: $date-color;
 }
 
 .description {
-  font-size: 1.8rem;
+  font-size: 3rem;
+  line-height: 1.4;
 
   color: $secondary-color;
+
+  @include tablet {
+    font-size: 2.4rem;
+  }
 }
 
 .image {
-  grid-column: col-start 1 / col-end 8;
+  grid-column: col-start 2 / col-end 3;
 
-  position: relative;
-  transform: translateY(-50%);
-  margin-bottom: -35%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: auto;
 
-  width: 200px;
+  z-index: -1;
+
+  opacity: 0.3;
 
   @include tablet {
-    grid-column: col-start 2 / col-end 3;
-
-    position: sticky;
-    top: 50%;
+    top: 115px;
   }
 }
 
@@ -101,10 +85,15 @@
 
   word-break: break-word;
 
-  font-size: 1.7rem;
+  font-size: 2.2rem;
+  line-height: 3.5rem;
+
+  color: $secondary-color;
 
   @include tablet {
     grid-column: col-start 4 / col-end 11;
+
+    padding: 0;
   }
 
   h3 {

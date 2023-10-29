@@ -5,27 +5,15 @@
   align-items: center;
 
   width: 100%;
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
 
-  background-color: $secondary-color;
-  color: $accent-color;
+  @include tablet {
+    height: calc(100vh - 155px);
+    height: calc(var(--vh, 1vh) * 100 - 155px);
+  }
 
   .title {
     font-size: 8rem;
     font-weight: 700;
-  }
-
-  .back {
-    position: absolute;
-    top: 50%;
-    left: 0;
-
-    font-size: 3rem;
-
-    color: $accent-color;
-
-    transform: translateY(-50%) rotate(90deg);
-    transform-origin: top center;
+    font-family: 'Playfair Display', serif;
   }
 }

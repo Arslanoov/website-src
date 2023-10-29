@@ -1,0 +1,95 @@
+.header,
+.list,
+.aboutme {
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    grid-column: col-start 2 / col-end 11;
+
+    flex-direction: column;
+
+    padding: 20px 0;
+
+    @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.aboutme {
+    gap: 15px;
+}
+
+.avatar {
+    border-radius: 30px;
+}
+
+.name {
+    font-size: 1.8rem;
+    font-weight: 500;
+
+    color: $secondary-color;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    list-style: none;
+
+    font-size: 1.6rem;
+
+    padding-left: 0;
+
+    @include tablet {
+        flex-direction: row;
+        align-items: center;
+        gap: 30px;
+
+        margin-top: 30px;
+    }
+}
+
+.item {
+    padding: 5px;
+
+    &::after {
+        display: block;
+
+        content: "";
+        width: 0;
+        height: 5px;
+
+        margin-top: 10px;
+
+        transition: width 0.2s;
+    }
+
+    &.active {
+        &::after {
+            width: 100%;
+
+            background-color: $accent-color;
+        }
+    }
+
+    &:not(.active):hover {
+        &::after {
+            width: 100%;
+
+            background-color: $dark-secondary-color;
+        }
+    }
+
+    a {
+        color: $secondary-color;
+    }
+}
+
+.num {
+    font-weight: 700;
+}

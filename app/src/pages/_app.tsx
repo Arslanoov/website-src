@@ -22,21 +22,18 @@ type AppPropsWithLayout = AppProps & {
 const variants = {
   initial: {
     opacity: 0,
-    left: '-60%'
   },
   animate: {
     opacity: 1,
-    scale: 1,
     left: 0
   },
   exit: {
-    left: '60%',
     opacity: 0
   }
 };
 
 const transition = {
-  duration: 0.75
+  duration: 0.3
 };
 
 const App = ({ Component, router, pageProps: { session, ...pageProps }}: AppPropsWithLayout) => {

@@ -32,18 +32,18 @@ type Props = {
   page: number
 };
 
-export default function Blog({ articles, page }: Props) {
+export default function Notes({ articles, page }: Props) {
   return (
     <ContentListComponent
       paginatedItems={articles}
       currentPage={page}
       vertical={false}
-      title="Articles"
+      title="Notes"
       baseUrl="/"
-      paginationUrl="blog"
+      paginationUrl="notes"
       withPagination
     />
   );
 };
 
-Blog.getLayout = (page) => <MainLayout title="Blog">{page}</MainLayout>;
+Notes.getLayout = (page) => <MainLayout title="Blog">{page}</MainLayout>;

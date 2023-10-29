@@ -38,16 +38,13 @@ const ContentList: React.FC<Props> = ({
   return (
     <>
       <div className={styles.preview}>
-        <Link href="/"><a className={styles.back}>{getText(locale, 'back-to-home')}</a></Link>
         <h2 className={styles.title}>{getText(locale, title)}</h2>
-
-        {prependEl}
       </div>
       <div className={`${styles.wrapper} container`}>
         <div className={styles.content}>
           {paginatedItems.items.length === 0 ? <div className={styles['not-found']}>
             <p>{getText(locale, 'nothing-here')}</p>
-            <p>
+            {/*<p>
               {getText(locale, 'smth-interesting')} <a
                 className={styles.link}
                 href="https://github.com/Arslanoov"
@@ -55,7 +52,7 @@ const ContentList: React.FC<Props> = ({
               >
               GitHub
               </a>?
-            </p>
+            </p>*/}
           </div>: <>
             <div className={styles.list} style={{
               gridTemplateColumns: vertical ? '1fr' : ''
@@ -64,6 +61,7 @@ const ContentList: React.FC<Props> = ({
                 key={item.id}
                 title={item.title}
                 createdAt={item.createdAt}
+                description={item.description}
                 locale={locale}
                 link={`${baseUrl}/${item.slug}`}
               />)}

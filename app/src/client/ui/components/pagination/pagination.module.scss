@@ -3,14 +3,16 @@
   flex-wrap: wrap;
   align-items: center;
 
-  margin-top: 1.5rem;
+  margin-top: 2.5rem;
 
-  font-size: 1.5rem;
+  font-size: 2rem;
 
   .item {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    color: $secondary-color;
 
     &:not(:last-of-type) {
       margin-right: 1rem;
@@ -18,7 +20,9 @@
   }
 
   .disabled {
-    font-size: 1.8rem;
+    font-size: 3.5rem;
+
+    color: $accent-color;
 
     &:hover {
       cursor: default;

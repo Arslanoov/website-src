@@ -15,11 +15,13 @@
   justify-content: space-between;
   align-items: center;
 
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
+  padding-bottom: 5%;
 
   @include tablet {
     grid-column: col-start 2 / col-end 11;
+
+    height: calc(100vh - 150px);
+    height: calc(var(--vh, 1vh) * 100 - 150px);
   }
 }
 
@@ -33,9 +35,24 @@
 
   text-align: center;
 
-  color: $accent-color;
+  // animation: bounce .5s cubic-bezier(.4, .5, .5, 1) infinite alternate;
+}
 
-  animation: bounce .5s cubic-bezier(.4, .5, .5, 1) infinite alternate;
+.socials {
+  &,
+  a {
+    color: $accent-color;
+  }
+}
+
+.socialsTop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 5px;
 }
 
 .tap {
@@ -44,151 +61,42 @@
   }
 }
 
-.hover {
-  display: none;
+.content {
+  font-size: 2rem;
 
   @include tablet {
-    display: block;
+    font-size: 1.7rem;
   }
 }
 
+.subtitle {
+  font-size: 1.9rem;
+  text-transform: uppercase;
+}
+
 .title {
-  display: flex;
-  flex-direction: column;
+  font-size: 9.2rem;
+  font-family: 'Playfair Display', serif;
+}
 
-  font-size: 10rem;
+.title,
+.description,
+.langChange {
+  color: $secondary-color;
+}
 
-  @include tablet {
-    font-size: 16rem;
+.manage {
+  margin-top: 0.3rem;
+
+  a {
+    color: $secondary-color;
   }
+}
 
-  & > * {
-    &:hover::after {
-      transform: translateX(20px);
+.italic {
+  font-family: 'Playfair Display', serif;
+}
 
-      @include tablet {
-        transform: translateX(50px);
-      }
-    }
-
-    &::after {
-      display: inline-block;
-
-      transition: all .3s;
-    }
-  }
-
-  &_en {
-    & > * {
-      &:first-of-type {
-        color: $accent-color;
-
-        &::after {
-          content: "Hello.";
-        }
-
-        &:hover::after {
-          content: "Work";
-        }
-      }
-
-      &:nth-of-type(2) {
-        color: $secondary-color;
-
-        &::after {
-          content: "I am";
-        }
-
-        &:hover::after {
-          content: "Blog";
-        }
-      }
-
-      &:nth-of-type(3) {
-        color: $secondary-color;
-
-        &::after {
-          content: "Rasul";
-        }
-
-        &:hover::after {
-          content: "Contact";
-        }
-      }
-
-      &:nth-of-type(4) {
-        font-size: 2rem;
-
-        color: $accent-color;
-      }
-
-      &:nth-of-type(5) {
-        margin-top: 1rem;
-
-        font-size: 2rem;
-
-        color: $accent-color;
-      }
-    }
-  }
-
-  &_ru {
-    & > * {
-      font-size: 8rem;
-
-      @include tablet {
-        font-size: 12rem;
-      }
-
-      &:first-of-type {
-        color: $accent-color;
-
-        &::after {
-          content: "Привет.";
-        }
-
-        &:hover::after {
-          content: "Проекты";
-        }
-      }
-
-      &:nth-of-type(2) {
-        color: $secondary-color;
-
-        &::after {
-          content: "Я";
-        }
-
-        &:hover::after {
-          content: "Блог";
-        }
-      }
-
-      &:nth-of-type(3) {
-        color: $secondary-color;
-
-        &::after {
-          content: "Расуль";
-        }
-
-        &:hover::after {
-          content: "Контакты";
-        }
-      }
-
-      &:nth-of-type(4) {
-        font-size: 2rem;
-
-        color: $accent-color;
-      }
-
-      &:nth-of-type(5) {
-        margin-top: 1rem;
-
-        font-size: 2rem;
-
-        color: $accent-color;
-      }
-    }
-  }
+.langChange {
+  font-size: 1.6rem;
 }

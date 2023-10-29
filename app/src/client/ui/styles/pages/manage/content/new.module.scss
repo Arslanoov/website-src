@@ -4,6 +4,12 @@
 
   padding: 2rem 0;
 
+  &,
+  a,
+  label {
+    color: $secondary-color;
+  }
+
   .title {
     text-align: center;
 
@@ -49,8 +55,8 @@
     margin-bottom: 2rem;
 
     /* TODO: Fix */
-    * {
-      color: $accent-color !important;
+    *:not(label) {
+      color: $main-color !important;
     }
 
     .label {
