@@ -8,11 +8,11 @@ import { useSession } from 'next-auth/react';
 import { AuthStatus, SessionUserInterface } from '@/domain/user/auth';
 import { UserRole } from '@/domain/user/user';
 import { Language } from '@/domain/content/contentItem';
+import { getText } from '@/app/utils/i18n/helper';
 
 import MainLayout from '@/ui/layouts/main/MainLayout';
 
 import styles from '@/ui/styles/pages/home.module.scss';
-import {getText} from "@/app/utils/i18n/helper";
 
 export default function Home() {
   const { status, data: session } = useSession();
