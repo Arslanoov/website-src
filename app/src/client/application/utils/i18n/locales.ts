@@ -44,6 +44,7 @@ export default {
     'about-me-name': 'Rasul Arslanov',
     'about-me-description': 'I build things for the web',
     'about-me-exp': 'years of commercial experience',
+    'description1': 'With 4+ years of experience. I am actively developing my skills and explore new technologies.',
 
     'nothing-here': 'Oops. It looks like this page is empty :(',
     'smth-interesting': 'Maybe you\'ll find something interesting in my ',
@@ -70,11 +71,12 @@ export default {
 
     'home': 'главная',
     'projects': 'проекты',
+    'Projects': 'Проекты',
     'notes': 'заметки',
+    'Notes': 'Заметки',
     'See all': 'Все подряд',
     'Back': '<- Назад',
     'Articles': 'Заметки',
-    'Projects': 'Проекты',
     'Go back': '<- Назад',
     'Home': 'На главную',
     'Recent posts': 'Свежие публикации',
@@ -93,6 +95,9 @@ export default {
     'about-me-name': 'Расуль Арсланов',
     'about-me-description': 'Превращаю макеты в работающие веб приложения',
     'about-me-exp': 'лет коммерческого опыта',
+    'Hey there': 'Привет!',
+    'I am frontend developer': 'Я фронтенд-разработчик',
+    'description1': 'С более чем четырьмя годами опыта. Стараюсь активно развивать свои навыки и исследовать новые технологии.',
 
     'back-to-home': 'На главную',
     'previous-page': 'Назад',

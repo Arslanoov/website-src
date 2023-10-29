@@ -12,6 +12,7 @@ import { Language } from '@/domain/content/contentItem';
 import MainLayout from '@/ui/layouts/main/MainLayout';
 
 import styles from '@/ui/styles/pages/home.module.scss';
+import {getText} from "@/app/utils/i18n/helper";
 
 export default function Home() {
   const { status, data: session } = useSession();
@@ -22,9 +23,11 @@ export default function Home() {
     <div className="container">
       <div className={styles.container}>
         <div className={`${styles.content} ${locale === Language.english ? styles.title_en : styles.title_ru}`}>
-          <h2 className={styles.subtitle}>Hey there</h2>
-          <h1 className={styles.title}>I make websites</h1>
-          <p className={styles.description}>I also write some notes about the web & building pet-projects in my free time.</p>
+          <h2 className={styles.subtitle}>{getText(locale, 'Hey there')}</h2>
+          <h1 className={styles.title}>{getText(locale, 'I am frontend developer')}</h1>
+          <p className={styles.description}>
+            {getText(locale, 'description1')}
+          </p>
           <Link
             locale={locale === Language.english ? Language.russian : Language.english}
             href={asPath}
